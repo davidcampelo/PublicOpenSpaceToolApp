@@ -1,6 +1,20 @@
 <resources>
+    // screen titles
     <string name="app_name">Quality of Public Open Space Tool</string>
+    <string name="title_view_public_open_space_fragment">View Public Open Space</string>
+    <string name="title_add_public_open_space_fragment">Add Public Open Space</string>
+    <string name="title_edit_public_open_space_fragment">Edit Public Open Space</string>
     <string name="action_settings">Settings</string>
 
+
+    // fragment_public_open_space_list_menu
+    <string name="fragment_public_open_space_list_menu_edit">Edit</string>
+    <string name="fragment_public_open_space_list_menu_delete">Delete</string>
+
+    // fragment_public_open_space_add_edit
+    <string name="fragment_public_open_space_add_edit_save">Save</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
