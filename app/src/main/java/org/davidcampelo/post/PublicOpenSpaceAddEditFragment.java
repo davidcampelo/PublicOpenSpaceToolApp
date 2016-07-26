@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TabHost;
+import android.widget.TextView;
 
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.PublicOpenSpaceDBAdapter;
@@ -30,11 +32,13 @@ public class PublicOpenSpaceAddEditFragment extends Fragment {
     private Button saveButton;
 
     private AlertDialog saveButtonDialog;
-
+    TabHost tabHost;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         Intent intent = getActivity().getIntent();
         long id = intent.getLongExtra(Constants.INTENT_ID_EXTRA, 0);
@@ -43,7 +47,24 @@ public class PublicOpenSpaceAddEditFragment extends Fragment {
         View fragmentLayout = inflater.inflate(R.layout.fragment_public_open_space_add_edit, container, false);
         nameEditText = (EditText) fragmentLayout.findViewById(R.id.addEditItemName);
         addressEditText = (EditText) fragmentLayout.findViewById(R.id.addEditItemAddress);
-        saveButton = (Button) fragmentLayout.findViewById(R.id.addEditButtonSave);
+        saveButton = (Button) fragmentLayout.findViewById(R.id.addEditSaveButton);
+
+        // fill tabs
+        TabHost host = (TabHost)fragmentLayout.findViewById(R.id.addEditItemTabHost);
+        host.setup();
+        TabHost.TabSpec spec;
+
+        String[] tabNames = new String[]{"General", "Activities", "Environmental quality", "Amenities", "Safety"};
+        int[] tabContents = new int[]{R.id.addEditItemTab1,R.id.addEditItemTab2 , R.id.addEditItemTab3, R.id.addEditItemTab4, R.id.addEditItemTab5};
+
+        for (int i = -1; ++i < tabNames.length; ) {
+            //Tabs
+            spec = host.newTabSpec(tabNames[i]);
+            spec.setContent(tabContents[i]);
+            spec.setIndicator(tabNames[i]);
+            host.addTab(spec);
+            ((TextView) host.getTabWidget().getChildAt(i).findViewById(android.R.id.title)).setAllCaps(false);
+        }
 
         // fill data and components
         PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(getActivity());

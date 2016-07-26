@@ -3,86 +3,122 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="12dp"
-    android:paddingEnd="10dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     android:background="#F9F9F9">
 
-    <ImageButton
-        android:layout_width="wrap_content"
+
+    <TabHost
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/addEditItemImage"
-        android:src="@drawable/box_af"
+        android:id="@+id/addEditItemTabHost"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginEnd="5dp"/>
+        android:layout_alignParentStart="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <HorizontalScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true"
+                android:scrollbars="none" >
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></TabWidget>
+            </HorizontalScrollView>
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/addEditItemTab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="398dp"
+                    android:orientation="vertical">
+                    <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/addEditItemImage"
+                            android:src="@drawable/box_af"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginEnd="5dp"/>
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addEditItemScroll1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/addEditItemImage"
-        android:layout_alignBottom="@+id/addEditItemImage">
+                </LinearLayout>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minLines="1"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:text="POS Name"
-            android:id="@+id/addEditItemName"
-            android:ellipsize="end"
-            android:inputType="text"
-            android:layout_marginBottom="0dp"
-            android:layout_marginTop="0dp"/>
+                <LinearLayout
+                    android:id="@+id/addEditItemTab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-    </ScrollView>
+                    <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minLines="1"
+                                android:textAppearance="?android:textAppearanceLarge"
+                                android:text="POS Name"
+                                android:id="@+id/addEditItemName"
+                                android:ellipsize="end"
+                                android:inputType="text"
+                                android:layout_marginBottom="0dp"
+                                android:layout_marginTop="0dp"/>
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addEditItemScroll2"
-        android:layout_below="@+id/addEditItemScroll1"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="4dp">
+                </LinearLayout>
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:minLines="5"
-            android:textColor="#000000"
-            android:background="@null"
-            android:inputType="textMultiLine"
-            android:gravity="top"
-            android:text="POS complete address"
-            android:id="@+id/addEditItemAddress"
-            android:layout_below="@+id/addEditItemImage"
-            android:layout_alignParentStart="true" />
+                <LinearLayout
+                    android:id="@+id/addEditItemTab3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-    </ScrollView>
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="5"
+                        android:textColor="#000000"
+                        android:background="@null"
+                        android:inputType="textMultiLine"
+                        android:gravity="top"
+                        android:text="POS complete address"
+                        android:id="@+id/addEditItemAddress"
+                        android:layout_below="@+id/addEditItemImage"
+                        android:layout_alignParentStart="true" />
 
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/addEditItemTab4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Hello 4 "/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/addEditItemTab5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Hello 5 "/>
+                </LinearLayout>
+            </FrameLayout>
 
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/expandableListView"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/addEditButtonSave"
-        android:layout_below="@+id/addEditItemScroll2" />
+        </LinearLayout>
+    </TabHost>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/addEditButtonSave"
+        android:id="@+id/addEditSaveButton"
         android:text="@string/fragment_public_open_space_add_edit_save"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@id/addEditItemScroll2"
+        android:layout_alignParentStart="false"
         android:layout_alignParentEnd="true"
+        android:layout_gravity="end"
         android:textAllCaps="false"/>
-
 </RelativeLayout>

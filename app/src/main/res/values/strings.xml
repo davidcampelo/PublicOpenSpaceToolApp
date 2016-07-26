@@ -1,6 +1,7 @@
 <resources>
     // screen titles
-    <string name="app_name">Quality of Public Open Space Tool</string>
+    <string name="app_name">POST</string>
+    <string name="title_main">Public Open Space Tool (POST)</string>
     <string name="title_view_public_open_space_fragment">View Public Open Space</string>
     <string name="title_add_public_open_space_fragment">Add Public Open Space</string>
     <string name="title_edit_public_open_space_fragment">Edit Public Open Space</string>
@@ -13,8 +14,5 @@
 
     // fragment_public_open_space_add_edit
     <string name="fragment_public_open_space_add_edit_save">Save</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
