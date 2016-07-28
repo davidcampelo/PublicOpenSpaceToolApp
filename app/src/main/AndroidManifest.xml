@@ -39,6 +39,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_main"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +48,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -32,10 +32,63 @@
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/addEditItemTab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="410dp"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:orientation="vertical">
+                    <ScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addEditItemTab2Scroll"
+                        android:layout_alignParentTop="true">
+                        <LinearLayout
+                            android:id="@+id/addEditItemTab2ScrollLayout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="7) Type of usage (tick all relevant):"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox1" android:text="Active-formal"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox2" android:text="Active-informal" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox3" android:text="Passive only (go to Q9)" />
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="8) For what type of activities the space is designed? (tick all relevant):"/>
+
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox4" android:text="Tennis (grass/hard courts)" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox5" android:text="Soccer" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox6" android:text="Football" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox7" android:text="Netball (grass/hard courts)" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox8" android:text="Cricket" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox9" android:text="Baseball" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox10" android:text="Walking (only if paths)" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox11" android:text="Cycling" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox12" android:text="Fitness circuit" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox13" android:text="Basketball/Netball Hoops" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox14" android:text="Hockey" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox15" android:text="Athletics" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox16" android:text="Rugby" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox17" android:text="Children' playground" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:text="Other" />
+                                <EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:minLines="1" android:textAppearance="?android:textAppearanceSmall" android:id="@+id/addEditItemOther" android:hint="                                                                              " android:inputType="text" android:layout_marginBottom="2dp" android:layout_marginTop="2dp"  android:background="@color/colorPrimaryLight"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </ScrollView>
+
+                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/addEditItemTab1"
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="410dp"
                     android:paddingBottom="@dimen/activity_vertical_margin"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -74,14 +127,7 @@
                         android:layout_height="330dp"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/addEditItemTab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
 
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/addEditItemTab3"
