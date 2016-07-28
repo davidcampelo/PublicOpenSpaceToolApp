@@ -20,14 +20,16 @@ public class PublicOpenSpace {
     public String address;
     public double latitude = Double.MAX_VALUE;
     public double longitude = Double.MAX_VALUE;
+    public long   dateCreation;
 
-    public long dateCreation;
+    public Questions questions;
 
     PublicOpenSpace() {
+        this.questions = Questions.parse(null);
     }
 
     // Constructor used by the DAO
-    PublicOpenSpace(long id, String name, String address, double latitude, double longitude, long dateCreation) {
+    PublicOpenSpace(long id, String name, String address, double latitude, double longitude, String strQuestions, long dateCreation) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -35,11 +37,24 @@ public class PublicOpenSpace {
         this.longitude = longitude;
         this.dateCreation = dateCreation;
 
-    }
-    public PublicOpenSpace(String name, String address, double latitude, double longitude) {
-        this(0, name, address, latitude, longitude, 0);
+        this.questions = Questions.parse(strQuestions);
     }
 
+    public PublicOpenSpace(String name, String address, double latitude, double longitude) {
+        this(0, name, address, latitude, longitude, null, 0);
+    }
+
+    public String getAnswers(){
+        return questions.getAnswers();
+    }
+
+    public String getAnswer(Questions.QuestionIdentifier identifier){
+        return questions.getAnswer(identifier);
+    }
+
+    public void putAnswer(Questions.QuestionIdentifier identifier, String value){
+        questions.putAnswer(identifier, value);
+    }
 
     public String resolveAddress(Context ctx) {
         if (latitude == Double.MAX_VALUE || longitude == Double.MAX_VALUE)

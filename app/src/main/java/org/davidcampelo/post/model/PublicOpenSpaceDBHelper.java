@@ -11,7 +11,7 @@ import android.util.Log;
 class PublicOpenSpaceDBHelper extends SQLiteOpenHelper{
 
     public PublicOpenSpaceDBHelper(Context context) {
-        super(context, PublicOpenSpaceDBAdapter.TABLE_NAME, null, PublicOpenSpaceDBAdapter.DATABASE_VERSION);
+        super(context, PublicOpenSpaceDBAdapter.DATABASE_NAME, null, PublicOpenSpaceDBAdapter.DATABASE_VERSION);
     }
 
     @Override
@@ -25,11 +25,7 @@ class PublicOpenSpaceDBHelper extends SQLiteOpenHelper{
                 newVersion +", which will destroy all old data");
 
         // dropping table
-        if (oldVersion == 1 && newVersion == 2) {
-//            sqLiteDatabase.execSQL( "ALTER TABLE "+ PublicOpenSpaceDBAdapter.TABLE_NAME +" ADD COLUMN "+ PublicOpenSpaceDBAdapter.COLUMN_LATITUDE +" REAL NOT NULL" );
-//            sqLiteDatabase.execSQL( "ALTER TABLE "+ PublicOpenSpaceDBAdapter.TABLE_NAME +" ADD COLUMN "+ PublicOpenSpaceDBAdapter.COLUMN_LONGITUDE +" REAL NOT NULL" );
-            sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ PublicOpenSpaceDBAdapter.TABLE_NAME );
-            onCreate(sqLiteDatabase );
-        }
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ PublicOpenSpaceDBAdapter.TABLE_NAME );
+        onCreate(sqLiteDatabase );
     }
 }

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,13 +20,14 @@ public class PublicOpenSpaceDBAdapter {
 
 
     static final String DATABASE_NAME = "post.db";
-    static final int DATABASE_VERSION = 2;
+    static final int    DATABASE_VERSION = 6;
     static final String TABLE_NAME = "tb_pos_publicopenspace";
     static final String COLUMN_ID = "pos_id";
     static final String COLUMN_NAME = "pos_name";
     static final String COLUMN_ADDRESS = "pos_address";
     static final String COLUMN_LATITUDE = "pos_latitude";
     static final String COLUMN_LONGITUDE = "pos_longitude";
+    static final String COLUMN_ANSWERS = "pos_answers";
     static final String COLUMN_DATETIME = "pos_datetime";
 
     static String[] TABLE_COLUMNS = {
@@ -34,6 +36,7 @@ public class PublicOpenSpaceDBAdapter {
             COLUMN_ADDRESS,
             COLUMN_LATITUDE,
             COLUMN_LONGITUDE,
+            COLUMN_ANSWERS,
             COLUMN_DATETIME
     };
 
@@ -43,6 +46,7 @@ public class PublicOpenSpaceDBAdapter {
             + COLUMN_ADDRESS +" TEXT not null,"
             + COLUMN_LATITUDE +" REAL not null,"
             + COLUMN_LONGITUDE +" REAL not null,"
+            + COLUMN_ANSWERS +" TEXT not null,"
             + COLUMN_DATETIME +");";
 
     public PublicOpenSpaceDBAdapter(Context context) {
@@ -61,23 +65,27 @@ public class PublicOpenSpaceDBAdapter {
 
     // DAO methods
     private PublicOpenSpace cursorToObject(Cursor cursor) {
+        Log.w(this.getClass().getName(), "*********GET >> Answers = ["+ cursor.getString(5) +"]");
         return new PublicOpenSpace(
                 cursor.getLong(0),      // id
                 cursor.getString(1),    // name
                 cursor.getString(2),    // address
                 cursor.getDouble(3),    // latitude
                 cursor.getDouble(4),    // longitude
-                cursor.getLong(5)       // dateCreation
+                cursor.getString(5),    // answers
+                cursor.getLong(6)       // dateCreation
         );
     }
 
     public PublicOpenSpace insert(PublicOpenSpace publicOpenSpace){
         ContentValues values = new ContentValues();
+        Log.w(this.getClass().getName(), "*********INSERT >> Answers = ["+ publicOpenSpace.getAnswers() +"]");
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
         values.put(COLUMN_ADDRESS, publicOpenSpace.address);
         values.put(COLUMN_LATITUDE, publicOpenSpace.latitude);
         values.put(COLUMN_LONGITUDE, publicOpenSpace.longitude);
+        values.put(COLUMN_ANSWERS, publicOpenSpace.getAnswers());
         values.put(COLUMN_DATETIME, String.valueOf(Calendar.getInstance().getTimeInMillis()));
 
         publicOpenSpace.id = sqLiteDatabase.insert(TABLE_NAME, null, values);
@@ -87,19 +95,21 @@ public class PublicOpenSpaceDBAdapter {
 
     public boolean update(PublicOpenSpace publicOpenSpace){
         ContentValues values = new ContentValues();
+        Log.w(this.getClass().getName(), "*********UPDATE >> Answers = ["+ publicOpenSpace.getAnswers() +"]");
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
         values.put(COLUMN_ADDRESS, publicOpenSpace.address);
         values.put(COLUMN_LATITUDE, publicOpenSpace.latitude);
         values.put(COLUMN_LONGITUDE, publicOpenSpace.longitude);
+        values.put(COLUMN_ANSWERS, publicOpenSpace.getAnswers());
 
-        return (sqLiteDatabase.update(TABLE_NAME, values,COLUMN_ID +"="+ publicOpenSpace.id , null) > 0);
+        return (sqLiteDatabase.update(TABLE_NAME, values, COLUMN_ID +"="+ publicOpenSpace.id , null) > 0);
     }
 
     public PublicOpenSpace get(long id) {
         PublicOpenSpace object = new PublicOpenSpace(); // if no object was found, just return an empty object
 
-        Cursor cursor = sqLiteDatabase.query(TABLE_NAME, TABLE_COLUMNS,COLUMN_ID +"="+ id, null, null, null, null);
+        Cursor cursor = sqLiteDatabase.query(TABLE_NAME, TABLE_COLUMNS, COLUMN_ID +"="+ id, null, null, null, null);
 
         for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
             object = cursorToObject(cursor);
