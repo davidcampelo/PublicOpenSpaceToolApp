@@ -1,12 +1,11 @@
 <resources>
-    // screen titles
+// screen titles
     <string name="app_name">POST</string>
     <string name="title_main">Public Open Space Tool (POST)</string>
     <string name="title_view_public_open_space_fragment">View Public Open Space</string>
     <string name="title_add_public_open_space_fragment">Add Public Open Space</string>
     <string name="title_edit_public_open_space_fragment">Edit Public Open Space</string>
     <string name="action_settings">Settings</string>
-
 
     // fragment_public_open_space_list_menu
     <string name="fragment_public_open_space_list_menu_edit">Edit</string>
@@ -16,5 +15,131 @@
     <string name="fragment_public_open_space_add_edit_save">Save</string>
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBnpQFyArNBeu-zJq-z-2815Hexi-FPJQM</string>
+
+    // QUESTION 7
+    <string name="fragment_public_open_space_add_edit_tab_2_question_7_0">7) Type of usage (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_7_1">Active-formal</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_7_2">Active-informal</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_7_3">Passive only (go to Q9)</string>
+
+    // QUESTION 8
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_0">8) For what type of activities the space is designed? (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_1">Tennis (grass/hard courts)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_2">Soccer</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_3">Football</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_4">Netball (grass/hard courts</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_5">Cricket</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_6">Baseball</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_7">Walking (only if paths)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_8">Cycling</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_9">Fitness circuit</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_10">Basketball/Netball Hoops</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_11">Hockey</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_12">Athletics</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_13">Rugby</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_14">Children\'s playground</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_8_15">Other</string>
+
+    // QUESTION 9
+    <string name="fragment_public_open_space_add_edit_tab_2_question_9_0">9) Is the P.O.S. on the beach/river foreshore?</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_9_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_9_2">No</string>
+
+    // QUESTION 10
+    <string name="fragment_public_open_space_add_edit_tab_2_question_10_0">10) Are there water features in the P.O.S.?</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_10_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_10_2">No (Go to Q13)</string>
+
+    // QUESTION 11
+    <string name="fragment_public_open_space_add_edit_tab_2_question_11_0">11) Type of water feature (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_11_1">Lake</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_11_2">Pond</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_11_3">Water fountain</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_11_4">Stream</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_11_5">Other</string>
+
+    // QUESTION 12
+    <string name="fragment_public_open_space_add_edit_tab_2_question_12_0">12) Estimate the percentage of the P.O.S. occupied by the water feature(s) (tick one)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_12_1">Up to 25%</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_12_2">26% - 50%</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_12_3">51% - 75%</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_12_4">More than 75%</string>
+
+    // QUESTION 13a
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13a_0">13.a) Are there other aesthetic features in the P.O.S?</string>   `
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13a_1">Yes</string>                                           `
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13a_2">No (Go to Q14)</string>                                `
+
+    // QUESTION 13b
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13b_0">13.b) Which of the following features are present? (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13b_1">Statues</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13b_2">Gazebos/Rotunda</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13b_3">Sculptures</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13b_4">Ducks/Swans</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13b_5">Bridge</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13b_6">Rocks</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_13b_7">Other</string>
+
+    // QUESTION 14
+    <string name="fragment_public_open_space_add_edit_tab_2_question_14_0">14) Are there trees in the P.O.S?</string>   `
+    <string name="fragment_public_open_space_add_edit_tab_2_question_14_1">Yes</string>                                           `
+    <string name="fragment_public_open_space_add_edit_tab_2_question_14_2">No (Go to Q18)</string>                                `
+
+    // QUESTION 15                                                                                                                                                                                  3
+    <string name="fragment_public_open_space_add_edit_tab_2_question_15_0">15) Estimate the approximate number of trees present (tick one)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_15_1">1 - 50 trees</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_15_2">50 - 100 trees </string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_15_4">More than 100 trees</string>
+
+    // QUESTION 16
+    <string name="fragment_public_open_space_add_edit_tab_2_question_16_0">16) Where are the trees placed? (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_16_1">Perimeter all sides</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_16_2">Perimeter some sides</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_16_3">Along walking paths</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_16_4">Random placement throughout</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_16_5">Other</string>
+
+    // QUESTION 17
+    <string name="fragment_public_open_space_add_edit_tab_2_question_17_0">17) Are there gardens in this P.O.S?</string>   `
+    <string name="fragment_public_open_space_add_edit_tab_2_question_17_1">Yes</string>                                           `
+    <string name="fragment_public_open_space_add_edit_tab_2_question_17_2">No</string>                                `
+
+    // QUESTION 18a
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18a_0">18.a) Are the walking paths or cycleways within or around the P.O.S.? (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18a_1">Walking path/s</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18a_2">Designated dual use path/s</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18a_3">None</string>
+
+    // QUESTION 18b                                                                                                                                                                                  3
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18b_0">18.b) Shade along paths (tick one)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18b_1">Very good (canopies of many trees touch)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18b_2">Good (canopies of some trees touch)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18b_3">Medium (canopies don\'t touch but trees close together)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18b_4">Poor (canopies of trees don\'t touch and trees spread apart)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_18b_5">Very poor (little or no shade)</string>
+
+    // QUESTION 19
+    <string name="fragment_public_open_space_add_edit_tab_2_question_19_0">19) Describe the placement of paths within the P.O.S. (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_19_1">Perimeter, all sides</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_19_2">Perimeter, some sides</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_19_3">Diagonal</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_19_4">Radial</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_19_5">Path around water/visual feature</string>
+    <string name="fragment_public_open_space_add_edit_tab_2_question_19_6">Other</string>
+
+
+
+
+
+
+
+
+
+
+
+    `
+
+
+
 
 </resources>

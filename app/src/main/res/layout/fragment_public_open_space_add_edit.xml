@@ -31,12 +31,14 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="410dp">
+
+
 
                 <LinearLayout
-                    android:id="@+id/addEditItemTab2"
+                    android:id="@+id/addEditItemTab3"
                     android:layout_width="match_parent"
-                    android:layout_height="410dp"
+                    android:layout_height="match_parent"
                     android:paddingBottom="@dimen/activity_vertical_margin"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -45,39 +47,77 @@
                     <ScrollView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/addEditItemTab2Scroll"
                         android:layout_alignParentTop="true">
                         <LinearLayout
-                            android:id="@+id/addEditItemTab2ScrollLayout"
                             android:layout_width="fill_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
 
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="7) Type of usage (tick all relevant):"/>
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox1" android:text="Active-formal"/>
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox2" android:text="Active-informal" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox3" android:text="Passive only (go to Q9)" />
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="8) For what type of activities the space is designed? (tick all relevant):"/>
+                            // QUESTION 9
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_9_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion9" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion9_1" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_10_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion9_2" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_10_2" />
+                            </RadioGroup>
 
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox4" android:text="Tennis (grass/hard courts)" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox5" android:text="Soccer" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox6" android:text="Football" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox7" android:text="Netball (grass/hard courts)" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox8" android:text="Cricket" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox9" android:text="Baseball" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox10" android:text="Walking (only if paths)" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox11" android:text="Cycling" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox12" android:text="Fitness circuit" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox13" android:text="Basketball/Netball Hoops" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox14" android:text="Hockey" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox15" android:text="Athletics" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox16" android:text="Rugby" />
-                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/checkBox17" android:text="Children' playground" />
+                            // QUESTION 10
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_10_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion10" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion10_1" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_10_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion10_2" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_10_2" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </ScrollView>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/addEditItemTab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:orientation="vertical">
+                    <ScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true">
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            // QUESTION 7
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_7_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion7_1" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_7_1"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion7_2" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_7_2" />
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion7_3" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_7_3" />
+                            // QUESTION 8
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_1"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_1"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_2"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_2"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_3"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_3"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_4"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_4"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_5"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_5"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_6"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_6"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_7"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_7"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_8"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_8"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_9"  android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_9"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_10" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_10"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_11" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_11"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_12" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_12"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_13" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_13"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion8_14" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_14"/>
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:text="Other" />
-                                <EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:minLines="1" android:textAppearance="?android:textAppearanceSmall" android:id="@+id/addEditItemOther" android:hint="                                                                              " android:inputType="text" android:layout_marginBottom="2dp" android:layout_marginTop="2dp"  android:background="@color/colorPrimaryLight"/>
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:text="@string/fragment_public_open_space_add_edit_tab_2_question_8_15" />
+                                <EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:minLines="1" android:textAppearance="?android:textAppearanceSmall" android:id="@+id/addEditItemQuestion8_15" android:hint="                                                                              " android:inputType="text" android:layout_marginBottom="2dp" android:layout_marginTop="2dp"  android:background="@color/colorPrimaryLight"/>
                             </LinearLayout>
 
                         </LinearLayout>
@@ -129,14 +169,15 @@
 
 
 
-                <LinearLayout
-                    android:id="@+id/addEditItemTab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
 
 
-                </LinearLayout>
+
+
+
+
+
+
+
                 <LinearLayout
                     android:id="@+id/addEditItemTab4"
                     android:layout_width="match_parent"
