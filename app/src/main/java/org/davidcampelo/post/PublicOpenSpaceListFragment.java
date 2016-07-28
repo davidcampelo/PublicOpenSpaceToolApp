@@ -76,9 +76,7 @@ public class PublicOpenSpaceListFragment extends ListFragment {
                 return true;
             case R.id.fragment_public_open_space_list_menu_delete:
                 // delete from DB
-                PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(getActivity());
-                dbAdapter.open();
-                dbAdapter.delete(object);
+                PublicOpenSpaceDBAdapter.staticDelete(this.getActivity(), object);
 
                 // refresh list
 //                notes.clear();
@@ -87,7 +85,6 @@ public class PublicOpenSpaceListFragment extends ListFragment {
                 listAdapter.remove(object);
                 listAdapter.notifyDataSetChanged();
 
-                dbAdapter.close();
                 return true;
         }
 

@@ -15,4 +15,6 @@
     // fragment_public_open_space_add_edit
     <string name="fragment_public_open_space_add_edit_save">Save</string>
 
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBnpQFyArNBeu-zJq-z-2815Hexi-FPJQM</string>
+
 </resources>

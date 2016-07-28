@@ -52,7 +52,7 @@ class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
         }
 
         viewHolder.name.setText(object.name);
-        viewHolder.address.setText(object.address);
+        viewHolder.address.setText(object.resolveAddress(this.getContext()));
         //viewHolder.img.setImageResource(note.getAssociatedDrawable());
 
 

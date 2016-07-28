@@ -5,6 +5,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
+
         applicationId "org.davidcampelo.post"
         minSdkVersion 19
         targetSdkVersion 24
@@ -17,6 +18,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
@@ -25,5 +28,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.1.0'
     compile 'com.android.support:design:24.1.0'
     compile 'com.android.support:support-v4:24.1.0'
-    compile 'com.android.support:recyclerview-v7:24.1.0'
+    compile 'com.google.android.gms:play-services:8.4.0'
 }
+
+

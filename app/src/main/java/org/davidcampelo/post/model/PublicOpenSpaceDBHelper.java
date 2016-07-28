@@ -25,7 +25,11 @@ class PublicOpenSpaceDBHelper extends SQLiteOpenHelper{
                 newVersion +", which will destroy all old data");
 
         // dropping table
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ PublicOpenSpaceDBAdapter.TABLE_NAME);
-        onCreate(sqLiteDatabase);
+        if (oldVersion == 1 && newVersion == 2) {
+//            sqLiteDatabase.execSQL( "ALTER TABLE "+ PublicOpenSpaceDBAdapter.TABLE_NAME +" ADD COLUMN "+ PublicOpenSpaceDBAdapter.COLUMN_LATITUDE +" REAL NOT NULL" );
+//            sqLiteDatabase.execSQL( "ALTER TABLE "+ PublicOpenSpaceDBAdapter.TABLE_NAME +" ADD COLUMN "+ PublicOpenSpaceDBAdapter.COLUMN_LONGITUDE +" REAL NOT NULL" );
+            sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ PublicOpenSpaceDBAdapter.TABLE_NAME );
+            onCreate(sqLiteDatabase );
+        }
     }
 }

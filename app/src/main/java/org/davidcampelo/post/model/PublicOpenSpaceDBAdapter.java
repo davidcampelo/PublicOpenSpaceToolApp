@@ -19,24 +19,30 @@ public class PublicOpenSpaceDBAdapter {
 
 
     static final String DATABASE_NAME = "post.db";
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 2;
     static final String TABLE_NAME = "tb_pos_publicopenspace";
-    private static final String COLUMN_ID = "pos_id";
-    private static final String COLUMN_NAME = "pos_name";
-    private static final String COLUMN_ADDRESS = "pos_address";
-    private static final String COLUMN_DATETIME = "pos_datetime";
+    static final String COLUMN_ID = "pos_id";
+    static final String COLUMN_NAME = "pos_name";
+    static final String COLUMN_ADDRESS = "pos_address";
+    static final String COLUMN_LATITUDE = "pos_latitude";
+    static final String COLUMN_LONGITUDE = "pos_longitude";
+    static final String COLUMN_DATETIME = "pos_datetime";
 
-    private static String[] TABLE_COLUMNS = {
+    static String[] TABLE_COLUMNS = {
             COLUMN_ID,
             COLUMN_NAME,
             COLUMN_ADDRESS,
+            COLUMN_LATITUDE,
+            COLUMN_LONGITUDE,
             COLUMN_DATETIME
     };
 
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
-            + COLUMN_ID +" integer primary key autoincrement, "
-            + COLUMN_NAME +" text not null,"
-            + COLUMN_ADDRESS +" text not null,"
+            + COLUMN_ID +" INTEGER primary key autoincrement, "
+            + COLUMN_NAME +" TEXT not null,"
+            + COLUMN_ADDRESS +" TEXT not null,"
+            + COLUMN_LATITUDE +" REAL not null,"
+            + COLUMN_LONGITUDE +" REAL not null,"
             + COLUMN_DATETIME +");";
 
     public PublicOpenSpaceDBAdapter(Context context) {
@@ -59,7 +65,9 @@ public class PublicOpenSpaceDBAdapter {
                 cursor.getLong(0),      // id
                 cursor.getString(1),    // name
                 cursor.getString(2),    // address
-                cursor.getLong(3)       // dateCreation
+                cursor.getDouble(3),    // latitude
+                cursor.getDouble(4),    // longitude
+                cursor.getLong(5)       // dateCreation
         );
     }
 
@@ -68,6 +76,8 @@ public class PublicOpenSpaceDBAdapter {
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
         values.put(COLUMN_ADDRESS, publicOpenSpace.address);
+        values.put(COLUMN_LATITUDE, publicOpenSpace.latitude);
+        values.put(COLUMN_LONGITUDE, publicOpenSpace.longitude);
         values.put(COLUMN_DATETIME, String.valueOf(Calendar.getInstance().getTimeInMillis()));
 
         publicOpenSpace.id = sqLiteDatabase.insert(TABLE_NAME, null, values);
@@ -80,15 +90,14 @@ public class PublicOpenSpaceDBAdapter {
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
         values.put(COLUMN_ADDRESS, publicOpenSpace.address);
+        values.put(COLUMN_LATITUDE, publicOpenSpace.latitude);
+        values.put(COLUMN_LONGITUDE, publicOpenSpace.longitude);
 
         return (sqLiteDatabase.update(TABLE_NAME, values,COLUMN_ID +"="+ publicOpenSpace.id , null) > 0);
     }
 
     public PublicOpenSpace get(long id) {
-        if (id == 0)
-            return new PublicOpenSpace();
-
-        PublicOpenSpace object = null;
+        PublicOpenSpace object = new PublicOpenSpace(); // if no object was found, just return an empty object
 
         Cursor cursor = sqLiteDatabase.query(TABLE_NAME, TABLE_COLUMNS,COLUMN_ID +"="+ id, null, null, null, null);
 
@@ -117,6 +126,35 @@ public class PublicOpenSpaceDBAdapter {
 
     public boolean delete(PublicOpenSpace publicOpenSpace){
         return (sqLiteDatabase.delete(TABLE_NAME, COLUMN_ID +"="+ publicOpenSpace.id,null) > 0);
+    }
+
+    public static PublicOpenSpace staticGet(Context ctx, long id) {
+        PublicOpenSpace object;
+        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(ctx);
+        dbAdapter.open();
+        object = dbAdapter.get(id);
+        dbAdapter.close();
+        return object;
+    }
+    public static PublicOpenSpace staticInsert(Context ctx, PublicOpenSpace object) {
+        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(ctx);
+        dbAdapter.open();
+        object = dbAdapter.insert(object);
+        dbAdapter.close();
+
+        return object;
+    }
+    public static void staticUpdate(Context ctx, PublicOpenSpace object) {
+        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(ctx);
+        dbAdapter.open();
+        dbAdapter.update(object);
+        dbAdapter.close();
+    }
+    public static void staticDelete(Context ctx, PublicOpenSpace object) {
+        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(ctx);
+        dbAdapter.open();
+        dbAdapter.delete(object);
+        dbAdapter.close();
     }
 
 }
