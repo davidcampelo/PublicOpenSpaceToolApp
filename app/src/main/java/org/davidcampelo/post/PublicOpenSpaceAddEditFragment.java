@@ -81,7 +81,6 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //saveButtonDialog.show();
                 // adjust VO fields
                 object.name = nameEditText.getText() + "";
                 object.address = addressTextView.getText() + "";
@@ -90,6 +89,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
                     object = PublicOpenSpaceDBAdapter.staticInsert(getActivity(), object);
                 else // just update it
                     PublicOpenSpaceDBAdapter.staticUpdate(getActivity(), object);
+
+                saveButtonDialog.show();
+
             }
         });
 
@@ -120,14 +122,18 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         CameraUpdate cameraUpdate;
-        if (object.latitude != Double.MAX_VALUE && object.latitude != Double.MAX_VALUE)
+        if (object.latitude != Double.MAX_VALUE && object.latitude != Double.MAX_VALUE) {
             cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(object.latitude, object.longitude), 17);
+
+            googleMap.clear();
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(object.latitude, object.longitude)).title("Marker"));
+        }
         else
             cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 13);
         googleMap.animateCamera(cameraUpdate);
 
         googleMap.getUiSettings().setZoomControlsEnabled( true );
-        googleMap.getUiSettings().setMyLocationButtonEnabled( true );
+        googleMap.getUiSettings().setMyLocationButtonEnabled( false );
 
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
@@ -136,6 +142,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
                 object.longitude = latLng.longitude;
 
                 addressTextView.setText(object.resolveAddress(PublicOpenSpaceAddEditFragment.this.getActivity()));
+                googleMap.clear();
+                googleMap.addMarker(new MarkerOptions().position(new LatLng(object.latitude, object.longitude)).title(""));
             }
         });
     }
@@ -167,19 +175,25 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
     private void buildSaveButtonDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Save note");
-        builder.setMessage("Are you sure you want to save?");
-        builder.setPositiveButton("Yes, save it!", new DialogInterface.OnClickListener() {
+//        builder.setTitle("Save note");
+        builder.setMessage("Item saved successfully!");
+//        builder.setPositiveButton("Yes, save it!", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                // redirect to main (list) activity
+//                //startActivity(new Intent(getActivity(), MainActivity.class));
+//            }
+//        });
+//        builder.setNegativeButton("No, don't save!", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                // do nothing
+//            }
+//        });
+        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // redirect to main (list) activity
-                //startActivity(new Intent(getActivity(), MainActivity.class));
-            }
-        });
-        builder.setNegativeButton("No, don't save!", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // do nothing
+
             }
         });
         saveButtonDialog = builder.create();
