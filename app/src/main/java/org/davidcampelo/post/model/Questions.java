@@ -150,7 +150,7 @@ public class Questions {
             }
         }
         else {
-            StringTokenizer tokenizer = new StringTokenizer(questionsString);
+            StringTokenizer tokenizer = new StringTokenizer(questionsString, Constants.QUESTIONS_SEPARATOR);
 
             for (int i = -1; ++i < identifiers.length && tokenizer.hasMoreElements(); ) {
                 questions.putAnswer(identifiers[i], (String) tokenizer.nextElement());
