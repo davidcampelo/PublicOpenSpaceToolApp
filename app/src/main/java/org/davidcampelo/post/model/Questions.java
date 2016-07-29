@@ -122,7 +122,130 @@ public class Questions {
         question_24, // Yes/No                                `
 
         // QUESTION 25 - Is there litter throughout the P.O.S.?   `
-        question_25 // Yes/No
+        question_25, // Yes/No
+
+
+        // QUESTION 26 - Is children\'s play equipment present?
+        question_26, // Yes/No (go to Q30)
+
+        // QUESTION 27 - What items of play equipment are present? (tick all relevant)
+        question_27_1, // Swing/s
+        question_27_2, // Slide/s
+        question_27_3, // Climbing equipment
+        question_27_4, // Hanging Bars/Rings
+        question_27_5, // SeeSaws/Rockers
+        question_27_6, // Bridges/Tunnels
+        question_27_7, // Activity Panels (e.g. noughts &amp; crosses)
+        question_27_8, // Cubby House/s
+        question_27_9, // Other (specify)
+
+        // QUESTION 28 - What is the playground surface? (tick all relevant)
+        question_28_1, // Sand
+        question_28_2, // Grass
+        question_28_3, // Rubber
+        question_28_4, // Gravel or pebbles
+        question_28_5, // Woodchips
+        question_28_6, // Other (specify)
+
+
+        // QUESTION 29 - Is playground shaded? (tick one only)
+        question_29_1, // Partial cover/shade
+        question_29_2, // Total cover/shade
+        question_29_3, // No cover/shade
+
+
+        // QUESTION 30 - Are barbecues present?
+        question_30, // Yes/No
+
+
+        // QUESTION 31 - Are picnic tables present?
+        question_31, // Yes/No
+
+        // QUESTION 32a - Are the parking facilities serving the P.O.S.?
+        question_32a, // Yes/No
+
+        // QUESTION 32b - Estimate the number of bays
+        question_32b_1, // 0-20
+        question_32b_2, // 21-50
+        question_32b_3, // More than 50
+
+        // QUESTION 33 - Are the public access toilets?
+        question_33, // Yes/No
+
+        // QUESTION 34 - Is there a kiosk/café present? (tick one only)
+        question_34_1, // 7 days per week
+        question_34_2, // Weekdays only
+        question_34_3, // Weekends only
+        question_34_4, // No
+
+        // QUESTION 35 - Is there access to public transport within one block of P.O.S.?
+        question_35, // Yes/No
+
+        // QUESTION 36 - Is there seating present?
+        question_36, // Yes/No
+
+        // QUESTION 37 - Are there clubrooms/meeting rooms present?
+        question_37, // Yes/No
+
+        // QUESTION 38 - Are rubbish bins present?
+        question_38, // Yes/No
+
+        // QUESTION 39 - Are dog litter bags provided?
+        question_39, // Yes/No
+
+        // QUESTION 40 - In how many locations in the P.O.S. are dog litter bags present?
+        question_40,
+
+        // QUESTION 41 - Are there taps or other water sources accessible for dogs?
+        question_41, // Yes/No
+
+        // QUESTION 42 - Are drinking fountains present?
+        question_42, // Yes/No
+
+        // QUESTION 43 - Is the lighting within the P.O.S.? (i.e., not just street lighting)
+        question_43, // Yes/No (go to Q45)
+
+        // QUESTION 44 - Where is the lighting located? (tick all relevant)
+        question_44_1, // Around courts, buildings, and equipment
+        question_44_2, // Along paths
+        question_44_3, // Perimeter all sides
+        question_44_4, // Perimeter some sides
+        question_44_5, // Random throughout P.O.S.
+
+        // QUESTION 45 - From the centre of the P.O.S., how many visible are surrounding roads? (tick one)
+        question_45_1, // Road/s clearly visible from the centre of the P.O.S.
+        question_45_2, // Road/s partly visible from the centre of the P.O.S.
+        question_45_3, // Road/s cannot be seen from the centre of the P.O.S.
+
+        // QUESTION 46.a - From the centre of the P.O.S., how visible are the surrounding houses? Clear visibility means you can clearly see windows, back, yards, or front yards of houses overlooking the park. (tick one)
+        question_46a_1, // House/s clearly visible from the centre of the P.O.S.
+        question_46a_2, // House/s partly visible from the centre of the P.O.S.
+        question_46a_3, // House/s cannot be seen from the centre of the P.O.S. (go to Q47)
+
+        // QUESTION 46.b - How many of these houses overlook the park? (tick one)
+        question_46b_1, // More than 10
+        question_46b_2, // Between 5 and 10
+        question_46b_3, // Between 1 and 5
+
+        // QUESTION 47 - Are all roads surrounding the P.O.S. minor roads or cul-de-sacs?
+        question_47, // Yes/No
+
+        // QUESTION 48.a - Does the major roads/s have a zebra crossing to assist access to the P.O.S.?
+        question_48a, // Yes/No
+
+        // QUESTION 48.b - Does the major roads/s have a pedestrian crossing with signals to assist access to the P.O.S.?
+        question_48b, // Yes/No
+
+        // QUESTION 49 - To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? (choose one number fo each item)
+        // Possible answers for each of QUESTION 49:
+        //            1 = Strongly agree
+        //            2 = Agree
+        //            3 = Neither Agree nor Disagree
+        //            4 = Disagree
+        //            5 = Strongly disagree
+        question_49a, // P.O.S. is interesting for walking
+        question_49b, // P.O.S. is suitable for casual ball sports
+        question_49c  // P.O.S. is suitable for cycling
     }
 
     protected HashMap<QuestionIdentifier, String> answers;
