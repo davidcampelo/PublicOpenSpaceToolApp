@@ -85,7 +85,7 @@
     <string name="fragment_public_open_space_add_edit_question_14_1">Yes</string>                                           `
     <string name="fragment_public_open_space_add_edit_question_14_2">No (Go to Q18)</string>                                `
 
-    // QUESTION 15                                                                                                                                                                                  3
+    // QUESTION 15
     <string name="fragment_public_open_space_add_edit_question_15_0">15) Estimate the approximate number of trees present (tick one)</string>
     <string name="fragment_public_open_space_add_edit_question_15_1">1 - 50 trees</string>
     <string name="fragment_public_open_space_add_edit_question_15_2">50 - 100 trees </string>
@@ -100,9 +100,9 @@
     <string name="fragment_public_open_space_add_edit_question_16_5">Other</string>
 
     // QUESTION 17
-    <string name="fragment_public_open_space_add_edit_question_17_0">17) Are there gardens in this P.O.S.?</string>   `
-    <string name="fragment_public_open_space_add_edit_question_17_1">Yes</string>                                           `
-    <string name="fragment_public_open_space_add_edit_question_17_2">No</string>                                `
+    <string name="fragment_public_open_space_add_edit_question_17_0">17) Are there gardens in this P.O.S.?</string>
+    <string name="fragment_public_open_space_add_edit_question_17_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_17_2">No</string>
 
     // QUESTION 18a
     <string name="fragment_public_open_space_add_edit_question_18a_0">18.a) Are the walking paths or cycleways within or around the P.O.S.? (tick all relevant)</string>
@@ -110,7 +110,7 @@
     <string name="fragment_public_open_space_add_edit_question_18a_2">Designated dual use path/s</string>
     <string name="fragment_public_open_space_add_edit_question_18a_3">None</string>
 
-    // QUESTION 18b                                                                                                                                                                                  3
+    // QUESTION 18b
     <string name="fragment_public_open_space_add_edit_question_18b_0">18.b) Shade along paths (tick one)</string>
     <string name="fragment_public_open_space_add_edit_question_18b_1">Very good (canopies of many trees touch)</string>
     <string name="fragment_public_open_space_add_edit_question_18b_2">Good (canopies of some trees touch)</string>
@@ -128,8 +128,8 @@
     <string name="fragment_public_open_space_add_edit_question_19_6">Other</string>
 
     // QUESTION 20
-    <string name="fragment_public_open_space_add_edit_question_20_0">20) Is there evidence that the grass is watered?</string>   `
-    <string name="fragment_public_open_space_add_edit_question_20_1">Yes</string>                                           `
+    <string name="fragment_public_open_space_add_edit_question_20_0">20) Is there evidence that the grass is watered?</string>
+    <string name="fragment_public_open_space_add_edit_question_20_1">Yes</string>
     <string name="fragment_public_open_space_add_edit_question_20_2">No</string>
 
     // QUESTION 21
@@ -140,30 +140,189 @@
     <string name="fragment_public_open_space_add_edit_question_21_4">Not allowed (go to Q23)</string>
     <string name="fragment_public_open_space_add_edit_question_21_5">Not specified (go to Q23)</string>
 
-    // QUESTION 22                                                                                                                                                                                  3
+    // QUESTION 22
     <string name="fragment_public_open_space_add_edit_question_22_0">22) Is access for dogs: (tick one)</string>
     <string name="fragment_public_open_space_add_edit_question_22_1">Restricted in some areas</string>
     <string name="fragment_public_open_space_add_edit_question_22_2">Allowed all areas</string>
     <string name="fragment_public_open_space_add_edit_question_22_3">Not specified</string>
 
-    // QUESTION 23                                                                                                                                                                                  3
-    <string name="fragment_public_open_space_add_edit_question_23_0">23) Is graffiti present?</string>   `
+    // QUESTION 23
+    <string name="fragment_public_open_space_add_edit_question_23_0">23) Is graffiti present?</string>
     <string name="fragment_public_open_space_add_edit_question_23_1">Yes</string>
-    <string name="fragment_public_open_space_add_edit_question_23_2">No</string>                                `
+    <string name="fragment_public_open_space_add_edit_question_23_2">No</string>
 
-    // QUESTION 24                                                                                                                                                                                 3
-    <string name="fragment_public_open_space_add_edit_question_24_0">24) Is vandalism evident?</string>   `
+    // QUESTION 24
+    <string name="fragment_public_open_space_add_edit_question_24_0">24) Is vandalism evident?</string>
     <string name="fragment_public_open_space_add_edit_question_24_1">Yes</string>
     <string name="fragment_public_open_space_add_edit_question_24_2">No</string>                                `
 
-    // QUESTION 25                                                                                                                                                                                  3
-    <string name="fragment_public_open_space_add_edit_question_25_0">25) Is there litter throughout the P.O.S.?</string>   `
+    // QUESTION 25
+    <string name="fragment_public_open_space_add_edit_question_25_0">25) Is there litter throughout the P.O.S.?</string>
     <string name="fragment_public_open_space_add_edit_question_25_1">Yes</string>
-    <string name="fragment_public_open_space_add_edit_question_25_2">No</string>                                `
+    <string name="fragment_public_open_space_add_edit_question_25_2">No</string>
+
+    // QUESTION 26
+    <string name="fragment_public_open_space_add_edit_question_26_0">26) Is children\'s play equipment present?</string>
+    <string name="fragment_public_open_space_add_edit_question_26_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_26_2">No (go to Q30)</string>
+
+    // QUESTION 27
+    <string name="fragment_public_open_space_add_edit_question_27_0">27) What items of play equipment are present? (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_question_27_1">Swing/s</string>
+    <string name="fragment_public_open_space_add_edit_question_27_2">Slide/s</string>
+    <string name="fragment_public_open_space_add_edit_question_27_3">Climbing equipment</string>
+    <string name="fragment_public_open_space_add_edit_question_27_4">Hanging Bars/Rings</string>
+    <string name="fragment_public_open_space_add_edit_question_27_5">SeeSaws/Rockers</string>
+    <string name="fragment_public_open_space_add_edit_question_27_6">Bridges/Tunnels</string>
+    <string name="fragment_public_open_space_add_edit_question_27_7">Activity Panels (e.g. noughts &amp; crosses)</string>
+    <string name="fragment_public_open_space_add_edit_question_27_8">Cubby House/s</string>
+    <string name="fragment_public_open_space_add_edit_question_27_9">Other (specify)</string>
+
+    // QUESTION 28
+    <string name="fragment_public_open_space_add_edit_question_28_0">28) What is the playground surface? (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_question_28_1">Sand</string>
+    <string name="fragment_public_open_space_add_edit_question_28_2">Grass</string>
+    <string name="fragment_public_open_space_add_edit_question_28_3">Rubber</string>
+    <string name="fragment_public_open_space_add_edit_question_28_4">Gravel or pebbles</string>
+    <string name="fragment_public_open_space_add_edit_question_28_5">Woodchips</string>
+    <string name="fragment_public_open_space_add_edit_question_28_6">Other (specify)</string>
 
 
+    // QUESTION 29
+    <string name="fragment_public_open_space_add_edit_question_29_0">29) Is playground shaded? (tick one only)</string>
+    <string name="fragment_public_open_space_add_edit_question_29_1">Partial cover/shade</string>
+    <string name="fragment_public_open_space_add_edit_question_29_2">Total cover/shade</string>
+    <string name="fragment_public_open_space_add_edit_question_29_3">No cover/shade</string>
 
 
+    // QUESTION 30
+    <string name="fragment_public_open_space_add_edit_question_30_0">30) Are barbecues present?</string>
+    <string name="fragment_public_open_space_add_edit_question_30_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_30_2">No</string>
+
+
+    // QUESTION 31
+    <string name="fragment_public_open_space_add_edit_question_31_0">31) Are picnic tables present?</string>
+    <string name="fragment_public_open_space_add_edit_question_31_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_31_2">No</string>
+
+    // QUESTION 32a
+    <string name="fragment_public_open_space_add_edit_question_32a_0">32.a) Are the parking facilities serving the P.O.S.?</string>
+    <string name="fragment_public_open_space_add_edit_question_32a_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_32a_2">No</string>
+
+    // QUESTION 32b
+    <string name="fragment_public_open_space_add_edit_question_32b_0">32.b) Estimate the number of bays</string>
+    <string name="fragment_public_open_space_add_edit_question_32b_1">0-20</string>
+    <string name="fragment_public_open_space_add_edit_question_32b_2">21-50</string>
+    <string name="fragment_public_open_space_add_edit_question_32b_3">More than 50</string>
+
+    // QUESTION 33
+    <string name="fragment_public_open_space_add_edit_question_33_0">33) Are the public access toilets?</string>
+    <string name="fragment_public_open_space_add_edit_question_33_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_33_2">No</string>
+
+    // QUESTION 34
+    <string name="fragment_public_open_space_add_edit_question_34_0">34) Is there a kiosk/café present? (tick one only)</string>
+    <string name="fragment_public_open_space_add_edit_question_34_1">7 days per week</string>
+    <string name="fragment_public_open_space_add_edit_question_34_2">Weekdays only</string>
+    <string name="fragment_public_open_space_add_edit_question_34_3">Weekends only</string>
+    <string name="fragment_public_open_space_add_edit_question_34_4">No</string>
+
+    // QUESTION 35
+    <string name="fragment_public_open_space_add_edit_question_35_0">35) Is there access to public transport within one block of P.O.S.?</string>
+    <string name="fragment_public_open_space_add_edit_question_35_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_35_2">No</string>
+
+    // QUESTION 36
+    <string name="fragment_public_open_space_add_edit_question_36_0">36) Is there seating present?</string>
+    <string name="fragment_public_open_space_add_edit_question_36_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_36_2">No</string>
+
+    // QUESTION 37
+    <string name="fragment_public_open_space_add_edit_question_37_0">37) Are there clubrooms/meeting rooms present?</string>
+    <string name="fragment_public_open_space_add_edit_question_37_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_37_2">No</string>
+
+    // QUESTION 38
+    <string name="fragment_public_open_space_add_edit_question_38_0">38) Are rubbish bins present?</string>
+    <string name="fragment_public_open_space_add_edit_question_38_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_38_2">No</string>
+
+    // QUESTION 39
+    <string name="fragment_public_open_space_add_edit_question_39_0">39) Are dog litter bags provided?</string>
+    <string name="fragment_public_open_space_add_edit_question_39_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_39_2">No</string>
+
+    // QUESTION 40
+    <string name="fragment_public_open_space_add_edit_question_40_0">40) In how many locations in the P.O.S. are dog litter bags present?</string>
+
+    // QUESTION 41
+    <string name="fragment_public_open_space_add_edit_question_41_0">41) Are there taps or other water sources accessible for dogs?</string>
+    <string name="fragment_public_open_space_add_edit_question_41_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_41_2">No</string>
+
+    // QUESTION 42
+    <string name="fragment_public_open_space_add_edit_question_42_0">42) Are drinking fountains present?</string>
+    <string name="fragment_public_open_space_add_edit_question_42_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_42_2">No</string>
+
+    // QUESTION 43
+    <string name="fragment_public_open_space_add_edit_question_43_0">43) Is the lighting within the P.O.S.? (i.e., not just street lighting)</string>
+    <string name="fragment_public_open_space_add_edit_question_43_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_43_2">No (go to Q45)</string>
+
+    // QUESTION 44
+    <string name="fragment_public_open_space_add_edit_question_44_0">44) Where is the lighting located? (tick all relevant)</string>
+    <string name="fragment_public_open_space_add_edit_question_44_1">Around courts, buildings, and equipment</string>
+    <string name="fragment_public_open_space_add_edit_question_44_2">Along paths</string>
+    <string name="fragment_public_open_space_add_edit_question_44_3">Perimeter all sides</string>
+    <string name="fragment_public_open_space_add_edit_question_44_4">Perimeter some sides</string>
+    <string name="fragment_public_open_space_add_edit_question_44_5">Random throughout P.O.S.</string>
+
+    // QUESTION 45
+    <string name="fragment_public_open_space_add_edit_question_45_0">45) From the centre of the P.O.S., how many visible are surrounding roads? (tick one)</string>
+    <string name="fragment_public_open_space_add_edit_question_45_1">Road/s clearly visible from the centre of the P.O.S.</string>
+    <string name="fragment_public_open_space_add_edit_question_45_2">Road/s partly visible from the centre of the P.O.S.</string>
+    <string name="fragment_public_open_space_add_edit_question_45_3">Road/s cannot be seen from the centre of the P.O.S.</string>
+
+    // QUESTION 46.a
+    <string name="fragment_public_open_space_add_edit_question_46a_0">46.a) From the centre of the P.O.S., how visible are the surrounding houses? Clear visibility means you can clearly see windows, back, yards, or front yards of houses overlooking the park. (tick one)</string>
+    <string name="fragment_public_open_space_add_edit_question_46a_1">House/s clearly visible from the centre of the P.O.S.</string>
+    <string name="fragment_public_open_space_add_edit_question_46a_2">House/s partly visible from the centre of the P.O.S.</string>
+    <string name="fragment_public_open_space_add_edit_question_46a_3">House/s cannot be seen from the centre of the P.O.S. (go to Q47)</string>
+
+    // QUESTION 46.b
+    <string name="fragment_public_open_space_add_edit_question_46b_0">46.b) How many of these houses overlook the park? (tick one)</string>
+    <string name="fragment_public_open_space_add_edit_question_46b_1">More than 10</string>
+    <string name="fragment_public_open_space_add_edit_question_46b_2">Between 5 and 10</string>
+    <string name="fragment_public_open_space_add_edit_question_46b_3">Between 1 and 5</string>
+
+    // QUESTION 47
+    <string name="fragment_public_open_space_add_edit_question_47_0">47) Are all roads surrounding the P.O.S. minor roads or cul-de-sacs?</string>
+    <string name="fragment_public_open_space_add_edit_question_47_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_47_2">No</string>
+
+    // QUESTION 48.a
+    <string name="fragment_public_open_space_add_edit_question_48a_0">48.a) Does the major roads/s have a zebra crossing to assist access to the P.O.S.?</string>
+    <string name="fragment_public_open_space_add_edit_question_48a_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_48a_2">No</string>
+
+    // QUESTION 48.b
+    <string name="fragment_public_open_space_add_edit_question_48b_0">48.b) Does the major roads/s have a pedestrian crossing with signals to assist access to the P.O.S.?</string>
+    <string name="fragment_public_open_space_add_edit_question_48b_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_48b_2">No</string>
+
+    // QUESTION 49
+    <string name="fragment_public_open_space_add_edit_question_49_0">49) To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? (choose one number fo each item)</string>
+    <string name="fragment_public_open_space_add_edit_question_49_1">Strongly agree </string>
+    <string name="fragment_public_open_space_add_edit_question_49_2">Agree</string>
+    <string name="fragment_public_open_space_add_edit_question_49_3">Neither Agree nor Disagree</string>
+    <string name="fragment_public_open_space_add_edit_question_49_4">Disagree</string>
+    <string name="fragment_public_open_space_add_edit_question_49_5">Strongly disagree</string>
+    <string name="fragment_public_open_space_add_edit_question_49a">P.O.S. is interesting for walking</string>
+    <string name="fragment_public_open_space_add_edit_question_49b">P.O.S. is suitable for casual ball sports</string>
+    <string name="fragment_public_open_space_add_edit_question_49c">P.O.S. is suitable for cycling</string>
 
 
 
