@@ -187,13 +187,11 @@
     <string name="fragment_public_open_space_add_edit_question_28_5">Woodchips</string>
     <string name="fragment_public_open_space_add_edit_question_28_6">Other (specify)</string>
 
-
     // QUESTION 29
     <string name="fragment_public_open_space_add_edit_question_29_0">29) Is playground shaded? (tick one only)</string>
     <string name="fragment_public_open_space_add_edit_question_29_1">Partial cover/shade</string>
     <string name="fragment_public_open_space_add_edit_question_29_2">Total cover/shade</string>
     <string name="fragment_public_open_space_add_edit_question_29_3">No cover/shade</string>
-
 
     // QUESTION 30
     <string name="fragment_public_open_space_add_edit_question_30_0">30) Are barbecues present?</string>
