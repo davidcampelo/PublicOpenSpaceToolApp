@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
@@ -248,106 +248,83 @@
                             android:layout_height="match_parent"
                             android:orientation="vertical">
 
-<!--
+
 
 
                             // QUESTION 43
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_43_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion43" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion43_1" android:text="@string/fragment_public_open_space_add_edit_question_43_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestio43_2" android:text="@string/fragment_public_open_space_add_edit_question_43_2" />
                             </RadioGroup>
 
 
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
+                            // QUESTION 44
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_44_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion44_1"  android:text="@string/fragment_public_open_space_add_edit_question_44_1"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion44_2"  android:text="@string/fragment_public_open_space_add_edit_question_44_2"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion44_3"  android:text="@string/fragment_public_open_space_add_edit_question_44_3"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion44_4"  android:text="@string/fragment_public_open_space_add_edit_question_44_4"/>
+                            <CheckBox android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion44_5"  android:text="@string/fragment_public_open_space_add_edit_question_44_5"/>
+
+
+                            // QUESTION 45
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_45_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion45" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion45_1" android:text="@string/fragment_public_open_space_add_edit_question_45_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion45_2" android:text="@string/fragment_public_open_space_add_edit_question_45_2" />
                             </RadioGroup>
 
 
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
+                            // QUESTION 46a
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_46a_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46a" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46a_1" android:text="@string/fragment_public_open_space_add_edit_question_46a_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46a_2" android:text="@string/fragment_public_open_space_add_edit_question_46a_2" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46a_3" android:text="@string/fragment_public_open_space_add_edit_question_46a_3" android:layout_marginEnd="20dp" />
                             </RadioGroup>
 
 
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
+                            // QUESTION 46b
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_46b_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46b" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46b_1" android:text="@string/fragment_public_open_space_add_edit_question_46b_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46b_2" android:text="@string/fragment_public_open_space_add_edit_question_46b_2" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46b_2" android:text="@string/fragment_public_open_space_add_edit_question_46b_2" />
                             </RadioGroup>
 
 
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
+                            // QUESTION 46c
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_46c_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46c" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46c_1" android:text="@string/fragment_public_open_space_add_edit_question_46c_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion46c_2" android:text="@string/fragment_public_open_space_add_edit_question_46c_2" />
                             </RadioGroup>
 
 
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
+                            // QUESTION 47
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_47_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion47" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion47_1" android:text="@string/fragment_public_open_space_add_edit_question_47_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion47_2" android:text="@string/fragment_public_open_space_add_edit_question_47_2" />
                             </RadioGroup>
 
 
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
+                            // QUESTION 48a
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_48a_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion48a" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion48a_1" android:text="@string/fragment_public_open_space_add_edit_question_48a_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion48a_2" android:text="@string/fragment_public_open_space_add_edit_question_48a_2" />
                             </RadioGroup>
 
 
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
+                            // QUESTION 48b
+                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_48b_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
+                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion48b" android:orientation="horizontal">
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion48b_1" android:text="@string/fragment_public_open_space_add_edit_question_48b_1" android:layout_marginEnd="20dp" />
+                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion48b_2" android:text="@string/fragment_public_open_space_add_edit_question_48b_2" />
                             </RadioGroup>
 
-
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
-                            </RadioGroup>
-
-
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
-                            </RadioGroup>
-
-
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
-                            </RadioGroup>
-
-
-                            // QUESTION 30
-                            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/fragment_public_open_space_add_edit_question_30_0" android:textAppearance="?android:textAppearanceMedium" android:layout_marginTop="10dp" android:layout_marginLeft="4dp"/>
-                            <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30" android:orientation="horizontal">
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_1" android:text="@string/fragment_public_open_space_add_edit_question_30_1" android:layout_marginEnd="20dp" />
-                                <RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/addEditItemQuestion30_2" android:text="@string/fragment_public_open_space_add_edit_question_30_2" />
-                            </RadioGroup>
-
-
--->
 
                             </LinearLayout>
                     </ScrollView>
@@ -684,5 +661,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="true"
         android:layout_gravity="end"
-        android:textAllCaps="false"/>
-</LinearLayout>
+        android:textAllCaps="false"
+        android:layout_below="@id/addEditItemTabHost"
+        />
+</RelativeLayout>

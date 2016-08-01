@@ -59,7 +59,7 @@ public class PublicOpenSpaceListFragment extends ListFragment {
         super.onListItemClick(l, v, position, id);
 
         PublicOpenSpace object = (PublicOpenSpace) getListAdapter().getItem(position);
-        launchActivity(object, Constants.FragmentAction.VIEW);
+        launchActivity(object, Constants.FragmentAction.EDIT);
 
     }
 

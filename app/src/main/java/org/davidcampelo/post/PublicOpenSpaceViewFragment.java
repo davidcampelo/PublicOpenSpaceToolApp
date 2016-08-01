@@ -16,6 +16,7 @@ import org.davidcampelo.post.utils.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
+ * {@deprecated}
  */
 public class PublicOpenSpaceViewFragment extends Fragment {
 

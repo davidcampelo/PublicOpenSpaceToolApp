@@ -296,6 +296,11 @@
     <string name="fragment_public_open_space_add_edit_question_46b_2">Between 5 and 10</string>
     <string name="fragment_public_open_space_add_edit_question_46b_3">Between 1 and 5</string>
 
+    // QUESTION 46.c
+    <string name="fragment_public_open_space_add_edit_question_46c_0">46.c) Is there any area of the P.O.S. where you are unable to clearly see surounding houses?</string>
+    <string name="fragment_public_open_space_add_edit_question_46c_1">Yes</string>
+    <string name="fragment_public_open_space_add_edit_question_46c_2">No</string>
+
     // QUESTION 47
     <string name="fragment_public_open_space_add_edit_question_47_0">47) Are all roads surrounding the P.O.S. minor roads or cul-de-sacs?</string>
     <string name="fragment_public_open_space_add_edit_question_47_1">Yes</string>
