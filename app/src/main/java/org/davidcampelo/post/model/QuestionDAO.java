@@ -67,6 +67,26 @@ public class QuestionDAO extends DAO {
         return (update(TABLE_NAME, values, COLUMN_ID +"="+ object.id) > 0);
     }
 
+    public Question getByNumber(String number) {
+        Question object = new Question(); // if no object was found, just return an empty object
+
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_NUMBER +"='"+ number +"'");
+
+        for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
+            object = cursorToObject(cursor);
+        }
+
+        cursor.close();
+
+        OptionDAO optionDAO = new OptionDAO(getContext());
+        optionDAO.open();
+        object.setOptions( optionDAO.getByQuestionId(object.id) );
+        optionDAO.close();
+
+        return object;
+    }
+
+
     public Question get(long id) {
         Question object = new Question(); // if no object was found, just return an empty object
 
@@ -91,13 +111,6 @@ public class QuestionDAO extends DAO {
         }
 
         cursor.close();
-
-        OptionDAO optionDAO = new OptionDAO(getContext(), getDbHelper());
-        for (Question question : list){
-            question.options = optionDAO.getByQuestionId(question.id);
-        }
-
-
 
         return list;
     }

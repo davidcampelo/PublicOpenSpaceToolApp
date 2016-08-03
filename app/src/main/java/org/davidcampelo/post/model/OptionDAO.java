@@ -67,7 +67,7 @@ public class OptionDAO extends DAO {
     public ArrayList<Option> getByQuestionId(long id) {
         ArrayList<Option> list = new ArrayList<Option>();
 
-        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_QST_ID +" = "+ id);
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_QST_ID +" = "+ id +" ORDER BY "+ COLUMN_ID +" DESC");
 
         for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
             list.add(cursorToObject(cursor));

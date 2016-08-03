@@ -66,7 +66,7 @@ public class QuestionView extends RelativeLayout {
                 container.addView(checkbox);
             }
             else {
-                if (option.getText().indexOf("**%OTHER%**") < 0) {
+                if (option.getText().toLowerCase().indexOf("other") < 0) {
                     QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
                     checkbox.setText(option.getText());
                     checkbox.setChecked(option.isChecked());
@@ -102,8 +102,8 @@ public class QuestionView extends RelativeLayout {
                 LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View otherView = container.findViewById(R.id.otherRow);
                 final View addView = layoutInflater.inflate(R.layout.question_view_added_row, null);
-                final TextView textOut = (TextView)addView.findViewById(R.id.textout);
-                ImageView buttonRemove = (ImageView)addView.findViewById(R.id.removeButton);
+                final TextView textOut = (TextView)addView.findViewById(R.id.otherAddedText);
+                ImageView buttonRemove = (ImageView)addView.findViewById(R.id.otherRemoveButton);
                 buttonRemove.setOnClickListener(new OnClickListener(){
 
                     @Override

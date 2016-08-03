@@ -1,5 +1,7 @@
 package org.davidcampelo.post.model;
 
+import org.w3c.dom.ProcessingInstruction;
+
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,8 @@ public class Question {
     String number;
     String title;
     QuestionType type;
-    ArrayList<Option> options;
+    private ArrayList<Option> options;
+
 
     public enum QuestionType {
         MULTIPLE_CHOICE,
@@ -64,6 +67,12 @@ public class Question {
     public void addOption(Option option) {
         synchronized (options){
             options.add(option);
+        }
+    }
+
+    public void setOptions(ArrayList<Option> options) {
+        synchronized (options) {
+            this.options = options;
         }
     }
 

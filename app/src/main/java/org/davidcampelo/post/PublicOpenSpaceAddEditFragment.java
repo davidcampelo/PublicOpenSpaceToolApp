@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -25,8 +26,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.PublicOpenSpaceDAO;
+import org.davidcampelo.post.model.Question;
+import org.davidcampelo.post.model.QuestionDAO;
 import org.davidcampelo.post.model.Questions;
 import org.davidcampelo.post.utils.Constants;
+import org.davidcampelo.post.view.QuestionView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -64,7 +70,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
         object = PublicOpenSpaceDAO.staticGet(getActivity(), id);
 
-        fillData();
+        fillData(fragmentLayout);
 
         buildSaveButtonDialog();
 
@@ -196,8 +202,18 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
     /**
      * Fill UI components with our internal {@link PublicOpenSpace} object
+     * @param fragmentLayout
      */
-    private void fillData() {
+    private void fillData(View fragmentLayout) {
+
+        QuestionDAO questionDAO = new QuestionDAO(getContext());
+        questionDAO.open();
+        LinearLayout container = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer2);
+        container.addView(new QuestionView(getContext(), questionDAO.getByNumber("7")));
+        container.addView(new QuestionView(getContext(), questionDAO.getByNumber("8")));
+        container.addView(new QuestionView(getContext(), questionDAO.getByNumber("9")));
+
+
 //
 //        // TAB 1
 //        ((EditText) fragmentLayout.findViewById(R.id.addEditItemName)).setText(object.name);
