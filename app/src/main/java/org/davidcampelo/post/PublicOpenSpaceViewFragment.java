@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.davidcampelo.post.model.PublicOpenSpace;
-import org.davidcampelo.post.model.PublicOpenSpaceDBAdapter;
+import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.utils.Constants;
 
 
@@ -38,7 +38,7 @@ public class PublicOpenSpaceViewFragment extends Fragment {
         // get references to components
 
         // fill data and components
-        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(getActivity());
+        PublicOpenSpaceDAO dbAdapter = new PublicOpenSpaceDAO(getActivity());
         dbAdapter.open();
         object = dbAdapter.get(id);
         dbAdapter.close();

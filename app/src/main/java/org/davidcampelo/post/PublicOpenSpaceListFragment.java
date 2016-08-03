@@ -3,7 +3,6 @@ package org.davidcampelo.post;
 
 import android.app.ListFragment;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -13,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.davidcampelo.post.model.PublicOpenSpace;
-import org.davidcampelo.post.model.PublicOpenSpaceDBAdapter;
+import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.utils.Constants;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link ListFragment} subclass.
  */
-public class PublicOpenSpaceListFragment extends ListFragment {
+public class    PublicOpenSpaceListFragment extends ListFragment {
 
     private ArrayList<PublicOpenSpace> list;
     private PublicOpenSpaceListAdapter listAdapter;
@@ -31,7 +30,7 @@ public class PublicOpenSpaceListFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(getActivity());
+        PublicOpenSpaceDAO dbAdapter = new PublicOpenSpaceDAO(getActivity());
         dbAdapter.open();
         list = dbAdapter.getAll();
         dbAdapter.close();
@@ -76,7 +75,7 @@ public class PublicOpenSpaceListFragment extends ListFragment {
                 return true;
             case R.id.fragment_public_open_space_list_menu_delete:
                 // delete from DB
-                PublicOpenSpaceDBAdapter.staticDelete(this.getActivity(), object);
+                PublicOpenSpaceDAO.staticDelete(this.getActivity(), object);
 
                 // refresh list
 //                notes.clear();

@@ -7,19 +7,43 @@ import java.util.ArrayList;
  */
 public class Question {
 
+    long id;
     String title;
-    ArrayList<Option> options;
+    QuestionType type;
+    ArrayList<Option> allOptions;
+    ArrayList<Option> markedOptions;
 
-    public Question (String title, ArrayList<Option> options){
-        this.title = title;
-        this.options = options;
+    enum QuestionType {
+        MULTIPLE_CHOICE,
+        SINGLE_CHOICE
     }
+
+    public Question() {
+
+    }
+
+    public Question(long id, String title, QuestionType type, ArrayList<Option> allOptions, ArrayList<Option> markedOptions) {
+        this.id = id;
+        this.title = title;
+        this.type = type;
+        this.allOptions = markedOptions;
+        this.markedOptions = markedOptions;
+    }
+
 
     public String getTitle() {
         return title;
     }
 
-    public ArrayList<Option> getOptions() {
-        return options;
+    public QuestionType getType() {
+        return type;
+    }
+
+    public ArrayList<Option> getAllOptions() {
+        return allOptions;
+    }
+
+    public ArrayList<Option> getMarkedOptions() {
+        return markedOptions;
     }
 }

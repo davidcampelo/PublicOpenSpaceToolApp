@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.davidcampelo.post.model.PublicOpenSpace;
-import org.davidcampelo.post.model.PublicOpenSpaceDBAdapter;
+import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Questions;
 import org.davidcampelo.post.utils.Constants;
 
@@ -62,7 +62,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         // fill tabs
         fillTabTitles( (TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost) );
 
-        object = PublicOpenSpaceDBAdapter.staticGet(getActivity(), id);
+        object = PublicOpenSpaceDAO.staticGet(getActivity(), id);
 
         fillData();
 
@@ -81,9 +81,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
                 refreshObject();
 
                 if (object.id == 0) // if (id == 0) we're gonna insert it
-                    object = PublicOpenSpaceDBAdapter.staticInsert(getActivity(), object);
+                    object = PublicOpenSpaceDAO.staticInsert(getActivity(), object);
                 else // just update it
-                    PublicOpenSpaceDBAdapter.staticUpdate(getActivity(), object);
+                    PublicOpenSpaceDAO.staticUpdate(getActivity(), object);
 
                 saveButtonDialog.show();
 

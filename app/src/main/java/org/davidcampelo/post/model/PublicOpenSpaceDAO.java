@@ -3,24 +3,19 @@ package org.davidcampelo.post.model;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * Database adapter
+ * PublicOpenSpace Database Accesss Object
+ *
  * @author David Campelo <david.campelo@gmail.com>
  */
-public class PublicOpenSpaceDBAdapter {
-    private SQLiteDatabase sqLiteDatabase;
-    private Context context;
-    private PublicOpenSpaceDBHelper dbHelper;
+public class PublicOpenSpaceDAO extends DAO {
 
 
-    static final String DATABASE_NAME = "post.db";
-    static final int    DATABASE_VERSION = 6;
     static final String TABLE_NAME = "tb_pos_publicopenspace";
     static final String COLUMN_ID = "pos_id";
     static final String COLUMN_NAME = "pos_name";
@@ -49,36 +44,14 @@ public class PublicOpenSpaceDBAdapter {
             + COLUMN_ANSWERS +" TEXT not null,"
             + COLUMN_DATETIME +");";
 
-    public PublicOpenSpaceDBAdapter(Context context) {
-        this.context = context;
-    }
-
-    // open/close methods
-    public void open(){
-        dbHelper = new PublicOpenSpaceDBHelper(context);
-        sqLiteDatabase = dbHelper.getWritableDatabase();
-    }
-
-    public void close(){
-        dbHelper.close();
-    }
-
-    // DAO methods
-    private PublicOpenSpace cursorToObject(Cursor cursor) {
-        Log.w(this.getClass().getName(), "*********GET >> Answers = ["+ cursor.getString(5) +"]");
-        return new PublicOpenSpace(
-                cursor.getLong(0),      // id
-                cursor.getString(1),    // name
-                cursor.getString(2),    // address
-                cursor.getDouble(3),    // latitude
-                cursor.getDouble(4),    // longitude
-                cursor.getString(5),    // answers
-                cursor.getLong(6)       // dateCreation
-        );
+    public PublicOpenSpaceDAO(Context context) {
+        super(context);
     }
 
     public PublicOpenSpace insert(PublicOpenSpace publicOpenSpace){
+
         ContentValues values = new ContentValues();
+
         Log.w(this.getClass().getName(), "*********INSERT >> Answers = ["+ publicOpenSpace.getAnswers() +"]");
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
@@ -88,14 +61,16 @@ public class PublicOpenSpaceDBAdapter {
         values.put(COLUMN_ANSWERS, publicOpenSpace.getAnswers());
         values.put(COLUMN_DATETIME, String.valueOf(Calendar.getInstance().getTimeInMillis()));
 
-        publicOpenSpace.id = sqLiteDatabase.insert(TABLE_NAME, null, values);
+        publicOpenSpace.id = insert(TABLE_NAME, values);
 
         return publicOpenSpace;
     }
 
     public boolean update(PublicOpenSpace publicOpenSpace){
+
         ContentValues values = new ContentValues();
-        Log.w(this.getClass().getName(), "*********UPDATE >> Answers = ["+ publicOpenSpace.getAnswers() +"]");
+
+        Log.w(this.getClass().getName(), "*********INSERT >> Answers = ["+ publicOpenSpace.getAnswers() +"]");
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
         values.put(COLUMN_ADDRESS, publicOpenSpace.address);
@@ -103,13 +78,13 @@ public class PublicOpenSpaceDBAdapter {
         values.put(COLUMN_LONGITUDE, publicOpenSpace.longitude);
         values.put(COLUMN_ANSWERS, publicOpenSpace.getAnswers());
 
-        return (sqLiteDatabase.update(TABLE_NAME, values, COLUMN_ID +"="+ publicOpenSpace.id , null) > 0);
+        return (update(TABLE_NAME, values, COLUMN_ID +"="+ publicOpenSpace.id) > 0);
     }
 
     public PublicOpenSpace get(long id) {
         PublicOpenSpace object = new PublicOpenSpace(); // if no object was found, just return an empty object
 
-        Cursor cursor = sqLiteDatabase.query(TABLE_NAME, TABLE_COLUMNS, COLUMN_ID +"="+ id, null, null, null, null);
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_ID +"="+ id);
 
         for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
             object = cursorToObject(cursor);
@@ -123,7 +98,7 @@ public class PublicOpenSpaceDBAdapter {
     public ArrayList<PublicOpenSpace> getAll() {
         ArrayList<PublicOpenSpace> list = new ArrayList<PublicOpenSpace>();
 
-        Cursor cursor = sqLiteDatabase.query(TABLE_NAME, TABLE_COLUMNS,null, null, null, null, null);
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, null);
 
         for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
             list.add(cursorToObject(cursor));
@@ -135,19 +110,19 @@ public class PublicOpenSpaceDBAdapter {
     }
 
     public boolean delete(PublicOpenSpace publicOpenSpace){
-        return (sqLiteDatabase.delete(TABLE_NAME, COLUMN_ID +"="+ publicOpenSpace.id,null) > 0);
+        return (delete(TABLE_NAME, COLUMN_ID +"="+ publicOpenSpace.id) > 0);
     }
 
     public static PublicOpenSpace staticGet(Context ctx, long id) {
         PublicOpenSpace object;
-        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(ctx);
+        PublicOpenSpaceDAO dbAdapter = new PublicOpenSpaceDAO(ctx);
         dbAdapter.open();
         object = dbAdapter.get(id);
         dbAdapter.close();
         return object;
     }
     public static PublicOpenSpace staticInsert(Context ctx, PublicOpenSpace object) {
-        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(ctx);
+        PublicOpenSpaceDAO dbAdapter = new PublicOpenSpaceDAO(ctx);
         dbAdapter.open();
         object = dbAdapter.insert(object);
         dbAdapter.close();
@@ -155,16 +130,27 @@ public class PublicOpenSpaceDBAdapter {
         return object;
     }
     public static void staticUpdate(Context ctx, PublicOpenSpace object) {
-        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(ctx);
+        PublicOpenSpaceDAO dbAdapter = new PublicOpenSpaceDAO(ctx);
         dbAdapter.open();
         dbAdapter.update(object);
         dbAdapter.close();
     }
     public static void staticDelete(Context ctx, PublicOpenSpace object) {
-        PublicOpenSpaceDBAdapter dbAdapter = new PublicOpenSpaceDBAdapter(ctx);
+        PublicOpenSpaceDAO dbAdapter = new PublicOpenSpaceDAO(ctx);
         dbAdapter.open();
         dbAdapter.delete(object);
         dbAdapter.close();
     }
 
+    private PublicOpenSpace cursorToObject(Cursor cursor) {
+        return new PublicOpenSpace(
+                cursor.getLong(0),      // id
+                cursor.getString(1),    // name
+                cursor.getString(2),    // address
+                cursor.getDouble(3),    // latitude
+                cursor.getDouble(4),    // longitude
+                cursor.getString(5),    // answers
+                cursor.getLong(6)       // dateCreation
+        );
+    }
 }
