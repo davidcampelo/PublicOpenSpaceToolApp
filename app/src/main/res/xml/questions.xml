@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<questions>
+        <!-- QUESTION 7 -->
+    <question number="7" title="Type of usage (tick all relevant)">
+            <option>Active-formal</option>
+            <option>Active-informal</option>
+            <option>Passive only (go to Q9)</option>
+    </question>
+    
+        <!-- QUESTION 8 -->
+    <question number="8" title="For what type of activities the space is designed? (tick all relevant)">
+            <option>Tennis (grass/hard courts)</option>
+            <option>Soccer</option>
+            <option>Football</option>
+            <option>Netball (grass/hard courts</option>
+            <option>Cricket</option>
+            <option>Baseball</option>
+            <option>Walking (only if paths)</option>
+            <option>Cycling</option>
+            <option>Fitness circuit</option>
+            <option>Basketball/Netball Hoops</option>
+            <option>Hockey</option>
+            <option>Athletics</option>
+            <option>Rugby</option>
+            <option>Children\'s playground</option>
+            <option>Other</option>
+    </question>
+    
+        <!-- QUESTION 9 -->
+    <question number="9" title="Is the P.O.S. on the beach/river foreshore?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 10 -->
+    <question number="10" title="Are there water features in the P.O.S.?">
+            <option>Yes</option>
+            <option>No (Go to Q13)</option>
+    </question>
+    
+        <!-- QUESTION 11 -->
+    <question number="11" title="Type of water feature (tick all relevant)">
+            <option>Lake</option>
+            <option>Pond</option>
+            <option>Water fountain</option>
+            <option>Stream</option>
+            <option>Other</option>
+    </question>
+    
+        <!-- QUESTION 12 -->
+    <question number="12" title="Estimate the percentage of the P.O.S. occupied by the water feature(s) (tick one)">
+            <option>Up to 25%</option>
+            <option>26% - 50%</option>
+            <option>51% - 75%</option>
+            <option>More than 75%</option>
+    </question>
+    
+        <!-- QUESTION 13a -->
+    <question number="13.a" title="Are there other aesthetic features in the P.O.S.?">
+            <option>Yes</option>
+            <option>No (Go to Q14)</option>
+    </question>                                
+    
+        <!-- QUESTION 13b -->
+    <question number="13.b" title="Which of the following features are present? (tick all relevant)">
+            <option>Statues</option>
+            <option>Gazebos/Rotunda</option>
+            <option>Sculptures</option>
+            <option>Ducks/Swans</option>
+            <option>Bridge</option>
+            <option>Rocks</option>
+            <option>Other</option>
+    </question>
+    
+        <!-- QUESTION 14 -->
+    <question number="14" title="Are there trees in the P.O.S.?">
+            <option>Yes</option>
+            <option>No (Go to Q18)</option>
+    </question>                                
+    
+        <!-- QUESTION 15 -->
+    <question number="15" title="Estimate the approximate number of trees present (tick one)">
+            <option>1 - 50 trees</option>
+            <option>50 - 100 trees </option>
+            <option>More than 100 trees</option>
+    </question>
+    
+        <!-- QUESTION 16 -->
+    <question number="16" title="Where are the trees placed? (tick all relevant)">
+            <option>Perimeter all sides</option>
+            <option>Perimeter some sides</option>
+            <option>Along walking paths</option>
+            <option>Random placement throughout</option>
+            <option>Other</option>
+    </question>
+    
+        <!-- QUESTION 17 -->
+    <question number="17" title="Are there gardens in this P.O.S.?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 18a -->
+    <question number="18.a" title="Are the walking paths or cycleways within or around the P.O.S.? (tick all relevant)">
+            <option>Walking path/s</option>
+            <option>Designated dual use path/s</option>
+            <option>None</option>
+    </question>
+    
+        <!-- QUESTION 18b -->
+    <question number="18.b" title="Shade along paths (tick one)">
+            <option>Very good (canopies of many trees touch)</option>
+            <option>Good (canopies of some trees touch)</option>
+            <option>Medium (canopies don\'t touch but trees close together)</option>
+            <option>Poor (canopies of trees don\'t touch and trees spread apart)</option>
+            <option>Very poor (little or no shade)</option>
+    </question>
+    
+        <!-- QUESTION 19 -->
+    <question number="19" title="Describe the placement of paths within the P.O.S. (tick all relevant)">
+            <option>Perimeter, all sides</option>
+            <option>Perimeter, some sides</option>
+            <option>Diagonal</option>
+            <option>Radial</option>
+            <option>Path around water/visual feature</option>
+            <option>Other</option>
+    </question>
+    
+        <!-- QUESTION 20 -->
+    <question number="20" title="Is there evidence that the grass is watered?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 21 -->
+    <question number="21" title="Are dogs allowed? (tick all relevant)">
+            <option>Yes, on leash at all times</option>
+            <option>Yes, on leash at certain times</option>
+            <option>Yes, no leash specified</option>
+            <option>Not allowed (go to Q23)</option>
+            <option>Not specified (go to Q23)</option>
+    </question>
+    
+        <!-- QUESTION 22 -->
+    <question number="22" title="Is access for dogs: (tick one)">
+            <option>Restricted in some areas</option>
+            <option>Allowed all areas</option>
+            <option>Not specified</option>
+    </question>
+    
+        <!-- QUESTION 23 -->
+    <question number="23" title="Is graffiti present?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 24 -->
+    <question number="24" title="Is vandalism evident?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>                                
+    
+        <!-- QUESTION 25 -->
+    <question number="25" title="Is there litter throughout the P.O.S.?">
+            <option>Yes</option>
+            <option>o</option>
+    </question>
+    
+        <!-- QUESTION 26 -->
+    <question number="26" title="Is children\'s play equipment present?">
+            <option>Yes</option>
+            <option>No (go to Q30)</option>
+    </question>
+    
+        <!-- QUESTION 27 -->
+    <question number="27" title="What items of play equipment are present? (tick all relevant)">
+            <option>Swing/s</option>
+            <option>Slide/s</option>
+            <option>Climbing equipment</option>
+            <option>Hanging Bars/Rings</option>
+            <option>SeeSaws/Rockers</option>
+            <option>Bridges/Tunnels</option>
+            <option>Activity Panels (e.g. noughts &amp; crosses)</option>
+            <option>Cubby House/s</option>
+            <option>Other (specify)</option>
+    </question>
+    
+        <!-- QUESTION 28 -->
+    <question number="28" title="What is the playground surface? (tick all relevant)">
+            <option>Sand</option>
+            <option>Grass</option>
+            <option>Rubber</option>
+            <option>Gravel or pebbles</option>
+            <option>Woodchips</option>
+            <option>Other (specify)</option>
+    </question>
+    
+        <!-- QUESTION 29 -->
+    <question number="29" title="Is playground shaded? (tick one only)">
+            <option>Partial cover/shade</option>
+            <option>Total cover/shade</option>
+            <option>No cover/shade</option>
+    </question>
+    
+        <!-- QUESTION 30 -->
+    <question number="30" title="Are barbecues present?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+    
+        <!-- QUESTION 31 -->
+    <question number="31" title="Are picnic tables present?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 32a -->
+    <question number="32.a" title="Are the parking facilities serving the P.O.S.?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 32b -->
+    <question number="32.b" title="Estimate the number of bays">
+            <option>0-20</option>
+            <option>21-50</option>
+            <option>More than 50</option>
+    </question>
+    
+        <!-- QUESTION 33 -->
+    <question number="33" title="Are the public access toilets?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 34 -->
+    <question number="34" title="Is there a kiosk/café present? (tick one only)">
+            <option>7 days per week</option>
+            <option>Weekdays only</option>
+            <option>Weekends only</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 35 -->
+    <question number="35" title="Is there access to public transport within one block of P.O.S.?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 36 -->
+    <question number="36" title="Is there seating present?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 37 -->
+    <question number="37" title="Are there clubrooms/meeting rooms present?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 38 -->
+    <question number="38" title="Are rubbish bins present?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 39 -->
+    <question number="39" title="Are dog litter bags provided?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 40 -->
+    <question number="40" title="In how many locations in the P.O.S. are dog litter bags present?">
+    </question>
+    
+        <!-- QUESTION 41 -->
+    <question number="41" title="Are there taps or other water sources accessible for dogs?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 42 -->
+    <question number="42" title="Are drinking fountains present?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 43 -->
+    <question number="43" title="Is the lighting within the P.O.S.? (i.e., not just street lighting)">
+            <option>Yes</option>
+            <option>No (go to Q45)</option>
+    </question>
+    
+        <!-- QUESTION 44 -->
+    <question number="44" title="Where is the lighting located? (tick all relevant)">
+            <option>Around courts, buildings, and equipment</option>
+            <option>Along paths</option>
+            <option>Perimeter all sides</option>
+            <option>Perimeter some sides</option>
+            <option>Random throughout P.O.S.</option>
+    </question>
+    
+        <!-- QUESTION 45 -->
+    <question number="45" title="From the centre of the P.O.S., how many visible are surrounding roads? (tick one)">
+            <option>Road/s clearly visible from the centre of the P.O.S.</option>
+            <option>Road/s partly visible from the centre of the P.O.S.</option>
+            <option>Road/s cannot be seen from the centre of the P.O.S.</option>
+    </question>
+    
+        <!-- QUESTION 46.a -->
+    <question number="46.a" title="From the centre of the P.O.S., how visible are the surrounding houses? Clear visibility means you can clearly see windows, back, yards, or front yards of houses overlooking the park. (tick one)">
+            <option>House/s clearly visible from the centre of the P.O.S.</option>
+            <option>House/s partly visible from the centre of the P.O.S.</option>
+            <option>House/s cannot be seen from the centre of the P.O.S. (go to Q47)</option>
+    </question>
+    
+        <!-- QUESTION 46.b -->
+    <question number="46.b" title="How many of these houses overlook the park? (tick one)">
+            <option>More than 10</option>
+            <option>Between 5 and 10</option>
+            <option>Between 1 and 5</option>
+    </question>
+    
+        <!-- QUESTION 46.c -->
+    <question number="46.c" title="Is there any area of the P.O.S. where you are unable to clearly see surounding houses?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 47 -->
+    <question number="47" title="Are all roads surrounding the P.O.S. minor roads or cul-de-sacs?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 48.a -->
+    <question number="48.a" title="Does the major roads/s have a zebra crossing to assist access to the P.O.S.?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 48.b -->
+    <question number="48.b" title="Does the major roads/s have a pedestrian crossing with signals to assist access to the P.O.S.?">
+            <option>Yes</option>
+            <option>No</option>
+    </question>
+    
+        <!-- QUESTION 49 -->
+    <question number="49" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? (choose one number fo each item)">
+            <option>Strongly agree </option>
+            <option>Agree</option>
+            <option>Neither Agree nor Disagree</option>
+            <option>Disagree</option>
+            <option>Strongly disagree</option>
+            <option>P.O.S. is interesting for walking</option>
+            <option>P.O.S. is suitable for casual ball sports</option>
+            <option>P.O.S. is suitable for cycling</option>
+    </question>
+</questions>

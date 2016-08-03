@@ -198,28 +198,29 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
      * Fill UI components with our internal {@link PublicOpenSpace} object
      */
     private void fillData() {
-        // TAB 1
-        ((EditText) fragmentLayout.findViewById(R.id.addEditItemName)).setText(object.name);
-        ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(object.resolveAddress(this.getActivity()));
-        // TAB 2
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_1)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_7_1)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_2)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_7_2)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_3)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_7_3)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_1)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_1)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_2)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_2)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_3)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_3)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_4)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_4)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_5)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_5)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_6)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_6)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_7)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_7)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_8)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_8)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_9)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_9)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_10)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_10)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_11)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_11)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_12)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_12)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_13)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_13)));
-        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_14)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_14)));
-        ((TextView) fragmentLayout.findViewById(R.id.addEditItemQuestion8_15)).setText(object.getAnswer(Questions.QuestionIdentifier.question_8_15));
+//
+//        // TAB 1
+//        ((EditText) fragmentLayout.findViewById(R.id.addEditItemName)).setText(object.name);
+//        ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(object.resolveAddress(this.getActivity()));
+//        // TAB 2
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_1)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_7_1)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_2)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_7_2)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_3)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_7_3)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_1)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_1)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_2)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_2)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_3)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_3)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_4)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_4)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_5)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_5)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_6)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_6)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_7)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_7)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_8)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_8)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_9)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_9)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_10)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_10)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_11)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_11)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_12)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_12)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_13)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_13)));
+//        ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_14)).setChecked(Boolean.valueOf(object.getAnswer(Questions.QuestionIdentifier.question_8_14)));
+//        ((TextView) fragmentLayout.findViewById(R.id.addEditItemQuestion8_15)).setText(object.getAnswer(Questions.QuestionIdentifier.question_8_15));
 
     }
 
@@ -229,25 +230,25 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
      * This method must be called before any persistence procedure :)
      */
     public void refreshObject(){
-        object.name    = ((EditText) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "";
-        object.address = ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).getText() + "";
-        object.putAnswer(Questions.QuestionIdentifier.question_7_1, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_1)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_7_2, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_2)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_7_3, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_3)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_1, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_1)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_2, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_2)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_3, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_3)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_4, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_4)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_5, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_5)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_6, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_6)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_7, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_7)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_8, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_8)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_9, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_9)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_10, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_10)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_11, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_11)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_12, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_12)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_13, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_13)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_14, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_14)).isChecked() ));
-        object.putAnswer(Questions.QuestionIdentifier.question_8_15, ((EditText) fragmentLayout.findViewById(R.id.addEditItemQuestion8_15)).getText() + "");
+//        object.name    = ((EditText) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "";
+//        object.address = ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).getText() + "";
+//        object.putAnswer(Questions.QuestionIdentifier.question_7_1, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_1)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_7_2, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_2)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_7_3, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion7_3)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_1, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_1)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_2, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_2)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_3, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_3)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_4, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_4)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_5, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_5)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_6, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_6)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_7, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_7)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_8, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_8)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_9, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_9)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_10, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_10)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_11, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_11)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_12, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_12)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_13, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_13)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_14, String.valueOf( ((CheckBox) fragmentLayout.findViewById(R.id.addEditItemQuestion8_14)).isChecked() ));
+//        object.putAnswer(Questions.QuestionIdentifier.question_8_15, ((EditText) fragmentLayout.findViewById(R.id.addEditItemQuestion8_15)).getText() + "");
     }
 }

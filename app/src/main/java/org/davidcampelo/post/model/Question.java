@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Question {
 
     long id;
+    String number;
     String title;
     QuestionType type;
     ArrayList<Option> options;
@@ -21,8 +22,9 @@ public class Question {
 
     }
 
-    public Question(long id, String title, QuestionType type, ArrayList<Option> options) {
+    public Question(long id, String number, String title, QuestionType type, ArrayList<Option> options) {
         this.id = id;
+        this.number = number;
         this.title = title;
         this.type = type;
         this.options = options;
@@ -31,6 +33,10 @@ public class Question {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getNumber() {
+        return number;
     }
 
     public QuestionType getType() {

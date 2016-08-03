@@ -1,15 +1,26 @@
 package org.davidcampelo.post;
 
 import android.content.Intent;
+import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.davidcampelo.post.model.DAOHelper;
+import org.davidcampelo.post.model.Option;
+import org.davidcampelo.post.model.OptionDAO;
+import org.davidcampelo.post.model.Question;
+import org.davidcampelo.post.model.QuestionDAO;
 import org.davidcampelo.post.utils.Constants;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 
 import static org.davidcampelo.post.utils.Constants.*;
 
@@ -31,7 +42,58 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //populate();
     }
+
+
+    public void populate() {
+        Question question = null;
+        QuestionDAO questionDAO = new QuestionDAO(this);
+        questionDAO.open();
+        Option option = null;
+        OptionDAO optionDAO = new OptionDAO(this);
+        optionDAO.open();
+        XmlResourceParser xpp = getResources().getXml(R.xml.questions);
+
+        // check state
+        int eventType = -1;
+        try {
+
+            eventType = xpp.getEventType();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                if(eventType == XmlPullParser.START_TAG) {
+                    if (xpp.getName().equals("question")) {
+
+                        String number = xpp.getAttributeValue(null, "number");
+                        String title = xpp.getAttributeValue(null, "title");
+                        if (title.indexOf("tick all") > 0 )
+                            question = questionDAO.insert(new Question(0, number, title, Question.QuestionType.MULTIPLE_CHOICE, null));
+                        else
+                            question = questionDAO.insert(new Question(0, number, title, Question.QuestionType.SINGLE_CHOICE, null));
+
+                        Log.e(this.getClass().getName(), "===================> Question: = "+ question.getNumber() +" - "+ question.getTitle() +" / "+ question.getType().name());
+
+                    }
+                } else if(eventType == XmlPullParser.TEXT) {
+                    option = optionDAO.insert(new Option(0, xpp.getText(), false, question));
+                    Log.e(this.getClass().getName(), "=======================> Option: = "+ option.getText() );
+
+
+                }
+                eventType = xpp.next();
+            }
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        xpp.close();
+        questionDAO.close();
+        optionDAO.close();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

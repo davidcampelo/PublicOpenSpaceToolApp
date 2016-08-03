@@ -7,18 +7,20 @@ public class Option {
     long id;
     String text;
     boolean checked;
+    Question question;
 
     public Option() {
     }
 
-    public Option(long id, String text, boolean checked) {
+    public Option(long id, String text, boolean checked, Question question) {
         this.id = id;
         this.text = text;
         this.checked = checked;
+        this.question = question;
     }
 
-    public Option(String text, boolean checked) {
-        this(0, text, checked);
+    public Option(String text, boolean checked, Question question) {
+        this(0, text, checked, question);
     }
 
     public boolean isChecked() {
@@ -26,7 +28,6 @@ public class Option {
     }
 
     public void setChecked(boolean checked) {
-
         this.checked = checked;
     }
 

@@ -7,15 +7,18 @@ import android.util.Log;
 
 import org.davidcampelo.post.utils.Constants;
 
+
 /**
  * Created by davidcampelo on 7/26/16.
  */
-final class DAOHelper extends SQLiteOpenHelper{
+public final class DAOHelper extends SQLiteOpenHelper{
 
     private boolean open = false;
+    private Context context;
 
     public DAOHelper(Context context) {
         super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -52,4 +55,5 @@ final class DAOHelper extends SQLiteOpenHelper{
         open = true;
         return super.getWritableDatabase();
     }
+
 }

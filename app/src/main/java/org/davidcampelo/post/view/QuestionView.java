@@ -116,7 +116,7 @@ public class QuestionView extends RelativeLayout {
                 // create a new line with the written item
                 if (otherView != null) {
                     String newOptionText = ((EditText)container.findViewById(R.id.otherInputText)).getText() + "";
-                    question.addOption(new Option(newOptionText, true));
+                    question.addOption(new Option(newOptionText, true, question));
                     textOut.setText(newOptionText);
                     container.removeView(otherView);
                 }

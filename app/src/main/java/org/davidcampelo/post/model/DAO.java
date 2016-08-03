@@ -26,10 +26,10 @@ public abstract class DAO {
     }
 
     public void open(){
-        if (dbHelper == null || !dbHelper.isOpen()) {
+        if (dbHelper == null)
             dbHelper = new DAOHelper(context);
+        if (!dbHelper.isOpen())
             sqLiteDatabase = dbHelper.getWritableDatabase();
-        }
     }
 
     public void close(){
@@ -54,5 +54,11 @@ public abstract class DAO {
         return sqLiteDatabase.delete(tableName, whereClauses,null);
     }
 
+    protected Context getContext() {
+        return context;
+    }
 
+    protected DAOHelper getDbHelper() {
+        return dbHelper;
+    }
 }

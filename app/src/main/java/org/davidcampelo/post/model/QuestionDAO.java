@@ -18,17 +18,20 @@ public class QuestionDAO extends DAO {
 
     static final String TABLE_NAME = "tb_qst_question";
     static final String COLUMN_ID = "qst_id";
+    static final String COLUMN_NUMBER = "qst_number";
     static final String COLUMN_TITLE = "qst_title";
     static final String COLUMN_TYPE = "qst_type";
 
     static String[] TABLE_COLUMNS = {
             COLUMN_ID,
+            COLUMN_NUMBER,
             COLUMN_TITLE,
             COLUMN_TYPE
     };
 
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
             + COLUMN_ID +" INTEGER primary key autoincrement, "
+            + COLUMN_NUMBER +" TEXT not null, "
             + COLUMN_TITLE +" TEXT not null, "
             + COLUMN_TYPE +" TEXT not null);";
 
@@ -36,12 +39,17 @@ public class QuestionDAO extends DAO {
         super(context);
     }
 
+    public QuestionDAO(Context context, DAOHelper dbHelper) {
+        super(context, dbHelper);
+    }
+
     public Question insert(Question object){
 
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_TITLE, object.title);
-        values.put(COLUMN_TITLE, object.type.name());
+        values.put(COLUMN_NUMBER, object.number);
+        values.put(COLUMN_TYPE, object.type.name());
 
         object.id = insert(TABLE_NAME, values);
 
@@ -53,7 +61,8 @@ public class QuestionDAO extends DAO {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_TITLE, object.title);
-        values.put(COLUMN_TITLE, object.type.name());
+        values.put(COLUMN_NUMBER, object.number);
+        values.put(COLUMN_TYPE, object.type.name());
 
         return (update(TABLE_NAME, values, COLUMN_ID +"="+ object.id) > 0);
     }
@@ -82,6 +91,13 @@ public class QuestionDAO extends DAO {
         }
 
         cursor.close();
+
+        OptionDAO optionDAO = new OptionDAO(getContext(), getDbHelper());
+        for (Question question : list){
+            question.options = optionDAO.getByQuestionId(question.id);
+        }
+
+
 
         return list;
     }
@@ -122,10 +138,11 @@ public class QuestionDAO extends DAO {
 
     private Question cursorToObject(Cursor cursor) {
         return new Question(
-                cursor.getLong(0),      // id
-                cursor.getString(1),    // title
-                Question.QuestionType.valueOf(cursor.getString(2)), // type
-                null                    // TODO: retrieve options
+                cursor.getLong(0),                                  // id
+                cursor.getString(1),                                // number
+                cursor.getString(2),                                // title
+                Question.QuestionType.valueOf(cursor.getString(3)), // type
+                null                                                // TODO: retrieve options
         );
     }
 }

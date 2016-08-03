@@ -17,6 +17,7 @@ public class OptionDAO extends DAO {
     static final String TABLE_NAME = "tb_opt_option";
     static final String COLUMN_ID = "opt_id";
     static final String COLUMN_TEXT = "opt_text";
+    static final String COLUMN_QST_ID = "qst_id"; // Question this option belongs to
     static final String COLUMN_POS_ID = "pos_id"; // if this Option concerns to one and only
     // PublicOpenSpace (happens for "Other" options)
 
@@ -29,17 +30,23 @@ public class OptionDAO extends DAO {
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
             + COLUMN_ID +" INTEGER primary key autoincrement, "
             + COLUMN_TEXT +" TEXT not null, "
+            + COLUMN_QST_ID +" INTEGER, "
             + COLUMN_POS_ID +" INTEGER);";
 
     public OptionDAO(Context context) {
         super(context);
     }
+    public OptionDAO(Context context, DAOHelper dbHelper) {
+        super(context, dbHelper);
+    }
+
 
     public Option insert(Option object){
 
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_TEXT, object.text);
+        values.put(COLUMN_QST_ID, object.question.id);
 
         object.id = insert(TABLE_NAME, values);
 
@@ -51,8 +58,24 @@ public class OptionDAO extends DAO {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_TEXT, object.text);
+        values.put(COLUMN_QST_ID, object.question.id);
+
 
         return (update(TABLE_NAME, values, COLUMN_ID +"="+ object.id) > 0);
+    }
+
+    public ArrayList<Option> getByQuestionId(long id) {
+        ArrayList<Option> list = new ArrayList<Option>();
+
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_QST_ID +" = "+ id);
+
+        for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
+            list.add(cursorToObject(cursor));
+        }
+
+        cursor.close();
+
+        return list;
     }
 
     public Option get(long id) {
@@ -91,7 +114,8 @@ public class OptionDAO extends DAO {
         return new Option(
                 cursor.getLong(0),      // id
                 cursor.getString(1),    // text
-                false                   // checked
+                false,                  // checked
+                null                    // Question
         );
     }
 }
