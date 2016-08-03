@@ -19,6 +19,8 @@ import org.davidcampelo.post.model.Question;
 
 /**
  * Created by davidcampelo on 8/1/16.
+ *
+ * {@deprecated}
  */
 public class MultipleQuestionView extends RelativeLayout {
 
@@ -68,7 +70,7 @@ public class MultipleQuestionView extends RelativeLayout {
         container = (LinearLayout)findViewById(R.id.MultipleQuestionView_containerOptions);
 
         listOptions = (Spinner) findViewById(R.id.MultipleQuestionView_listOptions);
-        adapter = new MultipleQuestionViewOptionsAdapter(context, android.R.layout.simple_spinner_dropdown_item, question.getOptions());
+        adapter = new MultipleQuestionViewOptionsAdapter(context, android.R.layout.simple_spinner_dropdown_item, question.getAllOptions());
         listOptions.setAdapter(adapter);
 
         // on select spinner item

@@ -15,6 +15,8 @@ import java.util.List;
 
 /**
  * Created by davidcampelo on 8/2/16.
+ *
+ * {@deprecated}
  */
 public class MultipleQuestionViewOptionsAdapter extends ArrayAdapter<Option> {
 

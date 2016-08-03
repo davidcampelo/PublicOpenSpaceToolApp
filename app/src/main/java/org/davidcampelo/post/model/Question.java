@@ -10,10 +10,9 @@ public class Question {
     long id;
     String title;
     QuestionType type;
-    ArrayList<Option> allOptions;
-    ArrayList<Option> markedOptions;
+    ArrayList<Option> options;
 
-    enum QuestionType {
+    public enum QuestionType {
         MULTIPLE_CHOICE,
         SINGLE_CHOICE
     }
@@ -22,12 +21,11 @@ public class Question {
 
     }
 
-    public Question(long id, String title, QuestionType type, ArrayList<Option> allOptions, ArrayList<Option> markedOptions) {
+    public Question(long id, String title, QuestionType type, ArrayList<Option> options) {
         this.id = id;
         this.title = title;
         this.type = type;
-        this.allOptions = markedOptions;
-        this.markedOptions = markedOptions;
+        this.options = options;
     }
 
 
@@ -40,10 +38,27 @@ public class Question {
     }
 
     public ArrayList<Option> getAllOptions() {
-        return allOptions;
+        return options;
     }
 
-    public ArrayList<Option> getMarkedOptions() {
-        return markedOptions;
+    public void removeOtherOptionByText(String otherOptionTitle) {
+        ArrayList<Option> toRemove = new ArrayList<Option>();
+        for (Option option : options) {
+            // option.id == 0 is that it's a New Other Option
+            if (option.id == 0 && option.text.indexOf(otherOptionTitle) >= 0)
+                toRemove.add(option);
+        }
+        synchronized (options){
+            for (Option option : toRemove){
+                options.remove(option);
+            }
+        }
     }
+
+    public void addOption(Option option) {
+        synchronized (options){
+            options.add(option);
+        }
+    }
+
 }

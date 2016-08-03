@@ -17,15 +17,19 @@ public class OptionDAO extends DAO {
     static final String TABLE_NAME = "tb_opt_option";
     static final String COLUMN_ID = "opt_id";
     static final String COLUMN_TEXT = "opt_text";
+    static final String COLUMN_POS_ID = "pos_id"; // if this Option concerns to one and only
+    // PublicOpenSpace (happens for "Other" options)
 
     static String[] TABLE_COLUMNS = {
             COLUMN_ID,
-            COLUMN_TEXT
+            COLUMN_TEXT,
+            COLUMN_POS_ID
     };
 
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
             + COLUMN_ID +" INTEGER primary key autoincrement, "
-            + COLUMN_TEXT +" TEXT not null);";
+            + COLUMN_TEXT +" TEXT not null, "
+            + COLUMN_POS_ID +" INTEGER);";
 
     public OptionDAO(Context context) {
         super(context);
@@ -86,7 +90,8 @@ public class OptionDAO extends DAO {
     private Option cursorToObject(Cursor cursor) {
         return new Option(
                 cursor.getLong(0),      // id
-                cursor.getString(1)     // text
+                cursor.getString(1),    // text
+                false                   // checked
         );
     }
 }
