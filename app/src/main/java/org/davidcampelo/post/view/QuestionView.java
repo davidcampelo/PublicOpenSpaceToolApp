@@ -19,13 +19,13 @@ import org.davidcampelo.post.model.Question;
  */
 public class QuestionView extends RelativeLayout {
 
-    Question question;
-    Context context;
+    private Question question;
+    private Context context;
 
-    View rootView;
+    private View rootView;
 
-    TextView title;
-    LinearLayout container;
+    private TextView title;
+    private LinearLayout container;
 
     public QuestionView(Context context) {
         super(context);
@@ -47,90 +47,25 @@ public class QuestionView extends RelativeLayout {
         init(context, question);
     }
 
-    private void init(final Context context, Question question) {
+    /**
+     * Sets up Context and Question, then creates Question title and Option's container
+     *
+     * This method must be called by sub-classes before any other UI operation
+     * @param context
+     * @param question
+     */
+    protected void init(final Context context, Question question) {
         this.question = question;
         this.context = context;
 
         rootView = inflate(context, R.layout.question_view, this);
 
         title = (TextView) rootView.findViewById(R.id.QuestionView_title);
-        title.setText(question.getTitle());
+        title.setText(question.getNumber() +" - "+ question.getTitle());
 
         container = (LinearLayout)findViewById(R.id.QuestionView_containerOptions);
-
-        for (Option option : question.getAllOptions()){
-            if (question.getType() == Question.QuestionType.SINGLE_CHOICE){
-                QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
-                checkbox.setText(option.getText());
-                checkbox.setChecked(option.isChecked());
-                container.addView(checkbox);
-            }
-            else {
-                if (option.getText().toLowerCase().indexOf("other") < 0) {
-                    QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
-                    checkbox.setText(option.getText());
-                    checkbox.setChecked(option.isChecked());
-                    container.addView(checkbox);
-                } else {
-                    addOtherRow(container);
-                }
-            }
-        }
     }
 
-    private void addOtherRow(final LinearLayout container) {
-        // create "Other" view
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        final View otherView = layoutInflater.inflate(R.layout.question_view_other_row, null);
-
-        ImageView delete = (ImageView) otherView.findViewById(R.id.otherDeleteButton);
-        delete.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View otherView = container.findViewById(R.id.otherRow);
-                if (otherView != null)
-                    container.removeView(otherView);
-            }
-        });
-
-        ImageView add = (ImageView) otherView.findViewById(R.id.otherAddButton);
-        add.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View otherView = container.findViewById(R.id.otherRow);
-                final View addView = layoutInflater.inflate(R.layout.question_view_added_row, null);
-                final TextView textOut = (TextView)addView.findViewById(R.id.otherAddedText);
-                ImageView buttonRemove = (ImageView)addView.findViewById(R.id.otherRemoveButton);
-                buttonRemove.setOnClickListener(new OnClickListener(){
-
-                    @Override
-                    public void onClick(View v) {
-                        ((LinearLayout)addView.getParent()).removeView(addView);
-                        question.removeOtherOptionByText(textOut.getText()+ "");
-                    }
-                });
-
-                // create a new line with the written item
-                if (otherView != null) {
-                    String newOptionText = ((EditText)container.findViewById(R.id.otherInputText)).getText() + "";
-                    question.addOption(new Option(newOptionText, true, question));
-                    textOut.setText(newOptionText);
-                    container.removeView(otherView);
-                }
-
-                // add new line and add new Other row :)
-                container.addView(addView);
-                addOtherRow(container);
-            }
-        });
-
-        // add "Other" view
-        container.addView(otherView);
-        otherView.setId(R.id.otherRow);
-    }
 
     public void notifyChecked(QuestionCheckBox checked){
         if (question.getType() == Question.QuestionType.MULTIPLE_CHOICE)
@@ -144,5 +79,15 @@ public class QuestionView extends RelativeLayout {
                         checkbox.setCheckedNoNotify(false);
                 }
             }
+    }
+
+
+    /**
+     * Container of options (will be filled according to subclasses - Question types)
+     *
+     * @return
+     */
+    public LinearLayout getContainer() {
+        return container;
     }
 }

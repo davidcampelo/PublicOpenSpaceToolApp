@@ -1,16 +1,11 @@
 package org.davidcampelo.post.view;
 
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.davidcampelo.post.R;
@@ -18,148 +13,90 @@ import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.Question;
 
 /**
- * Created by davidcampelo on 8/1/16.
  *
- * {@deprecated}
+ * QuestionView subclass used to present Questions of QuestionType == MULTIPLE_CHOICE
+ *
+ * Amount of Option objects is flexible, according to the "Other" options usage
+ *
+ * Created by davidcampelo on 8/6/16.
  */
-public class MultipleQuestionView extends RelativeLayout {
+public class MultipleQuestionView extends QuestionView{
 
-    Question question;
-    Context context;
-
-    private boolean isFirst = true;
-
-    View rootView;
-
-    TextView title;
-    Spinner listOptions;
-    LinearLayout container;
-
-    ArrayAdapter<Option> adapter;
-
-
-    public MultipleQuestionView(Context context) {
-        super(context);
-        init(context, null);
+    public MultipleQuestionView(Context context, Question question) {
+        super(context, question);
     }
 
-    public MultipleQuestionView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, null);
+    @Override
+    protected void init(Context context, Question question) {
+        super.init(context, question);
+
+        LinearLayout container = getContainer();
+
+        for (Option option : question.getAllOptions()){
+            if (option.getText().toLowerCase().indexOf("other") < 0) {
+                QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
+                checkbox.setText(option.getText());
+                checkbox.setChecked(option.isChecked());
+                container.addView(checkbox);
+            } else {
+                addOtherRow(question, context, container);
+            }
+        }
+
     }
 
-    public MultipleQuestionView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context, null);
-    }
+    private void addOtherRow(final Question question, final Context context, final LinearLayout container) {
 
-    public MultipleQuestionView(Context context, Question question){
-        super(context);
-        init(context, question);
-    }
+        // create "Other" view
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-    private void init(final Context context, Question question) {
-        this.question = question;
-        this.context = context;
+        final View otherView = layoutInflater.inflate(R.layout.question_view_other_row, null);
 
-        rootView = inflate(context, R.layout.multiple_question_view, this);
+        ImageView delete = (ImageView) otherView.findViewById(R.id.otherDeleteButton);
+        delete.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View otherView = container.findViewById(R.id.otherRow);
+                if (otherView != null)
+                    container.removeView(otherView);
+            }
+        });
 
-        title = (TextView) rootView.findViewById(R.id.MultipleQuestionView_title);
-        title.setText(question.getTitle());
+        ImageView add = (ImageView) otherView.findViewById(R.id.otherAddButton);
+        add.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        container = (LinearLayout)findViewById(R.id.MultipleQuestionView_containerOptions);
+                LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View otherView = container.findViewById(R.id.otherRow);
+                final View addView = layoutInflater.inflate(R.layout.question_view_added_row, null);
+                final TextView textOut = (TextView)addView.findViewById(R.id.otherAddedText);
+                ImageView buttonRemove = (ImageView)addView.findViewById(R.id.otherRemoveButton);
+                buttonRemove.setOnClickListener(new OnClickListener(){
 
-        listOptions = (Spinner) findViewById(R.id.MultipleQuestionView_listOptions);
-        adapter = new MultipleQuestionViewOptionsAdapter(context, android.R.layout.simple_spinner_dropdown_item, question.getAllOptions());
-        listOptions.setAdapter(adapter);
+                    @Override
+                    public void onClick(View v) {
+                        ((LinearLayout)addView.getParent()).removeView(addView);
+                        question.removeOtherOptionByText(textOut.getText()+ "");
+                    }
+                });
 
-        // on select spinner item
-        isFirst = true;
-        listOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-               @Override
-               public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+                // create a new line with the written item
+                if (otherView != null) {
+                    String newOptionText = ((EditText)container.findViewById(R.id.otherInputText)).getText() + "";
+                    question.addOption(new Option(newOptionText, true, question));
+                    textOut.setText(newOptionText);
+                    container.removeView(otherView);
+                }
 
-                   // avoid bug of first show (item was selected automatically - argh!)
-                   if (isFirst){
-                       isFirst = false;
-                       return;
-                   }
-                   LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                   Option selectedItem = (Option)parent.getItemAtPosition(position);
-                   if (selectedItem.getText().toLowerCase().indexOf("other") >= 0) {
+                // add new line and add new Other row :)
+                container.addView(addView);
+                addOtherRow(question, context, container);
+            }
+        });
 
-                       // create "Other" view
-                       final View otherView = layoutInflater.inflate(R.layout.multiple_question_view_other_row, null);
-
-                       ImageView delete = (ImageView) otherView.findViewById(R.id.otherDeleteButton);
-                       delete.setOnClickListener(new OnClickListener() {
-                           @Override
-                           public void onClick(View view) {
-                               View otherView = container.findViewById(R.id.otherRow);
-                               if (otherView != null)
-                                   container.removeView(otherView);
-                           }
-                       });
-
-                       ImageView add = (ImageView) otherView.findViewById(R.id.otherAddButton);
-                       add.setOnClickListener(new OnClickListener() {
-                           @Override
-                           public void onClick(View view) {
-
-                               LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                               View otherView = container.findViewById(R.id.otherRow);
-                               final View addView = layoutInflater.inflate(R.layout.multiple_question_view_added_row, null);
-                               TextView textOut = (TextView)addView.findViewById(R.id.textout);
-                               ImageView buttonRemove = (ImageView)addView.findViewById(R.id.removeButton);
-                               buttonRemove.setOnClickListener(new OnClickListener(){
-
-                                   @Override
-                                   public void onClick(View v) {
-                                       ((LinearLayout)addView.getParent()).removeView(addView);
-                                   }
-                               });
-
-                               // create a new line with the written item
-                               if (otherView != null) {
-                                   textOut.setText(((EditText)container.findViewById(R.id.otherInputText)).getText());
-                                   container.removeView(otherView);
-                               }
-
-                               // add new line
-                               container.addView(addView);
-                           }
-                       });
-
-                       // add "Other" view
-                       container.addView(otherView);
-                       otherView.setId(R.id.otherRow);
-                   }
-                   else {
-
-                       // create and add new line of option from spinner
-                       final View addView = layoutInflater.inflate(R.layout.multiple_question_view_added_row, null);
-                       TextView textOut = (TextView)addView.findViewById(R.id.textout);
-                       ImageView buttonRemove = (ImageView)addView.findViewById(R.id.removeButton);
-                       buttonRemove.setOnClickListener(new OnClickListener(){
-
-                           @Override
-                           public void onClick(View v) {
-                               ((LinearLayout)addView.getParent()).removeView(addView);
-                           }
-                       });
-
-                       // create a new line with the new selected or written item
-                       textOut.setText(selectedItem.getText());
-
-                       // add new line
-                       container.addView(addView);
-                   }
-               }
-
-               @Override
-               public void onNothingSelected(AdapterView<?> adapterView) {
-
-               }
-            });
+        // add "Other" view
+        container.addView(otherView);
+        otherView.setId(R.id.otherRow);
     }
 }

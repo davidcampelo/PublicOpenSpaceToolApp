@@ -18,7 +18,11 @@ public class Question {
 
     public enum QuestionType {
         MULTIPLE_CHOICE,
-        SINGLE_CHOICE
+        SINGLE_CHOICE,
+        INPUT_NUMBER,
+        INPUT_DECIMAL,
+        INPUT_TEXT,
+        MATRIX_VALUES
     }
 
     public Question() {

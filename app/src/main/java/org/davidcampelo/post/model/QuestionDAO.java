@@ -68,7 +68,7 @@ public class QuestionDAO extends DAO {
     }
 
     public Question getByNumber(String number) {
-        Question object = new Question(); // if no object was found, just return an empty object
+        Question object = null; // if no object was found, just return an empty object
 
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_NUMBER +"='"+ number +"'");
 

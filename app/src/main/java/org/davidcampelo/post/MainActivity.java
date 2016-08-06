@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.davidcampelo.post.model.DAOHelper;
 import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.OptionDAO;
 import org.davidcampelo.post.model.Question;
@@ -22,7 +21,6 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 
-import static org.davidcampelo.post.utils.Constants.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,12 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
                         String number = xpp.getAttributeValue(null, "number");
                         String title = xpp.getAttributeValue(null, "title");
-                        if (title.indexOf("tick all") > 0 )
-                            question = questionDAO.insert(new Question(0, number, title, Question.QuestionType.MULTIPLE_CHOICE, null));
-                        else
-                            question = questionDAO.insert(new Question(0, number, title, Question.QuestionType.SINGLE_CHOICE, null));
+                        String type = xpp.getAttributeValue(null, "type");
 
-                        Log.e(this.getClass().getName(), "===================> Question: = "+ question.getNumber() +" - "+ question.getTitle() +" / "+ question.getType().name());
+                        question = questionDAO.insert(new Question(0, number, title, Question.QuestionType.valueOf(type), null));
+
+                        Log.e(this.getClass().getName(), "===================> Question: = "+ question.getNumber() +question.getType().name().substring(0,1)+" - "+ question.getTitle());
 
                     }
                 } else if(eventType == XmlPullParser.TEXT) {
