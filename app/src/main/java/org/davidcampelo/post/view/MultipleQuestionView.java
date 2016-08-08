@@ -99,4 +99,9 @@ public class MultipleQuestionView extends QuestionView{
         container.addView(otherView);
         otherView.setId(R.id.otherRow);
     }
+
+    @Override
+    public String getAnswers() {
+        return null;
+    }
 }

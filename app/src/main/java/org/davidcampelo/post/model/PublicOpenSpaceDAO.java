@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * PublicOpenSpace Database Accesss Object
+ * PublicOpenSpace Database Access Object
  *
  * @author David Campelo <david.campelo@gmail.com>
  */

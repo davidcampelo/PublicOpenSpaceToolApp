@@ -17,7 +17,7 @@ import org.davidcampelo.post.model.Question;
 /**
  * Created by davidcampelo on 8/1/16.
  */
-public class QuestionView extends RelativeLayout {
+public abstract class QuestionView extends RelativeLayout {
 
     private Question question;
     private Context context;
@@ -99,4 +99,12 @@ public class QuestionView extends RelativeLayout {
             container.getChildAt(i).setEnabled(enabled);
         }
     }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    /** Abstract method implemented by subclasses in order to retrieve user answers
+     */
+    public abstract String getAnswers();
 }

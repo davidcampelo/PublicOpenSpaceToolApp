@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import org.davidcampelo.post.model.Question;
 
 /**
+ * QuestionView subclass used to present Questions of QuestionType == INPUT_TEXT
+ *
  * Created by davidcampelo on 8/6/16.
  */
 public class InputTextQuestionView extends QuestionView {
@@ -35,5 +37,9 @@ public class InputTextQuestionView extends QuestionView {
 
     public String getContainerText() {
         return containerText.getText() +"";
+    }
+
+    public String getAnswers() {
+        return getContainerText();
     }
 }

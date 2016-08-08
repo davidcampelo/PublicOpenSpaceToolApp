@@ -9,12 +9,17 @@ import java.util.ArrayList;
  */
 public class Question {
 
-    long id;
     String number;
     String title;
     QuestionType type;
-    private ArrayList<Option> options;
-
+    ArrayList<Option> options;
+    /**
+     * Answer text depends on QuestionType:
+     * - SINGLE_CHOICE: opt_id
+     * - MULTIPLE_CHOICE: opt_id's separated by a character separator (slash == \)
+     * - INPUT_TEXT/NUMBER/DECIMAL: Text typed by the user
+     */
+    String answers;
 
     public enum QuestionType {
         MULTIPLE_CHOICE,
@@ -29,12 +34,12 @@ public class Question {
 
     }
 
-    public Question(long id, String number, String title, QuestionType type, ArrayList<Option> options) {
-        this.id = id;
+    public Question(String number, String title, QuestionType type, ArrayList<Option> options, String answers) {
         this.number = number;
         this.title = title;
         this.type = type;
         this.options = options;
+        this.answers = answers;
     }
 
 
@@ -74,10 +79,8 @@ public class Question {
         }
     }
 
-    public void setOptions(ArrayList<Option> options) {
-        synchronized (options) {
-            this.options = options;
-        }
+    public void setAnswers(String answers) {
+        this.answers = answers;
     }
 
 }

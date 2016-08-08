@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         String title = xpp.getAttributeValue(null, "title");
                         String type = xpp.getAttributeValue(null, "type");
 
-                        question = questionDAO.insert(new Question(0, number, title, Question.QuestionType.valueOf(type), null));
+                        question = questionDAO.insert(new Question(number, title, Question.QuestionType.valueOf(type), null, null));
 
                         Log.e(this.getClass().getName(), "===================> Question: = "+ question.getNumber() +question.getType().name().substring(0,1)+" - "+ question.getTitle());
 

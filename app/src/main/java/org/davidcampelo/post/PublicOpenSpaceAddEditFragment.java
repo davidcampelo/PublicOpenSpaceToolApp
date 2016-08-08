@@ -2,7 +2,6 @@ package org.davidcampelo.post;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -13,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -28,11 +25,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.davidcampelo.post.model.AnswersDAO;
+import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.model.QuestionDAO;
-import org.davidcampelo.post.model.Questions;
 import org.davidcampelo.post.utils.Constants;
 import org.davidcampelo.post.view.InputDecimalQuestionView;
 import org.davidcampelo.post.view.InputNumberQuestionView;
@@ -44,8 +42,10 @@ import org.davidcampelo.post.view.SingleQuestionView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 
 /**
@@ -62,7 +62,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
     private Button saveButton;
 
-    HashMap<String, QuestionView> questionsMap;
+    HashMap<String, QuestionView> questionNumberToViewMap;
     QuestionDAO questionDAO;
 
     private AlertDialog saveButtonDialog;
@@ -88,7 +88,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             object = new PublicOpenSpace();
         }
 
-        fillData(fragmentLayout);
+        questionNumberToViewMap = new HashMap<>();
+        loadQuestionsAndOptions(fragmentLayout);
+        loadAnswers();
 
         // Gets the MapView from the XML layout and creates it
         mapView = (MapView) fragmentLayout.findViewById(R.id.mapview);
@@ -99,13 +101,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // adjust VO fields
-                refreshObject();
-
-                if (object.id == 0) // if (id == 0) we're gonna insert it
-                    object = PublicOpenSpaceDAO.staticInsert(getActivity(), object);
-                else // just update it
-                    PublicOpenSpaceDAO.staticUpdate(getActivity(), object);
+                saveObject();
 
                 Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Item saved successfully!", Toast.LENGTH_SHORT).show();
             }
@@ -168,8 +164,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         LatLng latlng = null;
 
-        if (questionsMap != null) {
-            QuestionView questionView = questionsMap.get("5");
+        if (questionNumberToViewMap != null) {
+            QuestionView questionView = questionNumberToViewMap.get("5");
             if (questionView != null) {
                 String geocode = ((InputTextQuestionView)questionView).getContainerText();
                 if (geocode.length() > 0 ) {
@@ -202,8 +198,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             googleMap.clear();
             googleMap.addMarker(new MarkerOptions().position(latLng).title(""));
                 // set question 5 (Geocode) text
-            if (questionsMap != null) {
-                QuestionView questionView = questionsMap.get("5");
+            if (questionNumberToViewMap != null) {
+                QuestionView questionView = questionNumberToViewMap.get("5");
                 if (questionView != null) {
                     ((InputTextQuestionView)questionView).setContainerText(latLng.latitude +", "+ latLng.longitude);
                 }
@@ -240,87 +236,106 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
      * Fill UI components with our internal {@link PublicOpenSpace} object
      * @param fragmentLayout
      */
-    private void fillData(View fragmentLayout) {
+    private void loadQuestionsAndOptions(View fragmentLayout) {
 
         Context context = getContext();
         questionDAO = new QuestionDAO(context);
         questionDAO.open();
-        questionsMap = new HashMap<>();
 
         LinearLayout container1 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer1);
-        container1.addView(addQuestionToList(context, "1"));
-        container1.addView(addQuestionToList(context, "2"));
-        container1.addView(addQuestionToList(context, "3"));
-        container1.addView(addQuestionToList(context, "4"));
-        QuestionView view5=addQuestionToList(context, "5");
+        container1.addView(addToMap(context, "1"));
+        container1.addView(addToMap(context, "2"));
+        container1.addView(addToMap(context, "3"));
+        container1.addView(addToMap(context, "4"));
+        QuestionView view5= addToMap(context, "5");
         view5.setEnabled(false);
         container1.addView(view5);
-        container1.addView(addQuestionToList(context, "6"));
+        container1.addView(addToMap(context, "6"));
 
         // Tab 1 has a map only
         LinearLayout container2 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer2);
-        container2.addView(addQuestionToList(context, "7"));
-        container2.addView(addQuestionToList(context, "8"));
+        container2.addView(addToMap(context, "7"));
+        container2.addView(addToMap(context, "8"));
 
         LinearLayout container3 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer3);
-        container3.addView(addQuestionToList(context, "9"));
-        container3.addView(addQuestionToList(context, "10"));
-        container3.addView(addQuestionToList(context, "11"));
-        container3.addView(addQuestionToList(context, "12"));
-        container3.addView(addQuestionToList(context, "13.a"));
-        container3.addView(addQuestionToList(context, "13.b"));
-        container3.addView(addQuestionToList(context, "14"));
-        container3.addView(addQuestionToList(context, "15"));
-        container3.addView(addQuestionToList(context, "16"));
-        container3.addView(addQuestionToList(context, "17"));
-        container3.addView(addQuestionToList(context, "18.a"));
-        container3.addView(addQuestionToList(context, "18.b"));
-        container3.addView(addQuestionToList(context, "19"));
-        container3.addView(addQuestionToList(context, "20"));
-        container3.addView(addQuestionToList(context, "21"));
-        container3.addView(addQuestionToList(context, "22"));
-        container3.addView(addQuestionToList(context, "23"));
-        container3.addView(addQuestionToList(context, "24"));
-        container3.addView(addQuestionToList(context, "25"));
+        container3.addView(addToMap(context, "9"));
+        container3.addView(addToMap(context, "10"));
+        container3.addView(addToMap(context, "11"));
+        container3.addView(addToMap(context, "12"));
+        container3.addView(addToMap(context, "13.a"));
+        container3.addView(addToMap(context, "13.b"));
+        container3.addView(addToMap(context, "14"));
+        container3.addView(addToMap(context, "15"));
+        container3.addView(addToMap(context, "16"));
+        container3.addView(addToMap(context, "17"));
+        container3.addView(addToMap(context, "18.a"));
+        container3.addView(addToMap(context, "18.b"));
+        container3.addView(addToMap(context, "19"));
+        container3.addView(addToMap(context, "20"));
+        container3.addView(addToMap(context, "21"));
+        container3.addView(addToMap(context, "22"));
+        container3.addView(addToMap(context, "23"));
+        container3.addView(addToMap(context, "24"));
+        container3.addView(addToMap(context, "25"));
 
         LinearLayout container4 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer4);
-        container4.addView(addQuestionToList(context, "26"));
-        container4.addView(addQuestionToList(context, "27"));
-        container4.addView(addQuestionToList(context, "28"));
-//        container4.addView(addQuestionToList(context, "29"));
-        container4.addView(addQuestionToList(context, "30"));
-        container4.addView(addQuestionToList(context, "31"));
-        container4.addView(addQuestionToList(context, "32.a"));
-        container4.addView(addQuestionToList(context, "32.b"));
-        container4.addView(addQuestionToList(context, "33"));
-        container4.addView(addQuestionToList(context, "34"));
-        container4.addView(addQuestionToList(context, "35"));
-        container4.addView(addQuestionToList(context, "36"));
-        container4.addView(addQuestionToList(context, "37"));
-        container4.addView(addQuestionToList(context, "38"));
-        container4.addView(addQuestionToList(context, "39"));
-        container4.addView(addQuestionToList(context, "40"));
-        container4.addView(addQuestionToList(context, "41"));
-        container4.addView(addQuestionToList(context, "42"));
+        container4.addView(addToMap(context, "26"));
+        container4.addView(addToMap(context, "27"));
+        container4.addView(addToMap(context, "28"));
+//        container4.addView(addToMap(context, "29"));
+        container4.addView(addToMap(context, "30"));
+        container4.addView(addToMap(context, "31"));
+        container4.addView(addToMap(context, "32.a"));
+        container4.addView(addToMap(context, "32.b"));
+        container4.addView(addToMap(context, "33"));
+        container4.addView(addToMap(context, "34"));
+        container4.addView(addToMap(context, "35"));
+        container4.addView(addToMap(context, "36"));
+        container4.addView(addToMap(context, "37"));
+        container4.addView(addToMap(context, "38"));
+        container4.addView(addToMap(context, "39"));
+        container4.addView(addToMap(context, "40"));
+        container4.addView(addToMap(context, "41"));
+        container4.addView(addToMap(context, "42"));
 
         LinearLayout container5 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer5);
-        container5.addView(addQuestionToList(context, "43"));
-        container5.addView(addQuestionToList(context, "44"));
-        container5.addView(addQuestionToList(context, "45"));
-        container5.addView(addQuestionToList(context, "46.a"));
-        container5.addView(addQuestionToList(context, "46.b"));
-        container5.addView(addQuestionToList(context, "47"));
-        container5.addView(addQuestionToList(context, "48.a"));
-        container5.addView(addQuestionToList(context, "48.b"));
-//        container5.addView(addQuestionToList(context, "49.a"));
-//        container5.addView(addQuestionToList(context, "49.b"));
-//        container5.addView(addQuestionToList(context, "49.c"));
+        container5.addView(addToMap(context, "43"));
+        container5.addView(addToMap(context, "44"));
+        container5.addView(addToMap(context, "45"));
+        container5.addView(addToMap(context, "46.a"));
+        container5.addView(addToMap(context, "46.b"));
+        container5.addView(addToMap(context, "47"));
+        container5.addView(addToMap(context, "48.a"));
+        container5.addView(addToMap(context, "48.b"));
+//        container5.addView(addToMap(context, "49.a"));
+//        container5.addView(addToMap(context, "49.b"));
+//        container5.addView(addToMap(context, "49.c"));
 
         questionDAO.close();
     }
 
-    private QuestionView addQuestionToList(Context context, String questionNumber) {
-        Question question = questionDAO.getByNumber(questionNumber);
+
+    private void loadAnswers() {
+        if (object.id != 0) {     // not a new object
+            Context context = getContext();
+            AnswersDAO answersDAO = new AnswersDAO(context);
+            answersDAO.open();
+
+            Iterator it = questionNumberToViewMap.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                Question question = ((QuestionView) pair.getValue()).getQuestion();
+                question.setAnswers(answersDAO.get(question, object));
+                it.remove(); // avoids a ConcurrentModificationException
+            }
+
+            answersDAO.close();
+        }
+    }
+
+
+    private QuestionView addToMap(Context context, String questionNumber) {
+        Question question = questionDAO.get(questionNumber, object);
         QuestionView view;
 
         Question.QuestionType type = question.getType();
@@ -337,7 +352,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         else
             view = new InputTextQuestionView(context, question);
 
-        questionsMap.put(questionNumber, view);
+        questionNumberToViewMap.put(questionNumber, view);
 
         return view;
     }
@@ -347,10 +362,42 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
      *
      * This method must be called before any persistence procedure :)
      */
-    public void refreshObject(){
+    public void saveObject(){
         object.name = ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "";
 
-        // TODO: fill answers
+        // save PublicOpenSpace object
+        if (object.id == 0) // if (id == 0) we're gonna insert it
+            object = PublicOpenSpaceDAO.staticInsert(getActivity(), object);
+        else // just update it
+            PublicOpenSpaceDAO.staticUpdate(getActivity(), object);
+
+        // save questions answers
+        Context context = getContext();
+        AnswersDAO answersDAO = new AnswersDAO(context);
+        answersDAO.open();
+
+        Iterator it = questionNumberToViewMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            QuestionView questionView = ((QuestionView) pair.getValue());
+            Question question = questionView.getQuestion();
+            if (question.getType() == Question.QuestionType.MULTIPLE_CHOICE) { // save "Other" Options first
+                ArrayList<Option> options = question.getAllOptions();
+
+                for (Option option : options) {
+                    if (option.getId() == 0) {
+                        // TODO: insert into Options table
+                    }
+                }
+            }
+            answersDAO.insert(object, question, questionView.getAnswers());
+
+            it.remove(); // avoids a ConcurrentModificationException
+        }
+
+        answersDAO.close();
+
+
 
     }
 }

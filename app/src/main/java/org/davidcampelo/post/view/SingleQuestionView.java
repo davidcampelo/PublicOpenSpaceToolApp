@@ -1,7 +1,6 @@
 package org.davidcampelo.post.view;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import org.davidcampelo.post.model.Option;
@@ -32,5 +31,14 @@ public class SingleQuestionView extends QuestionView {
                 container.addView(checkbox);
             }
         }
+    }
+
+    @Override
+    public String getAnswers() {
+        for (Option option : getQuestion().getAllOptions()) {
+            if (option.isChecked())
+                return String.valueOf(option.getId());
+        }
+        return "";
     }
 }

@@ -9,9 +9,14 @@ import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.Question;
 
 /**
+ * QuestionView subclass used to present Questions of QuestionType == INPUT_NUMBER
+ *
  * Created by davidcampelo on 8/6/16.
  */
 public class InputNumberQuestionView extends QuestionView {
+
+    EditText containerText;
+
     public InputNumberQuestionView(Context context, Question question) {
         super(context, question);
     }
@@ -21,10 +26,14 @@ public class InputNumberQuestionView extends QuestionView {
     protected void init(Context context, Question question) {
         super.init(context, question);
         LinearLayout container = getContainer();
+        containerText = new EditText(context);
+        containerText.setInputType(InputType.TYPE_CLASS_NUMBER);
 
-        EditText input = new EditText(context);
-        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        container.addView(containerText);
+    }
 
-        container.addView(input);
+    @Override
+    public String getAnswers() {
+        return containerText.getText() + "";
     }
 }
