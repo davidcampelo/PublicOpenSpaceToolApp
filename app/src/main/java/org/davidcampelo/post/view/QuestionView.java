@@ -71,7 +71,7 @@ public abstract class QuestionView extends RelativeLayout {
         if (question.getType() == Question.QuestionType.MULTIPLE_CHOICE)
             return;
 
-            for (int i = container.getChildCount() - 1; i >= 0; i--) {
+            for (int i = container.getChildCount(); --i >= 0; ) {
                 final View child = container.getChildAt(i);
                 if (child instanceof QuestionCheckBox) {
                     QuestionCheckBox checkbox = ((QuestionCheckBox) child);
@@ -107,4 +107,8 @@ public abstract class QuestionView extends RelativeLayout {
     /** Abstract method implemented by subclasses in order to retrieve user answers
      */
     public abstract String getAnswers();
+
+    /** Abstract method implemented by subclasses in order to retrieve user answers
+     */
+    public abstract void setAnswers(String answers);
 }

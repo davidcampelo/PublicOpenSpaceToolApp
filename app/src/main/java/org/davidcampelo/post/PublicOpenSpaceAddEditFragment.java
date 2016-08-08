@@ -164,8 +164,10 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         LatLng latlng = null;
 
+        // Sets up latlng object to position on map according to question 5
         if (questionNumberToViewMap != null) {
-            QuestionView questionView = questionNumberToViewMap.get("5");
+            QuestionView questionView;
+            questionView = questionNumberToViewMap.get("5");
             if (questionView != null) {
                 String geocode = ((InputTextQuestionView)questionView).getContainerText();
                 if (geocode.length() > 0 ) {
@@ -173,7 +175,14 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
                     latlng = new LatLng(Double.valueOf(geocode.substring(0, pos)), Double.valueOf(geocode.substring(pos + 1)));
                 }
             }
-
+            // set up address edittext
+            questionView = questionNumberToViewMap.get("2");
+            if (questionView != null) {
+                String address = ((InputTextQuestionView)questionView).getContainerText();
+                if (address.length() > 0 ) {
+                    ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
+                }
+            }
         }
 
         CameraUpdate cameraUpdate;
@@ -194,14 +203,20 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             @Override
             public void onMapClick(LatLng latLng) {
             // place marker
-            ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(resolveAddress(PublicOpenSpaceAddEditFragment.this.getActivity(), latLng.latitude, latLng.longitude));
+            String address = resolveAddress(PublicOpenSpaceAddEditFragment.this.getActivity(), latLng.latitude, latLng.longitude);
+            ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
             googleMap.clear();
             googleMap.addMarker(new MarkerOptions().position(latLng).title(""));
                 // set question 5 (Geocode) text
             if (questionNumberToViewMap != null) {
-                QuestionView questionView = questionNumberToViewMap.get("5");
+                QuestionView questionView;
+                questionView = questionNumberToViewMap.get("5");
                 if (questionView != null) {
-                    ((InputTextQuestionView)questionView).setContainerText(latLng.latitude +", "+ latLng.longitude);
+                    ((InputTextQuestionView)questionView).setAnswers(latLng.latitude +", "+ latLng.longitude);
+                }
+                questionView = questionNumberToViewMap.get("2");
+                if (questionView != null) {
+                    ((InputTextQuestionView)questionView).setAnswers(address);
                 }
             }
             }
@@ -244,7 +259,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
         LinearLayout container1 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer1);
         container1.addView(addToMap(context, "1"));
-        container1.addView(addToMap(context, "2"));
+        QuestionView view2= addToMap(context, "2");
+        view2.setEnabled(false);
+        container1.addView(view2);
         container1.addView(addToMap(context, "3"));
         container1.addView(addToMap(context, "4"));
         QuestionView view5= addToMap(context, "5");
@@ -316,7 +333,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
 
     private void loadAnswers() {
-        if (object.id != 0) {     // not a new object
+        if (object.id != 0) {     // if not a new object (i.e. if it has some answers)
             Context context = getContext();
             AnswersDAO answersDAO = new AnswersDAO(context);
             answersDAO.open();
@@ -334,7 +351,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
     }
 
 
-    private QuestionView addToMap(Context context, String questionNumber) {
+    private final QuestionView addToMap(Context context, String questionNumber) {
         Question question = questionDAO.get(questionNumber, object);
         QuestionView view;
 

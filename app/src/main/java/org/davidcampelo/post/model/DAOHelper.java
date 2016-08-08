@@ -26,6 +26,7 @@ public final class DAOHelper extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL(PublicOpenSpaceDAO.TABLE_CREATE_CMD);
         sqLiteDatabase.execSQL(QuestionDAO.TABLE_CREATE_CMD);
         sqLiteDatabase.execSQL(OptionDAO.TABLE_CREATE_CMD);
+        sqLiteDatabase.execSQL(AnswersDAO.TABLE_CREATE_CMD);
     }
 
     @Override
@@ -37,6 +38,7 @@ public final class DAOHelper extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ PublicOpenSpaceDAO.TABLE_NAME );
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ QuestionDAO.TABLE_NAME );
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ OptionDAO.TABLE_NAME );
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ AnswersDAO.TABLE_NAME );
         onCreate(sqLiteDatabase );
     }
 

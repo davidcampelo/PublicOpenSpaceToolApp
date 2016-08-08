@@ -6,30 +6,21 @@ package org.davidcampelo.post.model;
 public class Option {
     long id;
     String text;
-    boolean checked;
     Question question;
 
     public Option() {
     }
 
-    public Option(long id, String text, boolean checked, Question question) {
+    public Option(long id, String text, Question question) {
         this.id = id;
         this.text = text;
-        this.checked = checked;
         this.question = question;
     }
 
-    public Option(String text, boolean checked, Question question) {
-        this(0, text, checked, question);
+    public Option(String text, Question question) {
+        this(0, text, question);
     }
 
-    public boolean isChecked() {
-        return checked;
-    }
-
-    public void setChecked(boolean checked) {
-        this.checked = checked;
-    }
 
     public String getText() {
         return text;

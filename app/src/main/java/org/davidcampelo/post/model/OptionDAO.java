@@ -3,6 +3,7 @@ package org.davidcampelo.post.model;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
@@ -37,8 +38,8 @@ public class OptionDAO extends DAO {
     public OptionDAO(Context context) {
         super(context);
     }
-    public OptionDAO(Context context, DAOHelper dbHelper) {
-        super(context, dbHelper);
+    public OptionDAO(Context context, DAOHelper dbHelper, SQLiteDatabase sqLiteDatabase) {
+        super(context, dbHelper, sqLiteDatabase);
     }
 
 
@@ -125,7 +126,6 @@ public class OptionDAO extends DAO {
         return new Option(
                 cursor.getLong(0),      // id
                 cursor.getString(1),    // text
-                false,                  // checked
                 null                    // Question
         );
     }

@@ -31,7 +31,7 @@ public class InputTextQuestionView extends QuestionView {
         container.addView(containerText);
     }
 
-    public void setContainerText(String text) {
+    public void setAnswers(String text) {
         containerText.setText(text);
     }
 

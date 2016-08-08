@@ -20,6 +20,10 @@ public class QuestionCheckBox extends CheckBox {
         this.parent = parent;
     }
 
+    public Option getOption() {
+        return option;
+    }
+
     @Override
     public void setChecked(boolean checked) {
         super.setChecked(checked);
@@ -27,7 +31,6 @@ public class QuestionCheckBox extends CheckBox {
         if (option == null || parent == null) // do nothing
             return;
 
-        option.setChecked(checked);
         if (checked)
             parent.notifyChecked(this);
 
@@ -35,7 +38,5 @@ public class QuestionCheckBox extends CheckBox {
 
     void setCheckedNoNotify(boolean checked) {
         super.setChecked(checked);
-        if (option != null)
-            option.setChecked(checked);
     }
 }

@@ -35,4 +35,10 @@ public class InputDecimalQuestionView extends QuestionView {
     public String getAnswers() {
         return containerText.getText() + "";
     }
+
+    @Override
+    public void setAnswers(String text) {
+        containerText.setText(text);
+    }
+
 }

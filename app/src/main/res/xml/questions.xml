@@ -6,7 +6,7 @@
     </question>
 
     <!-- QUESTION 2 -->
-    <question number="2" type="INPUT_TEXT" title="Address">
+    <question number="2" type="INPUT_TEXT" title="Address  (mark on General tab)">
     </question>
 
     <!-- QUESTION 3 -->
@@ -18,7 +18,7 @@
     </question>
 
     <!-- QUESTION 5 -->
-    <question number="5" type="INPUT_TEXT" title="Geocode (mark on next tab)">
+    <question number="5" type="INPUT_TEXT" title="Geocode (mark on General tab)">
     </question>
 
     <!-- QUESTION 6 -->

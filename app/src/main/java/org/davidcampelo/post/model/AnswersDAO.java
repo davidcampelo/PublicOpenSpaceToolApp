@@ -26,6 +26,11 @@ public class AnswersDAO extends DAO {
 
     };
 
+    static String[] TABLE_COLUMNS_ANSWERS = {
+            COLUMN_ANSWER_TEXT
+
+    };
+
     static final String TABLE_CREATE_CMD = "CREATE TABLE " + TABLE_NAME + " ( "
             + COLUMN_POS_ID + " INTEGER not null, "
             + COLUMN_QST_NUMBER + " TEXT not null, "
@@ -47,11 +52,11 @@ public class AnswersDAO extends DAO {
     public String get(Question question, PublicOpenSpace publicOpenSpace) {
         String answers = "";
 
-        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_QST_NUMBER + " = '" + question.number + "' AND " +
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS_ANSWERS, COLUMN_QST_NUMBER + " = '" + question.number + "' AND " +
                 " " + COLUMN_POS_ID + " = " + publicOpenSpace.id + " ");
 
         for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
-            answers = cursor.getString(2);
+            answers = cursor.getString(0);
         }
 
         cursor.close();

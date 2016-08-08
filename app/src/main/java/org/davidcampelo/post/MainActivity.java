@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 } else if(eventType == XmlPullParser.TEXT) {
-                    option = optionDAO.insert(new Option(0, xpp.getText(), false, question));
+                    option = optionDAO.insert(new Option(0, xpp.getText(), question));
                     Log.e(this.getClass().getName(), "=======================> Option: = "+ option.getText() );
 
 

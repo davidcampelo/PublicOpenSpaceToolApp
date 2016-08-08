@@ -21,24 +21,30 @@ public class SingleQuestionView extends QuestionView {
     @Override
     protected void init(Context context, Question question) {
         super.init(context, question);
-        LinearLayout container = getContainer();
+        container = getContainer();
 
         for (Option option : question.getAllOptions()) {
-            if (question.getType() == Question.QuestionType.SINGLE_CHOICE) {
-                QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
-                checkbox.setText(option.getText());
-                checkbox.setChecked(option.isChecked());
-                container.addView(checkbox);
-            }
+            QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
+            checkbox.setText(option.getText());
+            container.addView(checkbox);
         }
     }
 
     @Override
     public String getAnswers() {
-        for (Option option : getQuestion().getAllOptions()) {
-            if (option.isChecked())
-                return String.valueOf(option.getId());
+        for (int i = container.getChildCount(); --i >= 0;) {
+            QuestionCheckBox checkBox = (QuestionCheckBox)container.getChildAt(i);
+            if (checkBox.isChecked())
+                return String.valueOf(checkBox.getOption().getId());
         }
         return "";
     }
+
+    @Override
+    public void setAnswers(String text) {
+
+        //
+
+    }
+
 }

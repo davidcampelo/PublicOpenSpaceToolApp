@@ -36,7 +36,6 @@ public class MultipleQuestionView extends QuestionView{
             if (option.getText().toLowerCase().indexOf("other") < 0) {
                 QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
                 checkbox.setText(option.getText());
-                checkbox.setChecked(option.isChecked());
                 container.addView(checkbox);
             } else {
                 addOtherRow(question, context, container);
@@ -84,7 +83,7 @@ public class MultipleQuestionView extends QuestionView{
                 // create a new line with the written item
                 if (otherView != null) {
                     String newOptionText = ((EditText)container.findViewById(R.id.otherInputText)).getText() + "";
-                    question.addOption(new Option(newOptionText, true, question));
+                    question.addOption(new Option(newOptionText, question));
                     textOut.setText(newOptionText);
                     container.removeView(otherView);
                 }
@@ -103,5 +102,10 @@ public class MultipleQuestionView extends QuestionView{
     @Override
     public String getAnswers() {
         return null;
+    }
+
+    @Override
+    public void setAnswers(String answers) {
+        // TODO: select options :)
     }
 }
