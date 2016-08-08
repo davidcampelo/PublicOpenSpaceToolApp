@@ -4,6 +4,8 @@ package org.davidcampelo.post;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -39,7 +41,11 @@ import org.davidcampelo.post.view.MultipleQuestionView;
 import org.davidcampelo.post.view.QuestionView;
 import org.davidcampelo.post.view.SingleQuestionView;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -56,7 +62,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
     private Button saveButton;
 
-    ArrayList<Question> questions;
+    HashMap<String, QuestionView> questionsMap;
     QuestionDAO questionDAO;
 
     private AlertDialog saveButtonDialog;
@@ -122,18 +128,61 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
     }
 
 
+    public String resolveAddress(Context ctx, double latitude, double longitude) {
+        if (latitude == Double.MAX_VALUE || longitude == Double.MAX_VALUE)
+            return "";
+
+        Geocoder geocoder;
+        List<Address> addresses = null;
+        geocoder = new Geocoder(ctx, Locale.getDefault());
+
+        // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            StringBuilder stringBuilder = new StringBuilder();
+            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            if (address != null)
+                stringBuilder.append(address);
+            String city = addresses.get(0).getLocality();
+            if (city != null)
+                stringBuilder.append(", "+ city);
+            String postalCode = addresses.get(0).getPostalCode();
+            if (postalCode != null)
+                stringBuilder.append(" - "+ postalCode);
+
+            return stringBuilder.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "Address not found!";
+    }
+
     @Override
     public void onMapReady(GoogleMap map) {
         this.googleMap = map;
-
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        LatLng latlng = null;
+
+        if (questionsMap != null) {
+            QuestionView questionView = questionsMap.get("5");
+            if (questionView != null) {
+                String geocode = ((InputTextQuestionView)questionView).getContainerText();
+
+                int pos = geocode.indexOf(",");
+                latlng = new LatLng(Double.valueOf(geocode.substring(0,pos)), Double.valueOf(geocode.substring(pos+1)));
+
+            }
+
+        }
 
         CameraUpdate cameraUpdate;
-        if (object.latitude != Double.MAX_VALUE && object.latitude != Double.MAX_VALUE) {
-            cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(object.latitude, object.longitude), 17);
+        if (latlng != null) {
+            cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 17);
 
             googleMap.clear();
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(object.latitude, object.longitude)).title("Marker"));
+            googleMap.addMarker(new MarkerOptions().position(latlng).title("Marker"));
         }
         else
             cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 13);
@@ -145,12 +194,17 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                object.latitude = latLng.latitude;
-                object.longitude = latLng.longitude;
-
-                ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(object.resolveAddress(PublicOpenSpaceAddEditFragment.this.getActivity()));
-                googleMap.clear();
-                googleMap.addMarker(new MarkerOptions().position(new LatLng(object.latitude, object.longitude)).title(""));
+            // place marker
+            ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(resolveAddress(PublicOpenSpaceAddEditFragment.this.getActivity(), latLng.latitude, latLng.longitude));
+            googleMap.clear();
+            googleMap.addMarker(new MarkerOptions().position(latLng).title(""));
+                // set question 5 (Geocode) text
+            if (questionsMap != null) {
+                QuestionView questionView = questionsMap.get("5");
+                if (questionView != null) {
+                    ((InputTextQuestionView)questionView).setContainerText(latLng.latitude +", "+ latLng.longitude);
+                }
+            }
             }
         });
     }
@@ -188,14 +242,16 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         Context context = getContext();
         questionDAO = new QuestionDAO(context);
         questionDAO.open();
-        questions = new ArrayList<>();
+        questionsMap = new HashMap<>();
 
         LinearLayout container1 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer1);
         container1.addView(addQuestionToList(context, "1"));
         container1.addView(addQuestionToList(context, "2"));
         container1.addView(addQuestionToList(context, "3"));
         container1.addView(addQuestionToList(context, "4"));
-        container1.addView(addQuestionToList(context, "5"));
+        QuestionView view5=addQuestionToList(context, "5");
+        view5.setEnabled(false);
+        container1.addView(view5);
         container1.addView(addQuestionToList(context, "6"));
 
         // Tab 1 has a map only
@@ -262,9 +318,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
     private QuestionView addQuestionToList(Context context, String questionNumber) {
         Question question = questionDAO.getByNumber(questionNumber);
-        questions.add(question);
-
         QuestionView view;
+
         Question.QuestionType type = question.getType();
         if (type == Question.QuestionType.SINGLE_CHOICE)
             view = new SingleQuestionView(context, question);
@@ -278,6 +333,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             view = new InputNumberQuestionView(context, question);
         else
             view = new InputTextQuestionView(context, question);
+
+        questionsMap.put(questionNumber, view);
 
         return view;
     }

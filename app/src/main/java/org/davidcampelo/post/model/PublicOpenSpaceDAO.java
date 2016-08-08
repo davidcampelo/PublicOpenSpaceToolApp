@@ -19,29 +19,17 @@ public class PublicOpenSpaceDAO extends DAO {
     static final String TABLE_NAME = "tb_pos_publicopenspace";
     static final String COLUMN_ID = "pos_id";
     static final String COLUMN_NAME = "pos_name";
-    static final String COLUMN_ADDRESS = "pos_address";
-    static final String COLUMN_LATITUDE = "pos_latitude";
-    static final String COLUMN_LONGITUDE = "pos_longitude";
-    static final String COLUMN_ANSWERS = "pos_answers";
     static final String COLUMN_DATETIME = "pos_datetime";
 
     static String[] TABLE_COLUMNS = {
             COLUMN_ID,
             COLUMN_NAME,
-            COLUMN_ADDRESS,
-            COLUMN_LATITUDE,
-            COLUMN_LONGITUDE,
-            COLUMN_ANSWERS,
             COLUMN_DATETIME
     };
 
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
             + COLUMN_ID +" INTEGER primary key autoincrement, "
             + COLUMN_NAME +" TEXT not null,"
-            + COLUMN_ADDRESS +" TEXT not null,"
-            + COLUMN_LATITUDE +" REAL not null,"
-            + COLUMN_LONGITUDE +" REAL not null,"
-            + COLUMN_ANSWERS +" TEXT not null,"
             + COLUMN_DATETIME +");";
 
     public PublicOpenSpaceDAO(Context context) {
@@ -52,13 +40,7 @@ public class PublicOpenSpaceDAO extends DAO {
 
         ContentValues values = new ContentValues();
 
-        Log.w(this.getClass().getName(), "*********INSERT >> Answers = ["+ publicOpenSpace.getAnswers() +"]");
-
         values.put(COLUMN_NAME, publicOpenSpace.name);
-        values.put(COLUMN_ADDRESS, publicOpenSpace.address);
-        values.put(COLUMN_LATITUDE, publicOpenSpace.latitude);
-        values.put(COLUMN_LONGITUDE, publicOpenSpace.longitude);
-        values.put(COLUMN_ANSWERS, publicOpenSpace.getAnswers());
         values.put(COLUMN_DATETIME, String.valueOf(Calendar.getInstance().getTimeInMillis()));
 
         publicOpenSpace.id = insert(TABLE_NAME, values);
@@ -70,13 +52,7 @@ public class PublicOpenSpaceDAO extends DAO {
 
         ContentValues values = new ContentValues();
 
-        Log.w(this.getClass().getName(), "*********INSERT >> Answers = ["+ publicOpenSpace.getAnswers() +"]");
-
         values.put(COLUMN_NAME, publicOpenSpace.name);
-        values.put(COLUMN_ADDRESS, publicOpenSpace.address);
-        values.put(COLUMN_LATITUDE, publicOpenSpace.latitude);
-        values.put(COLUMN_LONGITUDE, publicOpenSpace.longitude);
-        values.put(COLUMN_ANSWERS, publicOpenSpace.getAnswers());
 
         return (update(TABLE_NAME, values, COLUMN_ID +"="+ publicOpenSpace.id) > 0);
     }
@@ -146,11 +122,7 @@ public class PublicOpenSpaceDAO extends DAO {
         return new PublicOpenSpace(
                 cursor.getLong(0),      // id
                 cursor.getString(1),    // name
-                cursor.getString(2),    // address
-                cursor.getDouble(3),    // latitude
-                cursor.getDouble(4),    // longitude
-                cursor.getString(5),    // answers
-                cursor.getLong(6)       // dateCreation
+                cursor.getLong(2)       // dateCreation
         );
     }
 }

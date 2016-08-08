@@ -22,8 +22,7 @@ public class InputDecimalQuestionView extends QuestionView {
         LinearLayout container = getContainer();
 
         EditText input = new EditText(context);
-        input.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
-        input.set
+        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
         container.addView(input);
     }

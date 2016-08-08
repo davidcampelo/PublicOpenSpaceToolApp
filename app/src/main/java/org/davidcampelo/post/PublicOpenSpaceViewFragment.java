@@ -44,7 +44,7 @@ public class PublicOpenSpaceViewFragment extends Fragment {
         dbAdapter.close();
 
         nameTextView.setText(object.name);
-        addressTextView.setText(object.address);
+//        addressTextView.setText(object.address);
 
         return fragmentLayout;
     }

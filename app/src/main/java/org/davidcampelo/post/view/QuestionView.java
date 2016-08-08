@@ -90,4 +90,13 @@ public class QuestionView extends RelativeLayout {
     public LinearLayout getContainer() {
         return container;
     }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+
+        for (int i = container.getChildCount() - 1; i >= 0; i--) {
+            container.getChildAt(i).setEnabled(enabled);
+        }
+    }
 }
