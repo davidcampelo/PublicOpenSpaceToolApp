@@ -84,6 +84,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         fillTabTitles( (TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost) );
 
         object = PublicOpenSpaceDAO.staticGet(getActivity(), id);
+        if (object == null){ // add screen
+            object = new PublicOpenSpace();
+        }
 
         fillData(fragmentLayout);
 
@@ -169,10 +172,10 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             QuestionView questionView = questionsMap.get("5");
             if (questionView != null) {
                 String geocode = ((InputTextQuestionView)questionView).getContainerText();
-
-                int pos = geocode.indexOf(",");
-                latlng = new LatLng(Double.valueOf(geocode.substring(0,pos)), Double.valueOf(geocode.substring(pos+1)));
-
+                if (geocode.length() > 0 ) {
+                    int pos = geocode.indexOf(",");
+                    latlng = new LatLng(Double.valueOf(geocode.substring(0, pos)), Double.valueOf(geocode.substring(pos + 1)));
+                }
             }
 
         }
@@ -345,6 +348,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
      * This method must be called before any persistence procedure :)
      */
     public void refreshObject(){
+        object.name = ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "";
 
-   }
+        // TODO: fill answers
+
+    }
 }

@@ -19,10 +19,9 @@ public class PublicOpenSpace {
     public String name;
     public long   dateCreation;
 
-    public Questions questions;
 
-    PublicOpenSpace() {
-        this.questions = Questions.parse(null);
+
+    public PublicOpenSpace() {
     }
 
     // Constructor used by the DAO
@@ -31,10 +30,4 @@ public class PublicOpenSpace {
         this.name = name;
         this.dateCreation = dateCreation;
     }
-
-    public PublicOpenSpace(String name, String address, double latitude, double longitude) {
-        this(0, name, 0);
-    }
-
-
 }

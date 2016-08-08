@@ -58,7 +58,7 @@ public class PublicOpenSpaceDAO extends DAO {
     }
 
     public PublicOpenSpace get(long id) {
-        PublicOpenSpace object = new PublicOpenSpace(); // if no object was found, just return an empty object
+        PublicOpenSpace object = null;
 
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_ID +"="+ id);
 

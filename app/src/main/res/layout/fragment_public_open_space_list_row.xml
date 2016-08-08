@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listItemImage"
-        android:src="@drawable/box_af"
+        android:src="@drawable/trees"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="5dp"
@@ -34,7 +34,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="POS complete address"
+        android:text=""
         android:id="@+id/listItemAddress"
         android:layout_below="@+id/listItemName"
         android:layout_alignParentEnd="true"
