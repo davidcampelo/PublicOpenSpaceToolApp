@@ -35,48 +35,69 @@
 
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/addEditItemTab0"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingBottom="@dimen/activity_vertical_margin"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:orientation="vertical">
+                    android:paddingTop="@dimen/activity_vertical_margin">
 
-
-                    <EditText
-                        android:layout_width="fill_parent"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minLines="1"
-                        android:textAppearance="?android:textAppearanceLarge"
-                        android:hint="Name"
-                        android:id="@+id/addEditItemName"
-                        android:ellipsize="end"
-                        android:inputType="text"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginTop="2dp"/>
+                        android:id="@+id/addEditItemType"
+                        android:src="@drawable/icon_park"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="@dimen/activity_vertical_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_vertical_margin" />
 
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:textAppearanceSmall"
-                        android:minLines="2"
-                        android:inputType="textMultiLine"
-                        android:gravity="top"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:text=""
+                        android:id="@+id/addEditItemName"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/addEditItemType"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:paddingBottom="@dimen/activity_vertical_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_vertical_margin" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text=""
                         android:id="@+id/addEditItemAddress"
                         android:layout_below="@+id/addEditItemName"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginTop="2dp"/>
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@+id/addEditItemType"
+                        android:ellipsize="middle"
+                        android:singleLine="false"
+                        android:layout_alignBottom="@+id/addEditItemType"
+                        android:paddingBottom="@dimen/activity_vertical_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_vertical_margin" />
 
 
                     <com.google.android.gms.maps.MapView android:id="@+id/mapview"
+                        android:paddingBottom="@dimen/activity_vertical_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_vertical_margin"
                         android:layout_width="fill_parent"
-                        android:layout_height="@dimen/fragment_public_open_space_add_edit_map_height"/>
-                </LinearLayout>
+                        android:layout_height="@dimen/fragment_public_open_space_add_edit_map_height"
+                        android:layout_below="@+id/addEditItemType"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
 
 
 
