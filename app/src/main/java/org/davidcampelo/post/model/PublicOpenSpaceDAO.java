@@ -19,17 +19,20 @@ public class PublicOpenSpaceDAO extends DAO {
     static final String TABLE_NAME = "tb_pos_publicopenspace";
     static final String COLUMN_ID = "pos_id";
     static final String COLUMN_NAME = "pos_name";
+    static final String COLUMN_TYPE = "pos_type";
     static final String COLUMN_DATETIME = "pos_datetime";
 
     static String[] TABLE_COLUMNS = {
             COLUMN_ID,
             COLUMN_NAME,
+            COLUMN_TYPE,
             COLUMN_DATETIME
     };
 
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
             + COLUMN_ID +" INTEGER primary key autoincrement, "
             + COLUMN_NAME +" TEXT not null,"
+            + COLUMN_TYPE +" TEXT not null,"
             + COLUMN_DATETIME +");";
 
     public PublicOpenSpaceDAO(Context context) {
@@ -41,6 +44,7 @@ public class PublicOpenSpaceDAO extends DAO {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
+        values.put(COLUMN_TYPE, publicOpenSpace.type.name());
         values.put(COLUMN_DATETIME, String.valueOf(Calendar.getInstance().getTimeInMillis()));
 
         publicOpenSpace.id = insert(TABLE_NAME, values);
@@ -53,6 +57,7 @@ public class PublicOpenSpaceDAO extends DAO {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
+        values.put(COLUMN_TYPE, publicOpenSpace.type.name());
 
         return (update(TABLE_NAME, values, COLUMN_ID +"="+ publicOpenSpace.id) > 0);
     }
@@ -120,9 +125,10 @@ public class PublicOpenSpaceDAO extends DAO {
 
     private PublicOpenSpace cursorToObject(Cursor cursor) {
         return new PublicOpenSpace(
-                cursor.getLong(0),      // id
-                cursor.getString(1),    // name
-                cursor.getLong(2)       // dateCreation
+                cursor.getLong(0),                                      // id
+                cursor.getString(1),                                    // name
+                PublicOpenSpace.Type.valueOf(cursor.getString(2)),      // type
+                cursor.getLong(3)                                       // dateCreation
         );
     }
 }

@@ -11,13 +11,18 @@ import android.widget.TextView;
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by davidcampelo on 7/26/16.
  */
 class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
 
+    Calendar calendar;
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MMM/yyyy");
     // Utility class to keep list row values
     public static class ViewHolder{
         TextView name;
@@ -27,6 +32,7 @@ class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
 
     public PublicOpenSpaceListAdapter(Context context, ArrayList<PublicOpenSpace> list) {
         super(context, 0, list);
+        calendar = Calendar.getInstance();
     }
 
     @Override
@@ -43,7 +49,7 @@ class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
 
             viewHolder.name = (TextView) convertView.findViewById(R.id.listItemName);
             viewHolder.address = (TextView) convertView.findViewById(R.id.listItemAddress);
-            //viewHolder.image = (ImageView) convertView.findViewById(R.id.listItemImage);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.listItemType);
 
             convertView.setTag(viewHolder);
         }
@@ -52,8 +58,8 @@ class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
         }
 
         viewHolder.name.setText(object.name);
-//        viewHolder.address.setText(object.resolveAddress(this.getContext()));
-        //viewHolder.img.setImageResource(note.getAssociatedDrawable());
+        viewHolder.address.setText("Added in "+ simpleDateFormat.format(new Date(object.dateCreation)));
+        viewHolder.image.setImageResource(object.getTypeResource());
 
 
         return convertView;

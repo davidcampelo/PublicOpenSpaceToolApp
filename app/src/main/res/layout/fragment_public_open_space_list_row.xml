@@ -34,6 +34,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceSmall"
         android:text=""
         android:id="@+id/listItemAddress"
         android:layout_below="@+id/listItemName"

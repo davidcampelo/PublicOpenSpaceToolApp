@@ -2,6 +2,7 @@ package org.davidcampelo.post;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -63,11 +65,13 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
     LatLng latlngMap;
 
     private Button saveButton;
+    private ImageButton posType;
+
 
     HashMap<String, QuestionView> questionNumberToViewMap;
     QuestionDAO questionDAO;
 
-    private AlertDialog saveButtonDialog;
+    private AlertDialog posTypeDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,6 +85,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         // get references to components
         fragmentLayout = inflater.inflate(R.layout.fragment_public_open_space_add_edit, container, false);
         saveButton = (Button) fragmentLayout.findViewById(R.id.addEditSaveButton);
+        posType = (ImageButton) fragmentLayout.findViewById(R.id.addEditItemType);
+        posType.setBackground(null);
 
         // fill tabs
         fillTabTitles( (TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost) );
@@ -110,14 +116,56 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
                 Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Item saved successfully!", Toast.LENGTH_SHORT).show();
             }
         });
+        posType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                posTypeDialog.show();
+            }
+        });
+
+        buildTypeDialog();
 
         return fragmentLayout;
+    }
+
+    private void buildTypeDialog(){
+        final String[] categories = new String[]{"Park", "Square", "Garden", "Other"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Please choose P.O.S. type");
+        builder.setSingleChoiceItems(categories, 0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int item) {
+                posTypeDialog.cancel();
+                switch (item){
+                    case 0:
+                        publicOpenSpace.type = PublicOpenSpace.Type.PARK;
+                        posType.setImageResource(R.drawable.icon_park);
+                        break;
+                    case 1:
+                        publicOpenSpace.type = PublicOpenSpace.Type.SQUARE;
+                        posType.setImageResource(R.drawable.icon_square);
+                        break;
+                    case 2:
+                        publicOpenSpace.type = PublicOpenSpace.Type.GARDEN;
+                        posType.setImageResource(R.drawable.icon_garden);
+                        break;
+                    default:
+                        publicOpenSpace.type = PublicOpenSpace.Type.OTHER;
+                        posType.setImageResource(R.drawable.icon_other);
+                        break;
+                }
+            }
+        });
+
+        posTypeDialog = builder.create();
     }
 
     private void loadGeneralInfo() {
         if (publicOpenSpace.id != 0) {
             // set up name
             ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.name);
+            ((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
 
             // TODO: set up pos_type (icon)
 
@@ -427,8 +475,5 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         }
 
         answersDAO.close();
-
-
-
     }
 }
