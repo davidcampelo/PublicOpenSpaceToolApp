@@ -7,20 +7,21 @@ public class Option {
     long id;
     String text;
     Question question;
+    PublicOpenSpace publicOpenSpace;
 
     public Option() {
     }
 
-    public Option(long id, String text, Question question) {
+    public Option(long id, String text, Question question, PublicOpenSpace publicOpenSpace) {
         this.id = id;
         this.text = text;
         this.question = question;
+        this.publicOpenSpace = publicOpenSpace;
     }
 
     public Option(String text, Question question) {
-        this(0, text, question);
+        this(0, text, question, null);
     }
-
 
     public String getText() {
         return text;

@@ -1,7 +1,5 @@
 package org.davidcampelo.post.model;
 
-import com.google.android.gms.games.quest.Quest;
-
 import org.davidcampelo.post.utils.Constants;
 
 import java.util.HashMap;
@@ -273,7 +271,7 @@ public class Questions {
             }
         }
         else {
-            StringTokenizer tokenizer = new StringTokenizer(questionsString, Constants.QUESTIONS_SEPARATOR);
+            StringTokenizer tokenizer = new StringTokenizer(questionsString, Constants.MULTIPLE_OPTIONS_SEPARATOR);
 
             for (int i = -1; ++i < identifiers.length && tokenizer.hasMoreElements(); ) {
                 questions.putAnswer(identifiers[i], (String) tokenizer.nextElement());
@@ -283,7 +281,7 @@ public class Questions {
     }
 
     /**
-     * Get a String representing all answers separated by {@link Constants.QUESTIONS_SEPARATOR}
+     * Get a String representing all answers separated by {@link Constants.}
      */
     public String getAnswers(){
         StringBuilder stringBuilder = new StringBuilder();
@@ -291,7 +289,7 @@ public class Questions {
         for (int i = -1; ++i < identifiers.length;) {
             stringBuilder.append(answers.get(identifiers[i]));
             if (i < identifiers.length - 1)
-                stringBuilder.append(Constants.QUESTIONS_SEPARATOR);
+                stringBuilder.append(Constants.MULTIPLE_OPTIONS_SEPARATOR);
         }
         return stringBuilder.toString();
     }

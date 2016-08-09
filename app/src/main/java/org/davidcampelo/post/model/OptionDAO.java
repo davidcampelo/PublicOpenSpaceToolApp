@@ -50,6 +50,10 @@ public class OptionDAO extends DAO {
         values.put(COLUMN_TEXT, object.text);
         values.put(COLUMN_QST_NUMBER, object.question.number);
 
+        if (object.publicOpenSpace != null) {
+            values.put(COLUMN_POS_ID, object.publicOpenSpace.id);
+        }
+
         object.id = insert(TABLE_NAME, values);
 
         return object;
@@ -118,15 +122,16 @@ public class OptionDAO extends DAO {
         return list;
     }
 
-    public long delete(Option object){
-        return delete(TABLE_NAME, COLUMN_ID +"="+ object.id);
-    }
+//    public long delete(Option object){
+//        return delete(TABLE_NAME, COLUMN_ID +"="+ object.id);
+//    }
 
     private Option cursorToObject(Cursor cursor) {
         return new Option(
                 cursor.getLong(0),      // id
                 cursor.getString(1),    // text
-                null                    // Question
+                null,                   // Question
+                null                    // PublicOpenSpace
         );
     }
 }

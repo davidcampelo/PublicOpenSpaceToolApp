@@ -8,6 +8,7 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,12 +54,13 @@ import java.util.Map;
  */
 public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapReadyCallback {
 
-    private PublicOpenSpace object;
+    private PublicOpenSpace publicOpenSpace;
 
     View fragmentLayout;
 
     MapView mapView;
-    GoogleMap googleMap;
+//    GoogleMap googleMap;
+    LatLng latlngMap;
 
     private Button saveButton;
 
@@ -83,20 +85,22 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         // fill tabs
         fillTabTitles( (TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost) );
 
-        object = PublicOpenSpaceDAO.staticGet(getActivity(), id);
-        if (object == null){ // add screen
-            object = new PublicOpenSpace();
+        publicOpenSpace = PublicOpenSpaceDAO.staticGet(getActivity(), id);
+        if (publicOpenSpace == null){ // add screen
+            publicOpenSpace = new PublicOpenSpace();
         }
 
         questionNumberToViewMap = new HashMap<>();
-        loadQuestionsAndOptions(fragmentLayout);
+        loadQuestionsAndOptions();
         loadAnswers();
+        loadGeneralInfo();
 
-        // Gets the MapView from the XML layout and creates it
+         // Gets the MapView from the XML layout and creates it
         mapView = (MapView) fragmentLayout.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         // Gets to GoogleMap from the MapView and does initialization stuff
         mapView.getMapAsync(this);
+
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +112,36 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         });
 
         return fragmentLayout;
+    }
+
+    private void loadGeneralInfo() {
+        if (publicOpenSpace.id != 0) {
+            // set up name
+            ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.name);
+
+            // TODO: set up pos_type (icon)
+
+            // Sets up latlng object to position on map according to question 5
+            QuestionView questionView;
+            questionView = this.questionNumberToViewMap.get("5");
+            if (questionView != null) {
+                String geocode = ((InputTextQuestionView)questionView).getAnswers();
+                Log.e(this.getClass().getName(), "-------------------- from question to map = "+ geocode);
+                if (geocode.length() > 0 ) {
+                    int pos = geocode.indexOf(",");
+                    latlngMap = new LatLng(Double.valueOf(geocode.substring(0, pos)), Double.valueOf(geocode.substring(pos + 1)));
+                }
+            }
+            // set up address edittext
+            questionView = this.questionNumberToViewMap.get("2");
+            if (questionView != null) {
+                String address = ((InputTextQuestionView)questionView).getAnswers();
+                Log.e(this.getClass().getName(), "-------------------- from question to map address = "+ address);
+                if (address.length() > 0 ) {
+                    ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
+                }
+            }
+        }
     }
 
     private void fillTabTitles(TabHost host) {
@@ -127,13 +161,13 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
     }
 
 
-    public String resolveAddress(Context ctx, double latitude, double longitude) {
+    public String resolveAddress(double latitude, double longitude) {
         if (latitude == Double.MAX_VALUE || longitude == Double.MAX_VALUE)
             return "";
 
         Geocoder geocoder;
         List<Address> addresses = null;
-        geocoder = new Geocoder(ctx, Locale.getDefault());
+        geocoder = new Geocoder(this.getActivity(), Locale.getDefault());
 
         // Here 1 represent max location result to returned, by documents it recommended 1 to 5
         try {
@@ -159,42 +193,16 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
     }
 
     @Override
-    public void onMapReady(GoogleMap map) {
-        this.googleMap = map;
+    public void onMapReady(final GoogleMap googleMap) {
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        LatLng latlng = null;
 
-        // Sets up latlng object to position on map according to question 5
-        if (questionNumberToViewMap != null) {
-            QuestionView questionView;
-            questionView = questionNumberToViewMap.get("5");
-            if (questionView != null) {
-                String geocode = ((InputTextQuestionView)questionView).getContainerText();
-                if (geocode.length() > 0 ) {
-                    int pos = geocode.indexOf(",");
-                    latlng = new LatLng(Double.valueOf(geocode.substring(0, pos)), Double.valueOf(geocode.substring(pos + 1)));
-                }
-            }
-            // set up address edittext
-            questionView = questionNumberToViewMap.get("2");
-            if (questionView != null) {
-                String address = ((InputTextQuestionView)questionView).getContainerText();
-                if (address.length() > 0 ) {
-                    ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
-                }
-            }
-        }
-
-        CameraUpdate cameraUpdate;
-        if (latlng != null) {
-            cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 17);
-
+        if (latlngMap != null) {
             googleMap.clear();
-            googleMap.addMarker(new MarkerOptions().position(latlng).title("Marker"));
+            googleMap.addMarker(new MarkerOptions().position(latlngMap).title(""));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlngMap, 17));
         }
         else
-            cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 13);
-        googleMap.animateCamera(cameraUpdate);
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 13));
 
         googleMap.getUiSettings().setZoomControlsEnabled( true );
         googleMap.getUiSettings().setMyLocationButtonEnabled( false );
@@ -202,23 +210,31 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-            // place marker
-            String address = resolveAddress(PublicOpenSpaceAddEditFragment.this.getActivity(), latLng.latitude, latLng.longitude);
-            ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
-            googleMap.clear();
-            googleMap.addMarker(new MarkerOptions().position(latLng).title(""));
-                // set question 5 (Geocode) text
-            if (questionNumberToViewMap != null) {
-                QuestionView questionView;
-                questionView = questionNumberToViewMap.get("5");
-                if (questionView != null) {
-                    ((InputTextQuestionView)questionView).setAnswers(latLng.latitude +", "+ latLng.longitude);
+                PublicOpenSpaceAddEditFragment.this.latlngMap = latLng;
+                // place marker
+                String address = resolveAddress(latLng.latitude, latLng.longitude);
+                ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
+                googleMap.clear();
+                googleMap.addMarker(new MarkerOptions().position(latLng).title(""));
+
+                // update Questions answers
+                if (questionNumberToViewMap != null) {
+                    QuestionView questionView;
+
+                    // set question 5 (Geocode) text
+                    questionView = questionNumberToViewMap.get("5");
+                    if (questionView != null) {
+                        Log.e(this.getClass().getName(), "-------------------- from map to question = "+ latLng.latitude +", "+ latLng.longitude);
+                        ((InputTextQuestionView)questionView).setAnswers(latLng.latitude +", "+ latLng.longitude);
+                    }
+
+                    // set question 2 (Address) text
+                    questionView = questionNumberToViewMap.get("2");
+                    if (questionView != null) {
+                        Log.e(this.getClass().getName(), "-------------------- from map/address to question = "+ address);
+                        ((InputTextQuestionView)questionView).setAnswers(address);
+                    }
                 }
-                questionView = questionNumberToViewMap.get("2");
-                if (questionView != null) {
-                    ((InputTextQuestionView)questionView).setAnswers(address);
-                }
-            }
             }
         });
     }
@@ -249,9 +265,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
     /**
      * Fill UI components with our internal {@link PublicOpenSpace} object
-     * @param fragmentLayout
      */
-    private void loadQuestionsAndOptions(View fragmentLayout) {
+    private void loadQuestionsAndOptions() {
 
         Context context = getContext();
         questionDAO = new QuestionDAO(context);
@@ -333,7 +348,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
 
     private void loadAnswers() {
-        if (object.id != 0) {     // if not a new object (i.e. if it has some answers)
+        if (publicOpenSpace.id != 0) {     // if not a new object (i.e. if it has some answers)
             Context context = getContext();
             AnswersDAO answersDAO = new AnswersDAO(context);
             answersDAO.open();
@@ -341,9 +356,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             Iterator it = questionNumberToViewMap.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
-                Question question = ((QuestionView) pair.getValue()).getQuestion();
-                question.setAnswers(answersDAO.get(question, object));
-                it.remove(); // avoids a ConcurrentModificationException
+                QuestionView questionView = (QuestionView) pair.getValue();
+                questionView.setAnswers(answersDAO.get(questionView.getQuestion(), publicOpenSpace));
             }
 
             answersDAO.close();
@@ -352,7 +366,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
 
     private final QuestionView addToMap(Context context, String questionNumber) {
-        Question question = questionDAO.get(questionNumber, object);
+        Question question = questionDAO.get(questionNumber, publicOpenSpace);
         QuestionView view;
 
         Question.QuestionType type = question.getType();
@@ -369,7 +383,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         else
             view = new InputTextQuestionView(context, question);
 
-        questionNumberToViewMap.put(questionNumber, view);
+        this.questionNumberToViewMap.put(questionNumber, view);
 
         return view;
     }
@@ -380,18 +394,20 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
      * This method must be called before any persistence procedure :)
      */
     public void saveObject(){
-        object.name = ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "";
+        publicOpenSpace.name = ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "";
 
         // save PublicOpenSpace object
-        if (object.id == 0) // if (id == 0) we're gonna insert it
-            object = PublicOpenSpaceDAO.staticInsert(getActivity(), object);
+        if (publicOpenSpace.id == 0) // if (id == 0) we're gonna insert it
+            publicOpenSpace = PublicOpenSpaceDAO.staticInsert(getActivity(), publicOpenSpace);
         else // just update it
-            PublicOpenSpaceDAO.staticUpdate(getActivity(), object);
+            PublicOpenSpaceDAO.staticUpdate(getActivity(), publicOpenSpace);
 
         // save questions answers
         Context context = getContext();
         AnswersDAO answersDAO = new AnswersDAO(context);
         answersDAO.open();
+        // firstly, delete all previous answers
+        answersDAO.delete(publicOpenSpace);
 
         Iterator it = questionNumberToViewMap.entrySet().iterator();
         while (it.hasNext()) {
@@ -407,9 +423,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
                     }
                 }
             }
-            answersDAO.insert(object, question, questionView.getAnswers());
-
-            it.remove(); // avoids a ConcurrentModificationException
+            answersDAO.insert(publicOpenSpace, question, questionView.getAnswers());
         }
 
         answersDAO.close();

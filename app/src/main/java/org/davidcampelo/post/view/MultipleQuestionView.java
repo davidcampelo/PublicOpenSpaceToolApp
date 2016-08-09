@@ -1,6 +1,7 @@
 package org.davidcampelo.post.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +12,10 @@ import android.widget.TextView;
 import org.davidcampelo.post.R;
 import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.Question;
+import org.davidcampelo.post.utils.Constants;
+
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -21,6 +26,7 @@ import org.davidcampelo.post.model.Question;
  * Created by davidcampelo on 8/6/16.
  */
 public class MultipleQuestionView extends QuestionView{
+    LinearLayout container;
 
     public MultipleQuestionView(Context context, Question question) {
         super(context, question);
@@ -30,7 +36,7 @@ public class MultipleQuestionView extends QuestionView{
     protected void init(Context context, Question question) {
         super.init(context, question);
 
-        LinearLayout container = getContainer();
+        container = getContainer();
 
         for (Option option : question.getAllOptions()){
             if (option.getText().toLowerCase().indexOf("other") < 0) {
@@ -101,11 +107,43 @@ public class MultipleQuestionView extends QuestionView{
 
     @Override
     public String getAnswers() {
-        return null;
+        StringBuilder answers = new StringBuilder();
+        for (int i = container.getChildCount(); --i >= 0;) {
+            View child = container.getChildAt(i);
+            if (child instanceof QuestionCheckBox) {
+                QuestionCheckBox checkBox = (QuestionCheckBox) child;
+                if (checkBox.isChecked()) {
+                    answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.MULTIPLE_OPTIONS_SEPARATOR);
+                }
+            }
+        }
+
+        return answers.toString();
     }
 
     @Override
     public void setAnswers(String answers) {
-        // TODO: select options :)
+        if (answers == null || answers.length() == 0)
+            return;
+
+        StringTokenizer tokenizer = new StringTokenizer(answers, Constants.MULTIPLE_OPTIONS_SEPARATOR);
+        ArrayList<Long> selectedIds = new ArrayList<>();
+
+        while ( tokenizer.hasMoreElements() ) {
+            String selectedId = (String) tokenizer.nextElement();
+            if (selectedId == null || selectedId.length() == 0)
+                continue;
+            selectedIds.add(Long.valueOf( selectedId ));
+        }
+
+        for (int i = container.getChildCount(); --i >= 0;) {
+            View child = container.getChildAt(i);
+            if (child instanceof QuestionCheckBox) {
+                QuestionCheckBox checkBox = (QuestionCheckBox) child;
+                if (selectedIds.contains( checkBox.getOption().getId() )) {
+                    checkBox.setCheckedNoNotify(true);
+                }
+            }
+        }
     }
 }

@@ -13,13 +13,6 @@ public class Question {
     String title;
     QuestionType type;
     ArrayList<Option> options;
-    /**
-     * Answer text depends on QuestionType:
-     * - SINGLE_CHOICE: opt_id
-     * - MULTIPLE_CHOICE: opt_id's separated by a character separator (slash == \)
-     * - INPUT_TEXT/NUMBER/DECIMAL: Text typed by the user
-     */
-    String answers;
 
     public enum QuestionType {
         MULTIPLE_CHOICE,
@@ -34,12 +27,11 @@ public class Question {
 
     }
 
-    public Question(String number, String title, QuestionType type, ArrayList<Option> options, String answers) {
+    public Question(String number, String title, QuestionType type, ArrayList<Option> options) {
         this.number = number;
         this.title = title;
         this.type = type;
         this.options = options;
-        this.answers = answers;
     }
 
 
@@ -78,9 +70,4 @@ public class Question {
             options.add(option);
         }
     }
-
-    public void setAnswers(String answers) {
-        this.answers = answers;
-    }
-
 }

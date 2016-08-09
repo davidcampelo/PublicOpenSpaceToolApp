@@ -116,8 +116,7 @@ public class QuestionDAO extends DAO {
                 cursor.getString(0),                                // number
                 cursor.getString(1),                                // title
                 Question.QuestionType.valueOf(cursor.getString(2)), // type
-                null,                                               // TODO: retrieve options
-                null                                                // TODO: retrieve answers
+                null                                                // TODO: retrieve options
         );
     }
 }

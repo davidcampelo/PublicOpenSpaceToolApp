@@ -41,10 +41,18 @@ public class SingleQuestionView extends QuestionView {
     }
 
     @Override
-    public void setAnswers(String text) {
+    public void setAnswers(String text){
+        if (text == null || text.length() == 0)
+            return;
 
-        //
-
+        int selectedId = Integer.valueOf(text);
+        for (int i = container.getChildCount(); --i >= 0;) {
+            QuestionCheckBox checkBox = (QuestionCheckBox) container.getChildAt(i);
+            if (checkBox.getOption().getId() == selectedId) {
+                checkBox.setCheckedNoNotify(true);
+                break;
+            }
+        }
     }
 
 }

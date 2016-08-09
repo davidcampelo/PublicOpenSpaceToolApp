@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
                         String title = xpp.getAttributeValue(null, "title");
                         String type = xpp.getAttributeValue(null, "type");
 
-                        question = questionDAO.insert(new Question(number, title, Question.QuestionType.valueOf(type), null, null));
+                        question = questionDAO.insert(new Question(number, title, Question.QuestionType.valueOf(type), null));
 
                         Log.e(this.getClass().getName(), "===================> Question: = "+ question.getNumber() +question.getType().name().substring(0,1)+" - "+ question.getTitle());
 
                     }
                 } else if(eventType == XmlPullParser.TEXT) {
-                    option = optionDAO.insert(new Option(0, xpp.getText(), question));
+                    option = optionDAO.insert(new Option(xpp.getText(), question));
                     Log.e(this.getClass().getName(), "=======================> Option: = "+ option.getText() );
 
 

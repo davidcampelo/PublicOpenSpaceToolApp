@@ -15,7 +15,7 @@ public class AnswersDAO extends DAO {
 
 
     static final String TABLE_NAME = "tb_ans_answers";
-    static final String COLUMN_POS_ID = "pub_id";
+    static final String COLUMN_POS_ID = "pos_id";
     static final String COLUMN_QST_NUMBER = "qst_number";
     static final String COLUMN_ANSWER_TEXT = "ans_text";
 
@@ -72,5 +72,9 @@ public class AnswersDAO extends DAO {
         values.put(COLUMN_ANSWER_TEXT, answers);
 
         insert(TABLE_NAME, values);
+    }
+
+    public void delete(PublicOpenSpace publicOpenSpace) {
+        delete(TABLE_NAME, COLUMN_POS_ID +" = "+ publicOpenSpace.id);
     }
 }

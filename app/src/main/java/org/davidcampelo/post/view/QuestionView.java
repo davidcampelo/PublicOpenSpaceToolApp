@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import org.davidcampelo.post.R;
 import org.davidcampelo.post.model.Option;
+import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.Question;
 
 /**
@@ -27,20 +28,6 @@ public abstract class QuestionView extends RelativeLayout {
     private TextView title;
     private LinearLayout container;
 
-    public QuestionView(Context context) {
-        super(context);
-        init(context, null);
-    }
-
-    public QuestionView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, null);
-    }
-
-    public QuestionView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context, null);
-    }
 
     public QuestionView(Context context, Question question){
         super(context);
@@ -50,9 +37,7 @@ public abstract class QuestionView extends RelativeLayout {
     /**
      * Sets up Context and Question, then creates Question title and Option's container
      *
-     * This method must be called by sub-classes before any other UI operation
-     * @param context
-     * @param question
+     * IMPORTANT: This method must be called by sub-classes before any other UI operation
      */
     protected void init(final Context context, Question question) {
         this.question = question;
@@ -87,7 +72,7 @@ public abstract class QuestionView extends RelativeLayout {
      *
      * @return
      */
-    public LinearLayout getContainer() {
+    protected LinearLayout getContainer() {
         return container;
     }
 
@@ -104,11 +89,22 @@ public abstract class QuestionView extends RelativeLayout {
         return question;
     }
 
+
     /** Abstract method implemented by subclasses in order to retrieve user answers
+     *
+     * Answer text depends on QuestionType:
+     * - SINGLE_CHOICE: opt_id
+     * - MULTIPLE_CHOICE: opt_id's separated by a character separator (slash == \)
+     * - INPUT_TEXT/NUMBER/DECIMAL: Text typed by the user
      */
     public abstract String getAnswers();
 
-    /** Abstract method implemented by subclasses in order to retrieve user answers
+    /** Abstract method implemented by subclasses in order to show user answers
+     *
+     * Answer text depends on QuestionType:
+     * - SINGLE_CHOICE: opt_id
+     * - MULTIPLE_CHOICE: opt_id's separated by a character separator (slash == \)
+     * - INPUT_TEXT/NUMBER/DECIMAL: Text typed by the user
      */
     public abstract void setAnswers(String answers);
 }

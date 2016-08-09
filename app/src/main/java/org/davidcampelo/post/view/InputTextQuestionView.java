@@ -31,15 +31,11 @@ public class InputTextQuestionView extends QuestionView {
         container.addView(containerText);
     }
 
+    public String getAnswers() {
+        return containerText.getText() + "";
+    }
+
     public void setAnswers(String text) {
         containerText.setText(text);
-    }
-
-    public String getContainerText() {
-        return containerText.getText() +"";
-    }
-
-    public String getAnswers() {
-        return getContainerText();
     }
 }
