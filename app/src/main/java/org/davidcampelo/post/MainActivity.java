@@ -1,18 +1,25 @@
 package org.davidcampelo.post;
 
+import android.app.ListFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.BaseAdapter;
 
+import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.OptionDAO;
+import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.model.QuestionDAO;
 import org.davidcampelo.post.utils.Constants;
@@ -24,6 +31,8 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    ResetDataListener resetDataListener;
+    AlertDialog resetDialogObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +50,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //populate();
+        buildResetDialog();
     }
 
+    public void setResetDataListener(ResetDataListener resetDataListener) {
+        this.resetDataListener = resetDataListener;
+    }
 
     public void populate() {
         Question question = null;
@@ -91,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         optionDAO.close();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -110,7 +121,54 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_reset) {
+           resetDialogObject.show();
+        }
+        else if (id == R.id.action_export) {
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void buildResetDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.action_reset_dialog_title);
+        builder.setMessage(R.string.action_reset_dialog_question);
+        builder.setPositiveButton(R.string.action_reset_dialog_positive, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                PublicOpenSpaceDAO publicOpenSpaceDAO = new PublicOpenSpaceDAO(MainActivity.this);
+                publicOpenSpaceDAO.open();
+                publicOpenSpaceDAO.resetData();
+                publicOpenSpaceDAO.close();
+                QuestionDAO questionDAO = new QuestionDAO(MainActivity.this);
+                questionDAO.open();
+                questionDAO.resetData();
+                questionDAO.close();
+                OptionDAO optionDAO = new OptionDAO(MainActivity.this);
+                optionDAO.open();
+                optionDAO.resetData();
+                optionDAO.close();
+                AnswersDAO answersDAO = new AnswersDAO(MainActivity.this);
+                answersDAO.open();
+                answersDAO.resetData();
+                answersDAO.close();
+
+                MainActivity.this.populate();
+
+                if (resetDataListener != null){
+                    resetDataListener.notifyReset();
+                }
+
+            }
+        });
+        builder.setNegativeButton(R.string.action_reset_dialog_negative, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // do nothing
+            }
+        });
+        resetDialogObject = builder.create();
     }
 }

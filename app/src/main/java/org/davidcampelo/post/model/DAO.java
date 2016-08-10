@@ -44,7 +44,20 @@ public abstract class DAO {
         }
     }
 
+    /**
+     * Drop table and creates it again
+     *
+     * Implemented by sub-classes
+     */
+    public abstract void resetData();
+
     // Proxy methods to select/insert/update/delete items
+    protected void exec(String sql) {
+        sqLiteDatabase.execSQL(sql);
+    }
+    protected void drop(String tableName) {
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ tableName);
+    }
     protected Cursor select(String tableName, String[] tableColumns, String whereClauses) {
         Log.e(this.getClass().getName(), ">>>>>>> SELECT " + toString(tableColumns) + " FROM " + tableName + " WHERE " + whereClauses);
         return sqLiteDatabase.query(tableName, tableColumns, whereClauses, null, null, null, null);

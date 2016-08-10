@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link ListFragment} subclass.
  */
-public class    PublicOpenSpaceListFragment extends ListFragment {
+public class    PublicOpenSpaceListFragment extends ListFragment implements ResetDataListener {
 
     private ArrayList<PublicOpenSpace> list;
     private PublicOpenSpaceListAdapter listAdapter;
@@ -43,6 +43,7 @@ public class    PublicOpenSpaceListFragment extends ListFragment {
 //        getListView().setDividerHeight(2);
 
         registerForContextMenu(getListView());
+        ((MainActivity)getActivity()).setResetDataListener(this);
     }
 
     @Override
@@ -100,5 +101,11 @@ public class    PublicOpenSpaceListFragment extends ListFragment {
 
         startActivity(intent);
 
+    }
+
+    @Override
+    public void notifyReset() {
+        listAdapter.clear();
+        listAdapter.notifyDataSetChanged();
     }
 }

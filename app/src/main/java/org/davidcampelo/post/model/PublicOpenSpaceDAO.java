@@ -39,6 +39,11 @@ public class PublicOpenSpaceDAO extends DAO {
         super(context);
     }
 
+    public void resetData(){
+        drop(TABLE_NAME);
+        exec(TABLE_CREATE_CMD);
+    }
+
     public PublicOpenSpace insert(PublicOpenSpace publicOpenSpace){
 
         ContentValues values = new ContentValues();

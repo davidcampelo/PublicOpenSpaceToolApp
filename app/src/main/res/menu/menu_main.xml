@@ -3,8 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="org.davidcampelo.post.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_export"
         android:orderInCategory="100"
+        android:title="@string/action_export"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_reset"
+        android:orderInCategory="100"
+        android:title="@string/action_reset"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="200"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>

@@ -40,6 +40,12 @@ public class AnswersDAO extends DAO {
         super(context);
     }
 
+
+    public void resetData(){
+        drop(TABLE_NAME);
+        exec(TABLE_CREATE_CMD);
+    }
+
     /**
      * Retrieves all Option objects based on Question and PublicOpenSpace objects
      *

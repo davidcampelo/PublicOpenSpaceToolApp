@@ -58,7 +58,7 @@ class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
         }
 
         viewHolder.name.setText(object.name);
-        viewHolder.address.setText("Added in "+ simpleDateFormat.format(new Date(object.dateCreation)));
+        viewHolder.address.setText("Added on "+ simpleDateFormat.format(new Date(object.dateCreation)));
         viewHolder.image.setImageResource(object.getTypeResource());
 
 

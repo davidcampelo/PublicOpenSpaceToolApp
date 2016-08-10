@@ -5,6 +5,14 @@
     <string name="title_view_public_open_space_fragment">View Public Open Space</string>
     <string name="title_add_public_open_space_fragment">Add Public Open Space</string>
     <string name="title_edit_public_open_space_fragment">Edit Public Open Space</string>
+
+    // Action Menu
+    <string name="action_export">Export data</string>
+    <string name="action_reset">Reset data</string>
+    <string name="action_reset_dialog_title">Reset all data</string>
+    <string name="action_reset_dialog_question">This is going to clear all data. Are you sure to proceed?</string>
+    <string name="action_reset_dialog_positive">Yes, clear all data</string>
+    <string name="action_reset_dialog_negative">No, do not erase</string>
     <string name="action_settings">Settings</string>
 
     // fragment_public_open_space_list_menu
