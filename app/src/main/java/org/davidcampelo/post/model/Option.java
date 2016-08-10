@@ -30,4 +30,8 @@ public class Option {
     public long getId() {
         return id;
     }
+
+    public void setPublicOpenSpace(PublicOpenSpace publicOpenSpace) {
+        this.publicOpenSpace = publicOpenSpace;
+    }
 }

@@ -23,6 +23,7 @@ import java.util.StringTokenizer;
  *
  * Amount of Option objects is flexible, according to the "Other" options usage
  *
+ *
  * Created by davidcampelo on 8/6/16.
  */
 public class MultipleQuestionView extends QuestionView{
@@ -38,46 +39,56 @@ public class MultipleQuestionView extends QuestionView{
 
         container = getContainer();
 
+        boolean addOther = false;
         for (Option option : question.getAllOptions()){
             if (option.getText().toLowerCase().indexOf("other") < 0) {
                 QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
                 checkbox.setText(option.getText());
                 container.addView(checkbox);
             } else {
-                addOtherRow(question, context, container);
+                addOther = true;
             }
         }
-
+        if (addOther) {
+            addOtherRow(question, context);
+        }
     }
 
-    private void addOtherRow(final Question question, final Context context, final LinearLayout container) {
+    /**
+     *  create "Other" view
+     *
+     * NOTE: This component owns a list of {@QuestionCheckBox} and a set of {@View} to show "Other"
+     * Options. In case of having an "Other" Option, his new Option will be stored in the TAG of the
+     * respective View :)
+     */
+    private void addOtherRow(final Question question, final Context context) {
 
-        // create "Other" view
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         final View otherView = layoutInflater.inflate(R.layout.question_view_other_row, null);
 
-        ImageView delete = (ImageView) otherView.findViewById(R.id.otherDeleteButton);
-        delete.setOnClickListener(new OnClickListener() {
+//        ImageView delete = (ImageView) otherView.findViewById(R.id.otherDeleteButton);
+//        // Button for deleting the Other row
+//        delete.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                View otherView = container.findViewById(R.id.otherRow);
+//                if (otherView != null)
+//                    container.removeView(otherView);
+//            }
+//        });
+
+        // Button of storing this new "Other" Option
+        ImageView imageButtonAdd = (ImageView) otherView.findViewById(R.id.otherAddButton);
+        imageButtonAdd.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                View otherView = container.findViewById(R.id.otherRow);
-                if (otherView != null)
-                    container.removeView(otherView);
-            }
-        });
-
-        ImageView add = (ImageView) otherView.findViewById(R.id.otherAddButton);
-        add.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                // Stores new Row with new Option
                 View otherView = container.findViewById(R.id.otherRow);
                 final View addView = layoutInflater.inflate(R.layout.question_view_added_row, null);
                 final TextView textOut = (TextView)addView.findViewById(R.id.otherAddedText);
-                ImageView buttonRemove = (ImageView)addView.findViewById(R.id.otherRemoveButton);
-                buttonRemove.setOnClickListener(new OnClickListener(){
+                ImageView imageButtonRemove = (ImageView)addView.findViewById(R.id.otherRemoveButton);
+                imageButtonRemove.setOnClickListener(new OnClickListener(){
 
                     @Override
                     public void onClick(View v) {
@@ -86,21 +97,26 @@ public class MultipleQuestionView extends QuestionView{
                     }
                 });
 
-                // create a new line with the written item
                 if (otherView != null) {
+                    // Create new Option object
                     String newOptionText = ((EditText)container.findViewById(R.id.otherInputText)).getText() + "";
-                    question.addOption(new Option(newOptionText, question));
+                    Option newOption = new Option(newOptionText, question);
+                    question.addOption(newOption);
                     textOut.setText(newOptionText);
+                    // XXX if it's an "Other" Option, it will be stored in the TAG of the VIEW
+                    addView.setTag(newOption);
+                    // Remove old "Other" editable row
                     container.removeView(otherView);
                 }
 
-                // add new line and add new Other row :)
+                // add new Option view to the Screen
                 container.addView(addView);
-                addOtherRow(question, context, container);
+                // And finally create new "Other" editable row
+                addOtherRow(question, context);
             }
         });
 
-        // add "Other" view
+        // add new editable "Other" view
         container.addView(otherView);
         otherView.setId(R.id.otherRow);
     }
@@ -115,6 +131,9 @@ public class MultipleQuestionView extends QuestionView{
                 if (checkBox.isChecked()) {
                     answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.MULTIPLE_OPTIONS_SEPARATOR);
                 }
+            }
+            else if (child.getTag() instanceof Option) { // it's an "Other" option and is stored in the TAG
+                answers.append(String.valueOf( ((Option)child.getTag()).getId() ) + Constants.MULTIPLE_OPTIONS_SEPARATOR);
             }
         }
 

@@ -96,7 +96,7 @@ public class    PublicOpenSpaceListFragment extends ListFragment implements Rese
     private void launchActivity(PublicOpenSpace object, Constants.FragmentAction action) {
         Intent intent = new Intent(getActivity(), DetailActivity.class);
 
-        intent.putExtra(Constants.INTENT_ID_EXTRA, object.id);
+        intent.putExtra(Constants.INTENT_ID_EXTRA, object.getId());
         intent.putExtra(Constants.INTENT_ACTION_EXTRA, action);
 
         startActivity(intent);

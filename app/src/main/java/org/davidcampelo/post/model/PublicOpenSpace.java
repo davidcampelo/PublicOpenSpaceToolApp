@@ -17,10 +17,10 @@ import java.util.Locale;
 public class PublicOpenSpace {
 
     // All attributes are public for foot-print reasons :)
-    public long id = 0;
-    public String name;
-    public Type type = Type.PARK;
-    public long dateCreation;
+    long id = 0;
+    String name;
+    Type type = Type.PARK;
+    long dateCreation;
 
     public enum Type {
         PARK,
@@ -53,5 +53,29 @@ public class PublicOpenSpace {
             default:
                 return R.drawable.icon_other;
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public long getDateCreation() {
+        return dateCreation;
     }
 }

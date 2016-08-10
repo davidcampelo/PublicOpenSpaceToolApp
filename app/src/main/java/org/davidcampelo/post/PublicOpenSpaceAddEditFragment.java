@@ -30,6 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Option;
+import org.davidcampelo.post.model.OptionDAO;
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Question;
@@ -139,19 +140,19 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
                 posTypeDialog.cancel();
                 switch (item){
                     case 0:
-                        publicOpenSpace.type = PublicOpenSpace.Type.PARK;
+                        publicOpenSpace.setType( PublicOpenSpace.Type.PARK );
                         posType.setImageResource(R.drawable.icon_park);
                         break;
                     case 1:
-                        publicOpenSpace.type = PublicOpenSpace.Type.SQUARE;
+                        publicOpenSpace.setType( PublicOpenSpace.Type.SQUARE );
                         posType.setImageResource(R.drawable.icon_square);
                         break;
                     case 2:
-                        publicOpenSpace.type = PublicOpenSpace.Type.GARDEN;
+                        publicOpenSpace.setType( PublicOpenSpace.Type.GARDEN );
                         posType.setImageResource(R.drawable.icon_garden);
                         break;
                     default:
-                        publicOpenSpace.type = PublicOpenSpace.Type.OTHER;
+                        publicOpenSpace.setType( PublicOpenSpace.Type.OTHER );
                         posType.setImageResource(R.drawable.icon_other);
                         break;
                 }
@@ -162,9 +163,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
     }
 
     private void loadGeneralInfo() {
-        if (publicOpenSpace.id != 0) {
+        if (publicOpenSpace.getId() != 0) {
             // set up name
-            ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.name);
+            ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.getName());
             ((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
 
             // TODO: set up pos_type (icon)
@@ -174,7 +175,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             questionView = this.questionNumberToViewMap.get("5");
             if (questionView != null) {
                 String geocode = ((InputTextQuestionView)questionView).getAnswers();
-                Log.e(this.getClass().getName(), "-------------------- from question to map = "+ geocode);
+//                Log.e(this.getClass().getName(), "-------------------- from question to map = "+ geocode);
                 if (geocode.length() > 0 ) {
                     int pos = geocode.indexOf(",");
                     latlngMap = new LatLng(Double.valueOf(geocode.substring(0, pos)), Double.valueOf(geocode.substring(pos + 1)));
@@ -184,7 +185,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             questionView = this.questionNumberToViewMap.get("2");
             if (questionView != null) {
                 String address = ((InputTextQuestionView)questionView).getAnswers();
-                Log.e(this.getClass().getName(), "-------------------- from question to map address = "+ address);
+//                Log.e(this.getClass().getName(), "-------------------- from question to map address = "+ address);
                 if (address.length() > 0 ) {
                     ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
                 }
@@ -233,7 +234,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
             return stringBuilder.toString();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -272,14 +273,14 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
                     // set question 5 (Geocode) text
                     questionView = questionNumberToViewMap.get("5");
                     if (questionView != null) {
-                        Log.e(this.getClass().getName(), "-------------------- from map to question = "+ latLng.latitude +", "+ latLng.longitude);
+//                        Log.e(this.getClass().getName(), "-------------------- from map to question = "+ latLng.latitude +", "+ latLng.longitude);
                         ((InputTextQuestionView)questionView).setAnswers(latLng.latitude +", "+ latLng.longitude);
                     }
 
                     // set question 2 (Address) text
                     questionView = questionNumberToViewMap.get("2");
                     if (questionView != null) {
-                        Log.e(this.getClass().getName(), "-------------------- from map/address to question = "+ address);
+//                        Log.e(this.getClass().getName(), "-------------------- from map/address to question = "+ address);
                         ((InputTextQuestionView)questionView).setAnswers(address);
                     }
                 }
@@ -396,7 +397,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
 
     private void loadAnswers() {
-        if (publicOpenSpace.id != 0) {     // if not a new object (i.e. if it has some answers)
+        if (publicOpenSpace.getId() != 0) {     // if not a new object (i.e. if it has some answers)
             Context context = getContext();
             AnswersDAO answersDAO = new AnswersDAO(context);
             answersDAO.open();
@@ -442,10 +443,10 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
      * This method must be called before any persistence procedure :)
      */
     public void saveObject(){
-        publicOpenSpace.name = ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "";
+        publicOpenSpace.setName(((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "");
 
         // save PublicOpenSpace object
-        if (publicOpenSpace.id == 0) // if (id == 0) we're gonna insert it
+        if (publicOpenSpace.getId() == 0) // if (id == 0) we're gonna insert it
             publicOpenSpace = PublicOpenSpaceDAO.staticInsert(getActivity(), publicOpenSpace);
         else // just update it
             PublicOpenSpaceDAO.staticUpdate(getActivity(), publicOpenSpace);
@@ -454,6 +455,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         Context context = getContext();
         AnswersDAO answersDAO = new AnswersDAO(context);
         answersDAO.open();
+        OptionDAO optionDAO = new OptionDAO(context);
+        optionDAO.open();
         // firstly, delete all previous answers
         answersDAO.delete(publicOpenSpace);
 
@@ -465,15 +468,18 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             if (question.getType() == Question.QuestionType.MULTIPLE_CHOICE) { // save "Other" Options first
                 ArrayList<Option> options = question.getAllOptions();
 
+                // Saving the "Other" Option
                 for (Option option : options) {
                     if (option.getId() == 0) {
-                        // TODO: insert into Options table
+                        option.setPublicOpenSpace(publicOpenSpace);
+                        optionDAO.insert(option);
                     }
                 }
             }
             answersDAO.insert(publicOpenSpace, question, questionView.getAnswers());
         }
 
+        optionDAO.close();
         answersDAO.close();
     }
 }
