@@ -188,7 +188,7 @@
         <!-- QUESTION 25 -->
     <question number="25" type="SINGLE_CHOICE" title="Is there litter throughout the P.O.S.?">
             <option>Yes</option>
-            <option>o</option>
+            <option>No</option>
     </question>
     
         <!-- QUESTION 26 -->
