@@ -1,6 +1,5 @@
 package org.davidcampelo.post;
 
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -30,7 +29,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 
 import org.davidcampelo.post.model.AnswersDAO;
@@ -49,20 +47,17 @@ import org.davidcampelo.post.view.MultipleQuestionView;
 import org.davidcampelo.post.view.QuestionView;
 import org.davidcampelo.post.view.SingleQuestionView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PublicOpenSpaceAddEditFragment extends Fragment
-        implements OnMapReadyCallback, OnMarkerClickListener, /*OnMapClickListener,*/ OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
+        implements OnMapReadyCallback, OnMarkerClickListener, /*OnMapClickListener,*/ OnMapLongClickListener {
 
     private PublicOpenSpace publicOpenSpace;
 
@@ -70,9 +65,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
     MapView mapView;
     GoogleMap googleMap;
-    private TreeMap<String, LatLng> hashMapPoints = null;
-    int markerIdCount;
-    String markerIdClick;
+    private ArrayList<LatLng> arrayPoints;
+    LatLng markerPointClick;
     private AlertDialog markerDialog;
 
 
@@ -235,10 +229,11 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         view3.setEnabled(false);
         container1.addView(view3);
         container1.addView(addToMap(context, "4"));
-        container1.addView(addToMap(context, "5"));
+        QuestionView view5 = addToMap(context, "5");
+        view5.setEnabled(false);
+        container1.addView(view5);
         container1.addView(addToMap(context, "6"));
 
-        // Tab 1 has a map only
         LinearLayout container2 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer2);
         container2.addView(addToMap(context, "7"));
         container2.addView(addToMap(context, "8"));
@@ -350,15 +345,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         publicOpenSpace.setName(((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "");
 
         // POLYGON POINTS
-        ArrayList<LatLng> points = new ArrayList<>();
-
-        Iterator<Map.Entry<String, LatLng>> iterator = hashMapPoints.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, LatLng> entry = iterator.next();
-            googleMap.addMarker(new MarkerOptions().title(entry.getKey()).position(entry.getValue()).draggable(true));
-            points.add(entry.getValue());
-        }
-        publicOpenSpace.setPolygonPoints(points);
+        publicOpenSpace.setPolygonPoints(arrayPoints);
 
         // NOW SAVE OBJECT
         if (publicOpenSpace.getId() == 0) // if (id == 0) we're gonna insert it
@@ -411,9 +398,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         builder.setPositiveButton(R.string.marker_click_dialog_positive, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (markerIdClick != null && hashMapPoints.get(markerIdClick) != null) {
-                    hashMapPoints.remove(markerIdClick);
-                    markerIdClick = null;
+                if (markerPointClick != null && arrayPoints.contains(markerPointClick) ) {
+                    arrayPoints.remove(markerPointClick);
+                    markerPointClick = null;
                     drawPolygon();
                 }
             }
@@ -427,40 +414,42 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         markerDialog = builder.create();
     }
 
-    private void addPoint(LatLng latLng){
-        hashMapPoints.put(String.valueOf(++markerIdCount), latLng);
-    }
-
     private void drawPolygon() {
         googleMap.clear();
-        ArrayList<LatLng> points = new ArrayList<>();
-        int size = hashMapPoints.size();
 
-        Iterator<Map.Entry<String, LatLng>> iterator = hashMapPoints.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, LatLng> entry = iterator.next();
-            googleMap.addMarker(new MarkerOptions().title(entry.getKey()).position(entry.getValue()).draggable(true));
-            if (size >= 3)
-                points.add(entry.getValue());
+        Iterator<LatLng> it = arrayPoints.iterator();
+        while (it.hasNext()) {
+            googleMap.addMarker(new MarkerOptions().position(it.next()));
         }
 
-        if (size >= 3) {
+        if (arrayPoints.size() >= 3) {
             PolygonOptions polygonOptions = new PolygonOptions();
-            polygonOptions.addAll(points);
+            polygonOptions.addAll(arrayPoints);
             polygonOptions.strokeColor(Color.argb(0, 0, 0, 100));
             polygonOptions.strokeWidth(7);
             polygonOptions.fillColor(Color.argb(100, 0, 0, 100));
             googleMap.addPolygon(polygonOptions);
         }
         // set question 3 (area) text
-        QuestionView questionView = questionNumberToViewMap.get("3");
+        QuestionView questionView;
+        questionView = questionNumberToViewMap.get("3");
         String area = "";
         if (questionView != null) {
-            if (size > 3) {
-                area = MapUtility.calculateAreaAndFormat(points);
+            if (arrayPoints.size() > 3) {
+                area = MapUtility.calculateAreaAndFormat(arrayPoints);
             }
             Log.e(this.getClass().getName(), "-------------------->>>> [AREA] from map to question = "+ area);
             ((InputDecimalQuestionView) questionView).setAnswers(area);
+        }
+        questionView = questionNumberToViewMap.get("5");
+        String centroid = "";
+        if (questionView != null) {
+            if (arrayPoints.size() > 3) {
+                LatLng latLng = MapUtility.calculateCentroid(arrayPoints);
+                centroid = latLng.latitude + ", "+ latLng.longitude;
+            }
+            Log.e(this.getClass().getName(), "-------------------->>>> [CENTROID] from map to question = "+ centroid);
+            ((InputTextQuestionView) questionView).setAnswers(centroid);
         }
 
     }
@@ -468,22 +457,19 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
-        hashMapPoints = new TreeMap<String, LatLng>();
-        markerIdCount = 0;
+        arrayPoints = new ArrayList<LatLng>();
+        markerPointClick = null;
         buildMarkerDialog();
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         if (publicOpenSpace.getPolygonPoints() != null) {
-            ArrayList<LatLng> points = publicOpenSpace.getPolygonPoints();
-            for (LatLng point : points) {
-                addPoint(point);
-            }
+            arrayPoints = publicOpenSpace.getPolygonPoints();
             drawPolygon();
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(MapUtility.calculateCentroid(points), 15));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(MapUtility.calculateCentroid(arrayPoints), 15));
         }
         else {
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 13));
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 12));
         }
 
         googleMap.getUiSettings().setZoomControlsEnabled(true);
@@ -493,7 +479,6 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
         googleMap.setOnMapLongClickListener(this);
         googleMap.setOnMarkerClickListener(this);
-        googleMap.setOnMarkerDragListener(this);
         if (ActivityCompat.checkSelfPermission(this.getActivity(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this.getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -518,7 +503,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        markerIdClick = marker.getTitle();
+        markerPointClick = marker.getPosition();
         markerDialog.show();
 
         return true;
@@ -526,25 +511,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
     @Override
     public void onMapLongClick(LatLng latLng) {
-        addPoint(latLng);
-
-        drawPolygon();
-    }
-
-
-    @Override
-    public void onMarkerDragStart(Marker marker) {
-        //
-    }
-
-    @Override
-    public void onMarkerDrag(Marker marker) {
-        //
-    }
-    @Override
-    public void onMarkerDragEnd(Marker marker) {
-        hashMapPoints.remove(marker.getTitle());
-        hashMapPoints.put(marker.getTitle(), marker.getPosition());
+        arrayPoints.add(latLng);
 
         drawPolygon();
     }
