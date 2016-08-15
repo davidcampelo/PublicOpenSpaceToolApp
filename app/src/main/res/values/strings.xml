@@ -6,6 +6,12 @@
     <string name="title_add_public_open_space_fragment">Add Public Open Space</string>
     <string name="title_edit_public_open_space_fragment">Edit Public Open Space</string>
 
+    // Map marker dialog
+    <string name="marker_click_dialog_title">Map marker options</string>
+    <string name="marker_click_dialog_question">Remove this marker?</string>
+    <string name="marker_click_dialog_positive">Yes</string>
+    <string name="marker_click_dialog_negative">No</string>
+
     // Action Menu
     <string name="action_export">Export data</string>
     <string name="action_reset">Reset data</string>

@@ -281,7 +281,7 @@ public class Questions {
     }
 
     /**
-     * Get a String representing all answers separated by {@link Constants.}
+     * Get a String representing all answers separated by {@link Constants}
      */
     public String getAnswers(){
         StringBuilder stringBuilder = new StringBuilder();

@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
+import org.davidcampelo.post.utils.Constants;
+import org.davidcampelo.post.utils.MapUtility;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -20,12 +23,14 @@ public class PublicOpenSpaceDAO extends DAO {
     static final String COLUMN_ID = "pos_id";
     static final String COLUMN_NAME = "pos_name";
     static final String COLUMN_TYPE = "pos_type";
+    static final String COLUMN_POINTS = "pos_points";
     static final String COLUMN_DATETIME = "pos_datetime";
 
     static String[] TABLE_COLUMNS = {
             COLUMN_ID,
             COLUMN_NAME,
             COLUMN_TYPE,
+            COLUMN_POINTS,
             COLUMN_DATETIME
     };
 
@@ -33,6 +38,7 @@ public class PublicOpenSpaceDAO extends DAO {
             + COLUMN_ID +" INTEGER primary key autoincrement, "
             + COLUMN_NAME +" TEXT not null,"
             + COLUMN_TYPE +" TEXT not null,"
+            + COLUMN_POINTS +" TEXT not null,"
             + COLUMN_DATETIME +");";
 
     public PublicOpenSpaceDAO(Context context) {
@@ -50,6 +56,8 @@ public class PublicOpenSpaceDAO extends DAO {
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
         values.put(COLUMN_TYPE, publicOpenSpace.type.name());
+        values.put(COLUMN_TYPE, publicOpenSpace.type.name());
+        values.put(COLUMN_POINTS, MapUtility.parsePoints(publicOpenSpace.polygonPoints));
         values.put(COLUMN_DATETIME, String.valueOf(Calendar.getInstance().getTimeInMillis()));
 
         publicOpenSpace.id = insert(TABLE_NAME, values);
@@ -63,6 +71,7 @@ public class PublicOpenSpaceDAO extends DAO {
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
         values.put(COLUMN_TYPE, publicOpenSpace.type.name());
+        values.put(COLUMN_POINTS, MapUtility.parsePoints(publicOpenSpace.polygonPoints));
 
         return (update(TABLE_NAME, values, COLUMN_ID +"="+ publicOpenSpace.id) > 0);
     }
@@ -133,7 +142,8 @@ public class PublicOpenSpaceDAO extends DAO {
                 cursor.getLong(0),                                      // id
                 cursor.getString(1),                                    // name
                 PublicOpenSpace.Type.valueOf(cursor.getString(2)),      // type
-                cursor.getLong(3)                                       // dateCreation
+                MapUtility.parsePoints(cursor.getString(3)),            // polygonPoints
+                cursor.getLong(4)                                       // dateCreation
         );
     }
 }

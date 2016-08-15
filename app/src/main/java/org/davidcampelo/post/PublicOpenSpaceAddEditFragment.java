@@ -4,9 +4,10 @@ package org.davidcampelo.post;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -20,13 +21,17 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Option;
@@ -36,6 +41,7 @@ import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.model.QuestionDAO;
 import org.davidcampelo.post.utils.Constants;
+import org.davidcampelo.post.utils.MapUtility;
 import org.davidcampelo.post.view.InputDecimalQuestionView;
 import org.davidcampelo.post.view.InputNumberQuestionView;
 import org.davidcampelo.post.view.InputTextQuestionView;
@@ -43,27 +49,32 @@ import org.davidcampelo.post.view.MultipleQuestionView;
 import org.davidcampelo.post.view.QuestionView;
 import org.davidcampelo.post.view.SingleQuestionView;
 
-import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapReadyCallback {
+public class PublicOpenSpaceAddEditFragment extends Fragment
+        implements OnMapReadyCallback, OnMarkerClickListener, /*OnMapClickListener,*/ OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
 
     private PublicOpenSpace publicOpenSpace;
 
     View fragmentLayout;
 
     MapView mapView;
-//    GoogleMap googleMap;
-    LatLng latlngMap;
+    GoogleMap googleMap;
+    private TreeMap<String, LatLng> hashMapPoints = null;
+    int markerIdCount;
+    String markerIdClick;
+    private AlertDialog markerDialog;
+
 
     private Button saveButton;
     private ImageButton posType;
@@ -90,10 +101,10 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         posType.setBackground(null);
 
         // fill tabs
-        fillTabTitles( (TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost) );
+        fillTabTitles((TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost));
 
         publicOpenSpace = PublicOpenSpaceDAO.staticGet(getActivity(), id);
-        if (publicOpenSpace == null){ // add screen
+        if (publicOpenSpace == null) { // add screen
             publicOpenSpace = new PublicOpenSpace();
         }
 
@@ -102,7 +113,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         loadAnswers();
         loadGeneralInfo();
 
-         // Gets the MapView from the XML layout and creates it
+        // Gets the MapView from the XML layout and creates it
         mapView = (MapView) fragmentLayout.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         // Gets to GoogleMap from the MapView and does initialization stuff
@@ -129,7 +140,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         return fragmentLayout;
     }
 
-    private void buildTypeDialog(){
+    private void buildTypeDialog() {
         final String[] categories = new String[]{"Park", "Square", "Garden", "Other"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -138,21 +149,21 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             @Override
             public void onClick(DialogInterface dialogInterface, int item) {
                 posTypeDialog.cancel();
-                switch (item){
+                switch (item) {
                     case 0:
-                        publicOpenSpace.setType( PublicOpenSpace.Type.PARK );
+                        publicOpenSpace.setType(PublicOpenSpace.Type.PARK);
                         posType.setImageResource(R.drawable.icon_park);
                         break;
                     case 1:
-                        publicOpenSpace.setType( PublicOpenSpace.Type.SQUARE );
+                        publicOpenSpace.setType(PublicOpenSpace.Type.SQUARE);
                         posType.setImageResource(R.drawable.icon_square);
                         break;
                     case 2:
-                        publicOpenSpace.setType( PublicOpenSpace.Type.GARDEN );
+                        publicOpenSpace.setType(PublicOpenSpace.Type.GARDEN);
                         posType.setImageResource(R.drawable.icon_garden);
                         break;
                     default:
-                        publicOpenSpace.setType( PublicOpenSpace.Type.OTHER );
+                        publicOpenSpace.setType(PublicOpenSpace.Type.OTHER);
                         posType.setImageResource(R.drawable.icon_other);
                         break;
                 }
@@ -168,25 +179,24 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.getName());
             ((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
 
-            // TODO: set up pos_type (icon)
-
             // Sets up latlng object to position on map according to question 5
             QuestionView questionView;
             questionView = this.questionNumberToViewMap.get("5");
             if (questionView != null) {
-                String geocode = ((InputTextQuestionView)questionView).getAnswers();
+                String geocode = ((InputTextQuestionView) questionView).getAnswers();
 //                Log.e(this.getClass().getName(), "-------------------- from question to map = "+ geocode);
-                if (geocode.length() > 0 ) {
+                if (geocode.length() > 0) {
                     int pos = geocode.indexOf(",");
-                    latlngMap = new LatLng(Double.valueOf(geocode.substring(0, pos)), Double.valueOf(geocode.substring(pos + 1)));
+                    // TODO list of map points and draw on map
+//                    hashMapPoints = new HashMap<String, LatLng>();
                 }
             }
             // set up address edittext
             questionView = this.questionNumberToViewMap.get("2");
             if (questionView != null) {
-                String address = ((InputTextQuestionView)questionView).getAnswers();
+                String address = ((InputTextQuestionView) questionView).getAnswers();
 //                Log.e(this.getClass().getName(), "-------------------- from question to map address = "+ address);
-                if (address.length() > 0 ) {
+                if (address.length() > 0) {
                     ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
                 }
             }
@@ -209,109 +219,6 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         }
     }
 
-
-    public String resolveAddress(double latitude, double longitude) {
-        if (latitude == Double.MAX_VALUE || longitude == Double.MAX_VALUE)
-            return "";
-
-        Geocoder geocoder;
-        List<Address> addresses = null;
-        geocoder = new Geocoder(this.getActivity(), Locale.getDefault());
-
-        // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-        try {
-            addresses = geocoder.getFromLocation(latitude, longitude, 1);
-            StringBuilder stringBuilder = new StringBuilder();
-            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-            if (address != null)
-                stringBuilder.append(address);
-            String city = addresses.get(0).getLocality();
-            if (city != null)
-                stringBuilder.append(", "+ city);
-            String postalCode = addresses.get(0).getPostalCode();
-            if (postalCode != null)
-                stringBuilder.append(" - "+ postalCode);
-
-            return stringBuilder.toString();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "Address not found!";
-    }
-
-    @Override
-    public void onMapReady(final GoogleMap googleMap) {
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
-        if (latlngMap != null) {
-            googleMap.clear();
-            googleMap.addMarker(new MarkerOptions().position(latlngMap).title(""));
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlngMap, 17));
-        }
-        else
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 13));
-
-        googleMap.getUiSettings().setZoomControlsEnabled( true );
-        googleMap.getUiSettings().setMyLocationButtonEnabled( false );
-
-        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
-                PublicOpenSpaceAddEditFragment.this.latlngMap = latLng;
-                // place marker
-                String address = resolveAddress(latLng.latitude, latLng.longitude);
-                ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
-                googleMap.clear();
-                googleMap.addMarker(new MarkerOptions().position(latLng).title(""));
-
-                // update Questions answers
-                if (questionNumberToViewMap != null) {
-                    QuestionView questionView;
-
-                    // set question 5 (Geocode) text
-                    questionView = questionNumberToViewMap.get("5");
-                    if (questionView != null) {
-//                        Log.e(this.getClass().getName(), "-------------------- from map to question = "+ latLng.latitude +", "+ latLng.longitude);
-                        ((InputTextQuestionView)questionView).setAnswers(latLng.latitude +", "+ latLng.longitude);
-                    }
-
-                    // set question 2 (Address) text
-                    questionView = questionNumberToViewMap.get("2");
-                    if (questionView != null) {
-//                        Log.e(this.getClass().getName(), "-------------------- from map/address to question = "+ address);
-                        ((InputTextQuestionView)questionView).setAnswers(address);
-                    }
-                }
-            }
-        });
-    }
-
-    @Override
-    public void onResume() {
-        mapView.onResume();
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
     /**
      * Fill UI components with our internal {@link PublicOpenSpace} object
      */
@@ -321,24 +228,22 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         questionDAO = new QuestionDAO(context);
         questionDAO.open();
 
-        LinearLayout container1 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer1);
+        LinearLayout container1 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer1);
         container1.addView(addToMap(context, "1"));
-        QuestionView view2= addToMap(context, "2");
-        view2.setEnabled(false);
-        container1.addView(view2);
-        container1.addView(addToMap(context, "3"));
+        container1.addView(addToMap(context, "2"));
+        QuestionView view3 = addToMap(context, "3");
+        view3.setEnabled(false);
+        container1.addView(view3);
         container1.addView(addToMap(context, "4"));
-        QuestionView view5= addToMap(context, "5");
-        view5.setEnabled(false);
-        container1.addView(view5);
+        container1.addView(addToMap(context, "5"));
         container1.addView(addToMap(context, "6"));
 
         // Tab 1 has a map only
-        LinearLayout container2 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer2);
+        LinearLayout container2 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer2);
         container2.addView(addToMap(context, "7"));
         container2.addView(addToMap(context, "8"));
 
-        LinearLayout container3 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer3);
+        LinearLayout container3 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer3);
         container3.addView(addToMap(context, "9"));
         container3.addView(addToMap(context, "10"));
         container3.addView(addToMap(context, "11"));
@@ -359,7 +264,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         container3.addView(addToMap(context, "24"));
         container3.addView(addToMap(context, "25"));
 
-        LinearLayout container4 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer4);
+        LinearLayout container4 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer4);
         container4.addView(addToMap(context, "26"));
         container4.addView(addToMap(context, "27"));
         container4.addView(addToMap(context, "28"));
@@ -379,7 +284,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
         container4.addView(addToMap(context, "41"));
         container4.addView(addToMap(context, "42"));
 
-        LinearLayout container5 = (LinearLayout)fragmentLayout.findViewById(R.id.addEditContainer5);
+        LinearLayout container5 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer5);
         container5.addView(addToMap(context, "43"));
         container5.addView(addToMap(context, "44"));
         container5.addView(addToMap(context, "45"));
@@ -394,7 +299,6 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
         questionDAO.close();
     }
-
 
     private void loadAnswers() {
         if (publicOpenSpace.getId() != 0) {     // if not a new object (i.e. if it has some answers)
@@ -412,7 +316,6 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
             answersDAO.close();
         }
     }
-
 
     private final QuestionView addToMap(Context context, String questionNumber) {
         Question question = questionDAO.get(questionNumber, publicOpenSpace);
@@ -439,19 +342,31 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
     /**
      * Fill our internal {@link PublicOpenSpace} object with UI components values
-     *
+     * <p>
      * This method must be called before any persistence procedure :)
      */
-    public void saveObject(){
+    public void saveObject() {
+        // NAME
         publicOpenSpace.setName(((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "");
 
-        // save PublicOpenSpace object
+        // POLYGON POINTS
+        ArrayList<LatLng> points = new ArrayList<>();
+
+        Iterator<Map.Entry<String, LatLng>> iterator = hashMapPoints.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, LatLng> entry = iterator.next();
+            googleMap.addMarker(new MarkerOptions().title(entry.getKey()).position(entry.getValue()).draggable(true));
+            points.add(entry.getValue());
+        }
+        publicOpenSpace.setPolygonPoints(points);
+
+        // NOW SAVE OBJECT
         if (publicOpenSpace.getId() == 0) // if (id == 0) we're gonna insert it
             publicOpenSpace = PublicOpenSpaceDAO.staticInsert(getActivity(), publicOpenSpace);
         else // just update it
             PublicOpenSpaceDAO.staticUpdate(getActivity(), publicOpenSpace);
 
-        // save questions answers
+        // SAVE QUESTIONS ANSWERSS
         Context context = getContext();
         AnswersDAO answersDAO = new AnswersDAO(context);
         answersDAO.open();
@@ -481,5 +396,180 @@ public class PublicOpenSpaceAddEditFragment extends Fragment implements OnMapRea
 
         optionDAO.close();
         answersDAO.close();
+    }
+
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////     MAP METHODS   ////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void buildMarkerDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(R.string.marker_click_dialog_question);
+        builder.setPositiveButton(R.string.marker_click_dialog_positive, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (markerIdClick != null && hashMapPoints.get(markerIdClick) != null) {
+                    hashMapPoints.remove(markerIdClick);
+                    markerIdClick = null;
+                    drawPolygon();
+                }
+            }
+        });
+        builder.setNegativeButton(R.string.marker_click_dialog_negative, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // do nothing
+            }
+        });
+        markerDialog = builder.create();
+    }
+
+    private void addPoint(LatLng latLng){
+        hashMapPoints.put(String.valueOf(++markerIdCount), latLng);
+    }
+
+    private void drawPolygon() {
+        googleMap.clear();
+        ArrayList<LatLng> points = new ArrayList<>();
+        int size = hashMapPoints.size();
+
+        Iterator<Map.Entry<String, LatLng>> iterator = hashMapPoints.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, LatLng> entry = iterator.next();
+            googleMap.addMarker(new MarkerOptions().title(entry.getKey()).position(entry.getValue()).draggable(true));
+            if (size >= 3)
+                points.add(entry.getValue());
+        }
+
+        if (size >= 3) {
+            PolygonOptions polygonOptions = new PolygonOptions();
+            polygonOptions.addAll(points);
+            polygonOptions.strokeColor(Color.argb(0, 0, 0, 100));
+            polygonOptions.strokeWidth(7);
+            polygonOptions.fillColor(Color.argb(100, 0, 0, 100));
+            googleMap.addPolygon(polygonOptions);
+        }
+        // set question 3 (area) text
+        QuestionView questionView = questionNumberToViewMap.get("3");
+        String area = "";
+        if (questionView != null) {
+            if (size > 3) {
+                area = MapUtility.calculateAreaAndFormat(points);
+            }
+            Log.e(this.getClass().getName(), "-------------------->>>> [AREA] from map to question = "+ area);
+            ((InputDecimalQuestionView) questionView).setAnswers(area);
+        }
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        this.googleMap = googleMap;
+        hashMapPoints = new TreeMap<String, LatLng>();
+        markerIdCount = 0;
+        buildMarkerDialog();
+
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        if (publicOpenSpace.getPolygonPoints() != null) {
+            ArrayList<LatLng> points = publicOpenSpace.getPolygonPoints();
+            for (LatLng point : points) {
+                addPoint(point);
+            }
+            drawPolygon();
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(MapUtility.calculateCentroid(points), 15));
+        }
+        else {
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 13));
+        }
+
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.setMyLocationEnabled(true);
+        googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+        googleMap.getUiSettings().setMapToolbarEnabled(false);
+
+        googleMap.setOnMapLongClickListener(this);
+        googleMap.setOnMarkerClickListener(this);
+        googleMap.setOnMarkerDragListener(this);
+        if (ActivityCompat.checkSelfPermission(this.getActivity(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this.getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+    }
+
+    /**
+     * Add point to list of coordinates of map polygon
+     */
+//    @Override
+//    public void onMapClick(LatLng latLng) {
+//        //
+//    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        markerIdClick = marker.getTitle();
+        markerDialog.show();
+
+        return true;
+    }
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+        addPoint(latLng);
+
+        drawPolygon();
+    }
+
+
+    @Override
+    public void onMarkerDragStart(Marker marker) {
+        //
+    }
+
+    @Override
+    public void onMarkerDrag(Marker marker) {
+        //
+    }
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        hashMapPoints.remove(marker.getTitle());
+        hashMapPoints.put(marker.getTitle(), marker.getPosition());
+
+        drawPolygon();
+    }
+
+    @Override
+    public void onResume() {
+        mapView.onResume();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 }

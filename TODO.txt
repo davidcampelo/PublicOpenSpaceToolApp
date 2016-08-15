@@ -1,7 +1,16 @@
 DONE! Criar um campo com tipos de parque (Praça, Largo, Jardim e outros)
-- Implementar Question do tipo MATRIX (29 e 40)
-- Os tipos de parque podem ser usados para criar o icone da lista
-- Usar Transactions para a inserção/alteração de objetos inteiros
-- Usar "loading..." para as telas
+- Implementar Question do tipo MATRIX (29 e 40) - 29 poderia ter uma Question precedente perguntando a qtdade de areas e a 40 será quebrada em 3 Questions
+DONE! Os tipos de parque podem ser usados para criar o icone da lista
+- Usar DB Transactions para a inserção/alteração de objetos inteiros de modo a evitar estados inconsistentes do banco
+- Usar "loading..." para as telas que fazem muito acesso ao DB
 - Criar tela para exportar os dados 
+- Criar tela com listagem de projetos
+- Criar tela inicial com mosaico de NEW PROJECT, OPEN PROJECT, EXPORT DATA e SETTINGS (HELP? ABOUT?)
+- Criar menu lateral sempre presente e ativável com as mesmas opções do mosaico
+- Desenhar polígono delimitando o parque e calcular automaticamente a área (Geocode pode ser a média aritmética dos pontos)
+
+
+
+
+
 
