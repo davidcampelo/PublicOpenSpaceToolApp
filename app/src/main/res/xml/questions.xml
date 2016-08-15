@@ -10,7 +10,7 @@
     </question>
 
     <!-- QUESTION 3 -->
-    <question number="3" type="INPUT_DECIMAL" title="Area in m² (mark polygon on General tab)">
+    <question number="3" type="INPUT_DECIMAL" title="Area in m² (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 4 -->
@@ -18,7 +18,7 @@
     </question>
 
     <!-- QUESTION 5 -->
-    <question number="5" type="INPUT_TEXT" title="Geocode">
+    <question number="5" type="INPUT_TEXT" title="Geocode (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 6 -->
