@@ -43,7 +43,6 @@ public class    PublicOpenSpaceListFragment extends ListFragment implements Rese
 //        getListView().setDividerHeight(2);
 
         registerForContextMenu(getListView());
-        ((MainActivity)getActivity()).setResetDataListener(this);
     }
 
     @Override
