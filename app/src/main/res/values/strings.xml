@@ -1,6 +1,6 @@
 <resources>
-// screen titles
-    <string name="app_name">POST</string>
+    // screen titles
+    <string name="app_name">Public Open Space Tool</string>
     <string name="title_main">Public Open Space Tool</string>
     <string name="title_view_public_open_space_fragment">View Public Open Space</string>
     <string name="title_add_public_open_space_fragment">Add Public Open Space</string>

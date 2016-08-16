@@ -1,6 +1,0 @@
-- Criar um campo com tipos de parque (Praça, Largo, Jardim e outros)
-- Os tipos de parque podem ser usados para criar o icone da lista
-- Usar Transactions para a inserção/alteração de objetos inteiros
-- Usar "loading..." para as telas
--  
-
