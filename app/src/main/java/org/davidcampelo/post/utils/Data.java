@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.util.Log;
 
-import org.davidcampelo.post.MainActivity;
 import org.davidcampelo.post.R;
 import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Option;

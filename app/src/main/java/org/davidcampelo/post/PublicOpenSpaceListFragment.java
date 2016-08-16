@@ -1,7 +1,7 @@
 package org.davidcampelo.post;
 
 
-import android.app.ListFragment;
+import android.support.v4.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link ListFragment} subclass.
  */
-public class    PublicOpenSpaceListFragment extends ListFragment implements ResetDataListener {
+public class    PublicOpenSpaceListFragment extends ListFragment {
 
     private ArrayList<PublicOpenSpace> list;
     private PublicOpenSpaceListAdapter listAdapter;
@@ -93,18 +93,12 @@ public class    PublicOpenSpaceListFragment extends ListFragment implements Rese
     }
 
     private void launchActivity(PublicOpenSpace object, Constants.FragmentAction action) {
-        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        Intent intent = new Intent(getActivity(), PublicOpenSpaceAddEditActivity.class);
 
         intent.putExtra(Constants.INTENT_ID_EXTRA, object.getId());
         intent.putExtra(Constants.INTENT_ACTION_EXTRA, action);
 
         startActivity(intent);
 
-    }
-
-    @Override
-    public void notifyReset() {
-        listAdapter.clear();
-        listAdapter.notifyDataSetChanged();
     }
 }
