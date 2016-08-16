@@ -1,12 +1,10 @@
 package org.davidcampelo.post;
 
-import android.app.ListFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.BaseAdapter;
 
 import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Option;
