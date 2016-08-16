@@ -85,8 +85,11 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
 
         // Inflate the layout for this fragment
-        Intent intent = getActivity().getIntent();
-        long id = intent.getLongExtra(Constants.INTENT_ID_EXTRA, 0);
+        long id = 0;
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            id = bundle.getLong(Constants.INTENT_ID_EXTRA, 0);
+        }
 
         // get references to components
         fragmentLayout = inflater.inflate(R.layout.fragment_public_open_space_add_edit, container, false);

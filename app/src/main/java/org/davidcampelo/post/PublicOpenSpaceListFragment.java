@@ -1,13 +1,17 @@
 package org.davidcampelo.post;
 
 
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -21,10 +25,34 @@ import java.util.ArrayList;
 /**
  * A simple {@link ListFragment} subclass.
  */
-public class    PublicOpenSpaceListFragment extends ListFragment {
+public class PublicOpenSpaceListFragment extends ListFragment {
 
     private ArrayList<PublicOpenSpace> list;
     private PublicOpenSpaceListAdapter listAdapter;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View fragmentLayout = inflater.inflate(R.layout.fragment_public_open_space_list, container, false);
+
+        FloatingActionButton fab = (FloatingActionButton) fragmentLayout.findViewById(R.id.fabAddPublicOpenSpace);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle args = new Bundle();
+                Fragment fragment = new PublicOpenSpaceAddEditFragment();
+                fragment.setArguments(args);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, fragment, "PublicOpenSpaceAddEditFragment")
+                        .commit();
+
+                getActivity().setTitle(R.string.title_view_public_open_space_fragment);
+            }
+        });
+
+        return fragmentLayout;
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -39,7 +67,7 @@ public class    PublicOpenSpaceListFragment extends ListFragment {
 
         setListAdapter(listAdapter);
 
-//        getListView().setDivider(ContextCompat.getDrawable(getActivity(), android.R.color.holo_blue_bright));
+//        getListView().setDivider(ContextCompat.getDrawable(getActivity(), android.R.color.background_dark));
 //        getListView().setDividerHeight(2);
 
         registerForContextMenu(getListView());
@@ -58,7 +86,7 @@ public class    PublicOpenSpaceListFragment extends ListFragment {
         super.onListItemClick(l, v, position, id);
 
         PublicOpenSpace object = (PublicOpenSpace) getListAdapter().getItem(position);
-        launchActivity(object, Constants.FragmentAction.EDIT);
+        launch(object);
 
     }
 
@@ -71,7 +99,7 @@ public class    PublicOpenSpaceListFragment extends ListFragment {
         PublicOpenSpace object = (PublicOpenSpace) getListAdapter().getItem(info.position);
         switch (item.getItemId()){
             case R.id.fragment_public_open_space_list_menu_edit:
-                launchActivity( object, Constants.FragmentAction.EDIT );
+                launch( object );
                 return true;
             case R.id.fragment_public_open_space_list_menu_delete:
                 // delete from DB
@@ -92,13 +120,18 @@ public class    PublicOpenSpaceListFragment extends ListFragment {
 
     }
 
-    private void launchActivity(PublicOpenSpace object, Constants.FragmentAction action) {
-        Intent intent = new Intent(getActivity(), PublicOpenSpaceAddEditActivity.class);
+    private void launch(PublicOpenSpace object) {
+        Bundle args = new Bundle();
+        args.putLong(Constants.INTENT_ID_EXTRA, object.getId());
+        Fragment fragment = new PublicOpenSpaceAddEditFragment();
+        fragment.setArguments(args);
 
-        intent.putExtra(Constants.INTENT_ID_EXTRA, object.getId());
-        intent.putExtra(Constants.INTENT_ACTION_EXTRA, action);
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mainContainer, fragment, "PublicOpenSpaceAddEditFragment")
+                .commit();
 
-        startActivity(intent);
+        getActivity().setTitle(R.string.title_view_public_open_space_fragment);
 
     }
 }

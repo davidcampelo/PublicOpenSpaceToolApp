@@ -44,16 +44,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MosaicActivity"
+        <activity android:name=".MainActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".PublicOpenSpaceListActivity"
-            android:parentActivityName=".MosaicActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".PublicOpenSpaceAddEditActivity"
-            android:parentActivityName=".PublicOpenSpaceListActivity"
-            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

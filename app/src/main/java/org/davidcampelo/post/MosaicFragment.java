@@ -43,16 +43,12 @@ public class MosaicFragment extends Fragment {
         imageButtonOpenProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), PublicOpenSpaceListActivity.class));
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//                Fragment fragment = new PublicOpenSpaceListFragment();
-//                fragmentTransaction.add(R.id.mainContainer, fragment, "LIST_FRAGMENT");
-//                fragmentTransaction.show(fragment);
-//                fragmentTransaction.commit();
-//
-//                getActivity().setTitle(R.string.title_view_public_open_space_fragment);
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, new PublicOpenSpaceListFragment(), "PublicOpenSpaceListFragment")
+                        .commit();
+
+                getActivity().setTitle(R.string.title_view_public_open_space_fragment);
 
             }
         });
