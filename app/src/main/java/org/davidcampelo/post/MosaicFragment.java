@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -33,6 +32,9 @@ public class MosaicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        getActivity().setTitle(R.string.app_name);
+
         // Inflate the layout for this fragment
         final View fragmentLayout = inflater.inflate(R.layout.fragment_mosaic, container, false);
         imageButtonNewProject = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonNewProject);

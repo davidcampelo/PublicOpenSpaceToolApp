@@ -6,6 +6,18 @@
     <string name="title_add_public_open_space_fragment">Add Public Open Space</string>
     <string name="title_edit_public_open_space_fragment">Edit Public Open Space</string>
 
+    // drawer menu
+    <string-array name="menu_titles">
+        <item>New Project</item>
+        <item>Open Project</item>
+        <item>Export Data</item>
+        <item>Import data</item>
+        <item>Help</item>
+        <item>About</item>
+    </string-array>
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
     // Map marker dialog
     <string name="marker_click_dialog_title">Map marker options</string>
     <string name="marker_click_dialog_question">Remove this marker?</string>
