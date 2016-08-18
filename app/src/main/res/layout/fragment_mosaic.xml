@@ -39,14 +39,14 @@
         </TableRow>
         <TableRow>
             <TextView
-                android:text="New Project"
+                android:text="@string/mosaic_new_project"
                 android:layout_gravity="center"
                 android:paddingBottom="@dimen/mosaic_icon_default_padding"
                 android:paddingLeft="@dimen/mosaic_icon_default_padding"
                 android:paddingRight="@dimen/mosaic_icon_default_padding"
                 android:layout_column="0"/>
             <TextView
-                android:text="Open Project"
+                android:text="@string/mosaic_open_project"
                 android:layout_gravity="center"
                 android:paddingBottom="@dimen/mosaic_icon_default_padding"
                 android:paddingLeft="@dimen/mosaic_icon_default_padding"
@@ -80,7 +80,7 @@
                 android:paddingLeft="@dimen/mosaic_icon_default_padding"
                 android:paddingRight="@dimen/mosaic_icon_default_padding"
                 android:paddingBottom="@dimen/mosaic_icon_default_padding"
-                android:text="Export data"
+                android:text="@string/mosaic_export_data"
                 android:layout_gravity="center"
 
                 android:layout_column="0"/>
@@ -88,7 +88,7 @@
                 android:paddingLeft="@dimen/mosaic_icon_default_padding"
                 android:paddingRight="@dimen/mosaic_icon_default_padding"
                 android:paddingBottom="@dimen/mosaic_icon_default_padding"
-                android:text="Settings"
+                android:text="@string/mosaic_settings"
                 android:layout_gravity="center"
                 android:layout_column="1"/>
         </TableRow>
