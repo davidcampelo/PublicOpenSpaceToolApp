@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -33,7 +34,7 @@ public class MosaicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        getActivity().setTitle(R.string.app_name);
+        getActivity().setTitle(R.string.title_mosaic);
 
         // Inflate the layout for this fragment
         final View fragmentLayout = inflater.inflate(R.layout.fragment_mosaic, container, false);
@@ -42,16 +43,25 @@ public class MosaicFragment extends Fragment {
         imageButtonSettings = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonSettings);
         imageButtonExportData = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonExportData);
 
+        imageButtonNewProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, new ProjectAddEditFragment())
+                        .addToBackStack("")
+                        .commit();
+            }
+        });
+
         imageButtonOpenProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.mainContainer, new PublicOpenSpaceListFragment(), "PublicOpenSpaceListFragment")
+                        .replace(R.id.mainContainer, new ProjectListFragment())
+                        .addToBackStack("")
                         .commit();
-
-                getActivity().setTitle(R.string.title_view_public_open_space_fragment);
-
             }
         });
 

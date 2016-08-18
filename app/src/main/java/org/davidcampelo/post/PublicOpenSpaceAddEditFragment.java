@@ -2,7 +2,6 @@ package org.davidcampelo.post;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,6 +33,7 @@ import com.google.android.gms.maps.model.PolygonOptions;
 import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.OptionDAO;
+import org.davidcampelo.post.model.Project;
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Question;
@@ -60,6 +60,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         implements OnMapReadyCallback, OnMarkerClickListener, /*OnMapClickListener,*/ OnMapLongClickListener {
 
     private PublicOpenSpace publicOpenSpace;
+    private Project project;
 
     View fragmentLayout;
 
@@ -83,16 +84,30 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        // inflate layout
+        fragmentLayout = inflater.inflate(R.layout.fragment_public_open_space_add_edit, container, false);
 
-        // Inflate the layout for this fragment
-        long id = 0;
+        // Bundle cannot be null as Project ***MUST*** be set
         Bundle bundle = this.getArguments();
-        if (bundle != null){
-            id = bundle.getLong(Constants.INTENT_ID_EXTRA, 0);
+        try{
+            publicOpenSpace = (PublicOpenSpace)bundle.getSerializable(Constants.PUBLIC_OPEN_SPACE_EXTRA);
+
+            getActivity().setTitle(R.string.title_public_open_space_edit);
+
+            // fill fields
+            ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.getName());
+            ((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
+        }
+        catch (NullPointerException e){
+            publicOpenSpace = new PublicOpenSpace();
+            project = (Project) bundle.getSerializable(Constants.PROJECT_EXTRA);
+            publicOpenSpace.setProject(project);
+
+            getActivity().setTitle(R.string.title_public_open_space_add);
         }
 
+
         // get references to components
-        fragmentLayout = inflater.inflate(R.layout.fragment_public_open_space_add_edit, container, false);
         saveButton = (Button) fragmentLayout.findViewById(R.id.addEditSaveButton);
         posType = (ImageButton) fragmentLayout.findViewById(R.id.addEditItemType);
         posType.setBackground(null);
@@ -100,15 +115,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         // fill tabs
         fillTabTitles((TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost));
 
-        publicOpenSpace = PublicOpenSpaceDAO.staticGet(getActivity(), id);
-        if (publicOpenSpace == null) { // add screen
-            publicOpenSpace = new PublicOpenSpace();
-        }
-
         questionNumberToViewMap = new HashMap<>();
         loadQuestionsAndOptions();
         loadAnswers();
-        loadGeneralInfo();
 
         // Gets the MapView from the XML layout and creates it
         mapView = (MapView) fragmentLayout.findViewById(R.id.mapview);
@@ -138,10 +147,10 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
     }
 
     private void buildTypeDialog() {
-        final String[] categories = new String[]{"Park", "Square", "Garden", "Other"};
+        final String[] categories = new String[]{"Park", "Square", "Garden", "Other"}; // TODO move to resource file
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Please choose P.O.S. type");
+        //builder.setTitle("Please choose P.O.S. type");
         builder.setSingleChoiceItems(categories, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int item) {
@@ -168,36 +177,6 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         });
 
         posTypeDialog = builder.create();
-    }
-
-    private void loadGeneralInfo() {
-        if (publicOpenSpace.getId() != 0) {
-            // set up name
-            ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.getName());
-            ((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
-
-            // Sets up latlng object to position on map according to question 5
-            QuestionView questionView;
-            questionView = this.questionNumberToViewMap.get("5");
-            if (questionView != null) {
-                String geocode = ((InputTextQuestionView) questionView).getAnswers();
-//                Log.e(this.getClass().getName(), "-------------------- from question to map = "+ geocode);
-                if (geocode.length() > 0) {
-                    int pos = geocode.indexOf(",");
-                    // TODO list of map points and draw on map
-//                    hashMapPoints = new HashMap<String, LatLng>();
-                }
-            }
-            // set up address edittext
-            questionView = this.questionNumberToViewMap.get("2");
-            if (questionView != null) {
-                String address = ((InputTextQuestionView) questionView).getAnswers();
-//                Log.e(this.getClass().getName(), "-------------------- from question to map address = "+ address);
-                if (address.length() > 0) {
-                    ((TextView) fragmentLayout.findViewById(R.id.addEditItemAddress)).setText(address);
-                }
-            }
-        }
     }
 
     private void fillTabTitles(TabHost host) {
@@ -356,7 +335,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         else // just update it
             PublicOpenSpaceDAO.staticUpdate(getActivity(), publicOpenSpace);
 
-        // SAVE QUESTIONS ANSWERSS
+        // SAVE QUESTIONS ANSWERS
         Context context = getContext();
         AnswersDAO answersDAO = new AnswersDAO(context);
         answersDAO.open();

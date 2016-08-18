@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 /**
  * Created by davidcampelo on 7/28/16.
+ * {@deprecated}
  */
 // QUESTIONS
 public class Questions {

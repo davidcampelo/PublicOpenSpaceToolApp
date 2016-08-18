@@ -1,10 +1,13 @@
 <resources>
     // screen titles
     <string name="app_name">Public Open Space Tool</string>
-    <string name="title_main">Public Open Space Tool</string>
-    <string name="title_view_public_open_space_fragment">View Public Open Space</string>
-    <string name="title_add_public_open_space_fragment">Add Public Open Space</string>
-    <string name="title_edit_public_open_space_fragment">Edit Public Open Space</string>
+    <string name="title_mosaic">:: Public Open Space Tool ::</string>
+    <string name="title_project_list">Project List</string>
+    <string name="title_project_add">Add project</string>
+    <string name="title_project_edit">Edit project</string>
+    <string name="title_public_open_space_list">Public Open Space List</string>
+    <string name="title_public_open_space_add">Add Public Open Space</string>
+    <string name="title_public_open_space_edit">Edit Public Open Space</string>
 
     // drawer menu
     <string name="mosaic_new_project">New Project</string>
@@ -36,12 +39,21 @@
     <string name="action_reset_dialog_positive">Yes, clear all data</string>
     <string name="action_reset_dialog_negative">No, do not erase</string>
 
+    // fragment_project_list_menu
+    <string name="fragment_project_list_menu_view">View Public Open Spaces</string>
+    <string name="fragment_project_list_menu_add_public_open_space">Add new Public Open Space</string>
+    <string name="fragment_project_list_menu_edit">Edit project</string>
+    <string name="fragment_project_list_menu_delete">Delete project</string>
+
     // fragment_public_open_space_list_menu
-    <string name="fragment_public_open_space_list_menu_edit">Edit</string>
-    <string name="fragment_public_open_space_list_menu_delete">Delete</string>
+    <string name="fragment_public_open_space_list_menu_edit">Edit Public Open Space</string>
+    <string name="fragment_public_open_space_list_menu_delete">Delete Public Open Space</string>
 
     // fragment_public_open_space_add_edit
     <string name="fragment_public_open_space_add_edit_save">Save</string>
+
+    // fragment_project_add_edit
+    <string name="fragment_project_add_edit_save">Save</string>
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBnpQFyArNBeu-zJq-z-2815Hexi-FPJQM</string>
 

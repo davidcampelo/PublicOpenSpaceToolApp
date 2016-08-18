@@ -24,6 +24,7 @@ public class PublicOpenSpaceDAO extends DAO {
     static final String COLUMN_NAME = "pos_name";
     static final String COLUMN_TYPE = "pos_type";
     static final String COLUMN_POINTS = "pos_points";
+    static final String COLUMN_PROJECT_ID = "prj_id";
     static final String COLUMN_DATETIME = "pos_datetime";
 
     static String[] TABLE_COLUMNS = {
@@ -31,6 +32,7 @@ public class PublicOpenSpaceDAO extends DAO {
             COLUMN_NAME,
             COLUMN_TYPE,
             COLUMN_POINTS,
+            COLUMN_PROJECT_ID,
             COLUMN_DATETIME
     };
 
@@ -39,6 +41,7 @@ public class PublicOpenSpaceDAO extends DAO {
             + COLUMN_NAME +" TEXT not null,"
             + COLUMN_TYPE +" TEXT not null,"
             + COLUMN_POINTS +" TEXT not null,"
+            + COLUMN_PROJECT_ID +" INTEGER NOT NULL,"
             + COLUMN_DATETIME +");";
 
     public PublicOpenSpaceDAO(Context context) {
@@ -56,8 +59,8 @@ public class PublicOpenSpaceDAO extends DAO {
 
         values.put(COLUMN_NAME, publicOpenSpace.name);
         values.put(COLUMN_TYPE, publicOpenSpace.type.name());
-        values.put(COLUMN_TYPE, publicOpenSpace.type.name());
         values.put(COLUMN_POINTS, MapUtility.parsePoints(publicOpenSpace.polygonPoints));
+        values.put(COLUMN_PROJECT_ID, publicOpenSpace.project.id);
         values.put(COLUMN_DATETIME, String.valueOf(Calendar.getInstance().getTimeInMillis()));
 
         publicOpenSpace.id = insert(TABLE_NAME, values);
@@ -104,6 +107,21 @@ public class PublicOpenSpaceDAO extends DAO {
         return list;
     }
 
+    public ArrayList<PublicOpenSpace> getAllByProject(Project project) {
+        ArrayList<PublicOpenSpace> list = new ArrayList<PublicOpenSpace>();
+
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_PROJECT_ID +"= "+ project.id);
+
+        for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
+            PublicOpenSpace object = cursorToObject(cursor);
+            object.project = project;
+            list.add(object);
+        }
+
+        cursor.close();
+
+        return list;
+    }
     public boolean delete(PublicOpenSpace publicOpenSpace){
         return (delete(TABLE_NAME, COLUMN_ID +"="+ publicOpenSpace.id) > 0);
     }
@@ -143,7 +161,8 @@ public class PublicOpenSpaceDAO extends DAO {
                 cursor.getString(1),                                    // name
                 PublicOpenSpace.Type.valueOf(cursor.getString(2)),      // type
                 MapUtility.parsePoints(cursor.getString(3)),            // polygonPoints
-                cursor.getLong(4)                                       // dateCreation
+                new Project(cursor.getLong(4)),                         // Project id
+                cursor.getLong(5)                                       // dateCreation
         );
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <item
+        android:id="@+id/fragment_project_list_menu_add_public_open_space"
+        android:title="@string/fragment_project_list_menu_add_public_open_space"/>
+    <item
+        android:id="@+id/fragment_project_list_menu_view"
+        android:title="@string/fragment_project_list_menu_view"/>
+    <item
+        android:id="@+id/fragment_project_list_menu_edit"
+        android:title="@string/fragment_project_list_menu_edit"/>
+    <item
+        android:id="@+id/fragment_project_list_menu_delete"
+        android:title="@string/fragment_project_list_menu_delete"/>
+</menu>

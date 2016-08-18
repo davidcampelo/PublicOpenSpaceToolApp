@@ -23,6 +23,7 @@ public final class DAOHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL(ProjectDAO.TABLE_CREATE_CMD);
         sqLiteDatabase.execSQL(PublicOpenSpaceDAO.TABLE_CREATE_CMD);
         sqLiteDatabase.execSQL(QuestionDAO.TABLE_CREATE_CMD);
         sqLiteDatabase.execSQL(OptionDAO.TABLE_CREATE_CMD);
@@ -35,6 +36,7 @@ public final class DAOHelper extends SQLiteOpenHelper{
                 newVersion +", which will destroy all old data");
 
         // dropping table
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ ProjectDAO.TABLE_NAME );
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ PublicOpenSpaceDAO.TABLE_NAME );
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ QuestionDAO.TABLE_NAME );
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ OptionDAO.TABLE_NAME );

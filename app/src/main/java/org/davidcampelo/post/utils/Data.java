@@ -9,6 +9,7 @@ import org.davidcampelo.post.R;
 import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.OptionDAO;
+import org.davidcampelo.post.model.ProjectDAO;
 import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.model.QuestionDAO;
@@ -69,6 +70,10 @@ public class Data {
     }
 
     public static void clearDatabase(Context context) {
+        ProjectDAO projectDAO = new ProjectDAO(context);
+        projectDAO.open();
+        projectDAO.resetData();
+        projectDAO.close();
         PublicOpenSpaceDAO publicOpenSpaceDAO = new PublicOpenSpaceDAO(context);
         publicOpenSpaceDAO.open();
         publicOpenSpaceDAO.resetData();
