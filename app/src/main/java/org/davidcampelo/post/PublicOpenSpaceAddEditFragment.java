@@ -148,11 +148,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
     }
 
     private void buildTypeDialog() {
-        final String[] categories = new String[]{"Park", "Square", "Garden", "Other"}; // TODO move to resource file
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         //builder.setTitle("Please choose P.O.S. type");
-        builder.setSingleChoiceItems(categories, 0, new DialogInterface.OnClickListener() {
+        builder.setSingleChoiceItems(getResources().getStringArray(R.array.public_open_space_types), 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int item) {
                 posTypeDialog.cancel();

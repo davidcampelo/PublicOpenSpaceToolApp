@@ -51,6 +51,16 @@
 
     // fragment_public_open_space_add_edit
     <string name="fragment_public_open_space_add_edit_save">Save</string>
+    <string name="public_open_space_type_park">Park</string>
+    <string name="public_open_space_type_square">Square</string>
+    <string name="public_open_space_type_garden">Garden</string>
+    <string name="public_open_space_type_other">Other</string>
+    <string-array name="public_open_space_types">
+        <item>@string/public_open_space_type_park</item>
+        <item>@string/public_open_space_type_square</item>
+        <item>@string/public_open_space_type_garden</item>
+        <item>@string/public_open_space_type_other</item>
+    </string-array>
 
     // fragment_project_add_edit
     <string name="fragment_project_add_edit_save">Save</string>
