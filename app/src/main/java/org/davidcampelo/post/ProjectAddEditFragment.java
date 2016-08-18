@@ -67,7 +67,6 @@ public class ProjectAddEditFragment extends Fragment
             // fill fields
             ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(project.getName());
             ((TextView) fragmentLayout.findViewById(R.id.addEditItemDesc)).setText(project.getDesc());
-
         }
         catch (NullPointerException e){
             project = new Project();
@@ -175,13 +174,14 @@ public class ProjectAddEditFragment extends Fragment
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         if (project.getPolygonPoints() != null) {
+            MapUtility.moveMapCamera(googleMap, project.getPolygonPoints());
             arrayPoints = project.getPolygonPoints();
             drawPolygon();
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(MapUtility.calculateCentroid(arrayPoints), 12));
         }
         else {
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 7));
+            MapUtility.moveMapCamera(googleMap, Constants.PORTUGAL_BOUNDING_POINTS);
         }
+
 
         googleMap.getUiSettings().setZoomControlsEnabled(true);
         googleMap.setMyLocationEnabled(true);

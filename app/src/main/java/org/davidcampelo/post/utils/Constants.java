@@ -1,5 +1,9 @@
 package org.davidcampelo.post.utils;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
+
 /**
  * Created by davidcampelo on 7/26/16.
  */
@@ -13,6 +17,12 @@ public class Constants {
     public static final String[] TAB_TITLES = new String[]{ "Location", "General", "Activities", "Environmental quality", "Amenities", "Safety"};
     public static final String MULTIPLE_OPTIONS_SEPARATOR = "&**&";
     public static final String POLYGON_POINTS_SEPARATOR = "*";
+    public static final ArrayList<LatLng> PORTUGAL_BOUNDING_POINTS;
+    static {
+        PORTUGAL_BOUNDING_POINTS = new ArrayList<LatLng>();
+        PORTUGAL_BOUNDING_POINTS.add(new LatLng(42.076823, -8.958980));
+        PORTUGAL_BOUNDING_POINTS.add(new LatLng(36.995029, -7.364849));
+    }
     ;
 
     public enum FragmentAction {

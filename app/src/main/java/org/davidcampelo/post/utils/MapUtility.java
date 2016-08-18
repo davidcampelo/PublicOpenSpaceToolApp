@@ -6,7 +6,10 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.util.Log;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -20,6 +23,8 @@ import java.util.StringTokenizer;
  */
 public class MapUtility {
 
+    /** Default padding for map camera */
+    private static final int DEFAULT_PADDING = 50;
     private static String LOG_TAG = "[MAP UTILITY] ";
 
     private static DecimalFormat decimalFormat = new DecimalFormat("#.##");
@@ -169,5 +174,15 @@ public class MapUtility {
         }
 
         return new LatLng(x/count, y/count);
+    }
+
+    public static void moveMapCamera(GoogleMap googleMap, ArrayList<LatLng> polygonPoints) {
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (LatLng point : polygonPoints) {
+            builder.include(point);
+        }
+        LatLngBounds bounds = builder.build();
+
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, DEFAULT_PADDING));
     }
 }

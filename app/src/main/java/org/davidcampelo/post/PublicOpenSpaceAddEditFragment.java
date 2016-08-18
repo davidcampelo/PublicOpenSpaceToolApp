@@ -26,6 +26,7 @@ import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
@@ -446,12 +447,12 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         if (publicOpenSpace.getPolygonPoints() != null) {
+            MapUtility.moveMapCamera(googleMap, publicOpenSpace.getPolygonPoints());
             arrayPoints = publicOpenSpace.getPolygonPoints();
             drawPolygon();
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(MapUtility.calculateCentroid(arrayPoints), 15));
         }
         else {
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Constants.PORTO_LATITUDE, Constants.PORTO_LONGITUDE), 12));
+            MapUtility.moveMapCamera(googleMap, publicOpenSpace.getProject().getPolygonPoints());
         }
 
         googleMap.getUiSettings().setZoomControlsEnabled(true);

@@ -95,6 +95,10 @@ public class PublicOpenSpace implements Serializable {
         return type;
     }
 
+    public Project getProject() {
+        return project;
+    }
+
     public long getDateCreation() {
         return dateCreation;
     }
