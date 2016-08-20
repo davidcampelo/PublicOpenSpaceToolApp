@@ -47,7 +47,6 @@ import org.davidcampelo.post.view.InputTextQuestionView;
 import org.davidcampelo.post.view.MultipleQuestionView;
 import org.davidcampelo.post.view.QuestionView;
 import org.davidcampelo.post.view.SingleQuestionView;
-import org.davidcampelo.post.view.TitleOnlyQuestionView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -445,7 +444,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        if (publicOpenSpace.getPolygonPoints() != null) {
+        if (publicOpenSpace.getPolygonPoints() != null && publicOpenSpace.getPolygonPoints().size() > 0) {
             MapUtility.moveMapCamera(googleMap, publicOpenSpace.getPolygonPoints());
             arrayPoints = publicOpenSpace.getPolygonPoints();
             drawPolygon();
