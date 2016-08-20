@@ -47,6 +47,7 @@ import org.davidcampelo.post.view.InputTextQuestionView;
 import org.davidcampelo.post.view.MultipleQuestionView;
 import org.davidcampelo.post.view.QuestionView;
 import org.davidcampelo.post.view.SingleQuestionView;
+import org.davidcampelo.post.view.TitleOnlyQuestionView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -269,9 +270,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         container5.addView(addToMap(context, "47"));
         container5.addView(addToMap(context, "48.a"));
         container5.addView(addToMap(context, "48.b"));
-//        container5.addView(addToMap(context, "49.a"));
-//        container5.addView(addToMap(context, "49.b"));
-//        container5.addView(addToMap(context, "49.c"));
+        container5.addView(addToMap(context, "49.a"));
+        container5.addView(addToMap(context, "49.b"));
+        container5.addView(addToMap(context, "49.c"));
 
         questionDAO.close();
     }

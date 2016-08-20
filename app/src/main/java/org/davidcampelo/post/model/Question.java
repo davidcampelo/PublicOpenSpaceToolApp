@@ -15,12 +15,12 @@ public class Question {
     ArrayList<Option> options;
 
     public enum QuestionType {
-        MULTIPLE_CHOICE,
-        SINGLE_CHOICE,
-        INPUT_NUMBER,
-        INPUT_DECIMAL,
-        INPUT_TEXT,
-        MATRIX_VALUES
+        MULTIPLE_CHOICE,    // one or more option may be chosen
+        SINGLE_CHOICE,      // one only option may be chosen
+        INPUT_NUMBER,       // the answer is a numeric input (integer) set by user
+        INPUT_DECIMAL,      // the answer is a numeric input (decimal - with comma) set by user
+        INPUT_TEXT,         // the answer is a text input (alphanumeric) set by user
+        MATRIX_VALUES       // amount of question answers is variable, used to handle question 29
     }
 
     public Question() {

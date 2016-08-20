@@ -376,22 +376,21 @@
     </question>
     
         <!-- QUESTION 49 -->
-    <question number="49" type="TITLE_ONLY" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? (choose one number fo each item)"/>
-    <question number="49.a" type="SINGLE_CHOICE" title="P.O.S. is interesting for walking">
+    <question number="49.a" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is interesting for walking? (choose one number fo each item)">
         <option>Strongly agree </option>
         <option>Agree</option>
         <option>Neither Agree nor Disagree</option>
         <option>Disagree</option>
         <option>Strongly disagree</option>
     </question>
-    <question number="49.b" type="SINGLE_CHOICE" title="P.O.S. is suitable for casual ball sports">
+    <question number="49.b" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is suitable for casual ball sports? (choose one number fo each item)">
         <option>Strongly agree </option>
         <option>Agree</option>
         <option>Neither Agree nor Disagree</option>
         <option>Disagree</option>
         <option>Strongly disagree</option>
     </question>
-    <question number="49.c" type="SINGLE_CHOICE" title="P.O.S. is suitable for cycling">
+    <question number="49.c" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is suitable for cycling? (choose one number fo each item)">
         <option>Strongly agree </option>
         <option>Agree</option>
         <option>Neither Agree nor Disagree</option>
