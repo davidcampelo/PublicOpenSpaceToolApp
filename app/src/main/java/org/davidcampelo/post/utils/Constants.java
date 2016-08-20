@@ -1,5 +1,7 @@
 package org.davidcampelo.post.utils;
 
+import android.graphics.Color;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ public class Constants {
     public static final String MULTIPLE_OPTIONS_SEPARATOR = "&**&";
     public static final String POLYGON_POINTS_SEPARATOR = "*";
     public static final ArrayList<LatLng> PORTUGAL_BOUNDING_POINTS;
+    public static final int LIST_ROW_COLOR = Color.argb(150, 240,240,240);
+
     static {
         PORTUGAL_BOUNDING_POINTS = new ArrayList<LatLng>();
         PORTUGAL_BOUNDING_POINTS.add(new LatLng(42.076823, -8.958980));

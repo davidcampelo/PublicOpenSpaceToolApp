@@ -2,6 +2,7 @@ package org.davidcampelo.post;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -203,7 +204,9 @@ public class ProjectListFragment extends ListFragment {
                 viewHolder = new ViewHolder();
 
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_project_list_row, parent, false);
-
+                if (position % 2 == 0) {
+                    convertView.setBackgroundColor(Constants.LIST_ROW_COLOR);
+                }
                 viewHolder.name = (TextView) convertView.findViewById(R.id.listItemName);
                 viewHolder.date = (TextView) convertView.findViewById(R.id.listItemDate);
                 viewHolder.image = (ImageView) convertView.findViewById(R.id.listItemType);

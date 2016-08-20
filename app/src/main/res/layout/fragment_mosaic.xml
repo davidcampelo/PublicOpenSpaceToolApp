@@ -23,12 +23,12 @@
                 android:paddingLeft="@dimen/mosaic_icon_default_padding"
                 android:paddingRight="@dimen/mosaic_icon_default_padding"
                 android:paddingTop="@dimen/mosaic_icon_default_padding"
-                android:src="@drawable/icon_project_new"
+                android:src="@drawable/icon_project_new2"
                 android:background="@null"
                 android:layout_column="0" />
 
             <ImageButton
-                android:src="@drawable/icon_project_open"
+                android:src="@drawable/icon_project_open2"
                 android:paddingLeft="@dimen/mosaic_icon_default_padding"
                 android:paddingRight="@dimen/mosaic_icon_default_padding"
                 android:paddingTop="@dimen/mosaic_icon_default_padding"
@@ -60,7 +60,7 @@
                 android:paddingRight="@dimen/mosaic_icon_default_padding"
                 android:paddingTop="@dimen/mosaic_icon_default_padding"
                 android:layout_gravity="center"
-                android:src="@drawable/icon_export_data1"
+                android:src="@drawable/icon_export_data2"
                 android:background="@null"
                 android:layout_column="0" />
 
@@ -70,7 +70,7 @@
                 android:paddingTop="@dimen/mosaic_icon_default_padding"
                 android:id="@+id/imageButtonSettings"
                 android:layout_gravity="center"
-                android:src="@drawable/icon_settings"
+                android:src="@drawable/icon_settings2"
                 android:background="@null"
                 android:layout_column="1" />
         </TableRow>

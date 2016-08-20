@@ -177,6 +177,9 @@ public class PublicOpenSpaceListFragment extends ListFragment {
                 viewHolder = new ViewHolder();
 
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_public_open_space_list_row, parent, false);
+                if (position % 2 == 0) {
+                    convertView.setBackgroundColor(Constants.LIST_ROW_COLOR);
+                }
 
                 viewHolder.name = (TextView) convertView.findViewById(R.id.listItemName);
                 viewHolder.date = (TextView) convertView.findViewById(R.id.listItemDate);

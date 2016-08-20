@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">2dp</dimen>
     <dimen name="mosaic_icon_default_padding">20dp</dimen>
     <dimen name="activity_vertical_margin">2dp</dimen>
+    <dimen name="lists_vertical_padding">2dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">2dp</dimen>
 
