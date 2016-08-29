@@ -82,12 +82,12 @@ public class OptionDAO extends DAO {
      *                        previously inserted ones
      * @return
      */
-    public ArrayList<Option> get(Question question, PublicOpenSpace publicOpenSpace) {
+    public ArrayList<Option> getAll(Question question, PublicOpenSpace publicOpenSpace) {
         ArrayList<Option> list = new ArrayList<Option>();
 
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_QST_NUMBER +" = '"+ question.number +"' AND "+
                 " ("+ COLUMN_POS_ID+" IS NULL OR "+COLUMN_POS_ID+" = "+publicOpenSpace.id+" ) "+
-                "ORDER BY "+COLUMN_POS_ID+", "+ COLUMN_ID +" DESC");
+                "ORDER BY "+ COLUMN_ID +" DESC");
 
         for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
             list.add(cursorToObject(cursor));

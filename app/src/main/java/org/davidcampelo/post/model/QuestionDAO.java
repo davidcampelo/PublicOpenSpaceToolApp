@@ -93,7 +93,7 @@ public class QuestionDAO extends DAO {
 
         // retrieve options
         OptionDAO optionDAO = new OptionDAO(getContext(), getDbHelper(), getSqLiteDatabase());
-        object.options = optionDAO.get(object, publicOpenSpace);
+        object.options = optionDAO.getAll(object, publicOpenSpace);
 
         return object;
     }
