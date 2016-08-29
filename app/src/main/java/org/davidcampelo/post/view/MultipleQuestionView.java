@@ -1,7 +1,6 @@
 package org.davidcampelo.post.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -119,11 +118,11 @@ public class MultipleQuestionView extends QuestionView{
             if (child instanceof QuestionCheckBox) {
                 QuestionCheckBox checkBox = (QuestionCheckBox) child;
                 if (checkBox.isChecked()) {
-                    answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.MULTIPLE_OPTIONS_SEPARATOR);
+                    answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.QUESTION_ANSWERS_SEPARATOR);
                 }
             }
             else if (child.getTag() instanceof Option) { // it's an "Other" option and is stored in the TAG
-                answers.append(String.valueOf( ((Option)child.getTag()).getId() ) + Constants.MULTIPLE_OPTIONS_SEPARATOR);
+                answers.append(String.valueOf( ((Option)child.getTag()).getId() ) + Constants.QUESTION_ANSWERS_SEPARATOR);
             }
         }
 
@@ -135,7 +134,7 @@ public class MultipleQuestionView extends QuestionView{
         if (answers == null || answers.length() == 0)
             return;
 
-        StringTokenizer tokenizer = new StringTokenizer(answers, Constants.MULTIPLE_OPTIONS_SEPARATOR);
+        StringTokenizer tokenizer = new StringTokenizer(answers, Constants.QUESTION_ANSWERS_SEPARATOR);
         ArrayList<Long> selectedIds = new ArrayList<>();
 
         while ( tokenizer.hasMoreElements() ) {

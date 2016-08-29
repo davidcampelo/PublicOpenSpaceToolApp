@@ -101,7 +101,7 @@ public abstract class QuestionView extends RelativeLayout {
      * - MULTIPLE_CHOICE: opt_id's separated by a character separator (slash == \)
      * - INPUT_TEXT/NUMBER/DECIMAL: Text typed by the user
      */
-    public abstract String getAnswers();
+    public abstract String getAnswers() throws AnswerMissingException;
 
     /** Abstract method implemented by subclasses in order to show user answers
      *

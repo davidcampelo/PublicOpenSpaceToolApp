@@ -41,6 +41,7 @@ import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.model.QuestionDAO;
 import org.davidcampelo.post.utils.Constants;
 import org.davidcampelo.post.utils.MapUtility;
+import org.davidcampelo.post.view.AnswerMissingException;
 import org.davidcampelo.post.view.InputDecimalQuestionView;
 import org.davidcampelo.post.view.InputNumberQuestionView;
 import org.davidcampelo.post.view.InputTextQuestionView;
@@ -131,9 +132,13 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveObject();
+                try {
+                    saveObject();
+                    Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Item saved successfully!", Toast.LENGTH_SHORT).show();
+                } catch (AnswerMissingException e) {
+                    Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Warning: Answers for Question"+ e.getQuestion().getNumber() +" are missing, please review!", Toast.LENGTH_SHORT).show();
+                }
 
-                Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Item saved successfully!", Toast.LENGTH_SHORT).show();
             }
         });
         posType.setOnClickListener(new View.OnClickListener() {
@@ -324,7 +329,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
      * <p>
      * This method must be called before any persistence procedure :)
      */
-    public void saveObject() {
+    public void saveObject() throws AnswerMissingException {
         // NAME
         publicOpenSpace.setName(((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "");
 

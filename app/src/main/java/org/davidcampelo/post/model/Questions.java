@@ -272,7 +272,7 @@ public class Questions {
             }
         }
         else {
-            StringTokenizer tokenizer = new StringTokenizer(questionsString, Constants.MULTIPLE_OPTIONS_SEPARATOR);
+            StringTokenizer tokenizer = new StringTokenizer(questionsString, Constants.QUESTION_ANSWERS_SEPARATOR);
 
             for (int i = -1; ++i < identifiers.length && tokenizer.hasMoreElements(); ) {
                 questions.putAnswer(identifiers[i], (String) tokenizer.nextElement());
@@ -290,7 +290,7 @@ public class Questions {
         for (int i = -1; ++i < identifiers.length;) {
             stringBuilder.append(answers.get(identifiers[i]));
             if (i < identifiers.length - 1)
-                stringBuilder.append(Constants.MULTIPLE_OPTIONS_SEPARATOR);
+                stringBuilder.append(Constants.QUESTION_ANSWERS_SEPARATOR);
         }
         return stringBuilder.toString();
     }
