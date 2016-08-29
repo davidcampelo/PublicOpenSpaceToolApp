@@ -155,4 +155,8 @@ public class MultipleQuestionView extends QuestionView{
             }
         }
     }
+
+    @Override
+    public void notifyChecked(QuestionCheckBox checked) {
+    }
 }

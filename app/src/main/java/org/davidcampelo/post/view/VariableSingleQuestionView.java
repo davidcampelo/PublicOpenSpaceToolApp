@@ -3,6 +3,7 @@ package org.davidcampelo.post.view;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -147,8 +148,9 @@ public class VariableSingleQuestionView extends QuestionView {
     @Override
     public void notifyChecked(QuestionCheckBox checked){
 
-        for (int i = container.getChildCount(); --i >= 0; ) {
-            final View child = container.getChildAt(i);
+        LinearLayout parent = (LinearLayout)checked.getParent();
+        for (int i = parent.getChildCount(); --i >= 0; ) {
+            final View child = parent.getChildAt(i);
             if (child instanceof QuestionCheckBox) {
                 QuestionCheckBox checkbox = ((QuestionCheckBox) child);
                 if (checkbox != checked)
