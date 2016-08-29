@@ -221,12 +221,10 @@
     </question>
     
         <!-- QUESTION 29 -->
-    <question number="29" type="MATRIX_VALUES" title="Is playground shaded? (tick one only)">
+    <question number="29" type="VARIABLE_SINGLE_CHOICE" title="Is playground shaded? (tick one only)">
             <option>Partial cover/shade</option>
             <option>Total cover/shade</option>
             <option>No cover/shade</option>
-            <option>Area 1</option>
-            <option>Area 2</option>
     </question>
     
         <!-- QUESTION 30 -->

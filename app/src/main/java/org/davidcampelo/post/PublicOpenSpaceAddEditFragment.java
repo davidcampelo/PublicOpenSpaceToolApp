@@ -47,6 +47,7 @@ import org.davidcampelo.post.view.InputTextQuestionView;
 import org.davidcampelo.post.view.MultipleQuestionView;
 import org.davidcampelo.post.view.QuestionView;
 import org.davidcampelo.post.view.SingleQuestionView;
+import org.davidcampelo.post.view.VariableSingleQuestionView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -244,7 +245,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         container4.addView(addToMap(context, "26"));
         container4.addView(addToMap(context, "27"));
         container4.addView(addToMap(context, "28"));
-//        container4.addView(addToMap(context, "29"));
+        container4.addView(addToMap(context, "29"));
         container4.addView(addToMap(context, "30"));
         container4.addView(addToMap(context, "31"));
         container4.addView(addToMap(context, "32.a"));
@@ -300,6 +301,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         Question.QuestionType type = question.getType();
         if (type == Question.QuestionType.SINGLE_CHOICE)
             view = new SingleQuestionView(context, question);
+        else if (type == Question.QuestionType.VARIABLE_SINGLE_CHOICE)
+            view = new VariableSingleQuestionView(context, question);
         else if (type == Question.QuestionType.MULTIPLE_CHOICE)
             view = new MultipleQuestionView(context, question);
         else if (type == Question.QuestionType.INPUT_DECIMAL)
@@ -344,7 +347,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         answersDAO.delete(publicOpenSpace);
 
         Iterator it = questionNumberToViewMap.entrySet().iterator();
-        while (it.hasNext()) {
+        while (it.hasNext()) { // for each question, an answers it inserted
             Map.Entry pair = (Map.Entry) it.next();
             QuestionView questionView = ((QuestionView) pair.getValue());
             Question question = questionView.getQuestion();

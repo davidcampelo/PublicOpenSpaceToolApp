@@ -67,16 +67,6 @@ public class MultipleQuestionView extends QuestionView{
 
         final View otherView = layoutInflater.inflate(R.layout.question_view_other_row, null);
 
-//        ImageView delete = (ImageView) otherView.findViewById(R.id.otherDeleteButton);
-//        // Button for deleting the Other row
-//        delete.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                View otherView = container.findViewById(R.id.otherRow);
-//                if (otherView != null)
-//                    container.removeView(otherView);
-//            }
-//        });
 
         // Button of storing this new "Other" Option
         ImageView imageButtonAdd = (ImageView) otherView.findViewById(R.id.otherAddButton);

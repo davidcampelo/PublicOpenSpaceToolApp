@@ -20,6 +20,8 @@ public class Question {
         INPUT_NUMBER,       // the answer is a numeric input (integer) set by user
         INPUT_DECIMAL,      // the answer is a numeric input (decimal - with comma) set by user
         INPUT_TEXT,         // the answer is a text input (alphanumeric) set by user
+        VARIABLE_SINGLE_CHOICE, // the question may be repeated according to the park answers
+                                // (see question 29)
         MATRIX_VALUES       // amount of question answers is variable, used to handle question 29
     }
 

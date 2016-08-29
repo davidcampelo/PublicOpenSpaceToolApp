@@ -3,35 +3,50 @@
     android:id="@+id/otherRow"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
     <TextView
         android:id="@+id/otherText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:textAppearance="?android:textAppearanceListItemSmall"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="8dp"
-        android:text="Other "/>
-    <EditText
-        android:id="@+id/otherInputText"
-        android:layout_width="wrap_content"
+
+        android:textColor="@android:color/black"
+        android:text="Other " />
+    <FrameLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text=""
         android:layout_toRightOf="@+id/otherText"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:hint="Type here other item"/>
+        android:layout_alignParentTop="true"
+
+        android:layout_weight="0.7" >
+        <EditText
+            android:id="@+id/otherInputText"
+            android:gravity="center_vertical"
+            android:layout_alignParentTop="true"
+
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="?android:textAppearanceSmall"
+            android:hint="Type here other item"/>
+    </FrameLayout>
     <ImageView
         android:id="@+id/otherAddButton"
+        android:gravity="top|right"
+        android:layout_gravity="top|right"
         android:src="@android:drawable/ic_input_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/otherDeleteButton"/>
     <ImageView
         android:id="@+id/otherDeleteButton"
+        android:gravity="top|right"
+        android:layout_gravity="top|right"
         android:src="@android:drawable/ic_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
         android:visibility="invisible"
         android:layout_alignParentRight="true" />
 </RelativeLayout>
