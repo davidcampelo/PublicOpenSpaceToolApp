@@ -1,7 +1,7 @@
 <resources>
     // screen titles
     <string name="app_name">Public Open Space Tool</string>
-    <string name="title_mosaic">:: Public Open Space Tool ::</string>
+    <string name="title_mosaic">Public Open Space Tool</string>
     <string name="title_project_list">Project List</string>
     <string name="title_project_add">Add project</string>
     <string name="title_project_edit">Edit project</string>
