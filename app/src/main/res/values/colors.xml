@@ -4,5 +4,6 @@
     <color name="colorPrimaryLight">#6ecf4e</color>
     <color name="colorPrimaryDark">#125e2f</color>
     <color name="colorAccent">#6ecf4e</color>
-    <color name="ldrawer_color">#FFFFFF</color>
+    <color name="actionBarText">#FFFFFF</color>
+
 </resources>

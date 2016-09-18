@@ -69,7 +69,12 @@ public class MosaicFragment extends Fragment {
         imageButtonExportData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetDialogObject.show();
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, new ExportDataFragment())
+                        .addToBackStack("")
+                        .commit();
+                //resetDialogObject.show();
             }
         });
 

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList = (ListView) findViewById(R.id.mainLeftDrawer);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
-        mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_drawer);
+        //mDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_drawer);
 //        mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 1 : // list projects
                         fragment = new ProjectListFragment();
+                        break;
+                    case 2 : // export data
+                        fragment = new ExportDataFragment();
                         break;
                     default:
                         fragment = null;

@@ -2,6 +2,7 @@
     // screen titles
     <string name="app_name">Public Open Space Tool</string>
     <string name="title_mosaic">Public Open Space Tool</string>
+    <string name="title_export_data">Export data</string>
     <string name="title_project_list">Project List</string>
     <string name="title_project_add">Add project</string>
     <string name="title_project_edit">Edit project</string>
@@ -11,7 +12,7 @@
 
     // drawer menu
     <string name="mosaic_new_project">New project</string>
-    <string name="mosaic_open_project">Open project</string>
+    <string name="mosaic_open_project">List projects</string>
     <string name="mosaic_export_data">Export data</string>
     <string name="mosaic_settings">Settings</string>
     <string name="mosaic_help">Help</string>
@@ -21,7 +22,6 @@
         <item>@string/mosaic_open_project</item>
         <item>@string/mosaic_export_data</item>
         <item>@string/mosaic_settings</item>
-        <item>@string/mosaic_help</item>
         <item>@string/mosaic_about</item>
     </string-array>
     <string name="drawer_open">drawer_open</string>
