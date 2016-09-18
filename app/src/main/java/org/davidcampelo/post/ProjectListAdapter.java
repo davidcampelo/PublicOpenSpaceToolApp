@@ -1,6 +1,7 @@
 package org.davidcampelo.post;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,9 +72,9 @@ class ProjectListAdapter extends ArrayAdapter<Project> {
                 convertView.setBackgroundColor(Constants.LIST_ROW_COLOR);
             }
             viewHolder.name = (TextView) convertView.findViewById(R.id.listItemName);
-            if (nameSize != -1)
+            if (nameSize != -1) {
                 viewHolder.name.setTextAppearance(getContext(), nameSize);
-
+            }
             viewHolder.date = (TextView) convertView.findViewById(R.id.listItemDate);
             viewHolder.image = (ImageView) convertView.findViewById(R.id.listItemType);
 
@@ -87,6 +88,10 @@ class ProjectListAdapter extends ArrayAdapter<Project> {
         viewHolder.name.setText(object.getName());
         if (showDate)
             viewHolder.date.setText("Added on "+ simpleDateFormat.format(new Date(object.getDateCreation())));
+        else {
+            viewHolder.name.setGravity(Gravity.CENTER | Gravity.LEFT);
+            viewHolder.date.setVisibility(View.INVISIBLE);
+        }
 
 
         return convertView;

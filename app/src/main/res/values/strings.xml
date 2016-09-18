@@ -49,6 +49,14 @@
     <string name="fragment_public_open_space_list_menu_edit">Edit Public Open Space</string>
     <string name="fragment_public_open_space_list_menu_delete">Delete Public Open Space</string>
 
+    // fragment_export_data
+    <string name="fragment_export_data_project">Choose project to export</string>
+    <string name="fragment_export_data_options">Choose export options</string>
+    <string name="fragment_export_data_csv">CSV data file</string>
+    <string name="fragment_export_data_kmz">KMZ (maps only)</string>
+    <string name="fragment_export_data_spss">SPSS data file</string>
+    <string name="fragment_export_data_button">Export Data</string>
+
     // fragment_public_open_space_add_edit
     <string name="fragment_public_open_space_add_edit_save">Save</string>
     <string name="public_open_space_type_park">Park</string>
