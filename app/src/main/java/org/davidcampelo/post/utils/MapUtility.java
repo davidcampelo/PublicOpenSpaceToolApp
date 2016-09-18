@@ -27,7 +27,7 @@ public class MapUtility {
     private static final int DEFAULT_PADDING = 50;
     private static String LOG_TAG = "[MAP UTILITY] ";
 
-    private static DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    private static DecimalFormat decimalFormat = new DecimalFormat("#");
     private static final double EARTH_RADIUS = 6371000;// meters
 
     public String resolveAddress(Context context, double latitude, double longitude) {

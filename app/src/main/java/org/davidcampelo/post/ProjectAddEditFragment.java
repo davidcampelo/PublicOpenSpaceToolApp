@@ -60,7 +60,7 @@ public class ProjectAddEditFragment extends Fragment
 
         Bundle bundle = this.getArguments();
         try {
-            project = (Project) bundle.getSerializable(Constants.PROJECT_EXTRA);
+            project = (Project) bundle.getParcelable(Constants.PROJECT_EXTRA);
 
             getActivity().setTitle(R.string.title_project_edit);
 

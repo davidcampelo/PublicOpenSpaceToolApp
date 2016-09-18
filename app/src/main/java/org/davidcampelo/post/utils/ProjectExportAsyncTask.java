@@ -5,11 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Environment;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Project;
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.PublicOpenSpaceDAO;
@@ -17,10 +16,10 @@ import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.model.QuestionDAO;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by davidcampelo on 9/18/16.
@@ -48,20 +47,9 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        publishProgress("Retrieving Public Open Spaces information...");
-        try{ Thread.sleep(100); } catch (InterruptedException e) {}
-
-        // get list of Public Open Spaces
-        PublicOpenSpaceDAO publicOpenSpaceDAO = new PublicOpenSpaceDAO(context);
-        publicOpenSpaceDAO.open();
-        ArrayList<PublicOpenSpace> listPublicOpenSpaces = publicOpenSpaceDAO.getAllByProject(project);
-        publicOpenSpaceDAO.close();
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        publishProgress("Creating files...");
-        try{ Thread.sleep(100); } catch (InterruptedException e) {}
-
+        publishProgress("Creating temporary files...");
 
         File file = null;
         FileWriter out = null;
@@ -77,35 +65,66 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        publishProgress("Writing to files...");
-        String columnString =   "\"PersonName\",\"Gender\",\"Street1\",\"postOffice\",\"Age\"\n" ;
-        // get list of Public Open Spaces
+        publishProgress("Retrieving Questions...");
         QuestionDAO questionDAO = new QuestionDAO(context);
         questionDAO.open();
         ArrayList<Question> listQuestions = questionDAO.getAll();
         questionDAO.close();
+
         // write header
+        StringBuilder stringBuilderHeader = new StringBuilder();
+        Iterator<Question> questionIterator = listQuestions.iterator();
+        while (questionIterator.hasNext()) {
+            stringBuilderHeader.append(questionIterator.next().getNumber() + ",");
+        }
+
         try {
-            out.write(columnString);
+            out.write(toStringWithNoEndingCommas(stringBuilderHeader) + "\n");
+            Log.e("ANSWERS ", toStringWithNoEndingCommas(stringBuilderHeader));
+
         } catch (IOException e) {
             e.printStackTrace();
             progressDialog.dismiss();
-            return "ERROR: Could not write to file!";
+            return "ERROR: Could not write header to file!";
         }
 
-        int i = 0;
-        while (i++ <= 10) {
-            try{ Thread.sleep(100); } catch (InterruptedException e) {}
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        publishProgress("Retrieving answers...");
 
-            // write POS
+        if (project == null) {
+            return "ERROR: No project was selected!";
+        }
+        // get all POS in the project
+        PublicOpenSpaceDAO publicOpenSpaceDAO = new PublicOpenSpaceDAO(context);
+        publicOpenSpaceDAO.open();
+        ArrayList<PublicOpenSpace> listPublicOpenSpaces = publicOpenSpaceDAO.getAllByProject(project);
+        publicOpenSpaceDAO.close();
+
+        AnswersDAO answersDAO = new AnswersDAO(context);
+        answersDAO.open();
+
+        // get answers for every POS
+        Iterator<PublicOpenSpace> publicOpenSpaceIterator = listPublicOpenSpaces.iterator();
+        while (publicOpenSpaceIterator.hasNext()) {
+            ArrayList<String> listAnswers = answersDAO.getAll(publicOpenSpaceIterator.next());
+            Iterator<String> answersIterator = listAnswers.iterator();
+
+            StringBuilder stringBuilderAnswers = new StringBuilder();
+            while (answersIterator.hasNext()) {
+                stringBuilderAnswers.append(answersIterator.next().replaceAll(",", "\\,") + ",");
+            }
+
+            // write answers to file
             try {
-                out.write(columnString);
+                out.write(toStringWithNoEndingCommas(stringBuilderAnswers) + "\n");
+                Log.e("ANSWERS ", toStringWithNoEndingCommas(stringBuilderAnswers));
             } catch (IOException e) {
                 e.printStackTrace();
                 progressDialog.dismiss();
                 return "ERROR: Could not write to file!";
             }
         }
+        answersDAO.close();
 
         try {
             out.flush();
@@ -117,16 +136,22 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         progressDialog.dismiss();
 
         Intent sendIntent = new Intent(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "[Public Open Space Tool] Data export");
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "[Public Open Space Tool] Project \'" +project.getName()+ "\' data export");
         sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
         sendIntent.setType("message/rfc822");
 
-        Intent chooser = Intent.createChooser(
-                sendIntent, "Choose e-mail");
-
-        context.startActivity(chooser);
+        context.startActivity(sendIntent);
 
         return "Files generated successfully!";
+    }
+
+    private String toStringWithNoEndingCommas(StringBuilder stringBuilder) {
+        String str = stringBuilder.toString();
+        if (str.length() > 0 && str.endsWith(",")){
+            str = str.substring(0, str.length()-1);
+        }
+
+        return str;
     }
 
     @Override

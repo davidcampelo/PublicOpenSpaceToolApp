@@ -94,7 +94,7 @@ public class ProjectListFragment extends ListFragment {
         Project object = (Project) getListAdapter().getItem(position);
 
         Bundle args = new Bundle();
-        args.putSerializable(Constants.PROJECT_EXTRA, object);
+        args.putParcelable(Constants.PROJECT_EXTRA, object);
         Fragment fragment = new PublicOpenSpaceListFragment();
         fragment.setArguments(args);
 
@@ -115,7 +115,7 @@ public class ProjectListFragment extends ListFragment {
 
         Fragment fragment;
         Bundle args = new Bundle();
-        args.putSerializable(Constants.PROJECT_EXTRA, object);
+        args.putParcelable(Constants.PROJECT_EXTRA, object);
 
         switch (item.getItemId()){
             case R.id.fragment_project_list_menu_view:
@@ -173,4 +173,6 @@ public class ProjectListFragment extends ListFragment {
         return super.onContextItemSelected(item);
 
     }
+
+
 }

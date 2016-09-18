@@ -93,7 +93,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         // Bundle cannot be null as Project ***MUST*** be set
         Bundle bundle = this.getArguments();
         try{
-            publicOpenSpace = (PublicOpenSpace)bundle.getSerializable(Constants.PUBLIC_OPEN_SPACE_EXTRA);
+            publicOpenSpace = (PublicOpenSpace)bundle.getParcelable(Constants.PUBLIC_OPEN_SPACE_EXTRA);
 
             getActivity().setTitle(R.string.title_public_open_space_edit);
 
@@ -103,7 +103,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         }
         catch (NullPointerException e){
             publicOpenSpace = new PublicOpenSpace();
-            project = (Project) bundle.getSerializable(Constants.PROJECT_EXTRA);
+            project = (Project) bundle.getParcelable(Constants.PROJECT_EXTRA);
             publicOpenSpace.setProject(project);
 
             getActivity().setTitle(R.string.title_public_open_space_add);
@@ -210,23 +210,23 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         questionDAO.open();
 
         LinearLayout container1 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer1);
-        container1.addView(addToMap(context, "1"));
-        container1.addView(addToMap(context, "2"));
-        QuestionView view3 = addToMap(context, "3");
+        container1.addView(addToMap(context, "01"));
+        container1.addView(addToMap(context, "02"));
+        QuestionView view3 = addToMap(context, "03");
         view3.setEnabled(false);
         container1.addView(view3);
-        container1.addView(addToMap(context, "4"));
-        QuestionView view5 = addToMap(context, "5");
+        container1.addView(addToMap(context, "04"));
+        QuestionView view5 = addToMap(context, "05");
         view5.setEnabled(false);
         container1.addView(view5);
-        container1.addView(addToMap(context, "6"));
+        container1.addView(addToMap(context, "06"));
 
         LinearLayout container2 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer2);
-        container2.addView(addToMap(context, "7"));
-        container2.addView(addToMap(context, "8"));
+        container2.addView(addToMap(context, "07"));
+        container2.addView(addToMap(context, "08"));
 
         LinearLayout container3 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer3);
-        container3.addView(addToMap(context, "9"));
+        container3.addView(addToMap(context, "09"));
         container3.addView(addToMap(context, "10"));
         container3.addView(addToMap(context, "11"));
         container3.addView(addToMap(context, "12"));
@@ -351,10 +351,10 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         // firstly, delete all previous answers
         answersDAO.delete(publicOpenSpace);
 
-        Iterator it = questionNumberToViewMap.entrySet().iterator();
+        Iterator<Map.Entry<String, QuestionView>> it = questionNumberToViewMap.entrySet().iterator();
         while (it.hasNext()) { // for each question, an answers it inserted
-            Map.Entry pair = (Map.Entry) it.next();
-            QuestionView questionView = ((QuestionView) pair.getValue());
+            Map.Entry<String,QuestionView> pair = it.next();
+            QuestionView questionView = pair.getValue();
             Question question = questionView.getQuestion();
             if (question.getType() == Question.QuestionType.MULTIPLE_CHOICE) { // save "Other" Options first
                 ArrayList<Option> options = question.getAllOptions();
@@ -421,21 +421,21 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         }
         // set question 3 (area) text
         QuestionView questionView;
-        questionView = questionNumberToViewMap.get("3");
+        questionView = questionNumberToViewMap.get("03");
         String area = "";
         if (questionView != null) {
-            if (arrayPoints.size() > 3) {
+            if (arrayPoints.size() >= 3) {
                 area = MapUtility.calculateAreaAndFormat(arrayPoints);
             }
             Log.e(this.getClass().getName(), "-------------------->>>> [AREA] from map to question = "+ area);
             ((InputDecimalQuestionView) questionView).setAnswers(area);
         }
-        questionView = questionNumberToViewMap.get("5");
+        questionView = questionNumberToViewMap.get("05");
         String centroid = "";
         if (questionView != null) {
-            if (arrayPoints.size() > 3) {
+            if (arrayPoints.size() >= 1) {
                 LatLng latLng = MapUtility.calculateCentroid(arrayPoints);
-                centroid = latLng.latitude + ", "+ latLng.longitude;
+                centroid = "lat:" + latLng.latitude + " lng:"+ latLng.longitude;
             }
             Log.e(this.getClass().getName(), "-------------------->>>> [CENTROID] from map to question = "+ centroid);
             ((InputTextQuestionView) questionView).setAnswers(centroid);

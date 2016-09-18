@@ -43,7 +43,7 @@ public class PublicOpenSpaceListFragment extends ListFragment {
         Bundle bundle = this.getArguments();
 
         // PROJECT ***MUST*** BE PASSED!
-        project = (Project) bundle.getSerializable(Constants.PROJECT_EXTRA);
+        project = (Project) bundle.getParcelable(Constants.PROJECT_EXTRA);
         getActivity().setTitle(R.string.title_public_open_space_list);
 
         View fragmentLayout = inflater.inflate(R.layout.fragment_public_open_space_list, container, false);
@@ -53,7 +53,7 @@ public class PublicOpenSpaceListFragment extends ListFragment {
             @Override
             public void onClick(View view) {
                 Bundle args = new Bundle();
-                args.putSerializable(Constants.PROJECT_EXTRA, PublicOpenSpaceListFragment.this.project);
+                args.putParcelable(Constants.PROJECT_EXTRA, PublicOpenSpaceListFragment.this.project);
                 Fragment fragment = new PublicOpenSpaceAddEditFragment();
                 fragment.setArguments(args);
 
@@ -137,8 +137,8 @@ public class PublicOpenSpaceListFragment extends ListFragment {
 
     private void launch(PublicOpenSpace object) {
         Bundle args = new Bundle();
-        args.putSerializable(Constants.PUBLIC_OPEN_SPACE_EXTRA, object);
-        args.putSerializable(Constants.PROJECT_EXTRA, this.project);
+        args.putParcelable(Constants.PUBLIC_OPEN_SPACE_EXTRA, object);
+        args.putParcelable(Constants.PROJECT_EXTRA, this.project);
         Fragment fragment = new PublicOpenSpaceAddEditFragment();
         fragment.setArguments(args);
 

@@ -3,7 +3,9 @@ package org.davidcampelo.post.model;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -23,12 +25,11 @@ public class AnswersDAO extends DAO {
             COLUMN_POS_ID,
             COLUMN_QST_NUMBER,
             COLUMN_ANSWER_TEXT
-
     };
 
     static String[] TABLE_COLUMNS_ANSWERS = {
-            COLUMN_ANSWER_TEXT
-
+            COLUMN_ANSWER_TEXT,
+            COLUMN_QST_NUMBER
     };
 
     static final String TABLE_CREATE_CMD = "CREATE TABLE " + TABLE_NAME + " ( "
@@ -47,12 +48,10 @@ public class AnswersDAO extends DAO {
     }
 
     /**
-     * Retrieves all Option objects based on Question and PublicOpenSpace objects
+     * Retrieves the answer of a given question in a given PublicOpenSpace
      *
      * @param question
-     * @param publicOpenSpace if PublicOpenSpace.id == 0 then we should retrieve all the "default"
-     *                        options, otherwise we will retrieve "default" options + the user
-     *                        previously inserted ones
+     * @param publicOpenSpace
      * @return
      */
     public String get(Question question, PublicOpenSpace publicOpenSpace) {
@@ -61,8 +60,29 @@ public class AnswersDAO extends DAO {
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS_ANSWERS, COLUMN_QST_NUMBER + " = '" + question.number + "' AND " +
                 " " + COLUMN_POS_ID + " = " + publicOpenSpace.id + " ");
 
-        for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             answers = cursor.getString(0);
+        }
+
+        cursor.close();
+
+        return answers;
+    }
+    /**
+     * Retrieves all answers of all questions for a given PublicOpenSpace
+     *
+     * @param publicOpenSpace
+     * @return
+     */
+    public ArrayList<String> getAll(PublicOpenSpace publicOpenSpace) {
+        ArrayList<String> answers = new ArrayList<>();
+
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS_ANSWERS, COLUMN_POS_ID + " = " + publicOpenSpace.id +
+                " ORDER BY " + COLUMN_QST_NUMBER + " ASC");
+
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            Log.e("Question number == ", cursor.getString(1));
+            answers.add(cursor.getString(0));
         }
 
         cursor.close();

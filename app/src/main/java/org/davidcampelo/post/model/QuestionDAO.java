@@ -85,7 +85,7 @@ public class QuestionDAO extends DAO {
         Question object = null;
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_NUMBER +"='"+ number +"'");
 
-        for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             object = cursorToObject(cursor);
         }
 
@@ -103,7 +103,7 @@ public class QuestionDAO extends DAO {
 
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, null);
 
-        for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             list.add(cursorToObject(cursor));
         }
 

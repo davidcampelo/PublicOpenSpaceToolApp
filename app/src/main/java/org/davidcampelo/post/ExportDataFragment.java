@@ -16,14 +16,8 @@ import android.widget.Spinner;
 
 import org.davidcampelo.post.model.Project;
 import org.davidcampelo.post.model.ProjectDAO;
-import org.davidcampelo.post.model.PublicOpenSpace;
-import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.utils.ProjectExportAsyncTask;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 

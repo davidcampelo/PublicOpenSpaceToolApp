@@ -78,7 +78,7 @@ public class ProjectDAO extends DAO {
 
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_ID +"="+ id);
 
-        for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             object = cursorToObject(cursor);
         }
 
@@ -92,7 +92,7 @@ public class ProjectDAO extends DAO {
 
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, null);
 
-        for (cursor.moveToLast(); !cursor.isBeforeFirst(); cursor.moveToPrevious()) {
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             list.add(cursorToObject(cursor));
         }
 

@@ -1,5 +1,8 @@
 package org.davidcampelo.post.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
@@ -8,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by davidcampelo on 8/18/16.
  */
-public class Project implements Serializable {
+public class Project implements Parcelable {
 
     long id = 0;
     String name;
@@ -33,6 +36,27 @@ public class Project implements Serializable {
     public Project() {
 
     }
+
+    protected Project(Parcel in) {
+        id = in.readLong();
+        name = in.readString();
+        desc = in.readString();
+        polygonPoints = in.createTypedArrayList(LatLng.CREATOR);
+        publicOpenSpaces = in.createTypedArrayList(PublicOpenSpace.CREATOR);
+        dateCreation = in.readLong();
+    }
+
+    public static final Creator<Project> CREATOR = new Creator<Project>() {
+        @Override
+        public Project createFromParcel(Parcel in) {
+            return new Project(in);
+        }
+
+        @Override
+        public Project[] newArray(int size) {
+            return new Project[size];
+        }
+    };
 
     public long getId() {
         return id;
@@ -68,5 +92,20 @@ public class Project implements Serializable {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(id);
+        parcel.writeString(name);
+        parcel.writeString(desc);
+        parcel.writeTypedList(polygonPoints);
+        parcel.writeTypedList(publicOpenSpaces);
+        parcel.writeLong(dateCreation);
     }
 }

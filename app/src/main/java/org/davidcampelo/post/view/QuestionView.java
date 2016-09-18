@@ -46,7 +46,10 @@ public abstract class QuestionView extends RelativeLayout {
         rootView = inflate(context, R.layout.question_view, this);
 
         title = (TextView) rootView.findViewById(R.id.QuestionView_title);
-        title.setText(question.getNumber() +" - "+ question.getTitle());
+        String questionNumber = question.getNumber();
+        if (questionNumber.startsWith("0"));
+            questionNumber.substring(1, questionNumber.length()-1);
+        title.setText(questionNumber +" - "+ question.getTitle());
 
         container = (LinearLayout)findViewById(R.id.QuestionView_containerOptions);
     }

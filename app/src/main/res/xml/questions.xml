@@ -2,38 +2,38 @@
 <questions>
 
     <!-- QUESTION 1 -->
-    <question number="1" type="INPUT_NUMBER" title="Reference number">
+    <question number="01" type="INPUT_NUMBER" title="Reference number">
     </question>
 
     <!-- QUESTION 2 -->
-    <question number="2" type="INPUT_TEXT" title="Address">
+    <question number="02" type="INPUT_TEXT" title="Address">
     </question>
 
     <!-- QUESTION 3 -->
-    <question number="3" type="INPUT_DECIMAL" title="Area in m² (mark polygon on Location tab)">
+    <question number="03" type="INPUT_DECIMAL" title="Area in m² (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 4 -->
-    <question number="4" type="INPUT_NUMBER" title="Postcode">
+    <question number="04" type="INPUT_NUMBER" title="Postcode">
     </question>
 
     <!-- QUESTION 5 -->
-    <question number="5" type="INPUT_TEXT" title="Geocode (mark polygon on Location tab)">
+    <question number="05" type="INPUT_TEXT" title="Geocode (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 6 -->
-    <question number="6" type="INPUT_NUMBER" title="Year of Establishment of P.O.S.">
+    <question number="06" type="INPUT_NUMBER" title="Year of Establishment of P.O.S.">
     </question>
 
         <!-- QUESTION 7 -->
-    <question number="7" type="MULTIPLE_CHOICE" title="Type of usage (tick all relevant)">
+    <question number="07" type="MULTIPLE_CHOICE" title="Type of usage (tick all relevant)">
             <option>Active-formal</option>
             <option>Active-informal</option>
             <option>Passive only (go to Q9)</option>
     </question>
     
         <!-- QUESTION 8 -->
-    <question number="8" type="MULTIPLE_CHOICE" title="For what type of activities the space is designed? (tick all relevant)">
+    <question number="08" type="MULTIPLE_CHOICE" title="For what type of activities the space is designed? (tick all relevant)">
             <option>Tennis (grass/hard courts)</option>
             <option>Soccer</option>
             <option>Football</option>
@@ -52,7 +52,7 @@
     </question>
     
         <!-- QUESTION 9 -->
-    <question number="9" type="SINGLE_CHOICE" title="Is the P.O.S. on the beach/river foreshore?">
+    <question number="09" type="SINGLE_CHOICE" title="Is the P.O.S. on the beach/river foreshore?">
             <option>Yes</option>
             <option>No</option>
     </question>
