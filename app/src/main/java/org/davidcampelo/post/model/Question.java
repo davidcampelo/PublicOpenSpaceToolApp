@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Question {
 
     String number;
+    String alias;
     String title;
     QuestionType type;
     ArrayList<Option> options;
@@ -17,6 +18,7 @@ public class Question {
     public enum QuestionType {
         MULTIPLE_CHOICE,    // one or more option may be chosen
         SINGLE_CHOICE,      // one only option may be chosen
+        INPUT_COORDINATES,  // the answer is a pair of (x, y) coordinates in a map
         INPUT_NUMBER,       // the answer is a numeric input (integer) set by user
         INPUT_DECIMAL,      // the answer is a numeric input (decimal - with comma) set by user
         INPUT_TEXT,         // the answer is a text input (alphanumeric) set by user
@@ -29,8 +31,9 @@ public class Question {
 
     }
 
-    public Question(String number, String title, QuestionType type, ArrayList<Option> options) {
+    public Question(String number, String alias, String title, QuestionType type, ArrayList<Option> options) {
         this.number = number;
+        this.alias = alias;
         this.title = title;
         this.type = type;
         this.options = options;
@@ -39,6 +42,10 @@ public class Question {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getAlias() {
+        return alias;
     }
 
     public String getNumber() {
@@ -53,11 +60,16 @@ public class Question {
         return options;
     }
 
+    /**
+     * Remove an "other option" (a user new option) based on its title
+     *
+     * @param otherOptionTitle
+     */
     public void removeOtherOptionByText(String otherOptionTitle) {
         ArrayList<Option> toRemove = new ArrayList<Option>();
         for (Option option : options) {
             // option.id == 0 is that it's a New Other Option
-            if (option.id == 0 && option.text.indexOf(otherOptionTitle) >= 0)
+            if (option.id == 0 && option.title.indexOf(otherOptionTitle) >= 0)
                 toRemove.add(option);
         }
         synchronized (options){

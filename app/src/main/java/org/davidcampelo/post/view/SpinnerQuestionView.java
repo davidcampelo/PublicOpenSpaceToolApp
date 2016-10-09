@@ -91,7 +91,7 @@ public class SpinnerQuestionView extends RelativeLayout {
                    }
                    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                    Option selectedItem = (Option)parent.getItemAtPosition(position);
-                   if (selectedItem.getText().toLowerCase().indexOf("other") >= 0) {
+                   if (selectedItem.getTitle().toLowerCase().indexOf("other") >= 0) {
 
                        // create "Other" view
                        final View otherView = layoutInflater.inflate(R.layout.question_view_spinner_other_row, null);
@@ -154,7 +154,7 @@ public class SpinnerQuestionView extends RelativeLayout {
                        });
 
                        // create a new line with the new selected or written item
-                       textOut.setText(selectedItem.getText());
+                       textOut.setText(selectedItem.getTitle());
 
                        // add new line
                        container.addView(addView);
@@ -189,7 +189,7 @@ public class SpinnerQuestionView extends RelativeLayout {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.question_view_spinner_item, null);
             CheckedTextView textView = (CheckedTextView) v.findViewById(R.id.MultipleQuestionView_optionText);
-            textView.setText(options.get(position).getText());
+            textView.setText(options.get(position).getTitle());
 
             return v;
         }

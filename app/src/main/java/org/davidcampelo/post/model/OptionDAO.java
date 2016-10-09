@@ -17,21 +17,27 @@ public class OptionDAO extends DAO {
 
     static final String TABLE_NAME = "tb_opt_option";
     static final String COLUMN_ID = "opt_id";
-    static final String COLUMN_TEXT = "opt_text";
+    static final String COLUMN_ALIAS = "opt_alias";
+    static final String COLUMN_VALUE = "opt_value";
+    static final String COLUMN_TITLE = "opt_title";
     static final String COLUMN_QST_NUMBER = "qst_number"; // Question this option belongs to
     static final String COLUMN_POS_ID = "pos_id"; // if this Option concerns to one and only
     // PublicOpenSpace (happens for "Other" options)
 
     static String[] TABLE_COLUMNS = {
             COLUMN_ID,
-            COLUMN_TEXT,
+            COLUMN_ALIAS,
+            COLUMN_VALUE,
+            COLUMN_TITLE,
             COLUMN_QST_NUMBER,
             COLUMN_POS_ID
     };
 
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
             + COLUMN_ID +" INTEGER primary key autoincrement, "
-            + COLUMN_TEXT +" TEXT not null, "
+            + COLUMN_ALIAS +" TEXT not null, "
+            + COLUMN_VALUE +" TEXT not null, "
+            + COLUMN_TITLE +" TEXT not null, "
             + COLUMN_QST_NUMBER +" TEXT, "
             + COLUMN_POS_ID +" INTEGER);";
 
@@ -51,7 +57,9 @@ public class OptionDAO extends DAO {
 
         ContentValues values = new ContentValues();
 
-        values.put(COLUMN_TEXT, object.text);
+        values.put(COLUMN_ALIAS, object.alias);
+        values.put(COLUMN_VALUE, object.value);
+        values.put(COLUMN_TITLE, object.title);
         values.put(COLUMN_QST_NUMBER, object.question.number);
 
         if (object.publicOpenSpace != null) {
@@ -67,7 +75,9 @@ public class OptionDAO extends DAO {
 
         ContentValues values = new ContentValues();
 
-        values.put(COLUMN_TEXT, object.text);
+        values.put(COLUMN_ALIAS, object.alias);
+        values.put(COLUMN_VALUE, object.value);
+        values.put(COLUMN_TITLE, object.title);
         values.put(COLUMN_QST_NUMBER, object.question.number);
 
 
@@ -133,7 +143,9 @@ public class OptionDAO extends DAO {
     private Option cursorToObject(Cursor cursor) {
         return new Option(
                 cursor.getLong(0),      // id
-                cursor.getString(1),    // text
+                cursor.getString(1),    // alias
+                cursor.getString(2),    // value
+                cursor.getString(3),    // title
                 null,                   // Question
                 null                    // PublicOpenSpace
         );

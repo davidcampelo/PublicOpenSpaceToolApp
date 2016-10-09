@@ -5,26 +5,38 @@ package org.davidcampelo.post.model;
  */
 public class Option {
     long id;
-    String text;
+    String alias;
+    String value;
+    String title;
     Question question;
     PublicOpenSpace publicOpenSpace;
 
     public Option() {
     }
 
-    public Option(long id, String text, Question question, PublicOpenSpace publicOpenSpace) {
+    public Option(long id, String alias, String value, String title, Question question, PublicOpenSpace publicOpenSpace) {
         this.id = id;
-        this.text = text;
+        this.alias = alias;
+        this.value = value;
+        this.title = title;
         this.question = question;
         this.publicOpenSpace = publicOpenSpace;
     }
 
-    public Option(String text, Question question) {
-        this(0, text, question, null);
+    public Option(String alias, String value, String title, Question question) {
+        this(0, alias, value, title, question, null);
     }
 
-    public String getText() {
-        return text;
+    public String getAlias() {
+        return alias;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public long getId() {

@@ -30,7 +30,7 @@ public class Data {
         Option option = null;
         OptionDAO optionDAO = new OptionDAO(context);
         optionDAO.open();
-        XmlResourceParser xpp = resources.getXml(R.xml.questions);
+        XmlResourceParser xpp = resources.getXml(R.xml.questions_with_alias);
 
         // check state
         int eventType = -1;
@@ -42,19 +42,33 @@ public class Data {
                     if (xpp.getName().equals("question")) {
 
                         String number = xpp.getAttributeValue(null, "number");
+                        String alias = xpp.getAttributeValue(null, "alias");
                         String title = xpp.getAttributeValue(null, "title");
                         String type = xpp.getAttributeValue(null, "type");
 
-                        question = questionDAO.insert(new Question(number, title, Question.QuestionType.valueOf(type), null));
+                        question = questionDAO.insert(new Question(number, alias, title, Question.QuestionType.valueOf(type), null));
 
-                        Log.e("[POPULATE DATA]", "===================> Question: = "+ question.getNumber() +question.getType().name().substring(0,1)+" - "+ question.getTitle());
+                        Log.e("[DATA]", "==> "+
+                                question.getNumber()+ " - " +
+                                question.getAlias()+" - "+
+                                question.getType().name().substring(0,1)+" - "+
+                                question.getTitle());
 
                     }
-                } else if(eventType == XmlPullParser.TEXT) {
-                    option = optionDAO.insert(new Option(xpp.getText(), question));
-                    Log.e("[POPULATE DATA]", "=======================> Option: = "+ option.getText() );
+                    else if (xpp.getName().equals("option")) {
 
+                        String value = xpp.getAttributeValue(null, "value");
+                        String alias = xpp.getAttributeValue(null, "alias");
+                        String title = xpp.getAttributeValue(null, "title");
 
+                        option = optionDAO.insert(new Option(alias, value, title, question));
+
+                        Log.e("[DATA]", "====> "+
+                                option.getAlias()+" - "+
+                                option.getValue()+" - "+
+                                option.getTitle());
+
+                    }
                 }
                 eventType = xpp.next();
             }

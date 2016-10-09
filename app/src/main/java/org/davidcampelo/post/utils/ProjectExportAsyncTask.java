@@ -106,7 +106,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         // get answers for every POS
         Iterator<PublicOpenSpace> publicOpenSpaceIterator = listPublicOpenSpaces.iterator();
         while (publicOpenSpaceIterator.hasNext()) {
-            ArrayList<String> listAnswers = answersDAO.getAll(publicOpenSpaceIterator.next());
+            ArrayList<String> list  Answers = answersDAO.getAll(publicOpenSpaceIterator.next());
             Iterator<String> answersIterator = listAnswers.iterator();
 
             StringBuilder stringBuilderAnswers = new StringBuilder();

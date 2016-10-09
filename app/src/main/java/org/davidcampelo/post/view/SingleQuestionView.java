@@ -25,7 +25,7 @@ public class SingleQuestionView extends QuestionView {
 
         for (Option option : question.getAllOptions()) {
             QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
-            checkbox.setText(option.getText());
+            checkbox.setText(option.getTitle());
             container.addView(checkbox);
         }
     }

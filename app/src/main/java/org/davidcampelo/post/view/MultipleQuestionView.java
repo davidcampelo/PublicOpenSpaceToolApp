@@ -40,9 +40,10 @@ public class MultipleQuestionView extends QuestionView{
 
         boolean addOther = false;
         for (Option option : question.getAllOptions()){
-            if (option.getText().toLowerCase().indexOf("other") < 0) {
+            // XXX Options with ALIAS == OTHER are the options to be added by the user
+            if ( option.getAlias().equals("OTHER") ) {
                 QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
-                checkbox.setText(option.getText());
+                checkbox.setText(option.getTitle());
                 container.addView(checkbox);
             } else {
                 addOther = true;
@@ -54,7 +55,7 @@ public class MultipleQuestionView extends QuestionView{
     }
 
     /**
-     *  create "Other" view
+     *  create "Other option" (new option added by the user) view
      *
      * NOTE: This component owns a list of {@QuestionCheckBox} and a set of {@View} to show "Other"
      * Options. In case of having an "Other" Option, his new Option will be stored in the TAG of the
@@ -88,10 +89,10 @@ public class MultipleQuestionView extends QuestionView{
 
                 if (otherView != null) {
                     // Create new Option object
-                    String newOptionText = ((EditText)container.findViewById(R.id.otherInputText)).getText() + "";
-                    Option newOption = new Option(newOptionText, question);
+                    String newOptionTitle = ((EditText)container.findViewById(R.id.otherInputText)).getText() + "";
+                    Option newOption = new Option(null, null, newOptionTitle, question);
                     question.addOption(newOption);
-                    textOut.setText(newOptionText);
+                    textOut.setText(newOptionTitle);
                     // XXX if it's an "Other" Option, it will be stored in the TAG of the VIEW
                     addView.setTag(newOption);
                     // Remove old "Other" editable row

@@ -65,7 +65,6 @@ public class MosaicFragment extends Fragment {
             }
         });
 
-        // TODO that's a poor hack!!!
         imageButtonExportData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +75,8 @@ public class MosaicFragment extends Fragment {
                         .commit();
             }
         });
+
+        // TODO that's a poor hack!!!
         imageButtonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
