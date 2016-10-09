@@ -21,6 +21,7 @@ public class Question {
         INPUT_COORDINATES,  // the answer is a pair of (x, y) coordinates in a map
         INPUT_NUMBER,       // the answer is a numeric input (integer) set by user
         INPUT_DECIMAL,      // the answer is a numeric input (decimal - with comma) set by user
+        INPUT_ZIPCODE,      // the answer is a zipcode set by user
         INPUT_TEXT,         // the answer is a text input (alphanumeric) set by user
         VARIABLE_SINGLE_CHOICE, // the question may be repeated according to the park answers
                                 // (see question 29)

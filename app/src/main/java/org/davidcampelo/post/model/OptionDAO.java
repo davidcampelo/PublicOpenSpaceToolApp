@@ -35,8 +35,8 @@ public class OptionDAO extends DAO {
 
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
             + COLUMN_ID +" INTEGER primary key autoincrement, "
-            + COLUMN_ALIAS +" TEXT not null, "
-            + COLUMN_VALUE +" TEXT not null, "
+            + COLUMN_ALIAS +" TEXT, "
+            + COLUMN_VALUE +" TEXT, "
             + COLUMN_TITLE +" TEXT not null, "
             + COLUMN_QST_NUMBER +" TEXT, "
             + COLUMN_POS_ID +" INTEGER);";
@@ -97,7 +97,28 @@ public class OptionDAO extends DAO {
 
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_QST_NUMBER +" = '"+ question.number +"' AND "+
                 " ("+ COLUMN_POS_ID+" IS NULL OR "+COLUMN_POS_ID+" = "+publicOpenSpace.id+" ) "+
-                "ORDER BY "+ COLUMN_ID +" DESC");
+                "ORDER BY "+ COLUMN_ID +" ASC");
+
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            list.add(cursorToObject(cursor));
+        }
+
+        cursor.close();
+
+        return list;
+    }
+
+    /**
+     * Retrieves all default options based on Question (the ones in the original POST itself)
+     * @param question
+     * @return
+     */
+    public ArrayList<Option> getAllDefaultByQuestion(Question question) {
+        ArrayList<Option> list = new ArrayList<Option>();
+
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, COLUMN_QST_NUMBER +" = '"+ question.number +"' AND "+
+                " ("+ COLUMN_POS_ID+" IS NULL OR "+COLUMN_POS_ID+" = 0 ) "+
+                "ORDER BY "+ COLUMN_ID +" ASC");
 
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             list.add(cursorToObject(cursor));

@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Option Database Access Object
@@ -69,20 +70,19 @@ public class AnswersDAO extends DAO {
         return answers;
     }
     /**
-     * Retrieves all answers of all questions for a given PublicOpenSpace
+     * Retrieves HashMap<Question number, answers> with all answers of all questions for a given PublicOpenSpace
      *
      * @param publicOpenSpace
      * @return
      */
-    public ArrayList<String> getAll(PublicOpenSpace publicOpenSpace) {
-        ArrayList<String> answers = new ArrayList<>();
+    public HashMap<String, String> getAll(PublicOpenSpace publicOpenSpace) {
+        HashMap<String, String> answers = new HashMap<>();
 
         Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS_ANSWERS, COLUMN_POS_ID + " = " + publicOpenSpace.id +
                 " ORDER BY " + COLUMN_QST_NUMBER + " ASC");
 
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            Log.e("Question number == ", cursor.getString(1));
-            answers.add(cursor.getString(0));
+            answers.put(cursor.getString(1), cursor.getString(0));
         }
 
         cursor.close();

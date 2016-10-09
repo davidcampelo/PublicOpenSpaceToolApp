@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
  *
  * Amount of Option objects is flexible, according to the "Other" options usage
  *
+ * NOTE: Answers stored in thee database are the selected Option IDs
  *
  * Created by davidcampelo on 8/6/16.
  */
@@ -41,7 +42,7 @@ public class MultipleQuestionView extends QuestionView{
         boolean addOther = false;
         for (Option option : question.getAllOptions()){
             // XXX Options with ALIAS == OTHER are the options to be added by the user
-            if ( option.getAlias().equals("OTHER") ) {
+            if ( !option.getAlias().equals("OTHER") ) {
                 QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
                 checkbox.setText(option.getTitle());
                 container.addView(checkbox);
@@ -90,7 +91,7 @@ public class MultipleQuestionView extends QuestionView{
                 if (otherView != null) {
                     // Create new Option object
                     String newOptionTitle = ((EditText)container.findViewById(R.id.otherInputText)).getText() + "";
-                    Option newOption = new Option(null, null, newOptionTitle, question);
+                    Option newOption = new Option("OTHER_ALIAS", "1", newOptionTitle, question);
                     question.addOption(newOption);
                     textOut.setText(newOptionTitle);
                     // XXX if it's an "Other" Option, it will be stored in the TAG of the VIEW

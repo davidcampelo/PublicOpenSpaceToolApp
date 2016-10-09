@@ -103,16 +103,21 @@ public class QuestionDAO extends DAO {
         return object;
     }
 
-    public ArrayList<Question> getAll() {
+    public ArrayList<Question> getAllWithOptions() {
         ArrayList<Question> list = new ArrayList<Question>();
 
-        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, null);
+        Cursor cursor = select(TABLE_NAME, TABLE_COLUMNS, " 1 = 1 ORDER BY "+ COLUMN_NUMBER + " ASC");
 
+        OptionDAO optionDAO = new OptionDAO(getContext());
+        optionDAO.open();
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            list.add(cursorToObject(cursor));
+            Question question = cursorToObject(cursor);
+            question.options = optionDAO.getAllDefaultByQuestion(question);
+            list.add(question);
         }
 
         cursor.close();
+        optionDAO.close();
 
         return list;
     }

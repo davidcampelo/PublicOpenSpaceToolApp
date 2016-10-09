@@ -35,7 +35,7 @@ public class SingleQuestionView extends QuestionView {
         for (int i = container.getChildCount(); --i >= 0;) {
             QuestionCheckBox checkBox = (QuestionCheckBox)container.getChildAt(i);
             if (checkBox.isChecked())
-                return String.valueOf(checkBox.getOption().getId());
+                return String.valueOf(checkBox.getOption().getValue());
         }
         return "";
     }
@@ -45,10 +45,9 @@ public class SingleQuestionView extends QuestionView {
         if (text == null || text.length() == 0)
             return;
 
-        int selectedId = Integer.valueOf(text);
         for (int i = container.getChildCount(); --i >= 0;) {
             QuestionCheckBox checkBox = (QuestionCheckBox) container.getChildAt(i);
-            if (checkBox.getOption().getId() == selectedId) {
+            if (checkBox.getOption().getValue().equals(text)) {
                 checkBox.setCheckedNoNotify(true);
                 break;
             }

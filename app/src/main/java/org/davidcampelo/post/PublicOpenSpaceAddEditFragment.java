@@ -45,6 +45,7 @@ import org.davidcampelo.post.view.AnswerMissingException;
 import org.davidcampelo.post.view.InputDecimalQuestionView;
 import org.davidcampelo.post.view.InputNumberQuestionView;
 import org.davidcampelo.post.view.InputTextQuestionView;
+import org.davidcampelo.post.view.InputZipCodeQuestionView;
 import org.davidcampelo.post.view.MultipleQuestionView;
 import org.davidcampelo.post.view.QuestionView;
 import org.davidcampelo.post.view.SingleQuestionView;
@@ -212,11 +213,11 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         LinearLayout container1 = (LinearLayout) fragmentLayout.findViewById(R.id.addEditContainer1);
         container1.addView(addToMap(context, "01"));
         container1.addView(addToMap(context, "02"));
-        QuestionView view3 = addToMap(context, "03");
+        QuestionView view3=addToMap(context, "03");
         view3.setEnabled(false);
         container1.addView(view3);
         container1.addView(addToMap(context, "04"));
-        QuestionView view5 = addToMap(context, "05");
+        QuestionView view5=addToMap(context, "05");
         view5.setEnabled(false);
         container1.addView(view5);
         container1.addView(addToMap(context, "06"));
@@ -316,6 +317,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             view = new InputTextQuestionView(context, question);
         else if (type == Question.QuestionType.INPUT_NUMBER)
             view = new InputNumberQuestionView(context, question);
+        else if (type == Question.QuestionType.INPUT_ZIPCODE)
+            view = new InputZipCodeQuestionView(context, question);
         else
             view = new InputTextQuestionView(context, question);
 

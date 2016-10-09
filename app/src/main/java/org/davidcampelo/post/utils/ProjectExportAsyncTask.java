@@ -9,6 +9,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.davidcampelo.post.model.AnswersDAO;
+import org.davidcampelo.post.model.Option;
+import org.davidcampelo.post.model.OptionDAO;
 import org.davidcampelo.post.model.Project;
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.PublicOpenSpaceDAO;
@@ -19,7 +21,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.StringTokenizer;
 
 /**
  * Created by davidcampelo on 9/18/16.
@@ -65,27 +69,33 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        publishProgress("Retrieving Questions...");
+        publishProgress("Retrieving Questions and Options...");
         QuestionDAO questionDAO = new QuestionDAO(context);
         questionDAO.open();
-        ArrayList<Question> listQuestions = questionDAO.getAll();
+        ArrayList<Question> listQuestions = questionDAO.getAllWithOptions();
         questionDAO.close();
 
-        // write header
+        // build header
         StringBuilder stringBuilderHeader = new StringBuilder();
-        Iterator<Question> questionIterator = listQuestions.iterator();
-        while (questionIterator.hasNext()) {
-            stringBuilderHeader.append(questionIterator.next().getNumber() + ",");
+        for (Question question : listQuestions) {
+            // if it's a Question with multiple options, every Option must be a column in the CSV
+            if (question.getType() != Question.QuestionType.MULTIPLE_CHOICE) {
+                stringBuilderHeader.append(question.getAlias() + ",");
+            } else {
+                Iterator<Option> optionIterator = question.getAllOptions().iterator();
+                while (optionIterator.hasNext()) {
+                    Option option = optionIterator.next();
+                    stringBuilderHeader.append(option.getAlias() + ",");
+                }
+            }
         }
-
+        // write header
         try {
-            out.write(toStringWithNoEndingCommas(stringBuilderHeader) + "\n");
-            Log.e("ANSWERS ", toStringWithNoEndingCommas(stringBuilderHeader));
-
+            writeToFile(out, toStringWithNoEndingCommas(stringBuilderHeader));
         } catch (IOException e) {
             e.printStackTrace();
             progressDialog.dismiss();
-            return "ERROR: Could not write header to file!";
+            return "ERROR: Could not write to file!";
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,25 +114,64 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         answersDAO.open();
 
         // get answers for every POS
-        Iterator<PublicOpenSpace> publicOpenSpaceIterator = listPublicOpenSpaces.iterator();
-        while (publicOpenSpaceIterator.hasNext()) {
-            ArrayList<String> list  Answers = answersDAO.getAll(publicOpenSpaceIterator.next());
-            Iterator<String> answersIterator = listAnswers.iterator();
+        for (PublicOpenSpace publicOpenSpace : listPublicOpenSpaces) {
+            HashMap<String, String> mapAnswers = answersDAO.getAll(publicOpenSpace);
 
+            // look through all questions and insert answers
             StringBuilder stringBuilderAnswers = new StringBuilder();
-            while (answersIterator.hasNext()) {
-                stringBuilderAnswers.append(answersIterator.next().replaceAll(",", "\\,") + ",");
+            for (Question question : listQuestions) {
+                String questionAnswers = mapAnswers.get(question.getNumber());
+                if (questionAnswers == null) {
+                    questionAnswers = "";
+                }
+                // if it's a Question with multiple options, every Option must be a column in the CSV
+                if (question.getType() != Question.QuestionType.MULTIPLE_CHOICE) {
+                    stringBuilderAnswers.append("\""+ questionAnswers + "\",");
+                }
+                else {
+                    ArrayList<Long> selectedIds = splitIntoOptionIds(questionAnswers);
+                    for (Option option : question.getAllOptions()) {
+                        // if it's an "OTHER option" (an Option created by the user), we must put
+                        // them all together in the same column
+                        if (option.getAlias().equals("OTHER")) {
+                            if (selectedIds.size() == 0) {
+                                stringBuilderAnswers.append("\"0\",");
+                            }
+                            else {
+                                OptionDAO optionDAO = new OptionDAO(context);
+                                optionDAO.open();
+                                stringBuilderAnswers.append("\"");
+                                for (Long optionId : selectedIds) {
+                                    // insert OTHER option into the StringBuffer
+                                    Option otherOption = optionDAO.get(optionId);
+                                    stringBuilderAnswers.append(otherOption.getTitle() + Constants.QUESTION_ANSWERS_SEPARATOR);
+                                }
+                                // XXX Remove last comma :D
+                                stringBuilderAnswers.deleteCharAt(stringBuilderAnswers.length() - 1);
+                                stringBuilderAnswers.append("\", ");
+                                optionDAO.close();
+                            }
+                        }
+                        else if ( selectedIds.contains(option.getId()) ) {
+                            stringBuilderAnswers.append("\"1\",");
+                            selectedIds.remove(option.getId());
+                        }
+                        else{
+                            stringBuilderAnswers.append("\"0\",");
+                        }
+                    }
+                }
             }
 
             // write answers to file
             try {
-                out.write(toStringWithNoEndingCommas(stringBuilderAnswers) + "\n");
-                Log.e("ANSWERS ", toStringWithNoEndingCommas(stringBuilderAnswers));
+                writeToFile(out, toStringWithNoEndingCommas(stringBuilderAnswers));
             } catch (IOException e) {
                 e.printStackTrace();
                 progressDialog.dismiss();
                 return "ERROR: Could not write to file!";
             }
+
         }
         answersDAO.close();
 
@@ -145,6 +194,32 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         return "Files generated successfully!";
     }
 
+    private void writeToFile(FileWriter out, String string) throws IOException {
+        out.write(string + "\n");
+        Log.e("[EXPORT]", string);
+    }
+
+    /**
+     * Takes a String with MULTIPLE_CHOICE Question's Opition ID answers
+     * and return an array of Option IDs
+     */
+    private ArrayList<Long> splitIntoOptionIds(String questionAnswers) {
+        StringTokenizer tokenizer = new StringTokenizer(questionAnswers, Constants.QUESTION_ANSWERS_SEPARATOR);
+        ArrayList<Long> selectedIds = new ArrayList<>();
+
+        while ( tokenizer.hasMoreElements() ) {
+            String selectedId = (String) tokenizer.nextElement();
+            if (selectedId == null || selectedId.length() == 0)
+                continue;
+            selectedIds.add(Long.valueOf( selectedId ));
+        }
+
+        return selectedIds;
+    }
+
+    /**
+     * Remove the last character if it's a comma
+     */
     private String toStringWithNoEndingCommas(StringBuilder stringBuilder) {
         String str = stringBuilder.toString();
         if (str.length() > 0 && str.endsWith(",")){
