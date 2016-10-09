@@ -14,11 +14,11 @@
     </question>
 
     <!-- QUESTION 4 -->
-    <question alias="POSTCODE" number="04" type="INPUT_NUMBER" title="Postcode">
+    <question alias="POSTCODE" number="04" type="INPUT_ZIPCODE" title="Postcode">
     </question>
 
    <!-- QUESTION 5 -->
-    <question alias="COORDX/COORDY" number="05" type="INPUT_COORDINATES" title="Geocode (mark polygon on Location tab)">
+    <question alias="COORDX/COORDY" number="05" type="INPUT_TEXT" title="Geocode (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 6 -->
@@ -116,7 +116,7 @@
             <option alias="T_PERIMSOME" value="1" title="Perimeter some sides"></option>
             <option alias="T_ALONG" value="1" title="Along walking paths"></option>
             <option alias="T_RANDOM" value="1" title="Random placement throughout"></option>
-            <option alias="T_OTHER" value="1" title="Other"></option>
+            <option alias="OTHER" value="1" title="Other"></option>
     </question>
     
         <!-- QUESTION 17 -->
@@ -148,7 +148,7 @@
             <option alias="P_DIAGONAL" value="1" title="Diagonal"></option>
             <option alias="P_RADIAL" value="1" title="Radial"></option>
             <option alias="P_AROUND" value="1" title="Path around water/visual feature"></option>
-            <option alias="P_OTHER" value="1" title="Other"></option>
+            <option alias="OTHER" value="1" title="Other"></option>
     </question>
     
         <!-- QUESTION 20 -->
