@@ -25,9 +25,10 @@ public class MapUtility {
 
     /** Default padding for map camera */
     private static final int DEFAULT_PADDING = 50;
+    private static final double SQUAREMETERS_TO_RADIUS_FACTOR = 10000;
     private static String LOG_TAG = "[MAP UTILITY] ";
 
-    private static DecimalFormat decimalFormat = new DecimalFormat("#");
+    private static DecimalFormat decimalFormat = new DecimalFormat("#,###,##0.00");
     private static final double EARTH_RADIUS = 6371000;// meters
 
     public String resolveAddress(Context context, double latitude, double longitude) {
@@ -64,9 +65,14 @@ public class MapUtility {
      * Calculate area according to a List of points and formats to 2 decimal places
      */
     public static String calculateAreaAndFormat(final List<LatLng> locations) {
-        return decimalFormat.format(calculateAreaOfGPSPolygonOnSphereInSquareMeters(locations, EARTH_RADIUS));
+        return decimalFormat.format(calculateAreaOfGPSPolygonOnSphereInHectares(locations, EARTH_RADIUS));
 
     }
+
+    private static double calculateAreaOfGPSPolygonOnSphereInHectares(List<LatLng> locations, double earthRadius) {
+        return (calculateAreaOfGPSPolygonOnSphereInSquareMeters(locations, earthRadius)/SQUAREMETERS_TO_RADIUS_FACTOR);
+    }
+
 
     private static double calculateAreaOfGPSPolygonOnSphereInSquareMeters(final List<LatLng> locations, final double radius) {
         if (locations.size() < 3) {

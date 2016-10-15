@@ -120,11 +120,11 @@ public class MultipleQuestionView extends QuestionView{
             if (child instanceof QuestionCheckBox) {
                 QuestionCheckBox checkBox = (QuestionCheckBox) child;
                 if (checkBox.isChecked()) {
-                    answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.QUESTION_ANSWERS_SEPARATOR);
+                    answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.DEFAULT_SEPARATOR);
                 }
             }
             else if (child.getTag() instanceof Option) { // it's an "Other" option and is stored in the TAG
-                answers.append(String.valueOf( ((Option)child.getTag()).getId() ) + Constants.QUESTION_ANSWERS_SEPARATOR);
+                answers.append(String.valueOf( ((Option)child.getTag()).getId() ) + Constants.DEFAULT_SEPARATOR);
             }
         }
 
@@ -136,7 +136,7 @@ public class MultipleQuestionView extends QuestionView{
         if (answers == null || answers.length() == 0)
             return;
 
-        StringTokenizer tokenizer = new StringTokenizer(answers, Constants.QUESTION_ANSWERS_SEPARATOR);
+        StringTokenizer tokenizer = new StringTokenizer(answers, Constants.DEFAULT_SEPARATOR);
         ArrayList<Long> selectedIds = new ArrayList<>();
 
         while ( tokenizer.hasMoreElements() ) {

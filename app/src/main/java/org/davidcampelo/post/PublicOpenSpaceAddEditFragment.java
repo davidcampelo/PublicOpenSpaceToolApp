@@ -302,15 +302,15 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
     private final QuestionView addToMap(Context context, String questionNumber) {
         Question question = questionDAO.get(questionNumber, publicOpenSpace);
-        QuestionView view;
+        QuestionView view = null;
 
         Question.QuestionType type = question.getType();
         if (type == Question.QuestionType.SINGLE_CHOICE)
             view = new SingleQuestionView(context, question);
+        else if (type == Question.QuestionType.MULTIPLE_CHOICE)
+        view = new MultipleQuestionView(context, question);
         else if (type == Question.QuestionType.VARIABLE_SINGLE_CHOICE)
             view = new VariableSingleQuestionView(context, question);
-        else if (type == Question.QuestionType.MULTIPLE_CHOICE)
-            view = new MultipleQuestionView(context, question);
         else if (type == Question.QuestionType.INPUT_DECIMAL)
             view = new InputDecimalQuestionView(context, question);
         else if (type == Question.QuestionType.INPUT_TEXT)
@@ -319,7 +319,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             view = new InputNumberQuestionView(context, question);
         else if (type == Question.QuestionType.INPUT_ZIPCODE)
             view = new InputZipCodeQuestionView(context, question);
-        else
+        else  if (type == Question.QuestionType.INPUT_COORDINATES)
             view = new InputTextQuestionView(context, question);
 
         this.questionNumberToViewMap.put(questionNumber, view);
@@ -438,7 +438,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         if (questionView != null) {
             if (arrayPoints.size() >= 1) {
                 LatLng latLng = MapUtility.calculateCentroid(arrayPoints);
-                centroid = "lat:" + latLng.latitude + " lng:"+ latLng.longitude;
+                centroid = latLng.latitude +" "+ latLng.longitude;
             }
             Log.e(this.getClass().getName(), "-------------------->>>> [CENTROID] from map to question = "+ centroid);
             ((InputTextQuestionView) questionView).setAnswers(centroid);

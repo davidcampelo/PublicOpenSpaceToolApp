@@ -1,22 +1,15 @@
 package org.davidcampelo.post.view;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.davidcampelo.post.R;
 import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.utils.Constants;
-import org.w3c.dom.Text;
 
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /**
@@ -110,7 +103,7 @@ public class VariableSingleQuestionView extends QuestionView {
     public String getAnswers() throws AnswerMissingException {
         StringBuilder answers = new StringBuilder();
         int answersCount = 0;
-        answers.append(questionCounter + Constants.QUESTION_ANSWERS_SEPARATOR);
+        answers.append(questionCounter + Constants.DEFAULT_SEPARATOR);
         int childCount = container.getChildCount();
         for (int i = 0; i < childCount && container.getChildAt(i) instanceof LinearLayout; i++) {
             LinearLayout child = (LinearLayout) container.getChildAt(i);
@@ -118,7 +111,7 @@ public class VariableSingleQuestionView extends QuestionView {
                 QuestionCheckBox checkBox = (QuestionCheckBox) child.getChildAt(j);
                 if (checkBox.isChecked()) {
                     answersCount++;
-                    answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.QUESTION_ANSWERS_SEPARATOR);
+                    answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.DEFAULT_SEPARATOR);
                     break;
                 }
             }
@@ -138,11 +131,11 @@ public class VariableSingleQuestionView extends QuestionView {
         if (answers == null || answers.length() == 0)
             return;
         // get count of questions
-        int index = answers.indexOf(Constants.QUESTION_ANSWERS_SEPARATOR);
+        int index = answers.indexOf(Constants.DEFAULT_SEPARATOR);
         int areaCount = Integer.valueOf( answers.substring(0, index) );
         answers = answers.substring(index+1);
 
-        StringTokenizer tokenizer = new StringTokenizer(answers, Constants.QUESTION_ANSWERS_SEPARATOR);
+        StringTokenizer tokenizer = new StringTokenizer(answers, Constants.DEFAULT_SEPARATOR);
         while ( tokenizer.hasMoreElements() && areaCount-- > 0  ) {
             Long selectedId = Long.valueOf( (String)tokenizer.nextElement() );
 

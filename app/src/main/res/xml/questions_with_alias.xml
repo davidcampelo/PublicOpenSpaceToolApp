@@ -10,7 +10,7 @@
     </question>
 
     <!-- QUESTION 3 -->
-    <question alias="AREA" number="03" type="INPUT_DECIMAL" title="Area in m² (mark polygon on Location tab)">
+    <question alias="AREA" number="03" type="INPUT_DECIMAL" title="Area in hectares (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 4 -->
@@ -18,7 +18,7 @@
     </question>
 
    <!-- QUESTION 5 -->
-    <question alias="COORDX/COORDY" number="05" type="INPUT_TEXT" title="Geocode (mark polygon on Location tab)">
+    <question alias="GEOCODE_X GEOCODE_Y" number="05" type="INPUT_COORDINATES" title="Geocode (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 6 -->

@@ -68,6 +68,9 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
 
         }
 
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        /// CSV HEADER /////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
         publishProgress("Retrieving Questions and Options...");
         QuestionDAO questionDAO = new QuestionDAO(context);
@@ -79,14 +82,22 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         StringBuilder stringBuilderHeader = new StringBuilder();
         for (Question question : listQuestions) {
             // if it's a Question with multiple options, every Option must be a column in the CSV
-            if (question.getType() != Question.QuestionType.MULTIPLE_CHOICE) {
-                stringBuilderHeader.append(question.getAlias() + ",");
-            } else {
+            Question.QuestionType questionType = question.getType();
+            if (questionType == Question.QuestionType.MULTIPLE_CHOICE) {
                 Iterator<Option> optionIterator = question.getAllOptions().iterator();
                 while (optionIterator.hasNext()) {
                     Option option = optionIterator.next();
-                    stringBuilderHeader.append(option.getAlias() + ",");
+                    stringBuilderHeader.append("\"" +option.getAlias().toLowerCase() + "\",");
                 }
+            }
+            else if (questionType == Question.QuestionType.INPUT_COORDINATES){
+                String questionAlias = question.getAlias();
+                int pos = questionAlias.indexOf(Constants.POLYGON_POINTS_SEPARATOR);
+                stringBuilderHeader.append("\"" +questionAlias.substring(0,pos).toLowerCase() + "\", ");
+                stringBuilderHeader.append("\"" +questionAlias.substring(pos+1).toLowerCase() + "\", ");
+            }
+            else {
+                stringBuilderHeader.append("\"" +question.getAlias().toLowerCase() + "\",");
             }
         }
         // write header
@@ -98,6 +109,8 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
             return "ERROR: Could not write to file!";
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // ANSWERS /////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
         publishProgress("Retrieving answers...");
 
@@ -125,10 +138,8 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                     questionAnswers = "";
                 }
                 // if it's a Question with multiple options, every Option must be a column in the CSV
-                if (question.getType() != Question.QuestionType.MULTIPLE_CHOICE) {
-                    stringBuilderAnswers.append("\""+ questionAnswers + "\",");
-                }
-                else {
+                Question.QuestionType questionType = question.getType();
+                if (questionType == Question.QuestionType.MULTIPLE_CHOICE) {
                     ArrayList<Long> selectedIds = splitIntoOptionIds(questionAnswers);
                     for (Option option : question.getAllOptions()) {
                         // if it's an "OTHER option" (an Option created by the user), we must put
@@ -144,7 +155,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                                 for (Long optionId : selectedIds) {
                                     // insert OTHER option into the StringBuffer
                                     Option otherOption = optionDAO.get(optionId);
-                                    stringBuilderAnswers.append(otherOption.getTitle() + Constants.QUESTION_ANSWERS_SEPARATOR);
+                                    stringBuilderAnswers.append(otherOption.getTitle() + Constants.DEFAULT_SEPARATOR);
                                 }
                                 // XXX Remove last comma :D
                                 stringBuilderAnswers.deleteCharAt(stringBuilderAnswers.length() - 1);
@@ -161,6 +172,15 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                         }
                     }
                 }
+                else if (question.getType() == Question.QuestionType.INPUT_COORDINATES) {
+                    int pos = questionAnswers.indexOf(Constants.POLYGON_POINTS_SEPARATOR);
+                    stringBuilderAnswers.append("\"" +questionAnswers.substring(0,pos) + "\", ");
+                    stringBuilderAnswers.append("\"" +questionAnswers.substring(pos+1) + "\", ");
+                }
+                else {
+                    stringBuilderAnswers.append("\""+ questionAnswers + "\",");
+                }
+
             }
 
             // write answers to file
@@ -174,6 +194,8 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
 
         }
         answersDAO.close();
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
         try {
             out.flush();
@@ -204,7 +226,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
      * and return an array of Option IDs
      */
     private ArrayList<Long> splitIntoOptionIds(String questionAnswers) {
-        StringTokenizer tokenizer = new StringTokenizer(questionAnswers, Constants.QUESTION_ANSWERS_SEPARATOR);
+        StringTokenizer tokenizer = new StringTokenizer(questionAnswers, Constants.DEFAULT_SEPARATOR);
         ArrayList<Long> selectedIds = new ArrayList<>();
 
         while ( tokenizer.hasMoreElements() ) {
