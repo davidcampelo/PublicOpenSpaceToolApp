@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.StringTokenizer;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by davidcampelo on 9/18/16.
@@ -50,10 +51,34 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
+        if (project == null) {
+            return "ERROR: No project was selected!";
+        }
 
+        try {
+            File csvFile = exportCSV();
+
+            progressDialog.dismiss();
+
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_SUBJECT, "[Public Open Space Tool] Project \'" +project.getName()+ "\' data export");
+            sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(csvFile));
+            sendIntent.setType("message/rfc822");
+
+            context.startActivity(sendIntent);
+
+            return "Files generated successfully!";
+        } catch (Exception e) {
+            e.printStackTrace();
+            progressDialog.dismiss();
+            return e.getMessage();
+        }
+    }
+
+    private File exportCSV() throws Exception {
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        publishProgress("Creating temporary files...");
+        publishProgress("Creating temporary CSV file...");
 
         File file = null;
         FileWriter out = null;
@@ -62,12 +87,8 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
             out = (FileWriter) new FileWriter(file);
 
         } catch (IOException e) {
-            e.printStackTrace();
-            progressDialog.dismiss();
-            return "ERROR: Could not create file!";
-
+            throw new Exception("ERROR: Could not create file!", e);
         }
-
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         /// CSV HEADER /////////////////////////////////////////////////////////////////////////////
@@ -87,7 +108,11 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                 Iterator<Option> optionIterator = question.getAllOptions().iterator();
                 while (optionIterator.hasNext()) {
                     Option option = optionIterator.next();
-                    stringBuilderHeader.append("\"" +option.getAlias().toLowerCase() + "\",");
+                    String optionAlias = option.getAlias().toLowerCase();
+                    stringBuilderHeader.append("\"" +optionAlias+ "\",");
+                    if (optionAlias.startsWith(Constants.MULTIPLE_QUESTION_OTHER_START_STRING)) {
+                        stringBuilderHeader.append("\"" +optionAlias + Constants.MULTIPLE_QUESTION_OTHER_CSV_SUFFIX + "\",");
+                    }
                 }
             }
             else if (questionType == Question.QuestionType.INPUT_COORDINATES){
@@ -104,9 +129,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         try {
             writeToFile(out, toStringWithNoEndingCommas(stringBuilderHeader));
         } catch (IOException e) {
-            e.printStackTrace();
-            progressDialog.dismiss();
-            return "ERROR: Could not write to file!";
+            throw new Exception("ERROR: Could not write headers to file!", e);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,9 +137,6 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         ////////////////////////////////////////////////////////////////////////////////////////////
         publishProgress("Retrieving answers...");
 
-        if (project == null) {
-            return "ERROR: No project was selected!";
-        }
         // get all POS in the project
         PublicOpenSpaceDAO publicOpenSpaceDAO = new PublicOpenSpaceDAO(context);
         publicOpenSpaceDAO.open();
@@ -144,11 +164,13 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                     for (Option option : question.getAllOptions()) {
                         // if it's an "OTHER option" (an Option created by the user), we must put
                         // them all together in the same column
-                        if (option.getAlias().equals("OTHER")) {
+                        if (option.getAlias().toLowerCase().startsWith(Constants.MULTIPLE_QUESTION_OTHER_START_STRING)) {
                             if (selectedIds.size() == 0) {
                                 stringBuilderAnswers.append("\"0\",");
+                                stringBuilderAnswers.append("\"\",");
                             }
                             else {
+                                stringBuilderAnswers.append("\"1\",");
                                 OptionDAO optionDAO = new OptionDAO(context);
                                 optionDAO.open();
                                 stringBuilderAnswers.append("\"");
@@ -178,7 +200,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                     stringBuilderAnswers.append("\"" +questionAnswers.substring(pos+1) + "\", ");
                 }
                 else {
-                    stringBuilderAnswers.append("\""+ questionAnswers + "\",");
+                    stringBuilderAnswers.append("\""+ questionAnswers + "\", ");
                 }
 
             }
@@ -187,9 +209,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
             try {
                 writeToFile(out, toStringWithNoEndingCommas(stringBuilderAnswers));
             } catch (IOException e) {
-                e.printStackTrace();
-                progressDialog.dismiss();
-                return "ERROR: Could not write to file!";
+                throw new Exception("ERROR: Could not write to file!", e);
             }
 
         }
@@ -204,16 +224,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
             e.printStackTrace();
         }
 
-        progressDialog.dismiss();
-
-        Intent sendIntent = new Intent(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "[Public Open Space Tool] Project \'" +project.getName()+ "\' data export");
-        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-        sendIntent.setType("message/rfc822");
-
-        context.startActivity(sendIntent);
-
-        return "Files generated successfully!";
+        return file;
     }
 
     private void writeToFile(FileWriter out, String string) throws IOException {

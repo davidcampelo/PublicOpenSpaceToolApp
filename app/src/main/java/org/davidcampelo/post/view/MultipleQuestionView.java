@@ -42,7 +42,7 @@ public class MultipleQuestionView extends QuestionView{
         boolean addOther = false;
         for (Option option : question.getAllOptions()){
             // XXX Options with ALIAS == OTHER are the options to be added by the user
-            if ( !option.getAlias().equals("OTHER") ) {
+            if ( !option.getAlias().toLowerCase().startsWith(Constants.MULTIPLE_QUESTION_OTHER_START_STRING) ) {
                 QuestionCheckBox checkbox = new QuestionCheckBox(context, option, this);
                 checkbox.setText(option.getTitle());
                 container.addView(checkbox);
