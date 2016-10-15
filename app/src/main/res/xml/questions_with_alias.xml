@@ -2,397 +2,397 @@
 <questions>
 
     <!-- QUESTION 1 -->
-    <question alias="REFERENCE" number="01" type="INPUT_NUMBER" title="Reference number">
+    <question alias="reference" number="01" type="INPUT_NUMBER" title="Reference number">
     </question>
 
     <!-- QUESTION 2 -->
-    <question alias="ADDRESS" number="02" type="INPUT_TEXT" title="Address">
+    <question alias="address" number="02" type="INPUT_TEXT" title="Address">
     </question>
 
     <!-- QUESTION 3 -->
-    <question alias="AREA" number="03" type="INPUT_DECIMAL" title="Area in hectares (mark polygon on Location tab)">
+    <question alias="area" number="03" type="INPUT_DECIMAL" title="Area in hectares (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 4 -->
-    <question alias="POSTCODE" number="04" type="INPUT_ZIPCODE" title="Postcode">
+    <question alias="postcode" number="04" type="INPUT_ZIPCODE" title="Postcode">
     </question>
 
    <!-- QUESTION 5 -->
-    <question alias="GEOCODE_X GEOCODE_Y" number="05" type="INPUT_COORDINATES" title="Geocode (mark polygon on Location tab)">
+    <question alias="geocode_x geocode_y" number="05" type="INPUT_COORDINATES" title="Geocode (mark polygon on Location tab)">
     </question>
 
     <!-- QUESTION 6 -->
-    <question alias="YEAR" number="06" type="INPUT_NUMBER" title="Year of Establishment of P.O.S.">
+    <question alias="year" number="06" type="INPUT_NUMBER" title="Year of Establishment of P.O.S.">
     </question>
 
         <!-- QUESTION 7 -->
-    <question alias="USAGE" number="07" type="MULTIPLE_CHOICE" title="Type of usage (tick all relevant)">
-            <option alias="ACT_FORMAL" value="1" title="Active-formal"></option>
-            <option alias="ACT_INF" value="1" title="Active-informal"></option>
-            <option alias="PASSIVE" value="1" title="Passive only (go to Q9)"></option>
+    <question alias="usage" number="07" type="MULTIPLE_CHOICE" title="Type of usage (tick all relevant)">
+            <option alias="act_formal" value="1" title="Active-formal"></option>
+            <option alias="act_inf" value="1" title="Active-informal"></option>
+            <option alias="passive" value="1" title="Passive only (go to Q9)"></option>
     </question>
     
         <!-- QUESTION 8 -->
-    <question alias="DESIGNED" number="08" type="MULTIPLE_CHOICE" title="For what type of activities the space is designed? (tick all relevant)">
-            <option alias="TENNIS" value="1" title="Tennis (grass/hard courts)"></option>
-            <option alias="SOCCER" value="1" title="Soccer"></option>
-            <option alias="FOOTBALL" value="1" title="Football"></option>
-            <option alias="NETBALL" value="1" title="Netball (grass/hard courts)"></option>
-            <option alias="CRICKET" value="1" title="Cricket"></option>
-            <option alias="BASEBALL" value="1" title="Baseball"></option>
-            <option alias="WALKING" value="1" title="Walking (only if paths)"></option>
-            <option alias="CYCLING" value="1" title="Cycling"></option>
-            <option alias="FITNESS" value="1" title="Fitness circuit"></option>
-            <option alias="BASKETBALL" value="1" title="Basketball/Netball Hoops"></option>
-            <option alias="HOCKEY" value="1" title="Hockey"></option>
-            <option alias="ATHLETICS" value="1" title="Athletics"></option>
-            <option alias="RUGBY" value="1" title="Rugby"></option>
-            <option alias="PLAYGROUND" value="1" title="Children's playground"></option>
-            <option alias="OTHER" value="1" title="Other"></option>
+    <question alias="designed" number="08" type="MULTIPLE_CHOICE" title="For what type of activities the space is designed? (tick all relevant)">
+            <option alias="tennis" value="1" title="Tennis (grass/hard courts)"></option>
+            <option alias="soccer" value="1" title="Soccer"></option>
+            <option alias="football" value="1" title="Football"></option>
+            <option alias="netball" value="1" title="Netball (grass/hard courts)"></option>
+            <option alias="cricket" value="1" title="Cricket"></option>
+            <option alias="baseball" value="1" title="Baseball"></option>
+            <option alias="walking" value="1" title="Walking (only if paths)"></option>
+            <option alias="cycling" value="1" title="Cycling"></option>
+            <option alias="fitness" value="1" title="Fitness circuit"></option>
+            <option alias="basketball" value="1" title="Basketball/Netball Hoops"></option>
+            <option alias="hockey" value="1" title="Hockey"></option>
+            <option alias="athletics" value="1" title="Athletics"></option>
+            <option alias="rugby" value="1" title="Rugby"></option>
+            <option alias="playground" value="1" title="Children's playground"></option>
+            <option alias="other" value="1" title="Other"></option>
     </question>
     
         <!-- QUESTION 9 -->
-    <question alias="BEACH_RIVER" number="09" type="SINGLE_CHOICE" title="Is the P.O.S. on the beach/river foreshore?">
-            <option alias="B_YES" value="1" title="Yes"></option>
-            <option alias="B_NO" value="0" title="No"></option>
+    <question alias="beach_river" number="09" type="SINGLE_CHOICE" title="Is the P.O.S. on the beach/river foreshore?">
+            <option alias="b_yes" value="1" title="Yes"></option>
+            <option alias="b_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 10 -->
-    <question alias="WATER" number="10" type="SINGLE_CHOICE" title="Are there water features in the P.O.S.?">
-            <option alias="W_YES" value="1" title="Yes"></option>
-            <option alias="W_NO" value="0" title="No (Go to Q13)"></option>
+    <question alias="water" number="10" type="SINGLE_CHOICE" title="Are there water features in the P.O.S.?">
+            <option alias="w_yes" value="1" title="Yes"></option>
+            <option alias="w_no" value="0" title="No (Go to Q13)"></option>
     </question>
     
         <!-- QUESTION 11 -->
-    <question alias="W_FEATURE" number="11" type="MULTIPLE_CHOICE" title="Type of water feature (tick all relevant)">
-            <option alias="LAKE" value="1" title="Lake"></option>
-            <option alias="POND" value="1" title="Pond"></option>
-            <option alias="FOUNTAIN" value="1" title="Water fountain"></option>
-            <option alias="STREAMM" value="1" title="Stream"></option>
-            <option alias="OTHER" value="1" title="Other"></option>
+    <question alias="w_feature" number="11" type="MULTIPLE_CHOICE" title="Type of water feature (tick all relevant)">
+            <option alias="lake" value="1" title="Lake"></option>
+            <option alias="pond" value="1" title="Pond"></option>
+            <option alias="fountain" value="1" title="Water fountain"></option>
+            <option alias="stream" value="1" title="Stream"></option>
+            <option alias="other" value="1" title="Other"></option>
     </question>
     
         <!-- QUESTION 12 -->
-    <question alias="AREA_WATER" number="12" type="SINGLE_CHOICE" title="Estimate the percentage of the P.O.S. occupied by the water feature(s) (tick one)">
+    <question alias="area_water" number="12" type="SINGLE_CHOICE" title="Estimate the percentage of the P.O.S. occupied by the water feature(s) (tick one)">
             <option alias=">25%" value="1" title="Up to 25%"></option>
             <option alias="26%-50%" value="2" title="26% - 50%"></option>
             <option alias="51%-75%" value="3" title="51% - 75%"></option>
-            <option alias="MORE_75%" value="4" title="More than 75%"></option>
+            <option alias="more_75%" value="4" title="More than 75%"></option>
     </question>
     
         <!-- QUESTION 13a -->
-    <question alias="AESTHETIC" number="13.a" type="SINGLE_CHOICE" title="Are there other aesthetic features in the P.O.S.?">
-            <option alias="A_YES" value="1" title="Yes"></option>
-            <option alias="A_NO" value="0" title="No (Go to Q14)"></option>
+    <question alias="aesthetic" number="13.a" type="SINGLE_CHOICE" title="Are there other aesthetic features in the P.O.S.?">
+            <option alias="a_yes" value="1" title="Yes"></option>
+            <option alias="a_no" value="0" title="No (Go to Q14)"></option>
     </question>                                
     
         <!-- QUESTION 13b -->
     <question alias="" number="13.b" type="MULTIPLE_CHOICE" title="Which of the following features are present? (tick all relevant)">
-            <option alias="STATUES" value="1" title="Statues"></option>
-            <option alias="GAZEBOS" value="1" title="Gazebos/Rotunda"></option>
-            <option alias="SCULPTURES" value="1" title="Sculptures"></option>
-            <option alias="DUCKS" value="1" title="Ducks/Swans"></option>
-            <option alias="BRIDGE" value="1" title="Bridge"></option>
-            <option alias="ROCKS" value="1" title="Rocks"></option>
-            <option alias="OTHER" value="1" title="Other"></option>
+            <option alias="statues" value="1" title="Statues"></option>
+            <option alias="gazebos" value="1" title="Gazebos/Rotunda"></option>
+            <option alias="sculptures" value="1" title="Sculptures"></option>
+            <option alias="ducks" value="1" title="Ducks/Swans"></option>
+            <option alias="bridge" value="1" title="Bridge"></option>
+            <option alias="rocks" value="1" title="Rocks"></option>
+            <option alias="other" value="1" title="Other"></option>
     </question>
     
         <!-- QUESTION 14 -->
-    <question alias="TREES" number="14" type="SINGLE_CHOICE" title="Are there trees in the P.O.S.?">
-            <option alias="T_YES" value="1" title="Yes"></option>
-            <option alias="T_NO" value="2" title="No (Go to Q18)"></option>
+    <question alias="trees" number="14" type="SINGLE_CHOICE" title="Are there trees in the P.O.S.?">
+            <option alias="t_yes" value="1" title="Yes"></option>
+            <option alias="t_no" value="2" title="No (Go to Q18)"></option>
     </question>                                
     
         <!-- QUESTION 15 -->
-    <question alias="N_TREES" number="15" type="SINGLE_CHOICE" title="Estimate the approximate number of trees present (tick one)">
+    <question alias="n_trees" number="15" type="SINGLE_CHOICE" title="Estimate the approximate number of trees present (tick one)">
             <option alias="1-50" value="1" title="1 - 50 trees"></option>
-            <option alias="50-100" value="2" title="50 - 100 trees "></option>
-            <option alias="MORE_100" value="3" title="More than 100 trees"></option>
+            <option alias="50-100" value="2" title="51 - 100 trees "></option>
+            <option alias="more_100" value="3" title="More than 100 trees"></option>
     </question>
     
         <!-- QUESTION 16 -->
-    <question alias="T_PLACED" number="16" type="MULTIPLE_CHOICE" title="Where are the trees placed? (tick all relevant)">
-            <option alias="T_PERIMALL" value="1" title="Perimeter all sides"></option>
-            <option alias="T_PERIMSOME" value="1" title="Perimeter some sides"></option>
-            <option alias="T_ALONG" value="1" title="Along walking paths"></option>
-            <option alias="T_RANDOM" value="1" title="Random placement throughout"></option>
-            <option alias="OTHER" value="1" title="Other"></option>
+    <question alias="t_placed" number="16" type="MULTIPLE_CHOICE" title="Where are the trees placed? (tick all relevant)">
+            <option alias="t_perimall" value="1" title="Perimeter all sides"></option>
+            <option alias="t_perimsome" value="1" title="Perimeter some sides"></option>
+            <option alias="t_along" value="1" title="Along walking paths"></option>
+            <option alias="t_random" value="1" title="Random placement throughout"></option>
+            <option alias="other" value="1" title="Other"></option>
     </question>
     
         <!-- QUESTION 17 -->
-    <question alias="GARDENS" number="17" type="SINGLE_CHOICE" title="Are there gardens in this P.O.S.?">
-            <option alias="G_YES" value="1" title="Yes"></option>
-            <option alias="G_NO" value="0" title="No"></option>
+    <question alias="gardens" number="17" type="SINGLE_CHOICE" title="Are there gardens in this P.O.S.?">
+            <option alias="g_yes" value="1" title="Yes"></option>
+            <option alias="g_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 18a -->
-    <question alias="PATHS" number="18.a" type="MULTIPLE_CHOICE" title="Are the walking paths or cycleways within or around the P.O.S.? (tick all relevant)">
-            <option alias="WALKPATHS" value="1" title="Walking path/s"></option>
-            <option alias="DUALPATHS" value="1" title="Designated dual use path/s"></option>
-            <option alias="NONE" value="1" title="None"></option>
+    <question alias="paths" number="18.a" type="MULTIPLE_CHOICE" title="Are the walking paths or cycleways within or around the P.O.S.? (tick all relevant)">
+            <option alias="walkpaths" value="1" title="Walking path/s"></option>
+            <option alias="dualpaths" value="1" title="Designated dual use path/s"></option>
+            <option alias="none" value="1" title="None"></option>
     </question>
     
         <!-- QUESTION 18b -->
-    <question alias="SHADEPATHS" number="18.b" type="SINGLE_CHOICE" title="Shade along paths (tick one)">
-            <option alias="VERY_GOOD" value="1" title="Very good (canopies of many trees touch)"></option>
-            <option alias="GOOD" value="2" title="Good (canopies of some trees touch)"></option>
-            <option alias="MEDIUM" value="3" title="Medium (canopies don't touch but trees close together)"></option>
-            <option alias="POOR" value="4" title="Poor (canopies of trees don't touch and trees spread apart)"></option>
-            <option alias="VERY_POOR" value="5" title="Very poor (little or no shade)"></option>
+    <question alias="shadepaths" number="18.b" type="SINGLE_CHOICE" title="Shade along paths (tick one)">
+            <option alias="very_good" value="1" title="Very good (canopies of many trees touch)"></option>
+            <option alias="good" value="2" title="Good (canopies of some trees touch)"></option>
+            <option alias="medium" value="3" title="Medium (canopies don't touch but trees close together)"></option>
+            <option alias="poor" value="4" title="Poor (canopies of trees don't touch and trees spread apart)"></option>
+            <option alias="very_poor" value="5" title="Very poor (little or no shade)"></option>
     </question>
     
         <!-- QUESTION 19 -->
-    <question alias="PLACE_PATHS" number="19" type="MULTIPLE_CHOICE" title="Describe the placement of paths within the P.O.S. (tick all relevant)">
-            <option alias="P_PERIMALL" value="1" title="Perimeter, all sides"></option>
-            <option alias="P_PERIMSOME" value="1" title="Perimeter, some sides"></option>
-            <option alias="P_DIAGONAL" value="1" title="Diagonal"></option>
-            <option alias="P_RADIAL" value="1" title="Radial"></option>
-            <option alias="P_AROUND" value="1" title="Path around water/visual feature"></option>
-            <option alias="OTHER" value="1" title="Other"></option>
+    <question alias="place_paths" number="19" type="MULTIPLE_CHOICE" title="Describe the placement of paths within the P.O.S. (tick all relevant)">
+            <option alias="p_perimall" value="1" title="Perimeter, all sides"></option>
+            <option alias="p_perimsome" value="1" title="Perimeter, some sides"></option>
+            <option alias="p_diagonal" value="1" title="Diagonal"></option>
+            <option alias="p_radial" value="1" title="Radial"></option>
+            <option alias="p_around" value="1" title="Path around water/visual feature"></option>
+            <option alias="other" value="1" title="Other"></option>
     </question>
     
         <!-- QUESTION 20 -->
-    <question alias="GRASS" number="20" type="SINGLE_CHOICE" title="Is there evidence that the grass is watered?">
-            <option alias="GRASS_YES" value="1" title="Yes"></option>
-            <option alias="GRASS_NO" value="0" title="No"></option>
+    <question alias="grass" number="20" type="SINGLE_CHOICE" title="Is there evidence that the grass is watered?">
+            <option alias="grass_yes" value="1" title="Yes"></option>
+            <option alias="grass_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 21 -->
-    <question alias="DOG" number="21" type="MULTIPLE_CHOICE" title="Are dogs allowed? (tick all relevant)">
-            <option alias="D_LEASHALL" value="1" title="Yes, on leash at all times"></option>
-            <option alias="D_LEASCERT" value="1" title="Yes, on leash at certain times"></option>
-            <option alias="D_NOLEASH" value="1" title="Yes, no leash specified"></option>
-            <option alias="D_NOTALLOW" value="1" title="Not allowed (go to Q23)"></option>
-            <option alias="D_NOTSPECIF" value="1" title="Not specified (go to Q23)"></option>
+    <question alias="dog" number="21" type="MULTIPLE_CHOICE" title="Are dogs allowed? (tick all relevant)">
+            <option alias="d_leashall" value="1" title="Yes, on leash at all times"></option>
+            <option alias="d_leascert" value="1" title="Yes, on leash at certain times"></option>
+            <option alias="d_noleash" value="1" title="Yes, no leash specified"></option>
+            <option alias="d_notallow" value="1" title="Not allowed (go to Q23)"></option>
+            <option alias="d_notspecif" value="1" title="Not specified (go to Q23)"></option>
     </question>
     
         <!-- QUESTION 22 -->
-    <question alias="ACCESSDOG" number="22" type="SINGLE_CHOICE" title="Is access for dogs: (tick one)">
-            <option alias="RESTRICTED" value="1" title="Restricted in some areas"></option>
-            <option alias="ALLOWED" value="2" title="Allowed all areas"></option>
-            <option alias="NOT_SPECIF" value="3" title="Not specified"></option>
+    <question alias="accessdog" number="22" type="SINGLE_CHOICE" title="Is access for dogs: (tick one)">
+            <option alias="restricted" value="1" title="Restricted in some areas"></option>
+            <option alias="allowed" value="2" title="Allowed all areas"></option>
+            <option alias="not_specif" value="3" title="Not specified"></option>
     </question>
     
         <!-- QUESTION 23 -->
-    <question alias="GRAFFITI" number="23" type="SINGLE_CHOICE" title="Is graffiti present?">
-            <option alias="GRAF_YES" value="1" title="Yes"></option>
-            <option alias="GRAF_NO" value="0" title="No"></option>
+    <question alias="graffiti" number="23" type="SINGLE_CHOICE" title="Is graffiti present?">
+            <option alias="graf_yes" value="1" title="Yes"></option>
+            <option alias="graf_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 24 -->
-    <question alias="VANDALISM" number="24" type="SINGLE_CHOICE" title="Is vandalism evident?">
-            <option alias="V_YES" value="1" title="Yes"></option>
-            <option alias="V_NO" value="0" title="No"></option>
+    <question alias="vandalism" number="24" type="SINGLE_CHOICE" title="Is vandalism evident?">
+            <option alias="v_yes" value="1" title="Yes"></option>
+            <option alias="v_no" value="0" title="No"></option>
     </question>                                
     
         <!-- QUESTION 25 -->
-    <question alias="LITTER" number="25" type="SINGLE_CHOICE" title="Is there litter throughout the P.O.S.?">
-            <option alias="L_YES" value="1" title="Yes"></option>
-            <option alias="L_NO" value="0" title="No"></option>
+    <question alias="litter" number="25" type="SINGLE_CHOICE" title="Is there litter throughout the P.O.S.?">
+            <option alias="l_yes" value="1" title="Yes"></option>
+            <option alias="l_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 26 -->
-    <question alias="CHILDPLAY" number="26" type="SINGLE_CHOICE" title="Is children's play equipment present?">
-            <option alias="CHILD_YES" value="1" title="Yes"></option>
-            <option alias="CHILD_NO" value="0" title="No (go to Q30)"></option>
+    <question alias="childplay" number="26" type="SINGLE_CHOICE" title="Is children's play equipment present?">
+            <option alias="child_yes" value="1" title="Yes"></option>
+            <option alias="child_no" value="0" title="No (go to Q30)"></option>
     </question>
     
         <!-- QUESTION 27 -->
-    <question alias="PLAY_EQUIP" number="27" type="MULTIPLE_CHOICE" title="What items of play equipment are present? (tick all relevant)">
-            <option alias="SWING" value="1" title="Swing/s"></option>
-            <option alias="SLIDE" value="1" title="Slide/s"></option>
-            <option alias="CLIMB" value="1" title="Climbing equipment"></option>
-            <option alias="HANGBAR" value="1" title="Hanging Bars/Rings"></option>
-            <option alias="SEESAWS" value="1" title="SeeSaws/Rockers"></option>
-            <option alias="BRIDGES" value="1" title="Bridges/Tunnels"></option>
-            <option alias="PANELS" value="1" title="Activity Panels (e.g. noughts &amp; crosses)"></option>
-            <option alias="CUBBY" value="1" title="Cubby House/s"></option>
-            <option alias="OTHER" value="1" title="Other (specify)"></option>
+    <question alias="play_equip" number="27" type="MULTIPLE_CHOICE" title="What items of play equipment are present? (tick all relevant)">
+            <option alias="swing" value="1" title="Swing/s"></option>
+            <option alias="slide" value="1" title="Slide/s"></option>
+            <option alias="climb" value="1" title="Climbing equipment"></option>
+            <option alias="hangbar" value="1" title="Hanging Bars/Rings"></option>
+            <option alias="seesaws" value="1" title="SeeSaws/Rockers"></option>
+            <option alias="bridges" value="1" title="Bridges/Tunnels"></option>
+            <option alias="panels" value="1" title="Activity Panels (e.g. noughts &amp; crosses)"></option>
+            <option alias="cubby" value="1" title="Cubby House/s"></option>
+            <option alias="other" value="1" title="Other (specify)"></option>
     </question>
     
         <!-- QUESTION 28 -->
-    <question alias="SURFACE" number="28" type="MULTIPLE_CHOICE" title="What is the playground surface? (tick all relevant)">
-            <option alias="SAND" value="1" title="Sand"></option>
-            <option alias="GRASS" value="1" title="Grass"></option>
-            <option alias="RUBBER" value="1" title="Rubber"></option>
-            <option alias="GRAVEL" value="1" title="Gravel or pebbles"></option>
-            <option alias="WOOD" value="1" title="Woodchips"></option>
-            <option alias="OTHER" value="1" title="Other (specify)"></option>
+    <question alias="surface" number="28" type="MULTIPLE_CHOICE" title="What is the playground surface? (tick all relevant)">
+            <option alias="sand" value="1" title="Sand"></option>
+            <option alias="grass" value="1" title="Grass"></option>
+            <option alias="rubber" value="1" title="Rubber"></option>
+            <option alias="gravel" value="1" title="Gravel or pebbles"></option>
+            <option alias="wood" value="1" title="Woodchips"></option>
+            <option alias="other" value="1" title="Other (specify)"></option>
     </question>
     
         <!-- QUESTION 29 -->
-    <question alias="PLAYSHADE" number="29" type="VARIABLE_SINGLE_CHOICE" title="Is playground shaded? (tick one only)">
-            <option alias="PARTIAL_S" value="1" title="Partial cover/shade"></option>
-            <option alias="TOTAL_S" value="2" title="Total cover/shade"></option>
-            <option alias="NO_SHADE" value="3" title="No cover/shade"></option>
+    <question alias="playshade" number="29" type="VARIABLE_SINGLE_CHOICE" title="Is playground shaded? (tick one only)">
+            <option alias="partial_s" value="1" title="Partial cover/shade"></option>
+            <option alias="total_s" value="2" title="Total cover/shade"></option>
+            <option alias="no_shade" value="3" title="No cover/shade"></option>
     </question>
     
         <!-- QUESTION 30 -->
-    <question alias="BARBECUES" number="30" type="SINGLE_CHOICE" title="Are barbecues present?">
-            <option alias="B_YES" value="1" title="Yes"></option>
-            <option alias="B_NO" value="0" title="No"></option>
+    <question alias="barbecues" number="30" type="SINGLE_CHOICE" title="Are barbecues present?">
+            <option alias="b_yes" value="1" title="Yes"></option>
+            <option alias="b_no" value="0" title="No"></option>
     </question>
     
     
         <!-- QUESTION 31 -->
-    <question alias="PICNIC" number="31" type="SINGLE_CHOICE" title="Are picnic tables present?">
-            <option alias="P_YES" value="1" title="Yes"></option>
-            <option alias="P_NO" value="0" title="No"></option>
+    <question alias="picnic" number="31" type="SINGLE_CHOICE" title="Are picnic tables present?">
+            <option alias="p_yes" value="1" title="Yes"></option>
+            <option alias="p_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 32a -->
-    <question alias="PARKING" number="32.a" type="SINGLE_CHOICE" title="Are the parking facilities serving the P.O.S.?">
-            <option alias="PARK_YES" value="1" title="Yes"></option>
-            <option alias="PARK_NO" value="0" title="No"></option>
+    <question alias="parking" number="32.a" type="SINGLE_CHOICE" title="Are the parking facilities serving the P.O.S.?">
+            <option alias="park_yes" value="1" title="Yes"></option>
+            <option alias="park_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 32b -->
-    <question alias="N_BAYS" number="32.b" type="SINGLE_CHOICE" title="Estimate the number of bays">
+    <question alias="n_bays" number="32.b" type="SINGLE_CHOICE" title="Estimate the number of bays">
             <option alias="0-20" value="1" title="0-20"></option>
             <option alias="21-50" value="2" title="21-50"></option>
-            <option alias="MORE_50" value="3" title="More than 50"></option>
+            <option alias="more_50" value="3" title="More than 50"></option>
     </question>
     
         <!-- QUESTION 33 -->
-    <question alias="TOILETS" number="33" type="SINGLE_CHOICE" title="Are the public access toilets?">
-            <option alias="T_YES" value="1" title="Yes"></option>
-            <option alias="T_NO" value="0" title="No"></option>
+    <question alias="toilets" number="33" type="SINGLE_CHOICE" title="Are the public access toilets?">
+            <option alias="t_yes" value="1" title="Yes"></option>
+            <option alias="t_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 34 -->
-    <question alias="CAFE" number="34" type="SINGLE_CHOICE" title="Is there a kiosk/café present? (tick one only)">
+    <question alias="cafe" number="34" type="SINGLE_CHOICE" title="Is there a kiosk/café present? (tick one only)">
             <option alias="7DAYS" value="1" title="7 days per week"></option>
-            <option alias="WEEDAYS" value="2" title="Weekdays only"></option>
-            <option alias="WEEKENDS" value="3" title="Weekends only"></option>
-            <option alias="NO_CAFE" value="4" title="No"></option>
+            <option alias="weedays" value="2" title="Weekdays only"></option>
+            <option alias="weekends" value="3" title="Weekends only"></option>
+            <option alias="no_cafe" value="4" title="No"></option>
     </question>
     
         <!-- QUESTION 35 -->
-    <question alias="TRANSPORT" number="35" type="SINGLE_CHOICE" title="Is there access to public transport within one block of P.O.S.?">
-            <option alias="T_YES" value="1" title="Yes"></option>
-            <option alias="T_NO" value="0" title="No"></option>
+    <question alias="transport" number="35" type="SINGLE_CHOICE" title="Is there access to public transport within one block of P.O.S.?">
+            <option alias="t_yes" value="1" title="Yes"></option>
+            <option alias="t_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 36 -->
-    <question alias="SEATING" number="36" type="SINGLE_CHOICE" title="Is there seating present?">
-            <option alias="S_YES" value="1" title="Yes"></option>
-            <option alias="S_NO" value="0" title="No"></option>
+    <question alias="seating" number="36" type="SINGLE_CHOICE" title="Is there seating present?">
+            <option alias="s_yes" value="1" title="Yes"></option>
+            <option alias="s_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 37 -->
-    <question alias="ROOMS" number="37" type="SINGLE_CHOICE" title="Are there clubrooms/meeting rooms present?">
-            <option alias="R_YES" value="1" title="Yes"></option>
-            <option alias="R_NO" value="0" title="No"></option>
+    <question alias="rooms" number="37" type="SINGLE_CHOICE" title="Are there clubrooms/meeting rooms present?">
+            <option alias="r_yes" value="1" title="Yes"></option>
+            <option alias="r_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 38 -->
-    <question alias="BINS" number="38" type="SINGLE_CHOICE" title="Are rubbish bins present?">
-            <option alias="BINS_YES" value="1" title="Yes"></option>
-            <option alias="BINS_NO" value="0" title="No"></option>
+    <question alias="bins" number="38" type="SINGLE_CHOICE" title="Are rubbish bins present?">
+            <option alias="bins_yes" value="1" title="Yes"></option>
+            <option alias="bins_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 39 -->
-    <question alias="DOGBAGS" number="39" type="SINGLE_CHOICE" title="Are dog litter bags provided?">
-            <option alias="BAGS_YES" value="1" title="Yes"></option>
-            <option alias="BAGS_NO" value="0" title="No"></option>
+    <question alias="dogbags" number="39" type="SINGLE_CHOICE" title="Are dog litter bags provided?">
+            <option alias="bags_yes" value="1" title="Yes"></option>
+            <option alias="bags_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 40 -->
-    <question alias="NDOGBAGS" number="40" type="INPUT_NUMBER" title="In how many locations in the P.O.S. are dog litter bags present?">
+    <question alias="ndogbags" number="40" type="INPUT_NUMBER" title="In how many locations in the P.O.S. are dog litter bags present?">
     </question>
     
         <!-- QUESTION 41 -->
-    <question alias="WATERDOGS" number="41" type="SINGLE_CHOICE" title="Are there taps or other water sources accessible for dogs?">
-            <option alias="WD_YES" value="1" title="Yes"></option>
-            <option alias="WD_NO" value="0" title="No"></option>
+    <question alias="waterdogs" number="41" type="SINGLE_CHOICE" title="Are there taps or other water sources accessible for dogs?">
+            <option alias="wd_yes" value="1" title="Yes"></option>
+            <option alias="wd_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 42 -->
-    <question alias="DRINKFOUNT" number="42" type="SINGLE_CHOICE" title="Are drinking fountains present?">
-            <option alias="DRINK_YES" value="1" title="Yes"></option>
-            <option alias="DRINK_NO" value="0" title="No"></option>
+    <question alias="drinkfount" number="42" type="SINGLE_CHOICE" title="Are drinking fountains present?">
+            <option alias="drink_yes" value="1" title="Yes"></option>
+            <option alias="drink_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 43 -->
-    <question alias="LIGHTING" number="43" type="SINGLE_CHOICE" title="Is the lighting within the P.O.S.? (i.e., not just street lighting)">
-            <option alias="LIGHT_YES" value="1" title="Yes"></option>
-            <option alias="LIGHT_NO" value="" title="No (go to Q45)"></option>
+    <question alias="lighting" number="43" type="SINGLE_CHOICE" title="Is the lighting within the P.O.S.? (i.e., not just street lighting)">
+            <option alias="light_yes" value="1" title="Yes"></option>
+            <option alias="light_no" value="" title="No (go to Q45)"></option>
     </question>
     
         <!-- QUESTION 44 -->
-    <question alias="LIGHT_LOCAL" number="44" type="MULTIPLE_CHOICE" title="Where is the lighting located? (tick all relevant)">
-            <option alias="L_AROUND" value="1" title="Around courts, buildings, and equipment"></option>
-            <option alias="L_ALONG" value="1" title="Along paths"></option>
-            <option alias="L_PERIMALL" value="1" title="Perimeter all sides"></option>
-            <option alias="L_PERIMSOME" value="1" title="Perimeter some sides"></option>
-            <option alias="L_RANDOM" value="1" title="Random throughout P.O.S."></option>
+    <question alias="light_local" number="44" type="MULTIPLE_CHOICE" title="Where is the lighting located? (tick all relevant)">
+            <option alias="l_around" value="1" title="Around courts, buildings, and equipment"></option>
+            <option alias="l_along" value="1" title="Along paths"></option>
+            <option alias="l_perimall" value="1" title="Perimeter all sides"></option>
+            <option alias="l_perimsome" value="1" title="Perimeter some sides"></option>
+            <option alias="l_random" value="1" title="Random throughout P.O.S."></option>
     </question>
-    
+        
         <!-- QUESTION 45 -->
-    <question alias="VISROADS" number="45" type="SINGLE_CHOICE" title="From the centre of the P.O.S., how many visible are surrounding roads? (tick one)">
-            <option alias="R_CLEARLY" value="1" title="Road/s clearly visible from the centre of the P.O.S."></option>
-            <option alias="R_PARTLY" value="2" title="Road/s partly visible from the centre of the P.O.S."></option>
-            <option alias="R_CANNOT" value="3" title="Road/s cannot be seen from the centre of the P.O.S."></option>
+    <question alias="visroads" number="45" type="SINGLE_CHOICE" title="From the centre of the P.O.S., how many visible are surrounding roads? (tick one)">
+            <option alias="r_clearly" value="1" title="Road/s clearly visible from the centre of the P.O.S."></option>
+            <option alias="r_partly" value="2" title="Road/s partly visible from the centre of the P.O.S."></option>
+            <option alias="r_cannot" value="3" title="Road/s cannot be seen from the centre of the P.O.S."></option>
     </question>
     
         <!-- QUESTION 46.a -->
-    <question alias="VISHOUSE" number="46.a" type="SINGLE_CHOICE" title="From the centre of the P.O.S., how visible are the surrounding houses? Clear visibility means you can clearly see windows, back, yards, or front yards of houses overlooking the park. (tick one)">
-            <option alias="H_CLEARLY" value="1" title="House/s clearly visible from the centre of the P.O.S."></option>
-            <option alias="H_PARTLY" value="2" title="House/s partly visible from the centre of the P.O.S."></option>
-            <option alias="H_CANNOT" value="3" title="House/s cannot be seen from the centre of the P.O.S. (go to Q47)"></option>
+    <question alias="vishouse" number="46.a" type="SINGLE_CHOICE" title="From the centre of the P.O.S., how visible are the surrounding houses? Clear visibility means you can clearly see windows, back, yards, or front yards of houses overlooking the park. (tick one)">
+            <option alias="h_clearly" value="1" title="House/s clearly visible from the centre of the P.O.S."></option>
+            <option alias="h_partly" value="2" title="House/s partly visible from the centre of the P.O.S."></option>
+            <option alias="h_cannot" value="3" title="House/s cannot be seen from the centre of the P.O.S. (go to Q47)"></option>
     </question>
     
         <!-- QUESTION 46.b -->
-    <question alias="N_HOUSES" number="46.b" type="SINGLE_CHOICE" title="How many of these houses overlook the park? (tick one)">
-            <option alias="MORE_10" value="1" title="More than 10"></option>
-            <option alias="5-10" value="2" title="Between 5 and 10"></option>
+    <question alias="n_houses" number="46.b" type="SINGLE_CHOICE" title="How many of these houses overlook the park? (tick one)">
+            <option alias="more_10" value="1" title="More than 10"></option>
+            <option alias="5-10" value="2" title="Between 6 and 10"></option>
             <option alias="1-5" value="3" title="Between 1 and 5"></option>
     </question>
     
         <!-- QUESTION 46.c -->
-    <question alias="NOVISHOUSES" number="46.c" type="SINGLE_CHOICE" title="Is there any area of the P.O.S. where you are unable to clearly see surounding houses?">
-            <option alias="H_YES" value="1" title="Yes"></option>
-            <option alias="H_NO" value="0" title="No"></option>
+    <question alias="novishouses" number="46.c" type="SINGLE_CHOICE" title="Is there any area of the P.O.S. where you are unable to clearly see surounding houses?">
+            <option alias="h_yes" value="1" title="Yes"></option>
+            <option alias="h_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 47 -->
-    <question alias="MINORROADS" number="47" type="SINGLE_CHOICE" title="Are all roads surrounding the P.O.S. minor roads or cul-de-sacs?">
-            <option alias="M_YES" value="1" title="Yes"></option>
-            <option alias="M_NO" value="0" title="No"></option>
+    <question alias="minorroads" number="47" type="SINGLE_CHOICE" title="Are all roads surrounding the P.O.S. minor roads or cul-de-sacs?">
+            <option alias="m_yes" value="1" title="Yes"></option>
+            <option alias="m_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 48.a -->
-    <question alias="CROSSINGZEBRA" number="48.a" type="SINGLE_CHOICE" title="Does the major roads/s have a zebra crossing to assist access to the P.O.S.?">
-            <option alias="Z_YES" value="1" title="Yes"></option>
-            <option alias="Z_NO" value="0" title="No"></option>
+    <question alias="crossingzebra" number="48.a" type="SINGLE_CHOICE" title="Does the major roads/s have a zebra crossing to assist access to the P.O.S.?">
+            <option alias="z_yes" value="1" title="Yes"></option>
+            <option alias="z_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 48.b -->
-    <question alias="CROSSIGNALS" number="48.b" type="SINGLE_CHOICE" title="Does the major roads/s have a pedestrian crossing with signals to assist access to the P.O.S.?">
-            <option alias="SIG_YES" value="1" title="Yes"></option>
-            <option alias="SIG_NO" value="0" title="No"></option>
+    <question alias="crossignals" number="48.b" type="SINGLE_CHOICE" title="Does the major roads/s have a pedestrian crossing with signals to assist access to the P.O.S.?">
+            <option alias="sig_yes" value="1" title="Yes"></option>
+            <option alias="sig_no" value="0" title="No"></option>
     </question>
     
         <!-- QUESTION 49 -->
-    <question alias="WALKING" number="49.a" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is interesting for walking? (choose one number fo each item)">
-        <option alias="STRONG_AGREE" value="1" title="Strongly agree "></option>
-        <option alias="AGREE" value="2" title="Agree"></option>
-        <option alias="NEITHER" value="3" title="Neither Agree nor Disagree"></option>
-        <option alias="DISAGREE" value="4" title="Disagree"></option>
-        <option alias="STRONG_DISAGREE" value="5" title="Strongly disagree"></option>
+    <question alias="walking" number="49.a" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is interesting for walking? (choose one number fo each item)">
+        <option alias="strong_agree" value="1" title="Strongly agree "></option>
+        <option alias="agree" value="2" title="Agree"></option>
+        <option alias="neither" value="3" title="Neither Agree nor Disagree"></option>
+        <option alias="disagree" value="4" title="Disagree"></option>
+        <option alias="strong_disagree" value="5" title="Strongly disagree"></option>
     </question>
-    <question alias="BALL" number="49.b" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is suitable for casual ball sports? (choose one number fo each item)">
-        <option alias="STRONG_AGREE" value="1" title="Strongly agree "></option>
-        <option alias="AGREE" value="2" title="Agree"></option>
-        <option alias="NEITHER" value="3" title="Neither Agree nor Disagree"></option>
-        <option alias="DISAGREE" value="4" title="Disagree"></option>
-        <option alias="STRONG_DISAGREE" value="5" title="Strongly disagree"></option>
+    <question alias="ball" number="49.b" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is suitable for casual ball sports? (choose one number fo each item)">
+        <option alias="strong_agree" value="1" title="Strongly agree "></option>
+        <option alias="agree" value="2" title="Agree"></option>
+        <option alias="neither" value="3" title="Neither Agree nor Disagree"></option>
+        <option alias="disagree" value="4" title="Disagree"></option>
+        <option alias="strong_disagree" value="5" title="Strongly disagree"></option>
     </question>
-    <question alias="CYCLING" number="49.c" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is suitable for cycling? (choose one number fo each item)">
-        <option alias="STRONG_AGREE" value="1" title="Strongly agree "></option>
-        <option alias="AGREE" value="2" title="Agree"></option>
-        <option alias="NEITHER" value="3" title="Neither Agree nor Disagree"></option>
-        <option alias="DISAGREE" value="4" title="Disagree"></option>
-        <option alias="STRONG_DISAGREE" value="5" title="Strongly disagree"></option>
+    <question alias="cycling" number="49.c" type="SINGLE_CHOICE" title="To what extent do you agree or disagree with each of the following statements regarding this P.O.S.? P.O.S. is suitable for cycling? (choose one number fo each item)">
+        <option alias="strong_agree" value="1" title="Strongly agree "></option>
+        <option alias="agree" value="2" title="Agree"></option>
+        <option alias="neither" value="3" title="Neither Agree nor Disagree"></option>
+        <option alias="disagree" value="4" title="Disagree"></option>
+        <option alias="strong_disagree" value="5" title="Strongly disagree"></option>
     </question>
 </questions>

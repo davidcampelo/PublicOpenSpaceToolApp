@@ -91,7 +91,7 @@ public class SpinnerQuestionView extends RelativeLayout {
                    }
                    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                    Option selectedItem = (Option)parent.getItemAtPosition(position);
-                   if (selectedItem.getTitle().toLowerCase().indexOf("other") >= 0) {
+                   if ( selectedItem.isOtherOption() ) {
 
                        // create "Other" view
                        final View otherView = layoutInflater.inflate(R.layout.question_view_spinner_other_row, null);

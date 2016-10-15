@@ -57,12 +57,14 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
 
         try {
             File csvFile = exportCSV();
+            //File dbFile = exportDB();
 
             progressDialog.dismiss();
 
             Intent sendIntent = new Intent(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_SUBJECT, "[Public Open Space Tool] Project \'" +project.getName()+ "\' data export");
             sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(csvFile));
+            //sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(dbFile));
             sendIntent.setType("message/rfc822");
 
             context.startActivity(sendIntent);
@@ -73,6 +75,12 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
             progressDialog.dismiss();
             return e.getMessage();
         }
+    }
+
+    private File exportDB() {
+        File fromFile = context.getDatabasePath(Constants.DATABASE_NAME);
+
+        return fromFile;
     }
 
     private File exportCSV() throws Exception {
@@ -108,21 +116,20 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                 Iterator<Option> optionIterator = question.getAllOptions().iterator();
                 while (optionIterator.hasNext()) {
                     Option option = optionIterator.next();
-                    String optionAlias = option.getAlias().toLowerCase();
-                    stringBuilderHeader.append("\"" +optionAlias+ "\",");
-                    if (optionAlias.startsWith(Constants.MULTIPLE_QUESTION_OTHER_START_STRING)) {
-                        stringBuilderHeader.append("\"" +optionAlias + Constants.MULTIPLE_QUESTION_OTHER_CSV_SUFFIX + "\",");
+                    stringBuilderHeader.append("\"" +option.getAlias()+ "\",");
+                    if (option.isOtherOption()) {
+                        stringBuilderHeader.append("\"" +option.getAlias() + Constants.MULTIPLE_QUESTION_OTHER_CSV_SUFFIX + "\",");
                     }
                 }
             }
             else if (questionType == Question.QuestionType.INPUT_COORDINATES){
                 String questionAlias = question.getAlias();
                 int pos = questionAlias.indexOf(Constants.POLYGON_POINTS_SEPARATOR);
-                stringBuilderHeader.append("\"" +questionAlias.substring(0,pos).toLowerCase() + "\", ");
-                stringBuilderHeader.append("\"" +questionAlias.substring(pos+1).toLowerCase() + "\", ");
+                stringBuilderHeader.append("\"" +questionAlias.substring(0,pos) + "\", ");
+                stringBuilderHeader.append("\"" +questionAlias.substring(pos+1) + "\", ");
             }
             else {
-                stringBuilderHeader.append("\"" +question.getAlias().toLowerCase() + "\",");
+                stringBuilderHeader.append("\"" +question.getAlias() + "\",");
             }
         }
         // write header
@@ -164,7 +171,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                     for (Option option : question.getAllOptions()) {
                         // if it's an "OTHER option" (an Option created by the user), we must put
                         // them all together in the same column
-                        if (option.getAlias().toLowerCase().startsWith(Constants.MULTIPLE_QUESTION_OTHER_START_STRING)) {
+                        if (option.isOtherOption()) {
                             if (selectedIds.size() == 0) {
                                 stringBuilderAnswers.append("\"0\",");
                                 stringBuilderAnswers.append("\"\",");
