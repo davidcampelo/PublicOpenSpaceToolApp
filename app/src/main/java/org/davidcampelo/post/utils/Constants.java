@@ -22,6 +22,7 @@ public class Constants {
             "Amenities",
             "Safety"};
     public static final String DEFAULT_SEPARATOR = "|";
+    public static final String POLYGON_COORDINATES_SEPARATOR = ",";
     public static final String POLYGON_POINTS_SEPARATOR = " ";
     public static final ArrayList<LatLng> PORTUGAL_BOUNDING_POINTS;
     public static final int LIST_ROW_COLOR = Color.argb(150, 240,240,240);
