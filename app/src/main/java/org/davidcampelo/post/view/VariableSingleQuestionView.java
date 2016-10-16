@@ -111,7 +111,7 @@ public class VariableSingleQuestionView extends QuestionView {
                 QuestionCheckBox checkBox = (QuestionCheckBox) child.getChildAt(j);
                 if (checkBox.isChecked()) {
                     answersCount++;
-                    answers.append(String.valueOf(checkBox.getOption().getId()) + Constants.DEFAULT_SEPARATOR);
+                    answers.append(String.valueOf(checkBox.getOption().getValue()) + Constants.DEFAULT_SEPARATOR);
                     break;
                 }
             }
@@ -137,12 +137,12 @@ public class VariableSingleQuestionView extends QuestionView {
 
         StringTokenizer tokenizer = new StringTokenizer(answers, Constants.DEFAULT_SEPARATOR);
         while ( tokenizer.hasMoreElements() && areaCount-- > 0  ) {
-            Long selectedId = Long.valueOf( (String)tokenizer.nextElement() );
+            String selectedValue = (String)tokenizer.nextElement();
 
             LinearLayout layout = addArea();
             for (int i = layout.getChildCount(); --i >= 0 && layout.getChildAt(i) instanceof QuestionCheckBox; ) {
                 QuestionCheckBox checkBox = (QuestionCheckBox) layout.getChildAt(i);
-                if (checkBox.getOption().getId() == selectedId) {
+                if (checkBox.getOption().getValue().equals(selectedValue) ) {
                     checkBox.setCheckedNoNotify(true);
                     continue;
                 }

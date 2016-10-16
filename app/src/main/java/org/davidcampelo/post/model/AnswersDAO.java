@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
+import org.davidcampelo.post.utils.Constants;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,6 +92,44 @@ public class AnswersDAO extends DAO {
         return answers;
     }
 
+    /**
+     * Questions of type VARIABLE_SINGLE_CHOICE have answers according to rules defined in
+     * @{@VariableSingleQuestionView#getAnswers} documentation
+     *
+     * So the first part of the Answer string means the number of answers
+     * @param project
+     * @param question
+     * @return
+     */
+    public int getMaxNumberOfAnswersByProject(Project project, Question question) {
+
+        int maxNumber = 0;
+
+        Cursor cursor = select(
+                this.TABLE_NAME +" INNER JOIN " +PublicOpenSpaceDAO.TABLE_NAME+ " ON " +this.TABLE_NAME+ "." + COLUMN_POS_ID+ "=" +PublicOpenSpaceDAO.TABLE_NAME+ "." + COLUMN_POS_ID,
+                TABLE_COLUMNS_ANSWERS,
+                COLUMN_QST_NUMBER+ "= '" +question.number+ "' AND " +ProjectDAO.COLUMN_ID+ "="+project.id
+        );
+//        Cursor cursor = select("SELECT "+ COLUMN_ANSWER_TEXT + " FROM "+ this.TABLE_NAME +" INNER JOIN "+PublicOpenSpaceDAO.TABLE_NAME +
+//                " ON " +this.TABLE_NAME+ "." + COLUMN_POS_ID+ "=" +PublicOpenSpaceDAO.TABLE_NAME+ "." + COLUMN_POS_ID
+//                " WHERE " +COLUMN_QST_NUMBER+ "= '" +question.number+ "' AND " +ProjectDAO.COLUMN_ID+ "="+project.id);
+
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            String currentAnswer = cursor.getString(0);
+            // the first part of the Answer is the number of Answers
+            // See {@VariableSingleQuestionView#getAnswers}
+            int currentNumberOfAnswers = Integer.valueOf(currentAnswer.substring(0, currentAnswer.indexOf(Constants.DEFAULT_SEPARATOR)));
+            if (currentNumberOfAnswers > maxNumber){
+                maxNumber = currentNumberOfAnswers;
+            }
+        }
+
+        cursor.close();
+
+        return maxNumber;
+
+    }
+
     public void insert(PublicOpenSpace object, Question question, String answers) {
         ContentValues values = new ContentValues();
 
@@ -103,4 +143,6 @@ public class AnswersDAO extends DAO {
     public void delete(PublicOpenSpace publicOpenSpace) {
         delete(TABLE_NAME, COLUMN_POS_ID +" = "+ publicOpenSpace.id);
     }
+
+
 }
