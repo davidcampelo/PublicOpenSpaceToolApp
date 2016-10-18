@@ -31,8 +31,6 @@ import org.davidcampelo.post.utils.Constants;
 import org.davidcampelo.post.utils.MapUtility;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -149,9 +147,8 @@ public class ProjectAddEditFragment extends Fragment
     private void drawPolygon() {
         googleMap.clear();
 
-        Iterator<LatLng> it = arrayPoints.iterator();
-        while (it.hasNext()) {
-            googleMap.addMarker(new MarkerOptions().position(it.next()));
+        for (LatLng point : arrayPoints) {
+            googleMap.addMarker(new MarkerOptions().position(point));
         }
 
         if (arrayPoints.size() >= 3) {

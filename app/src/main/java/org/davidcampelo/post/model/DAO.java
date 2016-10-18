@@ -103,9 +103,8 @@ public abstract class DAO {
 
     private String toString2(Set<String> strings) {
         StringBuilder b = new StringBuilder();
-        Iterator<String> i = strings.iterator();
-        while (i.hasNext()){
-            b.append(i.next()+ ", ");
+        for (String str : strings){
+            b.append(str + ", ");
         }
         return b.toString();
     }

@@ -17,7 +17,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.StringTokenizer;
 
 /**
@@ -57,9 +56,7 @@ public class CSVUtils {
             // if it's a Question with multiple options, every Option must be a column in the CSV
             Question.QuestionType questionType = question.getType();
             if (questionType == Question.QuestionType.MULTIPLE_CHOICE) {
-                Iterator<Option> optionIterator = question.getAllOptions().iterator();
-                while (optionIterator.hasNext()) {
-                    Option option = optionIterator.next();
+                for (Option option : question.getAllOptions()) {
                     stringBuilderHeader.append("\"" +option.getAlias()+ "\",");
                     if (option.isOtherOption()) {
                         stringBuilderHeader.append("\"" +option.getAlias() + Constants.MULTIPLE_QUESTION_OTHER_CSV_SUFFIX + "\",");

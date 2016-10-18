@@ -49,9 +49,6 @@ import org.davidcampelo.post.view.VariableSingleQuestionView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -284,10 +281,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             AnswersDAO answersDAO = new AnswersDAO(context);
             answersDAO.open();
 
-            Iterator it = questionNumberToViewMap.entrySet().iterator();
-            while (it.hasNext()) {
-                Map.Entry pair = (Map.Entry) it.next();
-                QuestionView questionView = (QuestionView) pair.getValue();
+            for (String questionNumber : questionNumberToViewMap.keySet()) {
+                QuestionView questionView = questionNumberToViewMap.get(questionNumber);
                 questionView.setAnswers(answersDAO.get(questionView.getQuestion(), publicOpenSpace));
             }
 
@@ -380,9 +375,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
     private void drawPolygon() {
         googleMap.clear();
 
-        Iterator<LatLng> it = arrayPoints.iterator();
-        while (it.hasNext()) {
-            googleMap.addMarker(new MarkerOptions().position(it.next()));
+        for (LatLng point : arrayPoints) {
+            googleMap.addMarker(new MarkerOptions().position(point));
         }
 
         if (arrayPoints.size() >= 3) {

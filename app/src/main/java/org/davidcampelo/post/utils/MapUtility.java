@@ -3,7 +3,6 @@ package org.davidcampelo.post.utils;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -13,7 +12,6 @@ import com.google.android.gms.maps.model.LatLngBounds;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
@@ -151,11 +149,9 @@ public class MapUtility {
      * Return a String with all points of an ArrayList<LatLng> separated by {@Constants.POLYGON_POINTS_SEPARATOR}
      */
     public static String parsePoints(ArrayList<LatLng> points) {
-        Iterator<LatLng> it = points.iterator();
         StringBuilder strBuilder = new StringBuilder();
 
-        while(it.hasNext()) {
-            LatLng point = it.next();
+        for (LatLng point : points) {
             strBuilder.append(point.latitude + ","+ point.longitude + Constants.POLYGON_POINTS_SEPARATOR);
         }
 
