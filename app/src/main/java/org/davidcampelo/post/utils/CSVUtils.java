@@ -110,8 +110,9 @@ public class CSVUtils {
             StringBuilder stringBuilderAnswers = new StringBuilder();
             for (Question question : listQuestions) {
                 String questionAnswers = mapAnswers.get(question.getNumber());
-                if (questionAnswers == null) {
-                    questionAnswers = "";
+                if (questionAnswers == null || questionAnswers.length() == 0) {
+                    stringBuilderAnswers.append("\"\",");
+                    continue;
                 }
                 // if it's a Question with multiple options, every Option must be a column in the CSV
                 Question.QuestionType questionType = question.getType();

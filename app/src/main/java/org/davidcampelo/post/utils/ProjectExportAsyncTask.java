@@ -72,7 +72,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         } catch (Exception e) {
             e.printStackTrace();
             progressDialog.dismiss();
-            return e.getMessage();
+            return e.getLocalizedMessage();
         }
     }
 
