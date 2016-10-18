@@ -1,15 +1,20 @@
 package org.davidcampelo.post.utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.util.Log;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import org.davidcampelo.post.R;
 import org.davidcampelo.post.model.AnswersDAO;
 import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.OptionDAO;
+import org.davidcampelo.post.model.Project;
 import org.davidcampelo.post.model.ProjectDAO;
+import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.model.QuestionDAO;
@@ -17,13 +22,139 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /**
  * Created by davidcampelo on 8/16/16.
  */
 public class Data {
+    static class XMLDOMParser {
+        //Returns the entire XML document
+        public Document getDocument(InputStream inputStream) {
+            Document document = null;
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            try {
+                DocumentBuilder db = factory.newDocumentBuilder();
+                InputSource inputSource = new InputSource(inputStream);
+                document = db.parse(inputSource);
+            } catch (ParserConfigurationException e) {
+                Log.e("Error: ", e.getMessage());
+                return null;
+            } catch (SAXException e) {
+                Log.e("Error: ", e.getMessage());
+                return null;
+            } catch (IOException e) {
+                Log.e("Error: ", e.getMessage());
+                return null;
+            }
+            return document;
+        }
+
+        /*
+         * I take a XML element and the tag name, look for the tag and get
+         * the text content i.e for <employee><name>Kumar</name></employee>
+         * XML snippet if the Element points to employee node and tagName
+         * is name I will return Kumar. Calls the private method
+         * getTextNodeValue(node) which returns the text value, say in our
+         * example Kumar. */
+        public String getValue(Element item, String name) {
+            NodeList nodes = item.getElementsByTagName(name);
+            return this.getTextNodeValue(nodes.item(0));
+        }
+
+        private final String getTextNodeValue(Node node) {
+            Node child;
+            if (node != null) {
+                if (node.hasChildNodes()) {
+                    child = node.getFirstChild();
+                    while(child != null) {
+                        if (child.getNodeType() == Node.TEXT_NODE) {
+                            return child.getNodeValue();
+                        }
+                        child = child.getNextSibling();
+                    }
+                }
+            }
+            return "";
+        }
+    }
+
+    // XML node names
+    static final String NODE_EMP = "employee";
+    static final String NODE_NAME = "name";
+    static final String NODE_SALARY = "salary";
+    static final String NODE_DESIGNATION = "designation";
 
     public static void populateDatabase(Context context, Resources resources) {
+        XMLDOMParser parser = new XMLDOMParser();
+        AssetManager manager = context.getAssets();
+        InputStream stream;
+        try {
+            stream = manager.open("parques_porto.xml");
+            Document doc = parser.getDocument(stream);
+
+            // Get elements by name employee
+            Element nodeDocument = (Element) (doc.getElementsByTagName("Document")).item(0);
+            Project project = new Project(
+                    parser.getValue(nodeDocument, "name"),
+                    parser.getValue(nodeDocument, "description"),
+                    Constants.PORTUGAL_BOUNDING_POINTS
+                    );
+            project = ProjectDAO.staticInsert(context, project);
+            /*
+             * for each <Placemark> element
+             */
+            NodeList nodeList = nodeDocument.getElementsByTagName("Placemark");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element e = (Element) nodeList.item(i);
+                ArrayList<LatLng> coordinates = new ArrayList<>();
+                StringTokenizer tokenizer = new StringTokenizer(parser.getValue(e, "coordinates"), Constants.POLYGON_POINTS_SEPARATOR);
+                while ( tokenizer.hasMoreElements() ) {
+
+                    String coords = (String) tokenizer.nextElement();
+                    int pos = coords.indexOf(Constants.POLYGON_COORDINATES_SEPARATOR);
+                    coordinates.add( new LatLng(Double.valueOf(coords.substring(pos + 1, coords.length() - 2)), Double.valueOf(coords.substring(0, pos))) );
+                }
+
+                PublicOpenSpace.Type type;
+                String name = parser.getValue(e, "name").toLowerCase();
+                if (name.indexOf("parque") >= 0)
+                    type = PublicOpenSpace.Type.PARK;
+                else if (name.indexOf("jardim") >= 0 || name.indexOf("jardins") >= 0)
+                    type = PublicOpenSpace.Type.GARDEN;
+                else if (name.indexOf("praca") >= 0 || name.indexOf("praça") >= 0)
+                    type = PublicOpenSpace.Type.SQUARE;
+                else
+                    type = PublicOpenSpace.Type.OTHER;
+
+
+                PublicOpenSpace publicOpenSpace = new PublicOpenSpace(
+                        parser.getValue(e, "name"),
+                        type,
+                        coordinates,
+                        project
+                        );
+
+                PublicOpenSpaceDAO.staticInsert(context, publicOpenSpace);
+            }
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+    }
+    public static void resetDatabase(Context context, Resources resources) {
         Question question = null;
         QuestionDAO questionDAO = new QuestionDAO(context);
         questionDAO.open();

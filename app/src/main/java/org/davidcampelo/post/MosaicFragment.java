@@ -97,6 +97,7 @@ public class MosaicFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Data.clearDatabase(getActivity());
+                Data.resetDatabase(getActivity(), getResources());
                 Data.populateDatabase(getActivity(), getResources());
             }
         });

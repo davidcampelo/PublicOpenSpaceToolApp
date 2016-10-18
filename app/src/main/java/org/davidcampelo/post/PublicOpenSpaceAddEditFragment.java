@@ -19,28 +19,24 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 
 import org.davidcampelo.post.model.AnswersDAO;
-import org.davidcampelo.post.model.Option;
-import org.davidcampelo.post.model.OptionDAO;
 import org.davidcampelo.post.model.Project;
 import org.davidcampelo.post.model.PublicOpenSpace;
-import org.davidcampelo.post.model.PublicOpenSpaceDAO;
 import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.model.QuestionDAO;
 import org.davidcampelo.post.utils.Constants;
 import org.davidcampelo.post.utils.MapUtility;
+import org.davidcampelo.post.utils.PublicOpenSpaceAsyncTask;
 import org.davidcampelo.post.view.AnswerMissingException;
 import org.davidcampelo.post.view.InputDecimalQuestionView;
 import org.davidcampelo.post.view.InputNumberQuestionView;
@@ -135,9 +131,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             public void onClick(View view) {
                 try {
                     saveObject();
-                    Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Item saved successfully!", Toast.LENGTH_SHORT).show();
                 } catch (AnswerMissingException e) {
-                    Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Warning: Answers for Question"+ e.getQuestion().getNumber() +" are missing, please review!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Warning: Answers for Question "+ e.getQuestion().getNumber() +" are missing, please review!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -339,42 +334,18 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         // POLYGON POINTS
         publicOpenSpace.setPolygonPoints(arrayPoints);
 
-        // NOW SAVE OBJECT
-        if (publicOpenSpace.getId() == 0) // if (id == 0) we're gonna insert it
-            publicOpenSpace = PublicOpenSpaceDAO.staticInsert(getActivity(), publicOpenSpace);
-        else // just update it
-            PublicOpenSpaceDAO.staticUpdate(getActivity(), publicOpenSpace);
+        HashMap<Question, String> questionToAnswersMap = new HashMap<Question, String>();
 
-        // SAVE QUESTIONS ANSWERS
-        Context context = getContext();
-        AnswersDAO answersDAO = new AnswersDAO(context);
-        answersDAO.open();
-        OptionDAO optionDAO = new OptionDAO(context);
-        optionDAO.open();
-        // firstly, delete all previous answers
-        answersDAO.delete(publicOpenSpace);
-
-        Iterator<Map.Entry<String, QuestionView>> it = questionNumberToViewMap.entrySet().iterator();
-        while (it.hasNext()) { // for each question, an answers it inserted
-            Map.Entry<String,QuestionView> pair = it.next();
-            QuestionView questionView = pair.getValue();
-            Question question = questionView.getQuestion();
-            if (question.getType() == Question.QuestionType.MULTIPLE_CHOICE) { // save "Other" Options first
-                ArrayList<Option> options = question.getAllOptions();
-
-                // Saving the "Other" Option
-                for (Option option : options) {
-                    if (option.getId() == 0) {
-                        option.setPublicOpenSpace(publicOpenSpace);
-                        optionDAO.insert(option);
-                    }
-                }
-            }
-            answersDAO.insert(publicOpenSpace, question, questionView.getAnswers());
+        for (String questionNumber : questionNumberToViewMap.keySet()) {
+            QuestionView questionView = questionNumberToViewMap.get(questionNumber);
+            questionToAnswersMap.put(questionView.getQuestion(), questionView.getAnswers());
         }
 
-        optionDAO.close();
-        answersDAO.close();
+        PublicOpenSpaceAsyncTask runner = new PublicOpenSpaceAsyncTask(
+                getActivity(),
+                publicOpenSpace,
+                questionToAnswersMap);
+        runner.execute();
     }
 
 

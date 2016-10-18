@@ -1,0 +1,1880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.opengis.net/kml/2.2 http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd http://www.google.com/kml/ext/2.2 http://code.google.com/apis/kml/schema/kml22gx.xsd">
+<Document id="32parques">
+  <name>32parques</name>
+  <Snippet></Snippet>
+  <Folder id="FeatureLayer0">
+    <name>32parques</name>
+    <Snippet></Snippet>
+    <description><![CDATA[Polígonos dos parques do municipio do Porto.Incluiu-se também Jardim do Morro por estar localizado junto aos limites do município.]]></description>
+    <Placemark id="ID_00000">
+      <name>Jardim do Carregal</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>0</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Carregal</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>446,074338</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.618217665412885,41.14820569303834,0 -8.618254262424216,41.14834920864911,0 -8.61831456826269,41.14841446165815,0 -8.61837098813055,41.14844313744089,0 -8.618455366122191,41.14847435470773,0 -8.618587453148393,41.14850358807018,0 -8.618660567131428,41.14850997505533,0 -8.618823423562105,41.14853144906715,0 -8.618992807272207,41.14855638996545,0 -8.619150152657369,41.14857521457452,0 -8.619236661142963,41.14856814770189,0 -8.619303211873671,41.14854981682066,0 -8.619381399831696,41.14851470279137,0 -8.619469501915944,41.14844292070427,0 -8.619547947979356,41.14837354700165,0 -8.619633370083932,41.14827422497558,0 -8.619688725154504,41.14818998188218,0 -8.619722628696309,41.14810906088451,0 -8.619756152724222,41.14804489785382,0 -8.6197880840528,41.14798939619374,0 -8.619785410368365,41.14795413917221,0 -8.618200091760798,41.1481129126808,0 -8.618217665412885,41.14820569303834,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00001">
+      <name>Jardim do Infante D. Henrique</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>1</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Infante D. Henrique</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>266,245845</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.615174739122892,41.14097995875812,0 -8.615139129567126,41.1409819039917,0 -8.615081152972778,41.14099360597021,0 -8.615007551557198,41.1410074267514,0 -8.614936371116585,41.14102960942898,0 -8.614861861385748,41.1410561781002,0 -8.6147863399176,41.14108964637012,0 -8.61471745184889,41.14112363175025,0 -8.614673882393731,41.14116657527728,0 -8.614639762115303,41.1412235797045,0 -8.614618292600085,41.14128660239481,0 -8.614617682859716,41.14137484926994,0 -8.614622448367243,41.14147299318415,0 -8.614628300255788,41.14155014332448,0 -8.615169043716321,41.14155120362523,0 -8.615174739122892,41.14097995875812,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00002">
+      <name>Jardim Palmira Malheiro</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>2</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim Palmira Malheiro</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>344,542056</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.62029548874574,41.17625435155713,0 -8.61970506044014,41.1760118448708,0 -8.619262951923645,41.17657799777641,0 -8.619823752064463,41.17682903723033,0 -8.62029548874574,41.17625435155713,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00003">
+      <name>Jardim da Praça de Liège</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>3</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Praça de Liège</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>339,926951</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.676526785882402,41.15438524598238,0 -8.676491468606344,41.15439987795207,0 -8.676171536587106,41.15456008677865,0 -8.676334413702193,41.15476424007767,0 -8.676510928136793,41.15496394892716,0 -8.676689430972431,41.15516796283129,0 -8.676752423985136,41.15523424916131,0 -8.677153903829549,41.15501776435838,0 -8.677169737293468,41.15500054683781,0 -8.676526785882402,41.15438524598238,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00004">
+      <name>Jardim da Rua de Arroios</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>4</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Rua de Arroios</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>277,884587</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.584395347667112,41.1722365529746,0 -8.58380393370453,41.17207394115951,0 -8.583595541001387,41.17250260301279,0 -8.584192209702678,41.17267744830565,0 -8.584395347667112,41.1722365529746,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00005">
+      <name>Parque de Nova Sintra</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>5</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Parque de Nova Sintra</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1164,736415</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.589694535374463,41.1447573056052,0 -8.590521822623941,41.14517103331662,0 -8.590399077755194,41.14464226073181,0 -8.590940896804909,41.14416832161083,0 -8.590558988906139,41.14374306279217,0 -8.592073198119579,41.14287106664648,0 -8.591945346900218,41.14272570472753,0 -8.590850298202668,41.14220370673576,0 -8.59004648595652,41.14290447376249,0 -8.589800367592829,41.14316995812715,0 -8.589533358877361,41.1440594865561,0 -8.589694535374463,41.1447573056052,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00006">
+      <name>Jardim Palácio de Cristal</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>6</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim Palácio de Cristal</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1984,311187</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.62614581697585,41.14868457033668,0 -8.626180558685803,41.14870772428208,0 -8.626560550129227,41.14876366481133,0 -8.626986735249602,41.14858796875978,0 -8.627026513163003,41.14855848088922,0 -8.62704469115954,41.14852533997254,0 -8.627076505576213,41.14811947593313,0 -8.627105128298979,41.14804157665748,0 -8.627142070649995,41.14799149970799,0 -8.62717717118943,41.14796882060466,0 -8.62722071276562,41.14795520037228,0 -8.627775530616191,41.14788786003675,0 -8.627715458601472,41.14762346475118,0 -8.627674973820945,41.14759846359829,0 -8.627693791235458,41.14753785918492,0 -8.627675417186708,41.14748805562931,0 -8.627635805647856,41.14745249913358,0 -8.627787053629561,41.14679031841854,0 -8.62788663196244,41.14678375786417,0 -8.627886822618734,41.14679167999208,0 -8.627912990192272,41.14679132475987,0 -8.627912798636714,41.1467834107259,0 -8.62801098661771,41.14678206983672,0 -8.627956071315566,41.14603483304114,0 -8.627942612961192,41.14603674589915,0 -8.627934673746154,41.14600582540857,0 -8.628498820264269,41.14591894820097,0 -8.628571320909714,41.14592321818202,0 -8.628579832093521,41.14594615089419,0 -8.628872255650038,41.1458814122974,0 -8.628858356627802,41.14585162405325,0 -8.628872787149362,41.14583972242531,0 -8.628808301262041,41.14578476035848,0 -8.62814966927175,41.1453079559974,0 -8.628089939898757,41.14527550126343,0 -8.627993063129338,41.14525295795772,0 -8.627907485442051,41.14525356859735,0 -8.626298999399239,41.14539715075796,0 -8.626300781855548,41.14541407869683,0 -8.6245688503721,41.14556863708299,0 -8.624565985132051,41.1455518836126,0 -8.624558115164859,41.14555240432003,0 -8.62439344300293,41.14558915871277,0 -8.623896530700279,41.14563426600864,0 -8.623908086089273,41.14565833006793,0 -8.623937303263915,41.14567248539692,0 -8.624440832778191,41.14563159142483,0 -8.624499995578276,41.14564107117855,0 -8.624535005286191,41.14566362077954,0 -8.62455672121564,41.14570517125668,0 -8.624634147447921,41.14600491619399,0 -8.62478779841814,41.14685743032618,0 -8.624793545085993,41.14692186495216,0 -8.624786987229641,41.14703088616653,0 -8.624760243190622,41.14716258378627,0 -8.624712277849312,41.14730317030512,0 -8.624229618901723,41.14809824833554,0 -8.624223081729781,41.14811767998697,0 -8.624239925132372,41.14817181197958,0 -8.624287313108994,41.14819928716742,0 -8.624469727096198,41.14826586667647,0 -8.625174058136224,41.14845192022,0 -8.625396789630088,41.14856240013472,0 -8.625461299799099,41.14858559724758,0 -8.625560671287929,41.14860813066076,0 -8.625799432297924,41.148646330264,0 -8.625825337269475,41.14863158677838,0 -8.62614581697585,41.14868457033668,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00007">
+      <name>Jardim da Cordoaria</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>7</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Cordoaria</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>722,032021</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.617599394996034,41.14638374661269,0 -8.617249830315359,41.14498893409211,0 -8.617205699683268,41.14491788944912,0 -8.617127231136749,41.14486650938193,0 -8.617062308178959,41.14484772973901,0 -8.616993071173226,41.14484318636403,0 -8.616940734227455,41.14484972713325,0 -8.616859014631757,41.14487612043666,0 -8.615524802027949,41.14551872201145,0 -8.615505790359919,41.14559316609177,0 -8.615710100140973,41.14564276729993,0 -8.615886629864008,41.14569860710509,0 -8.61620016410626,41.14583034159705,0 -8.616409330226361,41.14593760103952,0 -8.616573502365213,41.14604739926813,0 -8.616883709115825,41.14627374243929,0 -8.617015028120989,41.14633957641036,0 -8.617150385981461,41.14638104594854,0 -8.617310299830422,41.14640407129093,0 -8.617440959632518,41.14640296242681,0 -8.617599394996034,41.14638374661269,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00008">
+      <name>Jardim do Passeio Alegre</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>8</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Passeio Alegre</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1289,51934</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.668135460982683,41.14774961894983,0 -8.668137026702368,41.14776494609544,0 -8.668150657726642,41.1477757136783,0 -8.671019395228882,41.14887091615992,0 -8.671160996183005,41.14891809009782,0 -8.671297910769908,41.14894867424198,0 -8.671498447895033,41.14896476041542,0 -8.672469496270196,41.14898130794109,0 -8.67253519534296,41.14897467004505,0 -8.672601103957732,41.14895001423184,0 -8.67264564288206,41.14891675100728,0 -8.672676823276731,41.14887256641583,0 -8.672940905598296,41.14803114272308,0 -8.673000381362442,41.14781083490215,0 -8.672988816980251,41.14775742416583,0 -8.672955624802171,41.14772043864736,0 -8.672896381962403,41.14769061712832,0 -8.672837960203651,41.14768244588822,0 -8.668223933587626,41.14756884982262,0 -8.668195898122178,41.14758389098381,0 -8.668135460982683,41.14774961894983,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00009">
+      <name>Jardim do Passeio Alegre</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>9</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Passeio Alegre</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>152,784029</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.667588978048855,41.14754153561341,0 -8.667577943367348,41.14755262605291,0 -8.667584193655557,41.14755967403977,0 -8.668046982082501,41.14773502205367,0 -8.668080148180252,41.14774291720192,0 -8.668097663376443,41.14773174312552,0 -8.668146134136748,41.147591632348,0 -8.668132852049439,41.14757253344573,0 -8.667755454250766,41.147560506812,0 -8.667588978048855,41.14754153561341,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00010">
+      <name>Jardim do Cálem</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>10</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Cálem</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>199,734047</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.653269428341389,41.14846312487339,0 -8.653288521847742,41.14849607423452,0 -8.653318631149887,41.14852415556538,0 -8.653421901199749,41.14858528428351,0 -8.653526128128249,41.14862872423629,0 -8.65364031235049,41.14865393942779,0 -8.653759273771414,41.14865975624281,0 -8.653889211417948,41.14864658836939,0 -8.654033363748681,41.14860408371152,0 -8.654087539808074,41.14856368976251,0 -8.653265946166414,41.14845353360374,0 -8.653269428341389,41.14846312487339,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00011">
+      <name>Jardim de São Lázaro</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>11</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim de São Lázaro</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>458,416598</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.601993239196588,41.14634845002098,0 -8.603171527344045,41.14603231673806,0 -8.603300452353949,41.14601684300294,0 -8.603110055084926,41.14556314492324,0 -8.603026615985471,41.14557137282066,0 -8.603012761030072,41.14559105808093,0 -8.60199129576165,41.14569741370474,0 -8.601938879675515,41.14570484030617,0 -8.601914782341282,41.14571630126636,0 -8.601894844371543,41.1457381718792,0 -8.601889299151765,41.1457623618436,0 -8.601942842987739,41.14630352708616,0 -8.601956700641154,41.14634104410396,0 -8.601993239196588,41.14634845002098,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00012">
+      <name>Parque da Pasteleira</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>12</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Parque da Pasteleira</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1208,551073</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.661250292766738,41.15198316309255,0 -8.662350284138256,41.15208802584175,0 -8.662398010259892,41.15207966664337,0 -8.662429205943056,41.15205121389244,0 -8.662482635565141,41.15179280809167,0 -8.662488568392689,41.15160943362849,0 -8.662451199762984,41.15131377341197,0 -8.662371292301259,41.15099577223714,0 -8.66228950615573,41.15083632963297,0 -8.662204702784777,41.15073871272148,0 -8.662065437370018,41.15062765184473,0 -8.661969270165628,41.15057433283926,0 -8.661876341419998,41.15053407198991,0 -8.661721570793816,41.15048724519028,0 -8.661545513214833,41.15046552656287,0 -8.660656994724491,41.15053628791941,0 -8.659984961037083,41.15060940729836,0 -8.659339612033421,41.15069468101478,0 -8.658370850634185,41.15084943815111,0 -8.658334421796099,41.15087160104361,0 -8.658329202130915,41.1508981328426,0 -8.658337340096125,41.15091468936146,0 -8.658499202775943,41.15102942396879,0 -8.658650552381062,41.15115657821355,0 -8.658758343322859,41.15127534088435,0 -8.658852285604439,41.15140065961282,0 -8.658918174434177,41.15150652330743,0 -8.658978087268849,41.15163374410207,0 -8.659076249169516,41.1519171249754,0 -8.659102592110912,41.15191471659097,0 -8.65916271538697,41.1518925797788,0 -8.660333843132321,41.15188170607593,0 -8.660334249625862,41.15188938358824,0 -8.6603507602793,41.15189228030454,0 -8.661250292766738,41.15198316309255,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00013">
+      <name>Parque da Pasteleira</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>13</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Parque da Pasteleira</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>953,057783</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.659070647292481,41.15260131300028,0 -8.65907558726849,41.15236725994117,0 -8.65903089366077,41.1520936735842,0 -8.658971943999973,41.15184567923478,0 -8.658883939042482,41.15162132716256,0 -8.658805190806845,41.15146703587504,0 -8.658711531811719,41.15133544077804,0 -8.65862393244845,41.15123890485165,0 -8.658516419397188,41.15113111660781,0 -8.65841575378397,41.15105426144504,0 -8.658353369612257,41.15101259675402,0 -8.658268666965341,41.15097144917309,0 -8.65819224527587,41.15094705596192,0 -8.658086535365271,41.15093195364682,0 -8.657967546065379,41.15093529822548,0 -8.657874700057334,41.15095138889552,0 -8.657266019111432,41.15113780486587,0 -8.65707818670893,41.15120368919895,0 -8.656678294167875,41.15136396367603,0 -8.656385295045311,41.15150257438438,0 -8.656543156641305,41.15190033193483,0 -8.65659317783286,41.15195871861999,0 -8.656675533249199,41.15216564992488,0 -8.656987805742574,41.15229708674121,0 -8.65709124756296,41.15255790812103,0 -8.657120730936924,41.1525502998565,0 -8.657222744633884,41.15280964275087,0 -8.657450225447519,41.15275858733901,0 -8.658154327160446,41.1528418061045,0 -8.65841870625826,41.15277216710189,0 -8.658554862716699,41.15281054027429,0 -8.658594791716212,41.15285791566032,0 -8.659025279193259,41.15265575975553,0 -8.659045114640264,41.15263661678648,0 -8.659066977159228,41.15262950314911,0 -8.659070647292481,41.15260131300028,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00014">
+      <name>Jardim Paulo Vallada  </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>14</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim Paulo Vallada
+</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>999,000907</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.596395963103191,41.1533432959564,0 -8.596497428213695,41.15335406084131,0 -8.59649894896728,41.15334008987333,0 -8.596557084741619,41.15334547411442,0 -8.596553223952071,41.15336209268651,0 -8.596582022941959,41.15336473219668,0 -8.596584085986706,41.15334980435006,0 -8.596640793637675,41.15335701331554,0 -8.596635665703388,41.15338330679424,0 -8.596805267049376,41.15340185621074,0 -8.59679314868481,41.15334415301032,0 -8.597168096730229,41.15328805779768,0 -8.597229152603291,41.15358019896706,0 -8.597276688068632,41.15357400983277,0 -8.597354474029714,41.15309649320864,0 -8.597811279267091,41.153140819893,0 -8.59774386338853,41.15354464337065,0 -8.598571498675653,41.15343045555113,0 -8.598597015140115,41.15345225871482,0 -8.599425308730986,41.15333889197632,0 -8.599465091140985,41.15332626009888,0 -8.599495079034625,41.15330497944132,0 -8.599513715685362,41.15327726143653,0 -8.599518761781383,41.15324641109305,0 -8.599497726638731,41.15319969401071,0 -8.599445394189559,41.15316776178281,0 -8.598694962102798,41.15294485671984,0 -8.598666760262745,41.15294579920931,0 -8.598645188224793,41.15295956423256,0 -8.597192346049894,41.1525287521003,0 -8.597158760868069,41.15252479058665,0 -8.596896542841137,41.15255183499926,0 -8.596847695264898,41.15257620662669,0 -8.596395963103191,41.1533432959564,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00015">
+      <name>Jardim Mota Galiza</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>15</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim Mota Galiza</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>681,64856</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.626102896831185,41.15215174910401,0 -8.626119967762236,41.15217872336945,0 -8.626150050084675,41.15219813343714,0 -8.626187970898116,41.15220664102372,0 -8.626224055295893,41.15220355994637,0 -8.626945715372415,41.15198988732351,0 -8.626972310123961,41.15197482637717,0 -8.626987748785552,41.15194953024667,0 -8.626985654264502,41.15192445355075,0 -8.626966119191025,41.15190084005178,0 -8.626849079621309,41.15185660240036,0 -8.62677796123387,41.15179768781309,0 -8.626673738801969,41.15159304438356,0 -8.626509123297353,41.15133459811324,0 -8.626263453695401,41.15133283364344,0 -8.626236849950601,41.15115308524673,0 -8.626307762393253,41.15111313736145,0 -8.626248108563289,41.15106912004393,0 -8.62616706166051,41.15098077874001,0 -8.62618776135605,41.150970739608,0 -8.626345815407035,41.15095991536788,0 -8.626364350434358,41.15083603105802,0 -8.626469662844613,41.15045811524988,0 -8.626310522412609,41.1506063909722,0 -8.626313589100789,41.15063732405332,0 -8.6262009957793,41.1507422263727,0 -8.626161269127238,41.15074544864359,0 -8.626030283770547,41.15087108483277,0 -8.625953023912871,41.15110810295664,0 -8.625920698681227,41.15113095023321,0 -8.625876704746077,41.15129269600118,0 -8.625868849168001,41.15137136959311,0 -8.625880087096277,41.15145297857214,0 -8.626102896831185,41.15215174910401,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00016">
+      <name>Jardim do Marquês de Pombal</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>16</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Marquês de Pombal</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>471,708891</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.604919411901278,41.16075253420212,0 -8.604929397073988,41.16070452029743,0 -8.604912763213406,41.16063127771133,0 -8.604848772852563,41.16055506106727,0 -8.604743855244692,41.16050469993201,0 -8.604633258418119,41.16049317781796,0 -8.604473714190533,41.16054074296096,0 -8.604424869312197,41.16057912062996,0 -8.604394221316227,41.16061664933898,0 -8.603925259043422,41.1615199230061,0 -8.603928472321115,41.16164239088369,0 -8.604013962774104,41.16173970742159,0 -8.604061533313086,41.16176418337039,0 -8.604150104843427,41.16178599732598,0 -8.604227611115334,41.16178659717377,0 -8.604315027916186,41.16176711516027,0 -8.604369304699617,41.16173999700334,0 -8.604432204182842,41.16168410413815,0 -8.604919411901278,41.16075253420212,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00017">
+      <name>Jardim Francisco Sá Carneiro  </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>17</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim Francisco Sá Carneiro
+</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>624,418185</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.591526733172145,41.16280227890212,0 -8.591698106182605,41.16287685967939,0 -8.591797047795467,41.16290314416483,0 -8.591899616374178,41.16291969798573,0 -8.592097315238846,41.16292359115084,0 -8.592290521989924,41.16289170119109,0 -8.592468061651687,41.16282587531396,0 -8.592552143766397,41.16277850172651,0 -8.592627569906369,41.16272342904307,0 -8.592742202890292,41.16260164195228,0 -8.592786294851578,41.16252973126217,0 -8.592817911417455,41.16245416033127,0 -8.592841857665576,41.16231462871718,0 -8.592826192374844,41.16218380074184,0 -8.592774745757879,41.16205954411271,0 -8.592689600644519,41.16194635274206,0 -8.592615956960799,41.1618796221469,0 -8.592521391448997,41.16181618037246,0 -8.592042542928994,41.16159057104807,0 -8.592042473681147,41.16155676103574,0 -8.591942073367932,41.16152091226036,0 -8.591893958739149,41.16152196896377,0 -8.59185221580708,41.1615327779154,0 -8.591790265108614,41.16157236427324,0 -8.591247347087347,41.16223305211372,0 -8.59104687381415,41.16248200873775,0 -8.591032008920024,41.16251174572057,0 -8.591028885574588,41.16254739574578,0 -8.591038395005853,41.16257835041057,0 -8.591088441378417,41.16262868096891,0 -8.591178411354576,41.16267196533897,0 -8.59121865601611,41.1626597210693,0 -8.591526733172145,41.16280227890212,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00018">
+      <name>Jardim da Boavista</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>18</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Boavista</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>826,25448</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.630229399167376,41.15780967907347,0 -8.630218634282471,41.15771424841387,0 -8.630183315207773,41.15758899443659,0 -8.630099746605993,41.1574353245806,0 -8.630036464910859,41.15735684074565,0 -8.629943837438077,41.15726682400475,0 -8.629873093168669,41.15721145814234,0 -8.629785497402736,41.15715665165823,0 -8.629596793557141,41.15707065128959,0 -8.629353553923352,41.15700845777417,0 -8.629195286733022,41.15699134007832,0 -8.629098229199883,41.15698971500342,0 -8.628857849410167,41.15701287524405,0 -8.628664452002795,41.1570622848966,0 -8.6284633923716,41.15715104798255,0 -8.628310162284095,41.15725367771512,0 -8.628248518254452,41.15730696794225,0 -8.628161427008195,41.15740281229,0 -8.628115467155055,41.15746950421431,0 -8.628059952904437,41.15757579238897,0 -8.627975686428727,41.15783623425489,0 -8.627956676559336,41.15801559324507,0 -8.627966330781476,41.15811583707625,0 -8.62798500880109,41.15818657325178,0 -8.62804682100392,41.15832482423133,0 -8.628155127257287,41.1584669620807,0 -8.628295111230329,41.15859177359153,0 -8.628471544725983,41.15869670199123,0 -8.628600496715478,41.15875013431128,0 -8.628689481933975,41.15877728484389,0 -8.628879103088082,41.15881554380235,0 -8.629088567783128,41.15882811002933,0 -8.629284773773236,41.15881223519654,0 -8.629478541701303,41.15876859379563,0 -8.629601981746021,41.15872488674415,0 -8.629701232725665,41.15867888911947,0 -8.62982508196194,41.15860417074595,0 -8.629978384894514,41.15847004225867,0 -8.630070095058784,41.15835180209405,0 -8.630134964956596,41.15822118995601,0 -8.630210772409157,41.15797893507983,0 -8.630229399167376,41.15780967907347,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00019">
+      <name>Jardim da Rainha D. Amélia</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>19</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Rainha D. Amélia</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>400,355994</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.597932603207028,41.15895847485376,0 -8.598008397169735,41.15898358662327,0 -8.59805535527039,41.15898284827989,0 -8.59809506483532,41.15897302588451,0 -8.598475094050286,41.15879731544379,0 -8.598529690992393,41.15875990814328,0 -8.598569149646494,41.1587180141251,0 -8.598597293030593,41.1586647589715,0 -8.598700233928582,41.1581280013063,0 -8.598696657324808,41.15809405279833,0 -8.598682018160559,41.15806584915964,0 -8.59862561807779,41.15802360530518,0 -8.598580785974434,41.15801165781181,0 -8.598239814315946,41.15798199277481,0 -8.598151355200855,41.15800537424866,0 -8.598087628341318,41.15805729660701,0 -8.597791333203418,41.15879715536448,0 -8.597793030224125,41.15883664819279,0 -8.597815328914237,41.15887666172858,0 -8.597863880613545,41.15891756919052,0 -8.597932603207028,41.15895847485376,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00020">
+      <name>Jardim Teófilo Braga</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>20</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim Teófilo Braga</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>615,165648</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.612133915447771,41.15375100810257,0 -8.612079060400276,41.15376779484791,0 -8.612054781403003,41.15380858539794,0 -8.612078451559228,41.15383967586041,0 -8.612044576795711,41.15493978864038,0 -8.612059188080991,41.15498143444569,0 -8.612095167258133,41.15500939526743,0 -8.612146111154061,41.1550215001422,0 -8.613065014139067,41.15504180593467,0 -8.613109875020655,41.15503319132876,0 -8.613140153395307,41.1550113917624,0 -8.613153343751776,41.15498255140369,0 -8.613178560741915,41.15430893940606,0 -8.613203673410737,41.15429099793124,0 -8.613206667253849,41.1542198813425,0 -8.613182562725058,41.15420128875854,0 -8.61319442208486,41.15387939172058,0 -8.613183054654201,41.15384805214592,0 -8.613153812298549,41.15382570938903,0 -8.613115365381759,41.15381687534858,0 -8.612149110393091,41.15380415803554,0 -8.612178136911439,41.15376100676508,0 -8.612133915447771,41.15375100810257,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00021">
+      <name>Parque da Quinta do Covelo  </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>21</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Parque da Quinta do Covelo
+</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1660,718713</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.606262366814747,41.16548073604719,0 -8.606239267727972,41.16545975306519,0 -8.60619714797997,41.16544809515352,0 -8.602816398557877,41.16549376272701,0 -8.602780197248251,41.16550806464551,0 -8.602765198355201,41.16553334638689,0 -8.602770633857631,41.16555712176381,0 -8.603478807700753,41.16663774533572,0 -8.603822731833589,41.16696300943539,0 -8.604213986386299,41.16718871139,0 -8.604261707112073,41.1672452229887,0 -8.604284359235749,41.16738835638756,0 -8.604305480713322,41.16775836805431,0 -8.604377598247538,41.16831730839709,0 -8.604398011958665,41.16841245936757,0 -8.604443811732494,41.16845363572674,0 -8.60456809084468,41.16852189786732,0 -8.604662249862884,41.16856058939976,0 -8.604937143834093,41.16872719600332,0 -8.604970402562003,41.16873098484712,0 -8.605083514792341,41.16880204837588,0 -8.605218696385691,41.1689048759593,0 -8.605728545435966,41.16926239874078,0 -8.606313198295425,41.16888589666684,0 -8.60632921701972,41.16878560786955,0 -8.606372710931794,41.1665908043222,0 -8.606270645973495,41.16550200591291,0 -8.606262366814747,41.16548073604719,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00022">
+      <name>Jardim do Campo 24 de Agosto</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>22</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Campo 24 de Agosto</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>22</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>384,194142</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.598294752101083,41.14997013321511,0 -8.598287759872164,41.14999042911506,0 -8.5983098661074,41.15004377779815,0 -8.598323375723169,41.15005419464541,0 -8.598430057800897,41.15006218242382,0 -8.598449925623527,41.15005196342742,0 -8.599310476097571,41.14945759878918,0 -8.599331971693118,41.14943167043532,0 -8.59934051525255,41.14940175988335,0 -8.599335082448022,41.14937143024736,0 -8.599315070733894,41.14934310340158,0 -8.598971497336663,41.14911996271616,0 -8.598925155271672,41.14910754487732,0 -8.598876030704219,41.14910588023224,0 -8.598828413400497,41.14911511267235,0 -8.598788658869466,41.14913305684513,0 -8.59874113779324,41.1491794852451,0 -8.598294752101083,41.14997013321511,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00023">
+      <name>Parque de São Roque</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>23</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Parque de São Roque</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>23</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1476,803813</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.587031376596713,41.15752371444791,0 -8.587127322567824,41.15772809527545,0 -8.587144614732154,41.15773920999658,0 -8.58719035784867,41.15780575802938,0 -8.586675290032588,41.15814901486522,0 -8.587149480963717,41.15862909185915,0 -8.587308936158422,41.15860871681889,0 -8.58758892928563,41.15825391628528,0 -8.587691982598869,41.15831780592208,0 -8.587750236184434,41.15833091084289,0 -8.58761838208261,41.15846082780502,0 -8.58791823403925,41.1586651951427,0 -8.588089848067966,41.15876971884751,0 -8.588082040154006,41.15890318003778,0 -8.587841947248023,41.15906892958748,0 -8.588137816107292,41.15928430642566,0 -8.589138697692704,41.16006738120473,0 -8.589447007773117,41.1598859708609,0 -8.589677673086101,41.15977111034852,0 -8.590147888114473,41.15955358772794,0 -8.590200582091143,41.1595175249139,0 -8.590229033043386,41.15947997282257,0 -8.59023078402339,41.15944393159225,0 -8.590204867360683,41.1593766667998,0 -8.590179865308471,41.15938242066221,0 -8.589969160448334,41.15883823729484,0 -8.589959749043146,41.15881273881689,0 -8.589984509177725,41.15880637431479,0 -8.589942039593382,41.15869727935603,0 -8.589872492321604,41.15871322343656,0 -8.589446610272773,41.15768749358301,0 -8.589111765695407,41.15774525883666,0 -8.588997957389779,41.15749662327062,0 -8.588526143366778,41.15758674972875,0 -8.588523003833529,41.1575739667652,0 -8.587716658197167,41.15770544584967,0 -8.587727906018017,41.15772631821506,0 -8.587717480177503,41.15774506008648,0 -8.587723598265427,41.15777864796627,0 -8.587434236001116,41.15797050483496,0 -8.58737422064371,41.1579282519873,0 -8.587315809676852,41.15787162167806,0 -8.587110015115059,41.1575112300593,0 -8.587031376596713,41.15752371444791,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00024">
+      <name>Jardim da Corujeira</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>24</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Corujeira</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1051,898811</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.578571749986224,41.15684405630822,0 -8.578632652974534,41.15684256882952,0 -8.578638787250156,41.15697760473273,0 -8.578579069568377,41.15697998883547,0 -8.578584362977949,41.15709648881199,0 -8.57864384683603,41.15709482686481,0 -8.578651304014443,41.15725099863471,0 -8.578606998913813,41.15725278288966,0 -8.578608082596873,41.15727391066253,0 -8.578651932640526,41.15727338096184,0 -8.578658674857934,41.15742955632902,0 -8.578614831109519,41.15742918580833,0 -8.578616393231926,41.15745050064015,0 -8.578660476199957,41.15745087116085,0 -8.578663064448847,41.15751811976548,0 -8.578618753952298,41.15751918366345,0 -8.578619618200776,41.15754121255696,0 -8.578664168816317,41.15754050928712,0 -8.578667701353311,41.15760623444021,0 -8.578607282200267,41.1576089710772,0 -8.578610306620305,41.15767201355266,0 -8.578669792277026,41.15767035160548,0 -8.578679052596158,41.15788347744058,0 -8.578634986715201,41.15788543886197,0 -8.578636082988794,41.15790656843342,0 -8.578679918643275,41.15790573116459,0 -8.578683576186052,41.15797239161265,0 -8.578639492318644,41.15797355263737,0 -8.578640601182769,41.15799656269127,0 -8.57868443683725,41.15799563728888,0 -8.578687376721007,41.15806207470502,0 -8.578643542865166,41.15806314489828,0 -8.578643934969591,41.15808580691453,0 -8.578688127654914,41.15808491478703,0 -8.578695473317396,41.15824202544917,0 -8.578651284229352,41.15824362714176,0 -8.578651557623232,41.15826637909015,0 -8.578696225150623,41.15826512633458,0 -8.578699311623893,41.15833560620331,0 -8.578640066985429,41.15833744801489,0 -8.578650802192726,41.15846933269359,0 -8.57868743607628,41.15849032287014,0 -8.578768018928884,41.158490280602,0 -8.578766300324446,41.15844578124785,0 -8.579164182880675,41.15843752187419,0 -8.579165440132897,41.15848229372296,0 -8.579242699990573,41.15848065156087,0 -8.579241920278378,41.15843586981958,0 -8.579651415780177,41.15842729298521,0 -8.579653138881213,41.15847225279231,0 -8.579736304586731,41.15846825620514,0 -8.579766267299362,41.15844717879429,0 -8.579772736122834,41.15842252837706,0 -8.57967997824835,41.15627137342517,0 -8.579668510992917,41.15624942906794,0 -8.579623537696079,41.15623016379107,0 -8.579513556005736,41.15623196873042,0 -8.579513779037598,41.1562559824277,0 -8.57921788319868,41.15626019125489,0 -8.579216700590223,41.15623710026205,0 -8.579014051856973,41.15623974966479,0 -8.579015009634929,41.15626329211727,0 -8.578658016554186,41.15626848390349,0 -8.578657273714157,41.15624491357198,0 -8.578596513718082,41.15624629313197,0 -8.578571096179076,41.1562540902541,0 -8.578553404715819,41.15626993271127,0 -8.578547485378124,41.1562894318119,0 -8.578571749986224,41.15684405630822,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00025">
+      <name>Parque da Cidade</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>25</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Parque da Cidade</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>6086,938083</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.683813590424791,41.17342633175986,0 -8.684154359735885,41.17346184688677,0 -8.684489910281116,41.17346164993523,0 -8.685307883252165,41.17341801303093,0 -8.685308886895541,41.17343540412065,0 -8.685379916250099,41.17343211799789,0 -8.685378742634839,41.17341448499053,0 -8.687407290314127,41.17329889872525,0 -8.687605240089738,41.17327604605276,0 -8.68766197292166,41.17330553931924,0 -8.687743189796322,41.17330079719409,0 -8.687825442689984,41.17329040642716,0 -8.687903834794099,41.17326864283365,0 -8.688049807352684,41.17319084698005,0 -8.688095536979404,41.17314940622015,0 -8.68819390662344,41.17299164175091,0 -8.688193449767823,41.17294747064932,0 -8.687374220443871,41.1717032675918,0 -8.687377979610005,41.17169129311873,0 -8.687476210758462,41.1716541007562,0 -8.687480405196482,41.17164422979744,0 -8.687138609758961,41.17112463659277,0 -8.68700195957274,41.17088318211324,0 -8.686940463031874,41.1707278826857,0 -8.686884651105743,41.17047941079625,0 -8.686873753121176,41.1702905270862,0 -8.686888933677324,41.17009280124182,0 -8.686930746756502,41.16990631782238,0 -8.686997165286925,41.16972409269278,0 -8.687064590158684,41.16958927712352,0 -8.687157241013836,41.16944321912933,0 -8.68755161441544,41.16895243300843,0 -8.68740714282535,41.16888095489219,0 -8.687358611810453,41.16887247428531,0 -8.687339217031195,41.16887860856099,0 -8.687200616215421,41.16899014158184,0 -8.686300352579167,41.16904095237811,0 -8.686256425193847,41.16902451456974,0 -8.686215997070576,41.16899072883911,0 -8.686116587810204,41.16888478240685,0 -8.686084557556228,41.16882237755073,0 -8.686029919245357,41.16831204916178,0 -8.685888992782736,41.16832160625717,0 -8.685841824240754,41.16830796713902,0 -8.685649869345923,41.1683194613741,0 -8.685639674631204,41.16825066593555,0 -8.685163874812929,41.16830922888784,0 -8.685129020687725,41.16788518775127,0 -8.685130805841993,41.16777713330811,0 -8.685143596000103,41.16772529908332,0 -8.685195348386571,41.16761517619949,0 -8.685202449433461,41.16751877427208,0 -8.685236353874586,41.1674869526608,0 -8.685246351637773,41.16743037001561,0 -8.682468612936077,41.166966468228,0 -8.682457098016641,41.16762830810001,0 -8.681537212971932,41.16747935069151,0 -8.681517259713701,41.16754696621956,0 -8.681249095369424,41.1675040820478,0 -8.681082652442399,41.16797968671324,0 -8.680728412186454,41.16777851017014,0 -8.6803389832574,41.16727193555141,0 -8.68021691827613,41.16712816813049,0 -8.680150248834877,41.16706475603371,0 -8.679901821012209,41.16688333220009,0 -8.679642970946304,41.16674655341075,0 -8.679590678067314,41.16670951573161,0 -8.679559672141124,41.16666338410795,0 -8.67961104861098,41.16649004877678,0 -8.672243835684412,41.16525711062718,0 -8.672103114267259,41.16573964097171,0 -8.672136982735538,41.1657448390531,0 -8.672203534365565,41.16688222873194,0 -8.672194597802388,41.16698100666815,0 -8.67216728359324,41.16710533524309,0 -8.672102398406935,41.16725973984518,0 -8.672018109448118,41.16737866259524,0 -8.67190551163003,41.16748345609665,0 -8.671649955780765,41.1676667037554,0 -8.671515703187083,41.16782763024099,0 -8.67143838937011,41.16795902568856,0 -8.671396632048868,41.1680993846789,0 -8.67139432438853,41.16820736987427,0 -8.671421886810606,41.16832253525683,0 -8.671874813271984,41.16942335670262,0 -8.671920981767869,41.16958999118521,0 -8.671917700141705,41.16967216583782,0 -8.671892931913249,41.16979032326486,0 -8.671844946786791,41.16992970289351,0 -8.671803149895425,41.1700041811481,0 -8.671736919323337,41.17006759144624,0 -8.671362136753146,41.1703354311353,0 -8.671496817424156,41.17044978802733,0 -8.671445049749195,41.17046520240723,0 -8.671414012346759,41.1704844272146,0 -8.671514252580664,41.17057379734291,0 -8.67162976330286,41.17051403739299,0 -8.67166705998676,41.17051263714853,0 -8.671803652616404,41.1704431618225,0 -8.671843935948857,41.17042960184472,0 -8.671925068287237,41.17054114835537,0 -8.671902937770312,41.1705510489918,0 -8.671901266829934,41.17056664233672,0 -8.671987034274139,41.17065635870404,0 -8.671973426632292,41.17075809540984,0 -8.672011020991761,41.17085253141926,0 -8.672040917154561,41.17088572269802,0 -8.672084897599916,41.1708973113619,0 -8.672129825031334,41.17088771019974,0 -8.67213837488606,41.17090158943688,0 -8.672176983680799,41.17088720927734,0 -8.672169479737647,41.17087453063516,0 -8.672287264845352,41.17083502701496,0 -8.672328653444538,41.1708238484419,0 -8.6723329306202,41.17082829379081,0 -8.672361922065022,41.1708007142816,0 -8.672343276421032,41.17078500942068,0 -8.67238495460191,41.17075133700467,0 -8.672463978030123,41.17081479406755,0 -8.672540208164037,41.17085890581393,0 -8.67255016995432,41.17089226436656,0 -8.672631276212371,41.17098156974367,0 -8.672821206733261,41.17125187357516,0 -8.672847767310543,41.17126628071435,0 -8.672839899141991,41.17127597001007,0 -8.673055556568613,41.1715446487666,0 -8.673085430248364,41.17161267708343,0 -8.673271240075621,41.17172771026566,0 -8.673332288754068,41.17178022977384,0 -8.673901091961795,41.17162738639485,0 -8.673918303187122,41.17161776095094,0 -8.673945540953923,41.1715828960339,0 -8.673966213669758,41.17151615194888,0 -8.673969474611511,41.17145929590981,0 -8.673978367107907,41.1714595962834,0 -8.674301831664138,41.17196074799017,0 -8.674457008783861,41.17191377280244,0 -8.674753938843139,41.17170369027315,0 -8.674701833922427,41.17163908117868,0 -8.674999517613628,41.17155664212538,0 -8.675267511986021,41.17194545232081,0 -8.675524587689552,41.17185170519207,0 -8.675831574867232,41.17179045956209,0 -8.676860172658792,41.17162901686567,0 -8.678008345208923,41.17145921766883,0 -8.678012006348979,41.17147238284423,0 -8.678081939429887,41.17146221780718,0 -8.678078479738019,41.17145033236699,0 -8.678586210884873,41.17137486395887,0 -8.678798694604041,41.17135327213583,0 -8.67896377865543,41.17135194743446,0 -8.679038633725895,41.17138050180876,0 -8.679274362221975,41.17141005802779,0 -8.679417828370049,41.1714384936916,0 -8.679584846863122,41.1714849778495,0 -8.679773664922664,41.1715548317901,0 -8.680140065811315,41.17172625875986,0 -8.680135083567222,41.17169750563545,0 -8.681139656869618,41.17218248123658,0 -8.681148883913807,41.1722072791427,0 -8.681248267093793,41.17225479482295,0 -8.681277686615886,41.17224895462562,0 -8.681572459201561,41.17238925965665,0 -8.681559705915674,41.17240455532601,0 -8.681620481200184,41.17243350000609,0 -8.681633595114249,41.17241858115267,0 -8.683533242065437,41.17332906558397,0 -8.683682428800978,41.17338950542137,0 -8.683813590424791,41.17342633175986,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00026">
+      <name>Jardim da Arca d'Água</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>26</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Arca d'Água</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>26</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>800,719764</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.611298397602923,41.17102749901994,0 -8.611282079404418,41.17103978465838,0 -8.61110725839319,41.17255408470328,0 -8.611115365781473,41.1725809546474,0 -8.611134516844402,41.17259592116488,0 -8.611160532432564,41.17260278209278,0 -8.612570559683547,41.17271215674072,0 -8.612611713559659,41.17270992282471,0 -8.612645904884573,41.17269892141815,0 -8.612689762122784,41.17266216432745,0 -8.612701618784627,41.17261657319637,0 -8.612607771831165,41.17233151238946,0 -8.612593115579784,41.17224504617201,0 -8.612590369949544,41.17215789916776,0 -8.612726929304301,41.17114939133143,0 -8.612713982664104,41.17111919209708,0 -8.612678358719222,41.17110358436298,0 -8.612624268095431,41.17109957788324,0 -8.611298397602923,41.17102749901994,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00027">
+      <name>Jardim das Virtudes</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>27</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim das Virtudes</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>27</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1258,668198</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.62046464762534,41.14519169973721,0 -8.620432862886275,41.14509323926166,0 -8.620257742400838,41.14492965438012,0 -8.620256349350996,41.14474185884978,0 -8.620186777797528,41.14457313164479,0 -8.619999447216685,41.14443776928766,0 -8.619633084998839,41.14444871043969,0 -8.619445999033587,41.14434621020951,0 -8.61933417193444,41.14434198789246,0 -8.619273280637344,41.14450657192083,0 -8.619243305334237,41.14465224500515,0 -8.61885195994995,41.14464450813762,0 -8.618663694074201,41.1443823809422,0 -8.618466478145422,41.14374938412681,0 -8.618352743584183,41.14348694216869,0 -8.618333418052771,41.14339312219488,0 -8.618265066879303,41.14338871641616,0 -8.618267006716962,41.1444920415745,0 -8.618273876638057,41.14458121834861,0 -8.618472585441396,41.14457568482004,0 -8.618602872924214,41.14539676584809,0 -8.618693395983371,41.14612285958236,0 -8.619359173986652,41.14604148442703,0 -8.619587619772801,41.14585741208992,0 -8.619487309391786,41.14573107083231,0 -8.619554862866607,41.14562749501295,0 -8.619777269705196,41.14546692286024,0 -8.619826016557397,41.14533995117785,0 -8.619762622447013,41.14516650163279,0 -8.619898492921038,41.14506263713105,0 -8.620059904141215,41.14505256292551,0 -8.620328046002499,41.14519697426101,0 -8.62046464762534,41.14519169973721,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.618682781285258,41.14612415820341,0 -8.618695307042742,41.1461381903253,0 -8.618693395983371,41.14612285958236,0 -8.618682781285258,41.14612415820341,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00028">
+      <name>Jardim do Cálem</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>28</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Cálem</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>832,671326</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.65353656565992,41.14812406157625,0 -8.653642871821035,41.1482954588684,0 -8.653914687412851,41.14838347191977,0 -8.654098340665826,41.14838263914754,0 -8.654526078915353,41.14828153466516,0 -8.654765475746046,41.14814162083917,0 -8.655815614998573,41.14767409118639,0 -8.656808314552052,41.14713409416316,0 -8.656664018329764,41.14713475336623,0 -8.653527820652357,41.14812410114638,0 -8.65353656565992,41.14812406157625,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00029">
+      <name>Jardim do Conhecimento</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>29</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Conhecimento</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>28</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>303,589763</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.596901802975765,41.16344259979621,0 -8.596979579044273,41.16296181323713,0 -8.596275407184237,41.16284789971087,0 -8.596197631115729,41.16332868806853,0 -8.596901802975765,41.16344259979621,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00030">
+      <name>Jardins da Avenida de Montevideu  Jardins da Avenida de Montevideu  </name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>30</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardins da Avenida de Montevideu
+Jardins da Avenida de Montevideu
+</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>29</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>1221,534632</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.688632854022956,41.16708104905121,0 -8.68872035625941,41.16705115558642,0 -8.688801189123524,41.16704776873957,0 -8.688851371293708,41.16706023694042,0 -8.688945021295638,41.16712266967551,0 -8.689026918957097,41.16713635016248,0 -8.689077909617765,41.16712858181865,0 -8.689101516821495,41.1671150623103,0 -8.689131838363608,41.16707727279794,0 -8.68916353856639,41.16699780240668,0 -8.689171764665161,41.16692938378407,0 -8.689156854804935,41.16684483671992,0 -8.689115446420658,41.16679557815348,0 -8.68893461793823,41.16667523087727,0 -8.688861408627076,41.16658608557941,0 -8.688719337327484,41.16636448723136,0 -8.688643264574978,41.16627982055735,0 -8.688563698855546,41.1662277633007,0 -8.688405983849009,41.16615863511299,0 -8.688326214882864,41.1661147517944,0 -8.688285041221604,41.16608021602917,0 -8.688228032297786,41.16600324125665,0 -8.688175719633705,41.16589340435718,0 -8.688156594651048,41.16578006639702,0 -8.68816461300645,41.16574913961114,0 -8.688216242185774,41.16572677167324,0 -8.688231037832111,41.16570798573503,0 -8.688211768957899,41.16558042229872,0 -8.688148253439124,41.16548598269202,0 -8.687976792295103,41.16533178403466,0 -8.687922471444836,41.16527775456478,0 -8.687877375840174,41.16521658537715,0 -8.687847323195342,41.16512921803906,0 -8.687837960353534,41.1649329877672,0 -8.687797176098741,41.16480678860245,0 -8.68775880202702,41.16475020685664,0 -8.6876466412794,41.16469723678807,0 -8.687584154585011,41.16462741882037,0 -8.687561166114904,41.1645658970985,0 -8.687560793795569,41.16445813223709,0 -8.68755069261033,41.16441723017107,0 -8.687523328039106,41.16438678811983,0 -8.687478322366644,41.16436595442531,0 -8.68727776185915,41.1643353433015,0 -8.687207309869393,41.16431317591241,0 -8.687061945252538,41.16420426171737,0 -8.687014449357321,41.1641814324272,0 -8.686967048790223,41.16417821015631,0 -8.686887413823058,41.16419323602906,0 -8.68685352107309,41.16418831044223,0 -8.68683160279619,41.16416857032334,0 -8.686781549229067,41.1640832597347,0 -8.686748269816746,41.16406316708157,0 -8.686690071989176,41.16404951986948,0 -8.686605621152467,41.16405456056958,0 -8.686572571067245,41.16407385012815,0 -8.686559740439634,41.16409714436776,0 -8.686548403585903,41.16417149311997,0 -8.686557788011442,41.16422771963363,0 -8.686645408958384,41.16434439407857,0 -8.686703092373762,41.1645180738501,0 -8.686768363369254,41.16463742917409,0 -8.686905545054799,41.16482304924438,0 -8.687047189176383,41.16496340823477,0 -8.687092844159395,41.16502075530366,0 -8.687123464276397,41.16508547681337,0 -8.687168825181118,41.16524512086568,0 -8.687196896619412,41.16531210956623,0 -8.687338349185438,41.16552205989518,0 -8.687407618566681,41.16574941660235,0 -8.687429933444605,41.16579561837312,0 -8.687457032715827,41.16583238715498,0 -8.687571493929227,41.16592603625765,0 -8.687605269767346,41.16596603900155,0 -8.687636160580325,41.16601569776628,0 -8.687747020008942,41.16625535540038,0 -8.687883656705367,41.16643590689165,0 -8.687933827184338,41.16651951776157,0 -8.687979109848016,41.1666184827568,0 -8.687994660924801,41.16667811590236,0 -8.687987710064704,41.16684172326694,0 -8.68799772941162,41.16688716690931,0 -8.688045258581781,41.16698145632921,0 -8.688122076872276,41.16706711135817,0 -8.688166848721039,41.16710119566369,0 -8.688235743085045,41.16713645358453,0 -8.688295110031277,41.16715172767016,0 -8.688383120384629,41.16715388874104,0 -8.688487176441981,41.16710186026268,0 -8.688534166018883,41.16709003058048,0 -8.688582780670743,41.16708435405974,0 -8.688684881601944,41.16709145420731,0 -8.688632854022956,41.16708104905121,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00031">
+      <name>Parque Oriental</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>31</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Parque Oriental</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>31</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>2963,106137</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.570333074211931,41.15617816588969,0 -8.570375737150528,41.15618337296434,0 -8.570362544995419,41.15617634835985,0 -8.570351174866801,41.15617268002524,0 -8.570342062036502,41.15617250555675,0 -8.570335371979809,41.15617581865917,0 -8.570333074211931,41.15617816588969,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.57037717516647,41.15618354923146,0 -8.570375737150528,41.15618337296434,0 -8.570376418836588,41.15618379834365,0 -8.57037717516647,41.15618354923146,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.570333074211931,41.15617816588969,0 -8.570314496916467,41.15617589779947,0 -8.570319700393839,41.15620106712561,0 -8.570330287212926,41.15619806338998,0 -8.570326120653874,41.15619489327975,0 -8.570325039668774,41.15619163593533,0 -8.570333074211931,41.15617816588969,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.570319700393839,41.15620106712561,0 -8.570251225113907,41.15621796628619,0 -8.570184240909953,41.15623004957718,0 -8.570118747781919,41.15623732059595,0 -8.570054745729863,41.15623977844308,0 -8.569992235653103,41.15623742131999,0 -8.569931217551584,41.15623025012599,0 -8.569871689626723,41.1562182657604,0 -8.569813654576478,41.15620146732391,0 -8.569719455088716,41.15616238098914,0 -8.569695822704034,41.15615652100667,0 -8.569667948217216,41.15615274835074,0 -8.569573926795215,41.15614880572286,0 -8.5695419846748,41.15614597825436,0 -8.569513310690695,41.15614035479359,0 -8.569489619850003,41.15613169791959,0 -8.569467445266355,41.15611956156857,0 -8.569444724794153,41.1561040401694,0 -8.569395211719609,41.15606105707218,0 -8.569372689098259,41.15603344428808,0 -8.569332339216032,41.15596684409462,0 -8.569310926358128,41.15594304443602,0 -8.569290970401937,41.15593005103108,0 -8.569266686908009,41.15592103892487,0 -8.569237887018801,41.15591593527228,0 -8.569204180428528,41.15591466722816,0 -8.569165896289064,41.15591710798822,0 -8.5691208996098,41.15592328273334,0 -8.568932631935354,41.15596142837728,0 -8.568891618353462,41.15596820656754,0 -8.568856518713346,41.15597221034926,0 -8.568818596101266,41.15597356742626,0 -8.568786394076767,41.15597087665469,0 -8.568759265127937,41.15596408407527,0 -8.568736917874389,41.15595310874903,0 -8.568713331355127,41.15593520594507,0 -8.568690675634116,41.15591297470405,0 -8.568669139569067,41.15588659578981,0 -8.568648987560664,41.15585639295824,0 -8.56863034371537,41.15582246063809,0 -8.56861383755853,41.15578584384167,0 -8.568599924147122,41.15574754171576,0 -8.56858917275207,41.155709114584,0 -8.568585417183215,41.15568461974948,0 -8.568582137355691,41.15562939058395,0 -8.568578056232241,41.15560660266266,0 -8.5685672310928,41.15557655001783,0 -8.568550821163399,41.1555464371184,0 -8.568528681653277,41.15551598607397,0 -8.568500436645763,41.15548467707623,0 -8.568471130438297,41.15545682507246,0 -8.568435669270684,41.15542660785172,0 -8.568283823239824,41.15530794140841,0 -8.568202655827861,41.15523686438985,0 -8.568165142407338,41.15520665796095,0 -8.568124422903736,41.15517925741688,0 -8.568084519984552,41.15515880773285,0 -8.568042533336211,41.15514436731877,0 -8.567953377246511,41.15512286362929,0 -8.567917210111091,41.15511210773764,0 -8.567880784870283,41.1550972221591,0 -8.567842134706723,41.15507718076731,0 -8.567724518671525,41.15500307573143,0 -8.567683012261171,41.15497927877073,0 -8.567642105698553,41.15496038761188,0 -8.567602994182778,41.15494762982928,0 -8.567562364611376,41.15493896576072,0 -8.567518418340285,41.15493287105522,0 -8.567470951223356,41.15492931423654,0 -8.567419579250156,41.15492826832497,0 -8.567365288976873,41.15492964518705,0 -8.56730556230184,41.15493341874236,0 -8.567154190213671,41.15494932505135,0 -8.566978245049938,41.15496643375394,0 -8.566931810354731,41.15497297272458,0 -8.566892051327045,41.1549807293772,0 -8.56685289214721,41.15499144210145,0 -8.566819539889821,41.1550043689565,0 -8.566791508021652,41.15501969969944,0 -8.566768583403359,41.15503755573866,0 -8.566752377620105,41.15505727607251,0 -8.566722554302373,41.15510684580437,0 -8.566706531081479,41.15512456694523,0 -8.566690800140293,41.15513489206165,0 -8.566671951249532,41.15514235643468,0 -8.566649784759704,41.1551470410032,0 -8.566623881586793,41.15514904019608,0 -8.566569032834536,41.15514642406828,0 -8.566453085941134,41.15513132804841,0 -8.566405215028624,41.15512710573142,0 -8.566358613958812,41.15512749603715,0 -8.566320401765097,41.15513391090133,0 -8.56629730807424,41.15514175119091,0 -8.566272476893232,41.15515315279583,0 -8.566194790756924,41.15519803166387,0 -8.566166691439605,41.1552124855678,0 -8.566138714430053,41.15522332689505,0 -8.566112278858554,41.1552293604467,0 -8.566069491813551,41.15523226435755,0 -8.566020285407774,41.15522957268667,0 -8.565964174906696,41.15522138975541,0 -8.565892938708089,41.15520651856605,0 -8.565866296292484,41.15519919988321,0 -8.565838153807704,41.1551889512092,0 -8.565706008325549,41.1551264330385,0 -8.565672754094294,41.15511366716208,0 -8.565641767053876,41.15510490956399,0 -8.565572705416003,41.15509330561162,0 -8.565453738599103,41.15508194987217,0 -8.565151952200779,41.15505018401882,0 -8.56506074026089,41.1550438590869,0 -8.564979774297115,41.15504144620581,0 -8.564898554724493,41.15504320258179,0 -8.564824121436004,41.15504963813032,0 -8.564755373661512,41.15506084638099,0 -8.564691761915242,41.15507692266192,0 -8.564637459051426,41.1550971340256,0 -8.564511722138207,41.15515715298028,0 -8.564452376775705,41.15518037527414,0 -8.564417305913878,41.15519027501125,0 -8.564376900273658,41.15519903081065,0 -8.56420551916932,41.15522750604464,0 -8.564170600292925,41.15523557656064,0 -8.564139670809141,41.15524465791469,0 -8.564108690063961,41.15525635809451,0 -8.564075461013658,41.15527179315876,0 -8.563973178419417,41.15532808981953,0 -8.563937065243295,41.1553464287947,0 -8.563902202124893,41.15536122623968,0 -8.563869126858663,41.15537189309845,0 -8.563819112861722,41.15538159138737,0 -8.563687560932124,41.15539379698618,0 -8.563656382336149,41.15539840870963,0 -8.563629274071673,41.15540434603378,0 -8.56358641598024,41.15541914257943,0 -8.563490569833903,41.15546203304643,0 -8.563465437379989,41.15547051095535,0 -8.563441866149162,41.15547604718188,0 -8.563405815026272,41.15548013639921,0 -8.563306232196794,41.15548444325253,0 -8.563267538865773,41.15549037338207,0 -8.563225140327916,41.1555001238317,0 -8.563093959818332,41.15553981001426,0 -8.563049746448598,41.15555174221919,0 -8.563009777878904,41.15555994763355,0 -8.562972750991605,41.15556457824272,0 -8.562881355590037,41.1555685010855,0 -8.562837429104036,41.15556776723872,0 -8.562795314751952,41.15556524104306,0 -8.562729439412067,41.15555723617757,0 -8.562661308572501,41.15554403323063,0 -8.562592083257982,41.15552584893885,0 -8.562523529737064,41.15550314465446,0 -8.562473129031616,41.15548319319487,0 -8.562423979283153,41.15546075780776,0 -8.562376778365604,41.15543615775255,0 -8.56233211983141,41.15540970329522,0 -8.562290611622359,41.15538176495653,0 -8.562252564903929,41.15535256486902,0 -8.562218324116316,41.15532236923201,0 -8.562188141969102,41.15529139927872,0 -8.562173947969257,41.15527142533608,0 -8.562141078647812,41.15521119863797,0 -8.562128429683241,41.15519730860893,0 -8.562114411051198,41.15518912028171,0 -8.562100556995063,41.15518567767691,0 -8.5620837891355,41.15518447798132,0 -8.562064308920697,41.15518553738269,0 -8.562042507555645,41.15518883609599,0 -8.561993427054972,41.15520208041176,0 -8.561947619187208,41.1552212971252,0 -8.561915995426773,41.15524215779942,0 -8.561886723393513,41.15527046396079,0 -8.561861786092493,41.15530434681818,0 -8.561844018186832,41.15534001482985,0 -8.561838257129807,41.15536207789762,0 -8.561836499854564,41.15538781739389,0 -8.561844893227203,41.15547412173339,0 -8.561851395325562,41.15551902578244,0 -8.561864343764398,41.1555675999648,0 -8.561885259297242,41.15562456032524,0 -8.561937809382357,41.15574597419743,0 -8.561958497386684,41.1557992257537,0 -8.561975189703219,41.15585599455858,0 -8.561983411305334,41.15590748973892,0 -8.561988948431178,41.15599622314721,0 -8.561987934895228,41.15602844135952,0 -8.561984389767702,41.15605737434839,0 -8.561974567372317,41.1561083533179,0 -8.56196423236338,41.15614408428212,0 -8.561950538386611,41.15617444359577,0 -8.561933129310432,41.15619956255983,0 -8.561912012329458,41.15621832871295,0 -8.561856886585986,41.15625494371074,0 -8.561839654676248,41.15627091117369,0 -8.561826484104927,41.15629014137699,0 -8.561816781319351,41.1563121208078,0 -8.561810533729101,41.15633687284844,0 -8.561807726945006,41.15636446135085,0 -8.561808318698922,41.15639457065299,0 -8.561812257729457,41.15642781589105,0 -8.56181953324483,41.15646445517052,0 -8.561830761280589,41.15650760823957,0 -8.5618394883017,41.15653080805038,0 -8.561852565343543,41.15655387835886,0 -8.561870111116662,41.15657703859949,0 -8.561892419699348,41.15660068087675,0 -8.561945900582771,41.1566459914194,0 -8.562066796445436,41.15673299902875,0 -8.562114947946441,41.15677094232518,0 -8.562158185551766,41.15681284623594,0 -8.562174627856734,41.15683316012229,0 -8.562187905447445,41.15685338407644,0 -8.562214530775918,41.15690401320967,0 -8.562237780948806,41.1569581865711,0 -8.562257340303972,41.15701518110575,0 -8.562272849112674,41.1570739536001,0 -8.562292618909169,41.15716066443315,0 -8.562302677826267,41.15721362191118,0 -8.562308714075869,41.15726247488334,0 -8.562310117018228,41.15730570259615,0 -8.562306623152097,41.15734658937367,0 -8.562297967177415,41.15738318638501,0 -8.562284062759261,41.15741585156036,0 -8.562264832555911,41.15744475756958,0 -8.562251640400859,41.15745794702667,0 -8.562232735752104,41.15747183795503,0 -8.5621577511792,41.15751495774913,0 -8.5621338013338,41.15753081639411,0 -8.562116332902406,41.15754757705906,0 -8.562109040299902,41.15756367132644,0 -8.562110876715565,41.15757771783746,0 -8.562120485072285,41.15759332557155,0 -8.562137510137916,41.15761069777551,0 -8.562184461044012,41.15764994329032,0 -8.562203523973381,41.15766806373023,0 -8.562218254868526,41.15768740365081,0 -8.56222478304727,41.1577052381063,0 -8.562226201278122,41.15772464817405,0 -8.562224952119777,41.15774499623467,0 -8.562221104820083,41.15776518421592,0 -8.562214859927792,41.15778416260906,0 -8.562203425047983,41.15780301419778,0 -8.562165684099,41.15784401788716,0 -8.562152749150016,41.15786328316403,0 -8.562142458207859,41.15789490242787,0 -8.562139229641673,41.15793168919618,0 -8.562142824231898,41.1579740301774,0 -8.562153831034436,41.15802894368085,0 -8.562163735268143,41.15806520974167,0 -8.562175902196088,41.15809838123533,0 -8.562190285053589,41.15812832596151,0 -8.562206844270406,41.15815496657848,0 -8.562236576756561,41.15819014086236,0 -8.562276092967295,41.1582253223408,0 -8.56232544326457,41.15826056587247,0 -8.562385214905703,41.15829630043396,0 -8.562415516662725,41.15830992156566,0 -8.562453239625256,41.15832116309127,0 -8.562492352040351,41.15832936131102,0 -8.562590378143398,41.15834626406888,0 -8.562638070990147,41.15835806587211,0 -8.562660396659908,41.15836609861663,0 -8.562679541427656,41.15837527439942,0 -8.562695840740389,41.15838575329991,0 -8.56270945917413,41.1583976432367,0 -8.562741029874587,41.15843696969046,0 -8.5627672028441,41.15845731685175,0 -8.562802313276109,41.1584756486323,0 -8.562844763974624,41.15849185891221,0 -8.562918990419007,41.15851519272201,0 -8.562979486913719,41.15853079685883,0 -8.563049965883181,41.15854207885388,0 -8.563117941140035,41.15854869606551,0 -8.563295064415627,41.15856112019958,0 -8.56351130100569,41.15858127220798,0 -8.563651459447272,41.15859265132986,0 -8.563779859253032,41.15860050331065,0 -8.563895912266503,41.15860453587067,0 -8.564008812256816,41.15860480566732,0 -8.564114296437595,41.15860100693095,0 -8.564213685912819,41.1585930892997,0 -8.564307693844967,41.1585809943175,0 -8.564415570222366,41.15856229021756,0 -8.564521886275998,41.15853993756809,0 -8.564625571812655,41.15851416209898,0 -8.564725778771617,41.15848517515076,0 -8.564821599737002,41.1584532510168,0 -8.564912641705007,41.15841853178984,0 -8.56499841274649,41.15838120722697,0 -8.565078541441494,41.15834143740744,0 -8.565225925036373,41.1582697497492,0 -8.565288746278554,41.15823393334938,0 -8.565316925635557,41.15821365363723,0 -8.565339577759232,41.15819327230173,0 -8.565357072271013,41.15817245209706,0 -8.565369554861036,41.15815101315877,0 -8.565375458010919,41.15812622064863,0 -8.565376926603847,41.15806136064333,0 -8.565381555414376,41.15804547322006,0 -8.565389652010765,41.1580326048209,0 -8.565399591318055,41.1580235027825,0 -8.565429903866914,41.15800317180896,0 -8.565441581563675,41.1579929663024,0 -8.565450627844143,41.15797982361005,0 -8.565456849354064,41.15796370326234,0 -8.5654658335813,41.15790425987376,0 -8.56547216840579,41.15788240814669,0 -8.565485410922918,41.15785443293578,0 -8.56550179387267,41.15782547386658,0 -8.565544454113194,41.15776380375661,0 -8.565560610433806,41.15774496295973,0 -8.565581114976453,41.15772503758046,0 -8.565676513260428,41.15764434321193,0 -8.56569561036406,41.15762449427507,0 -8.565710418600872,41.157605404366,0 -8.56572117629122,41.157587264141,0 -8.565730591293686,41.15756642774852,0 -8.565761804963302,41.15746652206241,0 -8.565771380944454,41.1574434508546,0 -8.565782287922218,41.15742369095062,0 -8.565805957179123,41.15738890157661,0 -8.565831552783891,41.15735579933073,0 -8.565858726698821,41.15732483297472,0 -8.565887234308377,41.15729628219771,0 -8.565916767145041,41.15727043568211,0 -8.565947246967824,41.15724734828655,0 -8.565978530784548,41.15722712433239,0 -8.566010514273785,41.1572098339667,0 -8.566044020315246,41.157198203934,0 -8.566115548793505,41.15718339299923,0 -8.566141376423332,41.15717642595138,0 -8.566163461974156,41.15716645876512,0 -8.566177153252966,41.15715398516835,0 -8.566181776667634,41.1571447644194,0 -8.566184253400536,41.15713322701686,0 -8.56618404565711,41.15708584893281,0 -8.566187018815811,41.15706717091325,0 -8.566194556033906,41.15704785617368,0 -8.566204871257753,41.15702823926188,0 -8.566233690932052,41.15698834803391,0 -8.56627306504987,41.15694810876823,0 -8.566321668010517,41.15690888843449,0 -8.566350630676993,41.15688957459423,0 -8.566383278765272,41.15687097031906,0 -8.566419021420643,41.15685341195547,0 -8.566456888274729,41.156837378842,0 -8.566482090875752,41.15682872916256,0 -8.566509379903891,41.1568217171486,0 -8.566539035947699,41.15681626995496,0 -8.566571624680705,41.15681228236099,0 -8.566634787665294,41.15680856456368,0 -8.566798585686115,41.15680550686869,0 -8.56684439175524,41.15680199141883,0 -8.566884569866943,41.15679632299197,0 -8.566952058590573,41.15678323425891,0 -8.56701993492203,41.15676813194381,0 -8.56708787780326,41.15675108709303,0 -8.567155531102856,41.15673218963889,0 -8.567264751067341,41.15669904602419,0 -8.567346178383389,41.15667112657127,0 -8.567416907364361,41.15664256680105,0 -8.56747831397297,41.15661264006133,0 -8.567496418225062,41.15660112694053,0 -8.567547283880003,41.1565628715793,0 -8.567564922283282,41.15655397188834,0 -8.567582272004188,41.15654913713303,0 -8.56761027059747,41.15654704171266,0 -8.567644897194214,41.15654889971199,0 -8.567674833826459,41.15655347456323,0 -8.567706072677083,41.15656109361964,0 -8.567735673862217,41.1565710293296,0 -8.567761739812397,41.15658263687925,0 -8.56778247638016,41.1565949881682,0 -8.567798037349519,41.15660801484808,0 -8.567808078280166,41.15662142823635,0 -8.567812472367677,41.15663504397213,0 -8.5678108913595,41.15665629225413,0 -8.567802347800068,41.15668241486162,0 -8.567795596589463,41.15669382006382,0 -8.567785010669638,41.1567053682582,0 -8.567727897424504,41.15674873986251,0 -8.567716740435174,41.15675934466805,0 -8.567708983782552,41.15676954477874,0 -8.567700567926806,41.15678585578269,0 -8.567694207021987,41.15680381794192,0 -8.567687700426973,41.15684454374076,0 -8.567689541339234,41.15689134805734,0 -8.567699693785812,41.15694313281938,0 -8.567710896640506,41.15697605789882,0 -8.567727269697684,41.15700993805825,0 -8.56774842714816,41.15704396390788,0 -8.567773645037619,41.15707696363103,0 -8.567804354187558,41.15710979518093,0 -8.567839877408346,41.15714104212543,0 -8.567879040185517,41.15716967114344,0 -8.567920554689806,41.15719473974548,0 -8.567959555588971,41.15721411923624,0 -8.568001293125121,41.15723131877041,0 -8.568044512743995,41.15724582393568,0 -8.568087975179878,41.15725721834599,0 -8.568111543712746,41.15726118435623,0 -8.568138916377848,41.15726325369627,0 -8.568258382318447,41.15726395786544,0 -8.568284727957803,41.15726695530577,0 -8.568307271263507,41.15727216597776,0 -8.568337916561575,41.15728481674097,0 -8.568368286667067,41.15730418903712,0 -8.568396204321346,41.15732752644425,0 -8.568469384854154,41.15739638843263,0 -8.568493528053807,41.15741487399731,0 -8.568517069607026,41.15742914803678,0 -8.568585716657424,41.15746263609185,0 -8.568642687809756,41.15748389426636,0 -8.568684319225895,41.15749471041261,0 -8.568728674688543,41.15750286186761,0 -8.568774826996616,41.15750817865956,0 -8.568821759916261,41.15751054387653,0 -8.568868378073148,41.15750990895521,0 -8.568913790239208,41.15750629188193,0 -8.568957112380758,41.15749976640115,0 -8.568997623241671,41.15749043773354,0 -8.569057061234332,41.15747139009261,0 -8.569081046153315,41.15746129070607,0 -8.56910173775492,41.15745059956555,0 -8.569129626630911,41.157432982746,0 -8.569153232935321,41.15741484881625,0 -8.569171704110829,41.1573968569794,0 -8.569184767662875,41.15737928602528,0 -8.569193977619932,41.15735615366361,0 -8.569196870738949,41.15732805074902,0 -8.569193920063299,41.15729547190853,0 -8.569183878233332,41.15724517912179,0 -8.569173341776263,41.15720697142467,0 -8.569157284381106,41.15716754874342,0 -8.569135933576433,41.15712748664424,0 -8.569109767801479,41.15708768444915,0 -8.569098498396954,41.15707467755436,0 -8.569082899656053,41.15706102944301,0 -8.569016809378184,41.15701516671663,0 -8.568993941417205,41.15699631332927,0 -8.568984348348977,41.15698559341047,0 -8.568977762613599,41.15697510911406,0 -8.568974055608123,41.1569646473007,0 -8.568973188661687,41.15695409195786,0 -8.568976148330535,41.15693624760979,0 -8.568983363591315,41.15691460992139,0 -8.568996318325389,41.15689253696104,0 -8.569016655594112,41.15687300818286,0 -8.569044515691815,41.15685587969517,0 -8.569080280830235,41.15684091587565,0 -8.569118320354164,41.15682943423104,0 -8.569164290999197,41.15681892475362,0 -8.569347842628815,41.1567870069149,0 -8.569392928340903,41.15677944811307,0 -8.569444431615182,41.1567744757615,0 -8.56960820715301,41.15676880014007,0 -8.569661090886598,41.15676563362712,0 -8.569704934634956,41.15676080426778,0 -8.569744261988035,41.15675394693716,0 -8.56982571898169,41.15673709184335,0 -8.569849729981002,41.15672995482362,0 -8.569869302826021,41.15672191668318,0 -8.569890572691747,41.15670765703283,0 -8.569908337000129,41.15668714439624,0 -8.569922879037563,41.15666106225825,0 -8.5699470977803,41.15660274841815,0 -8.569958983220431,41.15657890289413,0 -8.569974813986448,41.15655655564058,0 -8.569993348114451,41.15654000361832,0 -8.570013700671723,41.15652805162836,0 -8.570039032775071,41.15651700075904,0 -8.570141337852419,41.15648432029519,0 -8.5701807506411,41.15646829167838,0 -8.570286244714396,41.15641684686005,0 -8.570317768650057,41.15639931277809,0 -8.570343921834478,41.15638259078401,0 -8.570367330288036,41.15636464930918,0 -8.570385904885541,41.15634664308317,0 -8.570399874954205,41.1563283490741,0 -8.570409326828951,41.15630964767217,0 -8.570420046747699,41.15627898438765,0 -8.570424871610499,41.15625623064057,0 -8.570424644082038,41.15623746268881,0 -8.570419186995821,41.15622283341708,0 -8.570401194259659,41.15620279562256,0 -8.570376418836588,41.15618379834365,0 -8.570330287212926,41.15619806338998,0 -8.5703422508941,41.15620272637477,0 -8.570373266712863,41.15621118719656,0 -8.570377328051222,41.15621324664409,0 -8.570377384708479,41.15621510284478,0 -8.570362911019458,41.15622073799671,0 -8.570346125173501,41.15622311130761,0 -8.570337528554035,41.15622128298588,0 -8.570330260233277,41.15621699861566,0 -8.570324316613892,41.15621026089485,0 -8.570319700393839,41.15620106712561,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00032">
+      <name>Jardim da Rainha D. Amélia</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>32</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Rainha D. Amélia</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>203,360701</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.598568785421037,41.15904592762752,0 -8.598520442364475,41.15903325977718,0 -8.598473957307249,41.15905279305201,0 -8.598398783876746,41.15908017830765,0 -8.598320605811239,41.15911503962741,0 -8.598246925255353,41.15912158309465,0 -8.598138875308791,41.15912573706316,0 -8.598068571707188,41.15912579641844,0 -8.598003077679834,41.15914737025497,0 -8.597898295869584,41.15918605099552,0 -8.597863666574881,41.15922510495466,0 -8.597953212071047,41.15926198615182,0 -8.598488663920648,41.15933909762129,0 -8.598568785421037,41.15904592762752,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00033">
+      <name>Jardim da Casa da Prelada</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>33</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim da Casa da Prelada</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>453,515442</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.63047449500192,41.17021523224724,0 -8.630428554933815,41.17027933412402,0 -8.630475377236849,41.1704465549646,0 -8.630598212037796,41.17074858597852,0 -8.630796915445217,41.17114660343304,0 -8.630814318226157,41.17115459570806,0 -8.631164637438019,41.17103118174367,0 -8.631438097889884,41.17093948776721,0 -8.631606252226732,41.17087668990735,0 -8.631350649612728,41.17051771112352,0 -8.631237496013569,41.17031057207527,0 -8.631159440255942,41.17019766758835,0 -8.631096573148284,41.1700848332485,0 -8.631078173918525,41.17004465333815,0 -8.63047449500192,41.17021523224724,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00034">
+      <name>Jardim do Largo D. João III</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>34</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim do Largo D. João III</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>33</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>280,533287</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.660966283267328,41.15723540708842,0 -8.660382280617682,41.15746005773553,0 -8.660367279925993,41.15748828835388,0 -8.660666720892436,41.15786405927895,0 -8.661235171565863,41.15763879169691,0 -8.660966283267328,41.15723540708842,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark id="ID_00035">
+      <name>Jardim de Sarah Afonso</name>
+      <Snippet></Snippet>
+      <description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+<tr>
+<td>FID</td>
+<td>35</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>CLASS</td>
+<td>Jardins - Parques - Praças</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Jardim de Sarah Afonso</td>
+</tr>
+<tr bgcolor="#D4E4F3">
+<td>codigo</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Shape_Leng</td>
+<td>588,244439</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+]]></description>
+      <styleUrl>#PolyStyle00</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <extrude>0</extrude>          <altitudeMode>clampToGround</altitudeMode>
+          <outerBoundaryIs><LinearRing><coordinates> -8.636638906959945,41.17320303099513,0 -8.63728296723508,41.17262620673409,0 -8.636400912172292,41.17189090933806,0 -8.636192720917279,41.1717098029651,0 -8.635915316938281,41.17190289460297,0 -8.635546012138718,41.17218261883284,0 -8.63584131262644,41.17242258133712,0 -8.636088847422343,41.17261256042139,0 -8.63626787636133,41.17277752306427,0 -8.636638906959945,41.17320303099513,0</coordinates></LinearRing></outerBoundaryIs>
+        </Polygon>
+      </MultiGeometry>
+    </Placemark>
+  </Folder>
+  <Style id="PolyStyle00">
+    <LabelStyle>
+      <color>00000000</color>
+      <scale>0.000000</scale>
+    </LabelStyle>
+    <PolyStyle>
+      <color>7f73b273</color>
+      <outline>0</outline>
+    </PolyStyle>
+  </Style>
+</Document>
+</kml>

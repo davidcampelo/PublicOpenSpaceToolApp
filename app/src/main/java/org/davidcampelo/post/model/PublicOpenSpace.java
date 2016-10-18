@@ -1,8 +1,5 @@
 package org.davidcampelo.post.model;
 
-import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,12 +7,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import org.davidcampelo.post.R;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
-
-import java.util.Locale;
 
 /**
  * Created by davidcampelo on 7/26/16.
@@ -65,6 +57,9 @@ public class PublicOpenSpace implements Parcelable {
     }
 
     // Constructor used by the DAO
+    public PublicOpenSpace(String name, Type type, ArrayList<LatLng> polygonPoints, Project project) {
+        this(0, name, type, polygonPoints, project, 0);
+    }
     PublicOpenSpace(long id, String name, Type type, ArrayList<LatLng> polygonPoints, Project project, long dateCreation) {
         this.id = id;
         this.name = name;

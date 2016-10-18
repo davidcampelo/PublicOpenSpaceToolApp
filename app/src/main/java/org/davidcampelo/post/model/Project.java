@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +19,11 @@ public class Project implements Parcelable {
     ArrayList<PublicOpenSpace> publicOpenSpaces;
     long dateCreation;
 
-    public Project(long id, String name, String desc, ArrayList<LatLng> polygonPoints, ArrayList<PublicOpenSpace> publicOpenSpaces, long dateCreation) {
+    public Project(String name, String desc, ArrayList<LatLng> polygonPoints) {
+        this(0, name, desc, polygonPoints, null, 0);
+    }
+
+    Project(long id, String name, String desc, ArrayList<LatLng> polygonPoints, ArrayList<PublicOpenSpace> publicOpenSpaces, long dateCreation) {
         this.id = id;
         this.name = name;
         this.desc = desc;
