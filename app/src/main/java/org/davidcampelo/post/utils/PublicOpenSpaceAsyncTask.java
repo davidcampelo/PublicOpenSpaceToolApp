@@ -69,6 +69,7 @@ public class PublicOpenSpaceAsyncTask extends AsyncTask<String, String, String> 
         answersDAO.close();
 
         progressDialog.dismiss();
+        progressDialog = null;
 
         return "Item saved successfully!";
     }
@@ -83,7 +84,7 @@ public class PublicOpenSpaceAsyncTask extends AsyncTask<String, String, String> 
     @Override
     protected void onPreExecute() {
         progressDialog = new ProgressDialog(context);
-        progressDialog.setTitle("Saving Public Open Space...");
+        progressDialog.setMessage("Saving...");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(true);

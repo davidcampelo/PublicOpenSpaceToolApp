@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.davidcampelo.post.model.Project;
 import org.davidcampelo.post.model.PublicOpenSpace;
@@ -62,6 +63,7 @@ public class PublicOpenSpaceListFragment extends ListFragment {
                         .replace(R.id.mainContainer, fragment)
                         .addToBackStack("")
                         .commit();
+
             }
         });
 

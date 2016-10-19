@@ -94,6 +94,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             // fill fields
             ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.getName());
             ((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
+            Toast.makeText(getContext(), "Loading...", Toast.LENGTH_LONG).show();
+
         }
         catch (NullPointerException e){
             publicOpenSpace = new PublicOpenSpace();
