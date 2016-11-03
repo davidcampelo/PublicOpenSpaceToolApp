@@ -121,7 +121,9 @@ public class OptionDAO extends DAO {
                 "ORDER BY "+ COLUMN_ID +" ASC");
 
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            list.add(cursorToObject(cursor));
+            Option option = cursorToObject(cursor);
+            option.question = question;
+            list.add(option);
         }
 
         cursor.close();

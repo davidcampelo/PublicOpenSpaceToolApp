@@ -126,6 +126,9 @@ public class Data {
                     String coords = (String) tokenizer.nextElement();
                     int pos = coords.indexOf(Constants.POLYGON_COORDINATES_SEPARATOR);
                     coordinates.add( new LatLng(Double.valueOf(coords.substring(pos + 1, coords.length() - 2)), Double.valueOf(coords.substring(0, pos))) );
+
+                    // jumping out after inserting one only point - just to help :)
+                    break;
                 }
 
                 PublicOpenSpace.Type type;
@@ -174,10 +177,11 @@ public class Data {
 
                         String number = xpp.getAttributeValue(null, "number");
                         String alias = xpp.getAttributeValue(null, "alias");
+                        String hint = xpp.getAttributeValue(null, "hint");
                         String title = xpp.getAttributeValue(null, "title");
                         String type = xpp.getAttributeValue(null, "type");
 
-                        question = questionDAO.insert(new Question(number, alias, title, Question.QuestionType.valueOf(type), null));
+                        question = questionDAO.insert(new Question(number, alias, hint, title, Question.QuestionType.valueOf(type), null));
 
                         Log.e("[DATA]", "==> "+
                                 question.getNumber()+ " - " +

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.davidcampelo.post.model.Project;
@@ -70,9 +71,9 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
 
             return "Files generated successfully!";
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("ERROR", "", e);
             progressDialog.dismiss();
-            return e.getLocalizedMessage();
+            return "ERROR!";
         }
     }
 

@@ -20,12 +20,14 @@ public class QuestionDAO extends DAO {
     static final String TABLE_NAME = "tb_qst_question";
     static final String COLUMN_NUMBER = "qst_number";
     static final String COLUMN_ALIAS = "qst_alias";
+    static final String COLUMN_HINT = "qst_hint";
     static final String COLUMN_TITLE = "qst_title";
     static final String COLUMN_TYPE = "qst_type";
 
     static String[] TABLE_COLUMNS = {
             COLUMN_NUMBER,
             COLUMN_ALIAS,
+            COLUMN_HINT,
             COLUMN_TITLE,
             COLUMN_TYPE
     };
@@ -33,6 +35,7 @@ public class QuestionDAO extends DAO {
     static final String TABLE_CREATE_CMD = "CREATE TABLE "+ TABLE_NAME +" ( "
             + COLUMN_NUMBER +" TEXT primary key not null, "
             + COLUMN_ALIAS +" TEXT not null, "
+            + COLUMN_HINT +" TEXT, "
             + COLUMN_TITLE +" TEXT not null, "
             + COLUMN_TYPE +" TEXT not null);";
 
@@ -55,6 +58,7 @@ public class QuestionDAO extends DAO {
 
         values.put(COLUMN_NUMBER, object.number);
         values.put(COLUMN_ALIAS, object.alias);
+        values.put(COLUMN_HINT, object.hint);
         values.put(COLUMN_TITLE, object.title);
         values.put(COLUMN_TYPE, object.type.name());
 
@@ -68,6 +72,7 @@ public class QuestionDAO extends DAO {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_ALIAS, object.alias);
+        values.put(COLUMN_HINT, object.hint);
         values.put(COLUMN_TITLE, object.title);
         values.put(COLUMN_NUMBER, object.number);
         values.put(COLUMN_TYPE, object.type.name());
@@ -130,8 +135,9 @@ public class QuestionDAO extends DAO {
         return new Question(
                 cursor.getString(0),                                // number
                 cursor.getString(1),                                // alias
-                cursor.getString(2),                                // title
-                Question.QuestionType.valueOf(cursor.getString(3)), // type
+                cursor.getString(2),                                // hint
+                cursor.getString(3),                                // title
+                Question.QuestionType.valueOf(cursor.getString(4)), // type
                 null                                                // TODO: retrieve options
         );
     }

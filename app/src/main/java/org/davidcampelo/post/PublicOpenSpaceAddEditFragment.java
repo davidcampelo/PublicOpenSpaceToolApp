@@ -225,14 +225,14 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         container3.addView(addToMap(context, "10"));
         container3.addView(addToMap(context, "11"));
         container3.addView(addToMap(context, "12"));
-        container3.addView(addToMap(context, "13.a"));
-        container3.addView(addToMap(context, "13.b"));
+        container3.addView(addToMap(context, "13a"));
+        container3.addView(addToMap(context, "13b"));
         container3.addView(addToMap(context, "14"));
         container3.addView(addToMap(context, "15"));
         container3.addView(addToMap(context, "16"));
         container3.addView(addToMap(context, "17"));
-        container3.addView(addToMap(context, "18.a"));
-        container3.addView(addToMap(context, "18.b"));
+        container3.addView(addToMap(context, "18a"));
+        container3.addView(addToMap(context, "18b"));
         container3.addView(addToMap(context, "19"));
         container3.addView(addToMap(context, "20"));
         container3.addView(addToMap(context, "21"));
@@ -248,8 +248,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         container4.addView(addToMap(context, "29"));
         container4.addView(addToMap(context, "30"));
         container4.addView(addToMap(context, "31"));
-        container4.addView(addToMap(context, "32.a"));
-        container4.addView(addToMap(context, "32.b"));
+        container4.addView(addToMap(context, "32a"));
+        container4.addView(addToMap(context, "32b"));
         container4.addView(addToMap(context, "33"));
         container4.addView(addToMap(context, "34"));
         container4.addView(addToMap(context, "35"));
@@ -265,14 +265,14 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         container5.addView(addToMap(context, "43"));
         container5.addView(addToMap(context, "44"));
         container5.addView(addToMap(context, "45"));
-        container5.addView(addToMap(context, "46.a"));
-        container5.addView(addToMap(context, "46.b"));
+        container5.addView(addToMap(context, "46a"));
+        container5.addView(addToMap(context, "46b"));
         container5.addView(addToMap(context, "47"));
-        container5.addView(addToMap(context, "48.a"));
-        container5.addView(addToMap(context, "48.b"));
-        container5.addView(addToMap(context, "49.a"));
-        container5.addView(addToMap(context, "49.b"));
-        container5.addView(addToMap(context, "49.c"));
+        container5.addView(addToMap(context, "48a"));
+        container5.addView(addToMap(context, "48b"));
+        container5.addView(addToMap(context, "49a"));
+        container5.addView(addToMap(context, "49b"));
+        container5.addView(addToMap(context, "49c"));
 
         questionDAO.close();
     }

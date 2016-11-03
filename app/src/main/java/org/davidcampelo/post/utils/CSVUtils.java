@@ -90,6 +90,7 @@ public class CSVUtils {
         try {
             writeToFile(out, toStringWithNoEndingCommas(stringBuilderHeader));
         } catch (IOException e) {
+            e.printStackTrace();
             throw new Exception("ERROR: Could not write headers to file!", e);
         }
 
@@ -110,13 +111,13 @@ public class CSVUtils {
             StringBuilder stringBuilderAnswers = new StringBuilder();
             for (Question question : listQuestions) {
                 String questionAnswers = mapAnswers.get(question.getNumber());
-                if (questionAnswers == null || questionAnswers.length() == 0) {
-                    stringBuilderAnswers.append("\"\",");
-                    continue;
-                }
+
                 // if it's a Question with multiple options, every Option must be a column in the CSV
                 Question.QuestionType questionType = question.getType();
                 if (questionType == Question.QuestionType.MULTIPLE_CHOICE) {
+                    if (questionAnswers == null) {
+                        questionAnswers = "";
+                    }
                     ArrayList<Long> selectedIds = splitIntoOptionIds(questionAnswers);
                     for (Option option : question.getAllOptions()) {
                         // if it's an "OTHER option" (an Option created by the user), we must put
@@ -152,11 +153,18 @@ public class CSVUtils {
                     }
                 }
                 else if (question.getType() == Question.QuestionType.INPUT_COORDINATES) { // Question 5
+                    if (questionAnswers == null || questionAnswers.length() == 0) {
+                        questionAnswers = " " + Constants.POLYGON_POINTS_SEPARATOR + " ";
+                    }
                     int pos = questionAnswers.indexOf(Constants.POLYGON_POINTS_SEPARATOR);
                     stringBuilderAnswers.append("\"" +questionAnswers.substring(0,pos) + "\", ");
                     stringBuilderAnswers.append("\"" +questionAnswers.substring(pos+1) + "\", ");
                 }
                 else if (questionType == Question.QuestionType.VARIABLE_SINGLE_CHOICE){   // Question 29
+                    if (questionAnswers == null || questionAnswers.length() == 0) {
+                        questionAnswers = "0" + Constants.DEFAULT_SEPARATOR;
+                    }
+
                     // get count of questions
                     int pos = questionAnswers.indexOf(Constants.DEFAULT_SEPARATOR);
                     int answersCount = Integer.valueOf( questionAnswers.substring(0, pos) );
@@ -173,6 +181,9 @@ public class CSVUtils {
                     }
                 }
                 else {
+                    if (questionAnswers == null) {
+                        questionAnswers = "";
+                    }
                     stringBuilderAnswers.append("\""+ questionAnswers + "\", ");
                 }
 
@@ -182,6 +193,7 @@ public class CSVUtils {
             try {
                 writeToFile(out, toStringWithNoEndingCommas(stringBuilderAnswers));
             } catch (IOException e) {
+                e.printStackTrace();
                 throw new Exception("ERROR: Could not write to file!", e);
             }
 

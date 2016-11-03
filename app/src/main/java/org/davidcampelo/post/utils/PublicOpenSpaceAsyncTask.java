@@ -50,7 +50,7 @@ public class PublicOpenSpaceAsyncTask extends AsyncTask<String, String, String> 
         // firstly, delete all previous answers
         answersDAO.delete(publicOpenSpace);
 
-        for (Question question : questionToAnswersMap.keySet()) { // for each question, an answers it inserted
+        for (Question question : questionToAnswersMap.keySet()) { // for each question, an answers is inserted
             if (question.getType() == Question.QuestionType.MULTIPLE_CHOICE) { // save "Other" Options first
                 ArrayList<Option> options = question.getAllOptions();
 
@@ -59,6 +59,11 @@ public class PublicOpenSpaceAsyncTask extends AsyncTask<String, String, String> 
                     if (option.getId() == 0) {
                         option.setPublicOpenSpace(publicOpenSpace);
                         optionDAO.insert(option);
+
+                        // update answers
+                        String answers = questionToAnswersMap.get(question);
+                        answers = answers + option.getId() + Constants.DEFAULT_SEPARATOR;
+                        questionToAnswersMap.put(question, answers);
                     }
                 }
             }

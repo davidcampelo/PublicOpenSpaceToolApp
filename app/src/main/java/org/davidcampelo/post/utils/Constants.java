@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Constants {
 
     public static final String DATABASE_NAME = "post.db";
-    public static final int    DATABASE_VERSION = 40;
+    public static final int    DATABASE_VERSION = 41;
 
     public static final String[] TAB_TITLES = new String[]{
             "Location",
@@ -26,8 +26,8 @@ public class Constants {
     public static final String POLYGON_POINTS_SEPARATOR = " ";
     public static final ArrayList<LatLng> PORTUGAL_BOUNDING_POINTS;
     public static final int LIST_ROW_COLOR = Color.argb(150, 240,240,240);
-    // The "other option" (an Option created by the user) item must always start with this substring
-    public static final String MULTIPLE_QUESTION_OTHER_START_STRING = "other";
+    // The "other option" (an Option created by the user) item must always have this substring (e.g. 8.other_act)
+    public static final String MULTIPLE_QUESTION_OTHER_START_STRING = ".other";
     // In the CSV header file very "other column" has a correspondent "other column" with the suffix below
     public static final String MULTIPLE_QUESTION_OTHER_CSV_SUFFIX = "_l";
 

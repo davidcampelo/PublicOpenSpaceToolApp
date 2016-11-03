@@ -69,11 +69,13 @@ public class MainActivity extends AppCompatActivity {
                         fragment = null;
                 }
 
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.mainContainer, fragment)
-                        .addToBackStack("")
-                        .commit();
+                if (fragment != null) {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.mainContainer, fragment)
+                            .addToBackStack("")
+                            .commit();
+                }
 
                 mDrawerLayout.closeDrawer(mDrawerList);
             }

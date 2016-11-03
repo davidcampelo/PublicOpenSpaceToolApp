@@ -35,7 +35,8 @@ public final class DAOHelper extends SQLiteOpenHelper{
         Log.w(this.getClass().getName(), "Upgrading database from version "+ oldVersion +" to version "+
                 newVersion +", which will destroy all old data");
 
-        // dropping table
+        // XXX hacking to HINT
+       // dropping table
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ ProjectDAO.TABLE_NAME );
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ PublicOpenSpaceDAO.TABLE_NAME );
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ QuestionDAO.TABLE_NAME );

@@ -11,6 +11,7 @@ public class Question {
 
     String number;
     String alias;
+    String hint;
     String title;
     QuestionType type;
     ArrayList<Option> options;
@@ -32,9 +33,10 @@ public class Question {
 
     }
 
-    public Question(String number, String alias, String title, QuestionType type, ArrayList<Option> options) {
+    public Question(String number, String alias, String hint, String title, QuestionType type, ArrayList<Option> options) {
         this.number = number;
         this.alias = alias;
+        this.hint = hint;
         this.title = title;
         this.type = type;
         this.options = options;
@@ -47,6 +49,10 @@ public class Question {
 
     public String getAlias() {
         return alias;
+    }
+
+    public String getHint() {
+        return hint;
     }
 
     public String getNumber() {

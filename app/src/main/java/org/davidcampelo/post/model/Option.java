@@ -53,6 +53,6 @@ public class Option {
      * Return if it's an "OTHER option" (an Option created by the user)
      */
     public boolean isOtherOption() {
-        return alias.startsWith(Constants.MULTIPLE_QUESTION_OTHER_START_STRING);
+        return (alias.indexOf(Constants.MULTIPLE_QUESTION_OTHER_START_STRING) > 0);
     }
 }
