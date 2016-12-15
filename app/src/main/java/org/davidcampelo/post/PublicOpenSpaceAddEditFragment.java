@@ -267,6 +267,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         container5.addView(addToMap(context, "45"));
         container5.addView(addToMap(context, "46a"));
         container5.addView(addToMap(context, "46b"));
+        container5.addView(addToMap(context, "46c"));
         container5.addView(addToMap(context, "47"));
         container5.addView(addToMap(context, "48a"));
         container5.addView(addToMap(context, "48b"));
