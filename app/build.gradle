@@ -1,24 +1,35 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'POST app keystore'
+            keyPassword '12345678'
+            storeFile file('/Users/davidcampelo/Dropbox/professional/android/POST_app_keystore.jks')
+            storePassword '12345678'
+        }
+        config {
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
-
     defaultConfig {
         applicationId "org.davidcampelo.post"
         minSdkVersion 17
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.release
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
-
-
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -28,6 +39,12 @@ dependencies {
     compile 'com.android.support:support-v4:24.1.0'
     compile 'com.google.android.gms:play-services:8.4.0'
 }
+
+
+
+
+
+
 
 
 
