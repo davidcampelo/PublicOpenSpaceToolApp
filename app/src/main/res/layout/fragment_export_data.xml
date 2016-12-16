@@ -54,13 +54,12 @@
                     android:checked="true"/>
 
                 <CheckBox
-                    android:id="@+id/exportDataCheckBoxSPSS"
+                    android:id="@+id/exportDataCheckBoxSQL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/fragment_export_data_spss"
-                    android:visibility="invisible"/>
+                    android:text="@string/fragment_export_data_sql"
+                    android:checked="true"/>
         </LinearLayout>
-        ®f
     </FrameLayout>
 
     <Button

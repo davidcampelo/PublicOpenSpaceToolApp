@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import org.davidcampelo.post.utils.StringUtils;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -49,7 +53,49 @@ public abstract class DAO {
      *
      * Implemented by sub-classes
      */
-    public abstract void resetData();
+    protected abstract String getTableName();
+    protected abstract String[] getTableColumns();
+    protected abstract String getTableCreateCommand();
+
+    public void resetData() {
+        drop(getTableName());
+        exec(getTableCreateCommand());
+
+    }
+
+    public void dump(FileWriter out) throws IOException {
+        open();
+        String tableName = getTableName();
+        String[] tableColumns = getTableColumns();
+
+        StringUtils.writeToFile(out, "DROP TABLE IF EXISTS "+ tableName+";");
+        StringUtils.writeToFile(out, getTableCreateCommand());
+
+        Cursor cursor = select(tableName, tableColumns, null);
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            StringBuilder clause = new StringBuilder();
+            clause.append("INSERT INTO "+ tableName +"(");
+            for (String column : tableColumns) {
+                clause.append(""+ column +",");
+            }
+            clause.deleteCharAt(clause.length()-1); // remove last comma
+            clause.append(") ");
+            clause.append("VALUES(");
+            for (int i = 0; i < tableColumns.length; i++) {
+                if ( cursor.getString(i) == null )
+                    clause.append("null,");
+                else
+                    clause.append("'"+ cursor.getString(i).replace("'", "''") +"',");
+            }
+            clause.deleteCharAt(clause.length()-1); // remove last comma
+            clause.append(");");
+
+            StringUtils.writeToFile(out, clause.toString());
+        }
+
+        cursor.close();
+        close();
+    }
 
     // Proxy methods to select/insert/update/delete items
     protected void exec(String sql) {
@@ -59,18 +105,23 @@ public abstract class DAO {
         sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ tableName);
     }
     protected Cursor select(String tableName, String[] tableColumns, String whereClauses) {
-        Log.e(this.getClass().getName(), ">>>>>>> SELECT " + toString(tableColumns) + " FROM " + tableName + " WHERE " + whereClauses);
+//        Log.e(this.getClass().getName(), ">>>>>>> SELECT " + StringUtils.toString(tableColumns) +
+//                " FROM " + tableName + " WHERE " + whereClauses);
         return sqLiteDatabase.query(tableName, tableColumns, whereClauses, null, null, null, null);
     }
 
     protected long insert(String tableName, ContentValues values) {
-        Log.e(this.getClass().getName(), ">>>>>>> INSERT INTO " + tableName + "(" + toString2(values.keySet()) + ") VALUES(" + toString3(values.valueSet()) + ")");
+        Log.e(this.getClass().getName(), ">>>>>>> INSERT INTO " + tableName +
+                "(" + StringUtils.toString2(values.keySet()) +
+                ") VALUES(" + StringUtils.toString(values.valueSet()) + ")");
 
         return sqLiteDatabase.insert(tableName, null, values);
     }
 
     protected long update(String tableName, ContentValues values, String whereClauses) {
-        Log.e(this.getClass().getName(), ">>>>>>> UPDATE " + tableName + "(" + toString2(values.keySet()) + ") VALUES(" + toString3(values.valueSet()) + ") WHERE " + whereClauses);
+        Log.e(this.getClass().getName(), ">>>>>>> UPDATE " + tableName +
+                "(" + StringUtils.toString2(values.keySet()) +
+                ") VALUES(" + StringUtils.toString(values.valueSet()) + ") WHERE " + whereClauses);
         return sqLiteDatabase.update(tableName, values, whereClauses, null);
     }
 
@@ -89,36 +140,5 @@ public abstract class DAO {
     protected SQLiteDatabase getSqLiteDatabase() {
         return sqLiteDatabase;
     }
-
-    private String toString(String[] array) {
-        StringBuilder b = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            b.append(array[i]);
-            if (i < array.length - 1)
-                b.append(", ");
-        }
-
-        return b.toString();
-    }
-
-    private String toString2(Set<String> strings) {
-        StringBuilder b = new StringBuilder();
-        for (String str : strings){
-            b.append(str + ", ");
-        }
-        return b.toString();
-    }
-
-    private String toString3(Set<Map.Entry<String, Object>> entries) {
-        StringBuilder b = new StringBuilder();
-        Iterator<Map.Entry<String, Object>> i = entries.iterator();
-        while (i.hasNext()){
-            Map.Entry<String, Object> entry = i.next();
-            b.append(entry.getValue()+ ", ");
-        }
-        return b.toString();
-    }
-
-
 
 }

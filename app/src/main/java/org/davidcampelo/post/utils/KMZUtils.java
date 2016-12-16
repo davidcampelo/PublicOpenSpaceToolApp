@@ -192,7 +192,7 @@ public class KMZUtils {
 
         // create Transformer object
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        StringWriter writer = new StringWriter();
+//        StringWriter writer = new StringWriter();
         StreamResult result = new StreamResult(out);
         transformer.transform(new DOMSource(doc), result);
 

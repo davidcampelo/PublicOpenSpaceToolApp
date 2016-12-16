@@ -17,7 +17,7 @@ import java.util.Calendar;
 public class ProjectDAO extends DAO {
 
 
-    static final String TABLE_NAME = "tb_prj_publicopenspace";
+    static final String TABLE_NAME = "tb_prj_project";
     static final String COLUMN_ID = "prj_id";
     static final String COLUMN_NAME = "prj_name";
     static final String COLUMN_DESC = "prj_desc";
@@ -43,10 +43,22 @@ public class ProjectDAO extends DAO {
         super(context);
     }
 
-    public void resetData(){
-        drop(TABLE_NAME);
-        exec(TABLE_CREATE_CMD);
+
+    @Override
+    protected String getTableName() {
+        return TABLE_NAME;
     }
+
+    @Override
+    protected String[] getTableColumns() {
+        return TABLE_COLUMNS;
+    }
+
+    @Override
+    protected String getTableCreateCommand() {
+        return TABLE_CREATE_CMD;
+    }
+
 
     public Project insert(Project project){
 

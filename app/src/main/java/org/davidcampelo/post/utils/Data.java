@@ -92,17 +92,12 @@ public class Data {
     }
 
     // XML node names
-    static final String NODE_EMP = "employee";
-    static final String NODE_NAME = "name";
-    static final String NODE_SALARY = "salary";
-    static final String NODE_DESIGNATION = "designation";
-
     public static void populateDatabase(Context context, Resources resources) {
         XMLDOMParser parser = new XMLDOMParser();
         AssetManager manager = context.getAssets();
         InputStream stream;
         try {
-            stream = manager.open("parques_porto.xml");
+            stream = manager.open("POST_DataExport-1363984559.xml");
             Document doc = parser.getDocument(stream);
 
             // Get elements by name employee
@@ -126,9 +121,6 @@ public class Data {
                     String coords = (String) tokenizer.nextElement();
                     int pos = coords.indexOf(Constants.POLYGON_COORDINATES_SEPARATOR);
                     coordinates.add( new LatLng(Double.valueOf(coords.substring(pos + 1, coords.length() - 2)), Double.valueOf(coords.substring(0, pos))) );
-
-                    // jumping out after inserting one only point - just to help :)
-                    break;
                 }
 
                 PublicOpenSpace.Type type;

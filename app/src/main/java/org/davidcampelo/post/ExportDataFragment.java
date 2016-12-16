@@ -60,7 +60,7 @@ public class ExportDataFragment extends Fragment {
                         (Project)ExportDataFragment.this.projects.getSelectedItem(),
                         ((CheckBox)fragmentLayout.findViewById(R.id.exportDataCheckBoxCSV)).isChecked(),
                         ((CheckBox)fragmentLayout.findViewById(R.id.exportDataCheckBoxKMZ)).isChecked(),
-                        ((CheckBox)fragmentLayout.findViewById(R.id.exportDataCheckBoxSPSS)).isChecked());
+                        ((CheckBox)fragmentLayout.findViewById(R.id.exportDataCheckBoxSQL)).isChecked());
                 runner.execute();
             }
 

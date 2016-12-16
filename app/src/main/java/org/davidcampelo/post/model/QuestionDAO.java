@@ -47,9 +47,19 @@ public class QuestionDAO extends DAO {
         super(context, dbHelper, sqLiteDatabase);
     }
 
-    public void resetData(){
-        drop(TABLE_NAME);
-        exec(TABLE_CREATE_CMD);
+    @Override
+    protected String getTableName() {
+        return TABLE_NAME;
+    }
+
+    @Override
+    protected String[] getTableColumns() {
+        return TABLE_COLUMNS;
+    }
+
+    @Override
+    protected String getTableCreateCommand() {
+        return TABLE_CREATE_CMD;
     }
 
     public Question insert(Question object){

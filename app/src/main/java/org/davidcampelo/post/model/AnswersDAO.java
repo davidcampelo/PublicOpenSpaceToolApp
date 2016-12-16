@@ -44,10 +44,19 @@ public class AnswersDAO extends DAO {
         super(context);
     }
 
+    @Override
+    protected String getTableName() {
+        return TABLE_NAME;
+    }
 
-    public void resetData(){
-        drop(TABLE_NAME);
-        exec(TABLE_CREATE_CMD);
+    @Override
+    protected String[] getTableColumns() {
+        return TABLE_COLUMNS;
+    }
+
+    @Override
+    protected String getTableCreateCommand() {
+        return TABLE_CREATE_CMD;
     }
 
     /**

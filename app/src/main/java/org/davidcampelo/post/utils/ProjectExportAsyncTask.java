@@ -25,15 +25,15 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
     Project project;
     boolean csv;
     boolean kmz;
-    boolean spss;
+    boolean sql;
 
-    public ProjectExportAsyncTask(Context context, Project project, boolean csv, boolean kmz, boolean spss) {
+    public ProjectExportAsyncTask(Context context, Project project, boolean csv, boolean kmz, boolean sql) {
         super();
         this.context = context;
         this.project = project;
         this.csv = csv;
         this.kmz = kmz;
-        this.spss = spss;
+        this.sql = sql;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
         if (project == null) {
             return "ERROR: No project was selected!";
         }
-        if (! csv && !kmz && !spss) {
+        if (! csv && !kmz && !sql) {
             return "ERROR: No export option was chosen!";
         }
 
@@ -57,11 +57,17 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                 File csvFile = CSVUtils.export( context, project);
                 listFilesToExport.add(Uri.fromFile(csvFile));
             }
+             if (sql) {
+                publishProgress("Creating SQL file...");
+                File sqlFile = SQLUtils.export( context, project);
+                listFilesToExport.add(Uri.fromFile(sqlFile));
+            }
             if (kmz) {
                 publishProgress("Creating KMZ file...");
                 File kmzFile = KMZUtils.export( context, project);
                 listFilesToExport.add(Uri.fromFile(kmzFile));
             }
+            publishProgress("Creating package...");
             sendIntent.setType("message/rfc822");
             sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, listFilesToExport);
 

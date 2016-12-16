@@ -88,7 +88,7 @@ public class CSVUtils {
         }
         // write header
         try {
-            writeToFile(out, toStringWithNoEndingCommas(stringBuilderHeader));
+            StringUtils.writeToFile(out, StringUtils.toStringWithNoEndingCommas(stringBuilderHeader));
         } catch (IOException e) {
             e.printStackTrace();
             throw new Exception("ERROR: Could not write headers to file!", e);
@@ -118,7 +118,7 @@ public class CSVUtils {
                     if (questionAnswers == null) {
                         questionAnswers = "";
                     }
-                    ArrayList<Long> selectedIds = splitIntoOptionIds(questionAnswers);
+                    ArrayList<Long> selectedIds = StringUtils.splitIntoOptionIds(questionAnswers);
                     for (Option option : question.getAllOptions()) {
                         // if it's an "OTHER option" (an Option created by the user), we must put
                         // them all together in the same column
@@ -191,7 +191,7 @@ public class CSVUtils {
 
             // write answers to file
             try {
-                writeToFile(out, toStringWithNoEndingCommas(stringBuilderAnswers));
+                StringUtils.writeToFile(out, StringUtils.toStringWithNoEndingCommas(stringBuilderAnswers));
             } catch (IOException e) {
                 e.printStackTrace();
                 throw new Exception("ERROR: Could not write to file!", e);
@@ -211,40 +211,4 @@ public class CSVUtils {
 
         return file;
     }
-
-    private static void writeToFile(FileWriter out, String string) throws IOException {
-        out.write(string + "\n");
-        Log.e("[EXPORT]", string);
-    }
-
-    /**
-     * Takes a String with MULTIPLE_CHOICE Question's Opition ID answers
-     * and return an array of Option IDs
-     */
-    private static ArrayList<Long> splitIntoOptionIds(String questionAnswers) {
-        StringTokenizer tokenizer = new StringTokenizer(questionAnswers, Constants.DEFAULT_SEPARATOR);
-        ArrayList<Long> selectedIds = new ArrayList<>();
-
-        while ( tokenizer.hasMoreElements() ) {
-            String selectedId = (String) tokenizer.nextElement();
-            if (selectedId == null || selectedId.length() == 0)
-                continue;
-            selectedIds.add(Long.valueOf( selectedId ));
-        }
-
-        return selectedIds;
-    }
-
-    /**
-     * Remove the last character if it's a comma
-     */
-    private static String toStringWithNoEndingCommas(StringBuilder stringBuilder) {
-        String str = stringBuilder.toString();
-        if (str.length() > 0 && str.endsWith(",")){
-            str = str.substring(0, str.length()-1);
-        }
-
-        return str;
-    }
-
 }
