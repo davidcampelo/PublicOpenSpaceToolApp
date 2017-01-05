@@ -65,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
                     case 2 : // export data
                         fragment = new ExportDataFragment();
                         break;
+                    case 3 : // settings
+                        fragment = null;
+                        break;
+                    case 4 : // about
+                        fragment = new AboutFragment();
+                        break;
                     default:
                         fragment = null;
                 }

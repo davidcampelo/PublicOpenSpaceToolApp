@@ -23,8 +23,10 @@ public class MosaicFragment extends Fragment {
     ImageButton imageButtonNewProject,
                 imageButtonOpenProject,
                 imageButtonExportData,
-                imageButtonSettings;
+                imageButtonSettings,
+                imageButtonAbout;
     AlertDialog resetDialogObject;
+    int easterCounter = 0;
 
     public MosaicFragment() {
         //
@@ -42,6 +44,7 @@ public class MosaicFragment extends Fragment {
         imageButtonOpenProject = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonOpenProject);
         imageButtonSettings = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonSettings);
         imageButtonExportData = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonExportData);
+        imageButtonAbout = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonAbout);
 
         imageButtonNewProject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,11 +79,24 @@ public class MosaicFragment extends Fragment {
             }
         });
 
+        imageButtonAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, new AboutFragment())
+                        .addToBackStack("")
+                        .commit();
+            }
+        });
+
         // TODO that's a poor hack!!!
         imageButtonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetDialogObject.show();
+                if (easterCounter++ % 7 == 0) {
+                    resetDialogObject.show();
+                }
             }
         });
 

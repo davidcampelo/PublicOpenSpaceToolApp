@@ -6,91 +6,134 @@
     android:gravity="center"
     android:foregroundGravity="center"
     android:layout_gravity="center">
-    <TableLayout
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/mosaic_icon_default_padding"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content">
 
-        <TableRow>
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/mosaic_icon_default_padding"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context=".MainActivity">
 
-            <ImageButton android:id="@+id/imageButtonNewProject"
-                android:layout_gravity="center"
-                android:paddingLeft="@dimen/mosaic_icon_default_padding"
-                android:paddingRight="@dimen/mosaic_icon_default_padding"
-                android:paddingTop="@dimen/mosaic_icon_default_padding"
-                android:src="@drawable/icon_project_new2"
-                android:background="@null"
-                android:layout_column="0" />
+            <TableRow>
 
-            <ImageButton
-                android:src="@drawable/icon_project_open2"
-                android:paddingLeft="@dimen/mosaic_icon_default_padding"
-                android:paddingRight="@dimen/mosaic_icon_default_padding"
-                android:paddingTop="@dimen/mosaic_icon_default_padding"
-                android:layout_gravity="center"
-                android:id="@+id/imageButtonOpenProject"
-                android:background="@null"
-                android:layout_column="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:text="@string/mosaic_new_project"
-                android:layout_gravity="center"
-                android:paddingBottom="@dimen/mosaic_icon_default_padding"
-                android:paddingLeft="@dimen/mosaic_icon_default_padding"
-                android:paddingRight="@dimen/mosaic_icon_default_padding"
-                android:layout_column="0"/>
-            <TextView
-                android:text="@string/mosaic_open_project"
-                android:layout_gravity="center"
-                android:paddingBottom="@dimen/mosaic_icon_default_padding"
-                android:paddingLeft="@dimen/mosaic_icon_default_padding"
-                android:paddingRight="@dimen/mosaic_icon_default_padding"
-                android:layout_column="1"/>
-        </TableRow>
-        <TableRow>
+                <ImageButton android:id="@+id/imageButtonNewProject"
+                    android:layout_gravity="center"
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:paddingTop="@dimen/mosaic_icon_default_padding"
+                    android:src="@drawable/icon_project_new2"
+                    android:background="@null"
+                    android:layout_column="0" />
 
-            <ImageButton android:id="@+id/imageButtonExportData"
-                android:paddingLeft="@dimen/mosaic_icon_default_padding"
-                android:paddingRight="@dimen/mosaic_icon_default_padding"
-                android:paddingTop="@dimen/mosaic_icon_default_padding"
-                android:layout_gravity="center"
-                android:src="@drawable/icon_export_data2"
-                android:background="@null"
-                android:layout_column="0" />
+                <ImageButton
+                    android:src="@drawable/icon_project_open2"
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:paddingTop="@dimen/mosaic_icon_default_padding"
+                    android:layout_gravity="center"
+                    android:id="@+id/imageButtonOpenProject"
+                    android:background="@null"
+                    android:layout_column="1"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:text="@string/mosaic_new_project"
+                    android:layout_gravity="center"
+                    android:paddingBottom="@dimen/mosaic_icon_default_padding"
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:layout_column="0"/>
+                <TextView
+                    android:text="@string/mosaic_open_project"
+                    android:layout_gravity="center"
+                    android:paddingBottom="@dimen/mosaic_icon_default_padding"
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:layout_column="1"/>
+            </TableRow>
 
-            <ImageButton
-                android:paddingLeft="@dimen/mosaic_icon_default_padding"
-                android:paddingRight="@dimen/mosaic_icon_default_padding"
-                android:paddingTop="@dimen/mosaic_icon_default_padding"
-                android:id="@+id/imageButtonSettings"
-                android:layout_gravity="center"
-                android:src="@drawable/icon_settings2"
-                android:background="@null"
-                android:layout_column="1" />
-        </TableRow>
-        <TableRow>
 
-            <TextView
-                android:paddingLeft="@dimen/mosaic_icon_default_padding"
-                android:paddingRight="@dimen/mosaic_icon_default_padding"
-                android:paddingBottom="@dimen/mosaic_icon_default_padding"
-                android:text="@string/mosaic_export_data"
-                android:layout_gravity="center"
 
-                android:layout_column="0"/>
-            <TextView
-                android:paddingLeft="@dimen/mosaic_icon_default_padding"
-                android:paddingRight="@dimen/mosaic_icon_default_padding"
-                android:paddingBottom="@dimen/mosaic_icon_default_padding"
-                android:text="@string/mosaic_settings"
-                android:layout_gravity="center"
-                android:layout_column="1"/>
-        </TableRow>
-    </TableLayout>
+
+
+
+
+            <TableRow>
+
+                <ImageButton android:id="@+id/imageButtonExportData"
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:paddingTop="@dimen/mosaic_icon_default_padding"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_export_data2"
+                    android:background="@null"
+                    android:layout_column="0" />
+
+                <ImageButton
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:paddingTop="@dimen/mosaic_icon_default_padding"
+                    android:id="@+id/imageButtonSettings"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_settings2"
+                    android:background="@null"
+                    android:layout_column="1" />
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:paddingBottom="@dimen/mosaic_icon_default_padding"
+                    android:text="@string/mosaic_export_data"
+                    android:layout_gravity="center"
+
+                    android:layout_column="0"/>
+                <TextView
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:paddingBottom="@dimen/mosaic_icon_default_padding"
+                    android:text="@string/mosaic_settings"
+                    android:layout_gravity="center"
+                    android:layout_column="1"/>
+            </TableRow>
+
+
+
+
+
+
+
+            <TableRow>
+
+                <ImageButton android:id="@+id/imageButtonAbout"
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:paddingTop="@dimen/mosaic_icon_default_padding"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_about"
+                    android:background="@null"
+                    android:layout_column="0"
+                    android:layout_span="2"/>
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                    android:paddingLeft="@dimen/mosaic_icon_default_padding"
+                    android:paddingRight="@dimen/mosaic_icon_default_padding"
+                    android:paddingBottom="@dimen/mosaic_icon_default_padding"
+                    android:text="@string/mosaic_about"
+                    android:layout_gravity="center"
+                    android:layout_column="0"
+                    android:layout_span="2"/>
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -57,17 +57,17 @@ public class CSVUtils {
             Question.QuestionType questionType = question.getType();
             if (questionType == Question.QuestionType.MULTIPLE_CHOICE) {
                 for (Option option : question.getAllOptions()) {
-                    stringBuilderHeader.append("\"" +option.getAlias()+ "\",");
+                    stringBuilderHeader.append("\"" +option.getAlias()+ "\""+ Constants.CSV_SEPARATOR);
                     if (option.isOtherOption()) {
-                        stringBuilderHeader.append("\"" +option.getAlias() + Constants.MULTIPLE_QUESTION_OTHER_CSV_SUFFIX + "\",");
+                        stringBuilderHeader.append("\"" +option.getAlias() + Constants.MULTIPLE_QUESTION_OTHER_CSV_SUFFIX + "\""+ Constants.CSV_SEPARATOR);
                     }
                 }
             }
             else if (questionType == Question.QuestionType.INPUT_COORDINATES){
                 String questionAlias = question.getAlias();
                 int pos = questionAlias.indexOf(Constants.POLYGON_POINTS_SEPARATOR);
-                stringBuilderHeader.append("\"" +questionAlias.substring(0,pos) + "\", ");
-                stringBuilderHeader.append("\"" +questionAlias.substring(pos+1) + "\", ");
+                stringBuilderHeader.append("\"" +questionAlias.substring(0,pos) + "\""+ Constants.CSV_SEPARATOR);
+                stringBuilderHeader.append("\"" +questionAlias.substring(pos+1) + "\""+ Constants.CSV_SEPARATOR);
             }
             else if (questionType == Question.QuestionType.VARIABLE_SINGLE_CHOICE){
                 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,11 +79,11 @@ public class CSVUtils {
                 MAX_NUMBER_OF_VARIABLE_SINGLE_CHOICE_QUESTION = answersDAO.getMaxNumberOfAnswersByProject(project, question);
                 String questionAlias = question.getAlias(); // playground
                 for (int i = 1; i <= MAX_NUMBER_OF_VARIABLE_SINGLE_CHOICE_QUESTION; i++){
-                    stringBuilderHeader.append("\"" +question.getAlias() + "_" +i+ "\",");
+                    stringBuilderHeader.append("\"" +question.getAlias() + "_" +i+ "\""+ Constants.CSV_SEPARATOR);
                 }
             }
             else {
-                stringBuilderHeader.append("\"" +question.getAlias() + "\",");
+                stringBuilderHeader.append("\"" +question.getAlias() + "\""+ Constants.CSV_SEPARATOR);
             }
         }
         // write header
@@ -124,11 +124,11 @@ public class CSVUtils {
                         // them all together in the same column
                         if (option.isOtherOption()) {
                             if (selectedIds.size() == 0) {
-                                stringBuilderAnswers.append("\"0\",");
-                                stringBuilderAnswers.append("\"\",");
+                                stringBuilderAnswers.append("\"0\""+ Constants.CSV_SEPARATOR);
+                                stringBuilderAnswers.append("\"\""+ Constants.CSV_SEPARATOR);
                             }
                             else {
-                                stringBuilderAnswers.append("\"1\",");
+                                stringBuilderAnswers.append("\"1\""+ Constants.CSV_SEPARATOR);
                                 OptionDAO optionDAO = new OptionDAO(context);
                                 optionDAO.open();
                                 stringBuilderAnswers.append("\"");
@@ -139,16 +139,16 @@ public class CSVUtils {
                                 }
                                 // XXX Remove last comma :D
                                 stringBuilderAnswers.deleteCharAt(stringBuilderAnswers.length() - 1);
-                                stringBuilderAnswers.append("\", ");
+                                stringBuilderAnswers.append("\""+ Constants.CSV_SEPARATOR);
                                 optionDAO.close();
                             }
                         }
                         else if ( selectedIds.contains(option.getId()) ) {
-                            stringBuilderAnswers.append("\"1\",");
+                            stringBuilderAnswers.append("\"1\""+ Constants.CSV_SEPARATOR);
                             selectedIds.remove(option.getId());
                         }
                         else{
-                            stringBuilderAnswers.append("\"0\",");
+                            stringBuilderAnswers.append("\"0\""+ Constants.CSV_SEPARATOR);
                         }
                     }
                 }
@@ -157,8 +157,8 @@ public class CSVUtils {
                         questionAnswers = " " + Constants.POLYGON_POINTS_SEPARATOR + " ";
                     }
                     int pos = questionAnswers.indexOf(Constants.POLYGON_POINTS_SEPARATOR);
-                    stringBuilderAnswers.append("\"" +questionAnswers.substring(0,pos) + "\", ");
-                    stringBuilderAnswers.append("\"" +questionAnswers.substring(pos+1) + "\", ");
+                    stringBuilderAnswers.append("\"" +questionAnswers.substring(0,pos) + "\""+ Constants.CSV_SEPARATOR);
+                    stringBuilderAnswers.append("\"" +questionAnswers.substring(pos+1) + "\""+ Constants.CSV_SEPARATOR);
                 }
                 else if (questionType == Question.QuestionType.VARIABLE_SINGLE_CHOICE){   // Question 29
                     if (questionAnswers == null || questionAnswers.length() == 0) {
@@ -173,18 +173,18 @@ public class CSVUtils {
                     StringTokenizer tokenizer = new StringTokenizer(questionAnswers, Constants.DEFAULT_SEPARATOR);
                     // write variable answers
                     while ( tokenizer.hasMoreElements() ) {
-                        stringBuilderAnswers.append("\"" +(String)tokenizer.nextElement()+ "\", ");
+                        stringBuilderAnswers.append("\"" +(String)tokenizer.nextElement()+ "\""+ Constants.CSV_SEPARATOR);
                     }
                     // fill up the end with zero
                     for (int i = answersCount + 1; i <= MAX_NUMBER_OF_VARIABLE_SINGLE_CHOICE_QUESTION; i++){
-                        stringBuilderAnswers.append("\"0\",");
+                        stringBuilderAnswers.append("\"0\""+ Constants.CSV_SEPARATOR);
                     }
                 }
                 else {
                     if (questionAnswers == null) {
                         questionAnswers = "";
                     }
-                    stringBuilderAnswers.append("\""+ questionAnswers + "\", ");
+                    stringBuilderAnswers.append("\""+ questionAnswers + "\""+ Constants.CSV_SEPARATOR);
                 }
 
             }
