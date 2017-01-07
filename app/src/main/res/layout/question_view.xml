@@ -2,29 +2,51 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
+        android:id="@+id/QuestionView_titleLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/colorPrimaryLight"
         android:padding="@dimen/activity_horizontal_margin">
 
-    <TextView
-        android:id="@+id/QuestionView_title"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:text=" "
-        android:layout_centerHorizontal="false"
-        android:background="@color/colorPrimaryLight"
-        android:padding="@dimen/activity_horizontal_margin"/>
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/QuestionView_hintButton"
+            android:layout_weight="0.4" >
 
+            <TextView
+                android:id="@+id/QuestionView_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:gravity="top|left"
+                android:layout_gravity="top|left"
+                android:text=" "
+                android:layout_centerHorizontal="false"
+                android:background="@color/colorPrimaryLight"
+                android:padding="@dimen/activity_horizontal_margin"/>
+
+        </FrameLayout>
+        <ImageButton
+            android:id="@+id/QuestionView_hintButton"
+            android:padding="@dimen/question_hint_padding"
+            android:gravity="top|right"
+            android:layout_gravity="top|right"
+            android:background="@null"
+            android:src="@drawable/icon_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+</RelativeLayout>
     <LinearLayout
         android:id="@+id/QuestionView_containerOptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#EEEEEE"
-        android:layout_below="@+id/QuestionView_title">
+        android:layout_below="@+id/QuestionView_titleLayout">
     </LinearLayout>
-</RelativeLayout>
 </merge>

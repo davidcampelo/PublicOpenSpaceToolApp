@@ -1,14 +1,18 @@
 package org.davidcampelo.post.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.davidcampelo.post.R;
 import org.davidcampelo.post.model.Option;
@@ -26,6 +30,7 @@ public abstract class QuestionView extends RelativeLayout {
     private View rootView;
 
     private TextView title;
+    private ImageView hintButton;
     private LinearLayout container;
 
 
@@ -39,12 +44,45 @@ public abstract class QuestionView extends RelativeLayout {
      *
      * IMPORTANT: This method must be called by sub-classes before any other UI operation
      */
-    protected void init(final Context context, Question question) {
+    protected void init(final Context context, final Question question) {
         this.question = question;
         this.context = context;
 
         rootView = inflate(context, R.layout.question_view, this);
 
+        hintButton = (ImageView) rootView.findViewById(R.id.QuestionView_hintButton);
+        final String hintText = question.getHint();
+        if (hintText != null && hintText.trim().length() > 0) {
+            hintButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(QuestionView.this.context);
+                    alert.setTitle("Question "+ question.getNumber());
+                     alert.setMessage(hintText.trim());
+
+                    alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            //Your action here
+                        }
+                    });
+
+//                    alert.setNegativeButton("Cancel",
+//                            new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int whichButton) {
+//                                }
+//                            });
+
+                    alert.show();
+
+
+                    //Toast.makeText(QuestionView.this.context, hintText.trim(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        else{
+            hintButton.setVisibility(INVISIBLE);
+        }
         title = (TextView) rootView.findViewById(R.id.QuestionView_title);
         String questionNumber = question.getNumber();
         if (questionNumber.startsWith("0"));

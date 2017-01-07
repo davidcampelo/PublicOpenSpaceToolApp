@@ -156,7 +156,7 @@ public class Data {
         Option option = null;
         OptionDAO optionDAO = new OptionDAO(context);
         optionDAO.open();
-        XmlResourceParser xpp = resources.getXml(R.xml.questions_with_alias);
+        XmlResourceParser xpp = resources.getXml(R.xml.questions_with_alias_and_hint_v2);
 
         // check state
         int eventType = -1;
