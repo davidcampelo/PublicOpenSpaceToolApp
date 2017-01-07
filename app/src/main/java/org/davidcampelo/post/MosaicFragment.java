@@ -25,8 +25,6 @@ public class MosaicFragment extends Fragment {
                 imageButtonExportData,
                 imageButtonSettings,
                 imageButtonAbout;
-    AlertDialog resetDialogObject;
-    int easterCounter = 1;
 
     public MosaicFragment() {
         //
@@ -90,39 +88,17 @@ public class MosaicFragment extends Fragment {
             }
         });
 
-        // TODO that's a poor hack!!!
         imageButtonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (easterCounter++ % 7 == 0) {
-                    resetDialogObject.show();
-                }
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, new SettingsFragment())
+                        .addToBackStack("")
+                        .commit();
             }
         });
-
-        buildResetDialog();
 
         return fragmentLayout;
-    }
-
-    private void buildResetDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.action_reset_dialog_title);
-        builder.setMessage(R.string.action_reset_dialog_question);
-        builder.setPositiveButton(R.string.action_reset_dialog_positive, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Data.clearDatabase(getActivity());
-                Data.resetDatabase(getActivity(), getResources());
-                Data.populateDatabase(getActivity(), getResources());
-            }
-        });
-        builder.setNegativeButton(R.string.action_reset_dialog_negative, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // do nothing
-            }
-        });
-        resetDialogObject = builder.create();
     }
 }

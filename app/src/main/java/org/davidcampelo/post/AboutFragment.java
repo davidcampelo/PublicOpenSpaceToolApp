@@ -1,18 +1,23 @@
 package org.davidcampelo.post;
 
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.davidcampelo.post.utils.Data;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,6 +30,11 @@ public class AboutFragment extends Fragment {
 
     TextView aboutVersion;
     Button seeManualsButton;
+    ImageView logos;
+
+    int easterCounter = 1;
+    AlertDialog defaultDialogObject;
+
 
     public AboutFragment() {
         //
@@ -38,6 +48,15 @@ public class AboutFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View fragmentLayout = inflater.inflate(R.layout.fragment_about, container, false);
+        logos = (ImageView) fragmentLayout.findViewById(R.id.fragmentAboutLogos);
+        logos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (easterCounter++ % 13 == 0) {
+                    defaultDialogObject.show();
+                }
+            }
+        });
         aboutVersion = (TextView) fragmentLayout.findViewById(R.id.fragmentAboutVersion);
         seeManualsButton = (Button) fragmentLayout.findViewById(R.id.fragmentAboutSeeManualsButton);
 //        seeManualsButton.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +74,29 @@ public class AboutFragment extends Fragment {
 //            }
 //        });
         aboutVersion.setText("v" + BuildConfig.VERSION_NAME);
+
+        buildDefaultDataDialog();
+
         return fragmentLayout;
+    }
+
+
+    private void buildDefaultDataDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.fragment_settings_default_dialog_title);
+        builder.setMessage(R.string.fragment_settings_default_dialog_question);
+        builder.setPositiveButton(R.string.fragment_settings_default_dialog_positive, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Data.populateDatabase(getActivity(), getResources());
+            }
+        });
+        builder.setNegativeButton(R.string.fragment_settings_default_dialog_negative, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // do nothing
+            }
+        });
+        defaultDialogObject = builder.create();
     }
 }

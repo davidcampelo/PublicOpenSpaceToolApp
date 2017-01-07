@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Constants {
 
     public static final String DATABASE_NAME = "post.db";
-    public static final int    DATABASE_VERSION = 49;
+    public static final int    DATABASE_VERSION = 50;
 
     public static final String[] TAB_TITLES = new String[]{
             "Location",

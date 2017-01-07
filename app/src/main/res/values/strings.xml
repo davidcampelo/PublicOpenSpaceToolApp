@@ -4,6 +4,7 @@
     <string name="title_mosaic">Public Open Space Tool</string>
     <string name="title_export_data">Export data</string>
     <string name="title_about">About this app</string>
+    <string name="title_settings">Settings</string>
     <string name="title_POST_manual">POST Manual</string>
     <string name="title_project_list">Project List</string>
     <string name="title_project_add">Add project</string>
@@ -35,12 +36,6 @@
     <string name="marker_click_dialog_positive">Yes</string>
     <string name="marker_click_dialog_negative">No</string>
 
-    // Reset Database Action Menu
-    <string name="action_reset_dialog_title">Reset all data</string>
-    <string name="action_reset_dialog_question">This is going to clear all data. Are you sure to proceed?</string>
-    <string name="action_reset_dialog_positive">Yes, clear all data</string>
-    <string name="action_reset_dialog_negative">No, do not erase</string>
-
     // fragment_project_list_menu
     <string name="fragment_project_list_menu_view">View Public Open Spaces</string>
     <string name="fragment_project_list_menu_add_public_open_space">Add new Public Open Space</string>
@@ -50,6 +45,18 @@
     // fragment_public_open_space_list_menu
     <string name="fragment_public_open_space_list_menu_edit">Edit Public Open Space</string>
     <string name="fragment_public_open_space_list_menu_delete">Delete Public Open Space</string>
+
+    // fragment_settings
+    <string name="fragment_settings_reset_data">Reset all application data</string>
+    <string name="fragment_settings_default_data">Install default Porto data</string>
+    <string name="fragment_settings_reset_dialog_title">Reset all data</string>
+    <string name="fragment_settings_reset_dialog_question">This is going to clear all data. Are you sure to proceed?</string>
+    <string name="fragment_settings_reset_dialog_positive">Yes, clear all data</string>
+    <string name="fragment_settings_reset_dialog_negative">No, do not erase</string>
+    <string name="fragment_settings_default_dialog_title">Install default data</string>
+    <string name="fragment_settings_default_dialog_question">This is going to install all default data of Porto\'s Public Open Spaces. Are you sure to proceed?</string>
+    <string name="fragment_settings_default_dialog_positive">Yes</string>
+    <string name="fragment_settings_default_dialog_negative">No</string>
 
     // fragment_export_data
     <string name="fragment_export_data_project">Choose project to export</string>

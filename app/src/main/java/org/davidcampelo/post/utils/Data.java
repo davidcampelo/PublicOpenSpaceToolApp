@@ -102,10 +102,17 @@ public class Data {
 
             // Get elements by name employee
             Element nodeDocument = (Element) (doc.getElementsByTagName("Document")).item(0);
+
+            ArrayList<LatLng> portoPoints = new ArrayList<>();
+            portoPoints.add(new LatLng(41.161834,-8.6390192));
+            portoPoints.add(new LatLng(41.161834,-8.5703117));
+            portoPoints.add(new LatLng(41.140188,-8.5703117));
+            portoPoints.add(new LatLng(41.140188,-8.6390192));
+
             Project project = new Project(
                     parser.getValue(nodeDocument, "name"),
                     parser.getValue(nodeDocument, "description"),
-                    Constants.PORTUGAL_BOUNDING_POINTS
+                    portoPoints
                     );
             project = ProjectDAO.staticInsert(context, project);
             /*
@@ -175,11 +182,11 @@ public class Data {
 
                         question = questionDAO.insert(new Question(number, alias, hint, title, Question.QuestionType.valueOf(type), null));
 
-                        Log.e("[DATA]", "==> "+
-                                question.getNumber()+ " - " +
-                                question.getAlias()+" - "+
-                                question.getType().name().substring(0,1)+" - "+
-                                question.getTitle());
+//                        Log.e("[DATA]", "==> "+
+//                                question.getNumber()+ " - " +
+//                                question.getAlias()+" - "+
+//                                question.getType().name().substring(0,1)+" - "+
+//                                question.getTitle());
 
                     }
                     else if (xpp.getName().equals("option")) {
@@ -190,10 +197,10 @@ public class Data {
 
                         option = optionDAO.insert(new Option(alias, value, title, question));
 
-                        Log.e("[DATA]", "====> "+
-                                option.getAlias()+" - "+
-                                option.getValue()+" - "+
-                                option.getTitle());
+//                        Log.e("[DATA]", "====> "+
+//                                option.getAlias()+" - "+
+//                                option.getValue()+" - "+
+//                                option.getTitle());
 
                     }
                 }

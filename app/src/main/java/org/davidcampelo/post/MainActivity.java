@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new ExportDataFragment();
                         break;
                     case 3 : // settings
-                        fragment = null;
+                        fragment = new SettingsFragment();
                         break;
                     case 4 : // about
                         fragment = new AboutFragment();

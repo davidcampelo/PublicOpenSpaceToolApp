@@ -21,7 +21,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 
-public class ManualsFragment extends Fragment {
+    public class ManualsFragment extends Fragment {
 
     WebView manuals;
 

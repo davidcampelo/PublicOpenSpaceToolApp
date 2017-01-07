@@ -32,17 +32,17 @@ public final class DAOHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-//        Log.w(this.getClass().getName(), "Upgrading database from version "+ oldVersion +" to version "+
-//                newVersion +", which will destroy all old data...");
-//
-//        // XXX hacking to HINT
-//       // dropping table
-//        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ ProjectDAO.TABLE_NAME );
-//        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ PublicOpenSpaceDAO.TABLE_NAME );
-//        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ QuestionDAO.TABLE_NAME );
-//        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ OptionDAO.TABLE_NAME );
-//        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ AnswersDAO.TABLE_NAME );
-//        onCreate(sqLiteDatabase );
+        Log.w(this.getClass().getName(), "Upgrading database from version "+ oldVersion +" to version "+
+                newVersion +", which will destroy all old data...");
+
+        // XXX hacking to HINT
+       // dropping table
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ ProjectDAO.TABLE_NAME );
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ PublicOpenSpaceDAO.TABLE_NAME );
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ QuestionDAO.TABLE_NAME );
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ OptionDAO.TABLE_NAME );
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS "+ AnswersDAO.TABLE_NAME );
+        onCreate(sqLiteDatabase );
     }
 
     public boolean isOpen() {
