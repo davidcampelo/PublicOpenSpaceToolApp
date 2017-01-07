@@ -428,7 +428,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             arrayPoints = publicOpenSpace.getPolygonPoints();
             drawPolygon();
         }
-        else {
+        else if (publicOpenSpace.getProject().getPolygonPoints() != null && publicOpenSpace.getProject().getPolygonPoints().size() > 0){
             MapUtility.moveMapCamera(googleMap, publicOpenSpace.getProject().getPolygonPoints());
         }
 
