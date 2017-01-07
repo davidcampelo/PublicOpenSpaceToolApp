@@ -211,6 +211,7 @@ public class Data {
     }
 
     public static void clearDatabase(Context context) {
+        Log.e("DATA", ">>>>>>>>>>>>>>>>>>>>>>>>>> Clearing Database... ");
         ProjectDAO projectDAO = new ProjectDAO(context);
         projectDAO.open();
         projectDAO.resetData();

@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,8 +23,7 @@ import java.io.OutputStream;
 
 public class ManualsFragment extends Fragment {
 
-    TextView aboutVersion;
-    Button seeManualsButton;
+    WebView manuals;
 
     public ManualsFragment() {
         //
@@ -33,62 +33,37 @@ public class ManualsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        getActivity().setTitle(R.string.title_about);
+        getActivity().setTitle(R.string.title_POST_manual);
 
         // Inflate the layout for this fragment
-        final View fragmentLayout = inflater.inflate(R.layout.fragment_about, container, false);
-        aboutVersion = (TextView)fragmentLayout.findViewById(R.id.fragmentAboutVersion);
-        seeManualsButton = (Button) fragmentLayout.findViewById(R.id.fragmentAboutSeeManualsButton);
-        seeManualsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                seeManuals();
-            }
-        });
-        aboutVersion.setText("v"+BuildConfig.VERSION_NAME);
+        final View fragmentLayout = inflater.inflate(R.layout.fragment_about_manuals    , container, false);
+
+        manuals = (WebView) fragmentLayout.findViewById(R.id.fragmentManualsWebView);
+        manuals.getSettings().setJavaScriptEnabled(true);
+//        loadManuals();
+        manuals.loadUrl("file:///android_asset/POST_Manual.pdf");
+
         return fragmentLayout;
     }
 
-    private void seeManuals() {
+    private void loadManuals() {
         File fileBrochure = new File(Environment.getExternalStorageDirectory() + "/" + "POST_Manual.pdf");
-        if (!fileBrochure.exists())
-        {
-            CopyAssetsbrochure();
-        }
-
-        /** PDF reader code */
-        File file = new File(Environment.getExternalStorageDirectory() + "/" + "POST_Manual.pdf");
-
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setDataAndType(Uri.fromFile(file),"application/pdf");
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        try
-        {
-            getActivity().getApplicationContext().startActivity(intent);
-        }
-        catch (ActivityNotFoundException e)
-        {
-        }
-    }
-
-    //method to write the PDFs file to sd card
-    private void CopyAssetsbrochure() {
-        AssetManager assetManager = getActivity().getAssets();
-        InputStream in = null;
-        try {
-            in = assetManager.open("POST_Manual.pdf");
-            OutputStream out = null;
-            out = new FileOutputStream(Environment.getExternalStorageDirectory() + "/POST_Manual.pdf");
-            copyFile(in, out);
-            in.close();
-            in = null;
-            out.flush();
-            out.close();
-            out = null;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        if (!fileBrochure.exists()) {
+            AssetManager assetManager = getActivity().getAssets();
+            InputStream in = null;
+            try {
+                in = assetManager.open("POST_Manual.pdf");
+                OutputStream out = null;
+                out = new FileOutputStream(Environment.getExternalStorageDirectory() + "/POST_Manual.pdf");
+                copyFile(in, out);
+                in.close();
+                in = null;
+                out.flush();
+                out.close();
+                out = null;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }        }
     }
 
     private void copyFile(InputStream in, OutputStream out) throws IOException {

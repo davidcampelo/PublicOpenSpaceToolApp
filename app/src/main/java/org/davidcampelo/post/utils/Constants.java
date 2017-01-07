@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Constants {
 
     public static final String DATABASE_NAME = "post.db";
-    public static final int    DATABASE_VERSION = 42;
+    public static final int    DATABASE_VERSION = 49;
 
     public static final String[] TAB_TITLES = new String[]{
             "Location",
@@ -20,7 +20,8 @@ public class Constants {
             "Activities",
             "Environmental quality",
             "Amenities",
-            "Safety"};
+            "Safety"
+    };
     public static final String DEFAULT_SEPARATOR = "|";
     public static final String CSV_SEPARATOR = ";";
     public static final String POLYGON_COORDINATES_SEPARATOR = ",";
@@ -31,6 +32,8 @@ public class Constants {
     public static final String MULTIPLE_QUESTION_OTHER_START_STRING = ".other";
     // In the CSV header file very "other column" has a correspondent "other column" with the suffix below
     public static final String MULTIPLE_QUESTION_OTHER_CSV_SUFFIX = "_l";
+    public static final  int NUMBER_OF_QUESTIONS = 53;
+    public static final  int NUMBER_OF_OPTIONS = 169;
 
     static {
         PORTUGAL_BOUNDING_POINTS = new ArrayList<LatLng>();

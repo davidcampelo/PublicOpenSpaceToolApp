@@ -17,6 +17,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.davidcampelo.post.model.OptionDAO;
+import org.davidcampelo.post.model.QuestionDAO;
+import org.davidcampelo.post.utils.Data;
+
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -86,6 +90,27 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout.closeDrawer(mDrawerList);
             }
         });
+
+        checkDatabase();
+    }
+
+    private void checkDatabase() {
+        QuestionDAO questionDAO = new QuestionDAO(this);
+        questionDAO.open();
+        OptionDAO optionDAO = new OptionDAO(this);
+        optionDAO.open();
+        if (!questionDAO.isPopulated() || !optionDAO.isPopulated()){
+            Log.e(this.getClass().getName(), ">>>>>>>>>>>>>>>>>>>>>>>>>> Database empty! Let's populated it......");
+
+            // XXX hacking to HINT
+            // dropping table
+            Data.clearDatabase(this);
+            Data.resetDatabase(this, this.getResources());
+
+        }
+
+        questionDAO.close();
+        optionDAO.close();
     }
 
     @Override

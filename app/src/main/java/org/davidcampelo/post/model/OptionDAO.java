@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import org.davidcampelo.post.utils.Constants;
 
 import java.util.ArrayList;
 
@@ -44,7 +47,7 @@ public class OptionDAO extends DAO {
     public OptionDAO(Context context) {
         super(context);
     }
-    public OptionDAO(Context context, DAOHelper dbHelper, SQLiteDatabase sqLiteDatabase) {
+    public  OptionDAO(Context context, DAOHelper dbHelper, SQLiteDatabase sqLiteDatabase) {
         super(context, dbHelper, sqLiteDatabase);
     }
 
@@ -170,10 +173,11 @@ public class OptionDAO extends DAO {
         return list;
     }
 
-//    public long delete(Option object){
-//        return delete(TABLE_NAME, COLUMN_ID +"="+ object.id);
-//    }
 
+    public boolean isPopulated() {
+        Log.e(this.getClass().getName(), "count() == "+ count(TABLE_NAME));
+        return ( count(TABLE_NAME) >= Constants.NUMBER_OF_OPTIONS );
+    }
     private Option cursorToObject(Cursor cursor) {
         return new Option(
                 cursor.getLong(0),      // id

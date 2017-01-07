@@ -26,7 +26,7 @@ public class MosaicFragment extends Fragment {
                 imageButtonSettings,
                 imageButtonAbout;
     AlertDialog resetDialogObject;
-    int easterCounter = 0;
+    int easterCounter = 1;
 
     public MosaicFragment() {
         //
@@ -68,9 +68,9 @@ public class MosaicFragment extends Fragment {
             }
         });
 
-        imageButtonExportData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            imageButtonExportData.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.mainContainer, new ExportDataFragment())

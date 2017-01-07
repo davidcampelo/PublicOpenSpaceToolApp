@@ -4,6 +4,7 @@
     <string name="title_mosaic">Public Open Space Tool</string>
     <string name="title_export_data">Export data</string>
     <string name="title_about">About this app</string>
+    <string name="title_POST_manual">POST Manual</string>
     <string name="title_project_list">Project List</string>
     <string name="title_project_add">Add project</string>
     <string name="title_project_edit">Edit project</string>
@@ -77,7 +78,7 @@
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBnpQFyArNBeu-zJq-z-2815Hexi-FPJQM</string>
 
-    <string name="fragment_about_see_full_manuals">Click to see full manuals</string>
+    <string name="fragment_about_see_full_manuals">Click to see POST manual</string>
     <string name="fragment_about_text">The POST (Quality of Public Open Space Tool) is a well-established and validated tool designed for auditing public open spaces such as parks and other greenspaces, with particular emphasis on the physical attributes that may either encourage or discourage their use for physical activity. The POST relies on direct observation and it is composed of 49 items covering four key domains: activities, environmental quality, comfort, and safety.
         \n\n
         This App was developed by Instituto de Saúde Publica da Universidade do Porto (ISPUP) and by the Centre for the Built Environment and Health of the University of Western Australia based on the original paper version of POST.

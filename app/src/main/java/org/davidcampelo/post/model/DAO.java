@@ -39,7 +39,7 @@ public abstract class DAO {
         if (dbHelper == null)
             dbHelper = new DAOHelper(context);
         if (!dbHelper.isOpen())
-            sqLiteDatabase = dbHelper.getWritableDatabase();
+            sqLiteDatabase = dbHelper.getReadableDatabase();
     }
 
     public void close() {
@@ -111,22 +111,32 @@ public abstract class DAO {
     }
 
     protected long insert(String tableName, ContentValues values) {
-        Log.e(this.getClass().getName(), ">>>>>>> INSERT INTO " + tableName +
-                "(" + StringUtils.toString2(values.keySet()) +
-                ") VALUES(" + StringUtils.toString(values.valueSet()) + ")");
+//        Log.e(this.getClass().getName(), ">>>>>>> INSERT INTO " + tableName +
+//                "(" + StringUtils.toString2(values.keySet()) +
+//                ") VALUES(" + StringUtils.toString(values.valueSet()) + ")");
 
         return sqLiteDatabase.insert(tableName, null, values);
     }
 
     protected long update(String tableName, ContentValues values, String whereClauses) {
-        Log.e(this.getClass().getName(), ">>>>>>> UPDATE " + tableName +
-                "(" + StringUtils.toString2(values.keySet()) +
-                ") VALUES(" + StringUtils.toString(values.valueSet()) + ") WHERE " + whereClauses);
+//        Log.e(this.getClass().getName(), ">>>>>>> UPDATE " + tableName +
+//                "(" + StringUtils.toString2(values.keySet()) +
+//                ") VALUES(" + StringUtils.toString(values.valueSet()) + ") WHERE " + whereClauses);
         return sqLiteDatabase.update(tableName, values, whereClauses, null);
     }
 
     protected long delete(String tableName, String whereClauses) {
         return sqLiteDatabase.delete(tableName, whereClauses, null);
+    }
+
+    protected int count(String tableName) {
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT COUNT(*) FROM "+ tableName, null);
+        cursor.moveToFirst();
+        int count= cursor.getInt(0);
+        cursor.close();
+
+        return count;
+
     }
 
     protected Context getContext() {

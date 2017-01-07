@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import org.davidcampelo.post.utils.Constants;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -141,6 +143,12 @@ public class QuestionDAO extends DAO {
         return delete(TABLE_NAME, COLUMN_NUMBER +"='"+ object.number+"'");
     }
 
+
+    public boolean isPopulated() {
+        Log.e(this.getClass().getName(), "count() == "+ count(TABLE_NAME));
+        return ( count(TABLE_NAME) >= Constants.NUMBER_OF_QUESTIONS );
+    }
+
     private Question cursorToObject(Cursor cursor) {
         return new Question(
                 cursor.getString(0),                                // number
@@ -151,4 +159,5 @@ public class QuestionDAO extends DAO {
                 null                                                // TODO: retrieve options
         );
     }
+
 }
