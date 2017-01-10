@@ -1,5 +1,7 @@
 package org.davidcampelo.post;
 
+import android.*;
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -187,6 +189,10 @@ public class ProjectAddEditFragment extends Fragment
 
         googleMap.setOnMapLongClickListener(this);
         googleMap.setOnMarkerClickListener(this);
+
+        ActivityCompat.requestPermissions(this.getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
         if (ActivityCompat.checkSelfPermission(this.getActivity(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this.getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

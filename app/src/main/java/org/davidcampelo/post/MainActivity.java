@@ -1,6 +1,10 @@
 package org.davidcampelo.post;
 
+import android.*;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -92,6 +96,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         checkDatabase();
+
+        if (!canAccessLocation()) {
+            ActivityCompat.requestPermissions(this, INITIAL_PERMS, 0);
+        }
+    }
+      private static final String[] INITIAL_PERMS={
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+    };
+    private boolean canAccessLocation() {
+        return(hasPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) || hasPermission(Manifest.permission.ACCESS_COARSE_LOCATION));
+    }
+
+    private boolean hasPermission(String perm) {
+            return(PackageManager.PERMISSION_GRANTED==ActivityCompat.checkSelfPermission(this,perm));
     }
 
     private void checkDatabase() {
