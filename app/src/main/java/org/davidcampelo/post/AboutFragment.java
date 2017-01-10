@@ -29,7 +29,6 @@ import java.io.OutputStream;
 public class AboutFragment extends Fragment {
 
     TextView aboutVersion;
-    Button seeManualsButton;
     ImageView logos;
 
     int easterCounter = 1;
@@ -58,21 +57,6 @@ public class AboutFragment extends Fragment {
             }
         });
         aboutVersion = (TextView) fragmentLayout.findViewById(R.id.fragmentAboutVersion);
-        seeManualsButton = (Button) fragmentLayout.findViewById(R.id.fragmentAboutSeeManualsButton);
-//        seeManualsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Bundle args = new Bundle();
-//                Fragment fragment = new ManualsFragment();
-//                fragment.setArguments(args);
-//
-//                getFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.mainContainer, fragment)
-//                        .addToBackStack("")
-//                        .commit();
-//            }
-//        });
         aboutVersion.setText("v" + BuildConfig.VERSION_NAME);
 
         buildDefaultDataDialog();

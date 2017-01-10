@@ -79,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
                     case 4 : // about
                         fragment = new AboutFragment();
                         break;
+                    case 5 : // help
+                        fragment = new HelpFragment();
+                        break;
                     default:
                         fragment = null;
                 }

@@ -24,7 +24,8 @@ public class MosaicFragment extends Fragment {
                 imageButtonOpenProject,
                 imageButtonExportData,
                 imageButtonSettings,
-                imageButtonAbout;
+                imageButtonAbout,
+                imageButtonHelp;
 
     public MosaicFragment() {
         //
@@ -43,6 +44,7 @@ public class MosaicFragment extends Fragment {
         imageButtonSettings = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonSettings);
         imageButtonExportData = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonExportData);
         imageButtonAbout = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonAbout);
+        imageButtonHelp = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonHelp);
 
         imageButtonNewProject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +96,16 @@ public class MosaicFragment extends Fragment {
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.mainContainer, new SettingsFragment())
+                        .addToBackStack("")
+                        .commit();
+            }
+        });
+        imageButtonHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, new HelpFragment())
                         .addToBackStack("")
                         .commit();
             }
