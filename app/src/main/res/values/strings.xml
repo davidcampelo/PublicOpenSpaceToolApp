@@ -63,7 +63,7 @@
     // fragment_export_data
     <string name="fragment_export_data_project">Choose project to export</string>
     <string name="fragment_export_data_options">Choose export options</string>
-    <string name="fragment_export_data_csv">CSV data file</string>
+    <string name="fragment_export_data_csv">CSV data file &amp; codebook</string>
     <string name="fragment_export_data_csv_msg">Creating CSV file...</string>
     <string name="fragment_export_data_kmz">KMZ polygons file</string>
     <string name="fragment_export_data_sql">SQL database dump file</string>
