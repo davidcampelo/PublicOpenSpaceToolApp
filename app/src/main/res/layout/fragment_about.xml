@@ -32,7 +32,7 @@
                 android:id="@+id/fragmentAboutLogos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/fab_margin"
+                android:padding="@dimen/fab_margin" 
                 android:src="@drawable/logos_about3"
                 android:layout_below="@id/fragmentAboutText"
                 android:adjustViewBounds="true"/>
