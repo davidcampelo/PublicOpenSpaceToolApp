@@ -70,6 +70,7 @@
     <string name="fragment_export_data_button">Export Data</string>
 
     // fragment_public_open_space_add_edit
+    <string name="fragment_public_open_space_add_edit_name">Type the POS name</string>
     <string name="fragment_public_open_space_add_edit_save">Save</string>
     <string name="public_open_space_type_park">Park</string>
     <string name="public_open_space_type_square">Square</string>
