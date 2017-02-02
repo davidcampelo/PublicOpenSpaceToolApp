@@ -11,6 +11,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -26,7 +28,6 @@ public class MapUtility {
     private static final double SQUAREMETERS_TO_RADIUS_FACTOR = 10000;
     private static String LOG_TAG = "[MAP UTILITY] ";
 
-    private static DecimalFormat decimalFormat = new DecimalFormat("#,###,##0.00");
     private static final double EARTH_RADIUS = 6371000;// meters
 
     public String resolveAddress(Context context, double latitude, double longitude) {
@@ -63,8 +64,12 @@ public class MapUtility {
      * Calculate area according to a List of points and formats to 2 decimal places
      */
     public static String calculateAreaAndFormat(final List<LatLng> locations) {
-        return decimalFormat.format(calculateAreaOfGPSPolygonOnSphereInHectares(locations, EARTH_RADIUS));
+        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.getDefault());
+        otherSymbols.setDecimalSeparator(Constants.NUMBER_DECIMAL_SEPARATOR);
+        otherSymbols.setGroupingSeparator(Constants.NUMBER_GROUP_SEPARATOR);
+        DecimalFormat decimalFormat = new DecimalFormat(Constants.NUMBER_DECIMAL_FORMAT, otherSymbols);
 
+        return decimalFormat.format(calculateAreaOfGPSPolygonOnSphereInHectares(locations, EARTH_RADIUS));
     }
 
     private static double calculateAreaOfGPSPolygonOnSphereInHectares(List<LatLng> locations, double earthRadius) {

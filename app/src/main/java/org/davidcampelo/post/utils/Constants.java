@@ -22,6 +22,11 @@ public class Constants {
             "Amenities",
             "Safety"
     };
+    // Decimal configurations used in the Question 3 (POS area)
+    public static final char NUMBER_DECIMAL_SEPARATOR = '.';
+    public static final String NUMBER_DECIMAL_FORMAT = "#,###,###,##0.00";
+    public static final char NUMBER_GROUP_SEPARATOR = ',';
+
     public static final String DEFAULT_SEPARATOR = "|";
     public static final String CSV_SEPARATOR = ";";
     public static final String POLYGON_COORDINATES_SEPARATOR = ",";
