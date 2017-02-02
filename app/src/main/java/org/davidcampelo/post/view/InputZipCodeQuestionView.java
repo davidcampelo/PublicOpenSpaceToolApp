@@ -26,7 +26,7 @@ public class InputZipCodeQuestionView extends QuestionView {
         super.init(context, question);
         LinearLayout container = getContainer();
         containerText = new EditText(context);
-        containerText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_CLASS_PHONE);
+        containerText.setInputType(InputType.TYPE_CLASS_TEXT);
 
         container.addView(containerText);
     }
