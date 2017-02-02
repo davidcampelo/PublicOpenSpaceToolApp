@@ -13,12 +13,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabAddPublicOpenSpace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <FrameLayout
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/my_ic_input_add" />
+        android:layout_width="wrap_content"
+        android:padding="@dimen/fab_margin"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAddPublicOpenSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:src="@drawable/my_ic_input_add" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_gravity="center|bottom"
+            android:layout_below="@id/fabAddPublicOpenSpace"
+            android:text="Add new POS"/>
+        </RelativeLayout>
+
+    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>
