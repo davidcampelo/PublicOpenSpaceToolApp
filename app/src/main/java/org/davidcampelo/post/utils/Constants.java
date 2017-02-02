@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -22,6 +23,9 @@ public class Constants {
             "Amenities",
             "Safety"
     };
+    // Date format used to show date in the app
+    public static SimpleDateFormat APPLICATION_DATE_FORMAT = new SimpleDateFormat("dd/MMM/yyyy");
+
     // Decimal configurations used in the Question 3 (POS area)
     public static final char NUMBER_DECIMAL_SEPARATOR = '.';
     public static final String NUMBER_DECIMAL_FORMAT = "#,###,###,##0.00";

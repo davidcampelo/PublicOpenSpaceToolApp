@@ -15,7 +15,9 @@ import org.davidcampelo.post.model.QuestionDAO;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -52,6 +54,12 @@ public class CSVUtils {
 
         // build header
         StringBuilder stringBuilderHeader = new StringBuilder();
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // XXX Creating two custom fields (0.name/0.creation_date) /////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        stringBuilderHeader.append("\"0.name\";");
+        stringBuilderHeader.append("\"0.creation_date\";");
+
         for (Question question : listQuestions) {
             // if it's a Question with multiple options, every Option must be a column in the CSV
             Question.QuestionType questionType = question.getType();
@@ -109,6 +117,13 @@ public class CSVUtils {
 
             // look through all questions and insert answers
             StringBuilder stringBuilderAnswers = new StringBuilder();
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            // XXX Inserting answers for the two custom fields (0.name/0.creation_date) ////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////
+            stringBuilderAnswers.append("\""+ publicOpenSpace.getName()+"\";");
+            stringBuilderAnswers.append("\""+ Constants.APPLICATION_DATE_FORMAT.format(new Date(publicOpenSpace.getDateCreation())) +"\";");
+
+
             for (Question question : listQuestions) {
                 String questionAnswers = mapAnswers.get(question.getNumber());
 

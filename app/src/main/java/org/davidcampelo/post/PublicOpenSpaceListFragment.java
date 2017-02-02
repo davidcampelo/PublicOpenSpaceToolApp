@@ -152,7 +152,6 @@ public class PublicOpenSpaceListFragment extends ListFragment {
     }
 
     // Date format to show date on list
-    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MMM/yyyy");
     // Utility class to keep list row values
     public static class ViewHolder{
         TextView name;
@@ -194,7 +193,7 @@ public class PublicOpenSpaceListFragment extends ListFragment {
             }
 
             viewHolder.name.setText(object.getName());
-            viewHolder.date.setText("Added on "+ simpleDateFormat.format(new Date(object.getDateCreation())));
+            viewHolder.date.setText("Added on "+ Constants.APPLICATION_DATE_FORMAT.format(new Date(object.getDateCreation())));
             viewHolder.image.setImageResource(object.getTypeResource());
 
 
