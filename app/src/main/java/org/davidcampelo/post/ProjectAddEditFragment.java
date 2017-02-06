@@ -76,10 +76,9 @@ public class ProjectAddEditFragment extends Fragment
             project = new Project();
 
             getActivity().setTitle(R.string.title_project_add);
-
-            showInstructionsDialog(inflater);
-
         }
+
+        showInstructionsDialog(inflater);
 
         // get references to components
         saveButton = (Button) fragmentLayout.findViewById(R.id.addEditSaveButton);
@@ -209,7 +208,7 @@ public class ProjectAddEditFragment extends Fragment
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        if (project.getPolygonPoints() != null) {
+        if (project.getPolygonPoints() != null && project.getPolygonPoints().size() > 0) {
             MapUtility.moveMapCamera(googleMap, project.getPolygonPoints());
             arrayPoints = project.getPolygonPoints();
             drawPolygon();
