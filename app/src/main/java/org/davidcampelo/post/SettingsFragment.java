@@ -87,9 +87,15 @@ public class SettingsFragment extends Fragment {
 
     private void resetInstructionsDialogs() {
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        final String activity_splash_dialog_app_instructions_status = getString(R.string.activity_splash_dialog_app_instructions_status);
+        int[] statusArray = new int[] {
+                R.string.activity_splash_dialog_app_instructions_status,
+                R.string.fragment_project_add_edit_instructions_status,
+                R.string.fragment_public_open_space_add_edit_instructions_status
+        };
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(activity_splash_dialog_app_instructions_status, false);
+        for (int status : statusArray) {
+            editor.putBoolean(getString(status), false);
+        }
         editor.commit();
     }
 

@@ -71,6 +71,13 @@
     <string name="fragment_export_data_button">Export Data</string>
 
     // fragment_public_open_space_add_edit
+    <string name="fragment_public_open_space_add_edit_instructions_status">fragment_public_open_space_add_edit_instructions_status</string>
+    <string name="fragment_public_open_space_add_edit_instructions_checkbox">Do not show this dialog again</string>
+    <string name="fragment_public_open_space_add_edit_instructions_button">OK</string>
+    <string name="fragment_public_open_space_add_edit_instructions_text">Add a name to the POS and draw a polygon representing the POS limits. Press and hold to draw the points that delimit the POS.
+        \n\n
+        Then answer to the items found in the menu tabs “General”, "Activities", "Environmental Quality", "Amenities" and “Safety”.</string>
+
     <string name="fragment_public_open_space_add_edit_name">Type the POS name</string>
     <string name="fragment_public_open_space_add_edit_save">Save</string>
     <string name="public_open_space_type_park">Park</string>
@@ -95,8 +102,7 @@
         \n\n
         Press and hold to draw the points that delimit the geographic extent of your project.</string>
 
-
-
+    // google maps configs
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBnpQFyArNBeu-zJq-z-2815Hexi-FPJQM</string>
 
     // fragment_about
