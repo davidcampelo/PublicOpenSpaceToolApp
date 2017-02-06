@@ -157,6 +157,7 @@ public class Data {
 
     }
     public static void resetDatabase(Context context, Resources resources) {
+        Log.e("DATA", ">>>>>>>>>>>>>>>>>>>>>>>>>> Resetting Database... ");
         Question question = null;
         QuestionDAO questionDAO = new QuestionDAO(context);
         questionDAO.open();
