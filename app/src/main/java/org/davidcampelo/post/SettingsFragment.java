@@ -2,10 +2,12 @@ package org.davidcampelo.post;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -70,8 +72,8 @@ public class SettingsFragment extends Fragment {
         builder.setPositiveButton(R.string.fragment_settings_reset_dialog_positive, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Data.clearDatabase(getActivity());
-                Data.resetDatabase(getActivity(), getResources());
+                SettingsFragment.this.resetDatabase();
+                SettingsFragment.this.resetInstructionsDialogs();
             }
         });
         builder.setNegativeButton(R.string.fragment_settings_reset_dialog_negative, new DialogInterface.OnClickListener() {
@@ -81,6 +83,20 @@ public class SettingsFragment extends Fragment {
             }
         });
         resetDialogObject = builder.create();
+    }
+
+    private void resetInstructionsDialogs() {
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        final String activity_splash_dialog_app_instructions_status = getString(R.string.activity_splash_dialog_app_instructions_status);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(activity_splash_dialog_app_instructions_status, false);
+        editor.commit();
+    }
+
+
+    private void resetDatabase() {
+        Data.clearDatabase(getActivity());
+        Data.resetDatabase(getActivity(), getResources());
     }
 
 }

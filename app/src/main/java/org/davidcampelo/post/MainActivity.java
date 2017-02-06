@@ -98,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        checkDatabase();
-
         if (!canAccessLocation()) {
             ActivityCompat.requestPermissions(this, INITIAL_PERMS, 0);
         }
@@ -116,24 +114,6 @@ public class MainActivity extends AppCompatActivity {
             return(PackageManager.PERMISSION_GRANTED==ActivityCompat.checkSelfPermission(this,perm));
     }
 
-    private void checkDatabase() {
-        QuestionDAO questionDAO = new QuestionDAO(this);
-        questionDAO.open();
-        OptionDAO optionDAO = new OptionDAO(this);
-        optionDAO.open();
-        if (!questionDAO.isPopulated() || !optionDAO.isPopulated()){
-            Log.e(this.getClass().getName(), ">>>>>>>>>>>>>>>>>>>>>>>>>> Database empty! Let's populated it......");
-
-            // XXX hacking to HINT
-            // dropping table
-            Data.clearDatabase(this);
-            Data.resetDatabase(this, this.getResources());
-
-        }
-
-        questionDAO.close();
-        optionDAO.close();
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

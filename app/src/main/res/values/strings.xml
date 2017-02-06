@@ -1,6 +1,7 @@
 <resources>
     // screen titles
     <string name="app_name">Public Open Space Tool</string>
+    <!--<string name="title_splash_dialog_app_instructions">Public Open Space Tool Instructions</string>-->
     <string name="title_mosaic">Public Open Space Tool</string>
     <string name="title_export_data">Export data</string>
     <string name="title_about">About this app</string>
@@ -87,6 +88,14 @@
     <string name="fragment_project_add_edit_name">Type the project name</string>
     <string name="fragment_project_add_edit_description">Type the project description</string>
     <string name="fragment_project_add_edit_save">Save</string>
+    <string name="fragment_project_add_edit_instructions_status">fragment_project_add_edit_instructions_status</string>
+    <string name="fragment_project_add_edit_instructions_checkbox">Do not show this dialog again</string>
+    <string name="fragment_project_add_edit_instructions_button">OK</string>
+    <string name="fragment_project_add_edit_instructions_text">Add a name and description to the project and set the geographic extent of the project.
+        \n\n
+        Press and hold to draw the points that delimit the geographic extent of your project.</string>
+
+
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBnpQFyArNBeu-zJq-z-2815Hexi-FPJQM</string>
 
@@ -104,5 +113,19 @@
         \n\n
         When using this application for the first time, select "Start New Project". Add a name and description to the project and draw on the map a polygon corresponding to the geographic extend of the project. Then, simply add the Public Open Space that will be audited in your project, and fill up the answers to the items found in the menu tabs "Location", "General", "Activities", "Environmental Quality", "Amenities" and “Safety”. Your project can be saved at any time. After saving it, the database with the audit results can be exported to your e-mail account in .csv and .kmz format.
     </string>
+
+    // activity_splash
+    <string name="activity_splash_dialog_app_instructions_status">activity_splash_dialog_app_instructions_status</string>
+    <string name="activity_splash_dialog_app_instructions_checkbox">Do not show this dialog again</string>
+    <string name="activity_splash_dialog_app_instructions_button">OK</string>
+    <string name="activity_splash_dialog_app_instructions_text">When you open the App you can choose between "Start New Project" (to start a new project), "List Projects" (to re-visit and edit previous projects), "Export Data" (to export your results and maps) or "Settings" (to reset).
+        \n\n
+        When you use POST for the first time or every time you want to start a new project, select "Start New Project".
+        \n\n
+        Then, add the POS (Public Open Space) that you are going to audit and answer to the items found in the menu tabs "Location", “General”, "Activities", "Environmental Quality", "Amenities" and “Safety”.
+        \n\n
+        Your project can be saved at any time. After saving it, the database with the audit results can be exported to your e-mail account in .csv and .kmz format.</string>
+
+
 
 </resources>

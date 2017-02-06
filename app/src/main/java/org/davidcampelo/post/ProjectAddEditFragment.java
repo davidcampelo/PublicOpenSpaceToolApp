@@ -3,9 +3,12 @@ package org.davidcampelo.post;
 import android.*;
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +76,9 @@ public class ProjectAddEditFragment extends Fragment
             project = new Project();
 
             getActivity().setTitle(R.string.title_project_add);
+
+            showInstructionsDialog(inflater);
+
         }
 
         // get references to components
@@ -94,6 +101,36 @@ public class ProjectAddEditFragment extends Fragment
         });
 
         return fragmentLayout;
+    }
+
+    private void showInstructionsDialog(LayoutInflater inflater) {
+        // Main dialog with app usage instructions
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        final String fragment_project_add_edit_instructions_status = getString(R.string.fragment_project_add_edit_instructions_status);
+        boolean dialog_status = sharedPreferences.getBoolean(fragment_project_add_edit_instructions_status, false);
+        if (!dialog_status) {
+            // Set dialog contents
+            final View dialogView = inflater.inflate(R.layout.dialog_instructions, null);
+            ((TextView)dialogView.findViewById(R.id.dialogInstructionsText)).setText(getString(R.string.fragment_project_add_edit_instructions_text));
+            ((CheckBox)dialogView.findViewById(R.id.dialogInstructionsCheckbox)).setText(getString(R.string.fragment_project_add_edit_instructions_checkbox));
+
+            //build the dialog
+            new AlertDialog.Builder(this.getContext())
+//                    .setTitle(R.string.title_splash_dialog_app_instructions)
+                    .setView(dialogView)
+                    .setPositiveButton(getString(R.string.activity_splash_dialog_app_instructions_button),
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog,int which) {
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putBoolean(fragment_project_add_edit_instructions_status,
+                                            ((CheckBox)dialogView.findViewById(R.id.dialogInstructionsCheckbox)).isChecked());
+                                    editor.commit();
+                                    dialog.dismiss();
+                                }
+                            }).create().show();
+
+        }
     }
 
     /**
