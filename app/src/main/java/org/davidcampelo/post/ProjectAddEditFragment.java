@@ -1,9 +1,8 @@
 package org.davidcampelo.post;
 
-import android.*;
 import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -15,13 +14,14 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
@@ -35,6 +35,7 @@ import org.davidcampelo.post.model.Project;
 import org.davidcampelo.post.model.ProjectDAO;
 import org.davidcampelo.post.utils.Constants;
 import org.davidcampelo.post.utils.MapUtility;
+import org.davidcampelo.post.utils.UIUtils;
 
 import java.util.ArrayList;
 
@@ -42,11 +43,13 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class ProjectAddEditFragment extends Fragment
-        implements OnMapReadyCallback, OnMarkerClickListener, OnMapLongClickListener {
+        implements OnMapReadyCallback, OnMarkerClickListener, OnMapLongClickListener, OnMapClickListener {
 
     private Project project;
 
     View fragmentLayout;
+    TextView projectName;
+    TextView projectDesc;
 
     MapView mapView;
     GoogleMap googleMap;
@@ -62,6 +65,23 @@ public class ProjectAddEditFragment extends Fragment
         // Inflate the layout for this fragment
         fragmentLayout = inflater.inflate(R.layout.fragment_project_add_edit, container, false);
 
+        // get fields
+        projectName = ((TextView) fragmentLayout.findViewById(R.id.addEditProjectName));
+        projectDesc = ((TextView) fragmentLayout.findViewById(R.id.addEditProjectDesc));
+
+        // set listener to hide keyboard
+        View.OnFocusChangeListener onFocusChangeListener = new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    // hide virtual Keyboard
+                    UIUtils.hideKeyboard(getContext(), v);
+                }
+            }
+        };
+        projectName.setOnFocusChangeListener(onFocusChangeListener);
+        projectDesc.setOnFocusChangeListener(onFocusChangeListener);
+
         Bundle bundle = this.getArguments();
         try {
             project = (Project) bundle.getParcelable(Constants.PROJECT_EXTRA);
@@ -69,8 +89,8 @@ public class ProjectAddEditFragment extends Fragment
             getActivity().setTitle(R.string.title_project_edit);
 
             // fill fields
-            ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(project.getName());
-            ((TextView) fragmentLayout.findViewById(R.id.addEditItemDesc)).setText(project.getDesc());
+            projectName.setText(project.getName());
+            projectDesc.setText(project.getDesc());
         }
         catch (NullPointerException e){
             project = new Project();
@@ -80,11 +100,14 @@ public class ProjectAddEditFragment extends Fragment
 
         showInstructionsDialog(inflater);
 
+        // XXX
+        ((TextView) fragmentLayout.findViewById(R.id.addEditProjectMapText)).setKeyListener(null);
+
         // get references to components
         saveButton = (Button) fragmentLayout.findViewById(R.id.addEditSaveButton);
 
         // Gets the MapView from the XML layout and creates it
-        mapView = (MapView) fragmentLayout.findViewById(R.id.mapview);
+        mapView = (MapView) fragmentLayout.findViewById(R.id.projectMapView);
         mapView.onCreate(savedInstanceState);
         // Gets to GoogleMap from the MapView and does initialization stuff
         mapView.getMapAsync(this);
@@ -101,6 +124,7 @@ public class ProjectAddEditFragment extends Fragment
 
         return fragmentLayout;
     }
+
 
     private void showInstructionsDialog(LayoutInflater inflater) {
         // Main dialog with app usage instructions
@@ -138,19 +162,30 @@ public class ProjectAddEditFragment extends Fragment
      * This method must be called before any persistence procedure :)
      */
     public void saveObject() {
-        // NAME
-        project.setName(((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).getText() + "");
-        project.setDesc(((TextView) fragmentLayout.findViewById(R.id.addEditItemDesc)).getText() + "");
+        // Set name and description
+        project.setName(projectName.getText() + "");
+        project.setDesc(projectDesc.getText() + "");
 
-        // POLYGON POINTS
+        // Set the polygon points
         project.setPolygonPoints(arrayPoints);
 
-        // NOW SAVE OBJECT
+        // Send to database
         if (project.getId() == 0) // if (id == 0) we're gonna insert it
             project = ProjectDAO.staticInsert(getActivity(), project);
         else // just update it
             ProjectDAO.staticUpdate(getActivity(), project);
 
+        // Go to Project list screen
+        Bundle args = new Bundle();
+        args.putParcelable(Constants.PROJECT_EXTRA, project);
+        Fragment fragment = new PublicOpenSpaceListFragment();
+        fragment.setArguments(args);
+
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mainContainer, fragment)
+                .addToBackStack("")
+                .commit();
     }
 
 
@@ -224,6 +259,7 @@ public class ProjectAddEditFragment extends Fragment
         googleMap.getUiSettings().setMapToolbarEnabled(false);
 
         googleMap.setOnMapLongClickListener(this);
+        googleMap.setOnMapClickListener(this);
         googleMap.setOnMarkerClickListener(this);
 
         ActivityCompat.requestPermissions(this.getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
@@ -246,13 +282,15 @@ public class ProjectAddEditFragment extends Fragment
     /**
      * Add point to list of coordinates of map polygon
      */
-//    @Override
-//    public void onMapClick(LatLng latLng) {
-//        //
-//    }
+    @Override
+    public void onMapClick(LatLng latLng) {
+        UIUtils.hideKeyboard(getContext(), mapView);
+    }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        UIUtils.hideKeyboard(getContext(), mapView);
+
         markerPointClick = marker.getPosition();
         markerDialog.show();
 
@@ -261,6 +299,8 @@ public class ProjectAddEditFragment extends Fragment
 
     @Override
     public void onMapLongClick(LatLng latLng) {
+        UIUtils.hideKeyboard(getContext(), mapView);
+
         arrayPoints.add(latLng);
 
         drawPolygon();

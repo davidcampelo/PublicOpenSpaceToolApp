@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
@@ -40,6 +41,7 @@ import org.davidcampelo.post.model.QuestionDAO;
 import org.davidcampelo.post.utils.Constants;
 import org.davidcampelo.post.utils.MapUtility;
 import org.davidcampelo.post.utils.PublicOpenSpaceAsyncTask;
+import org.davidcampelo.post.utils.UIUtils;
 import org.davidcampelo.post.view.AnswerMissingException;
 import org.davidcampelo.post.view.InputDecimalQuestionView;
 import org.davidcampelo.post.view.InputNumberQuestionView;
@@ -57,12 +59,13 @@ import java.util.HashMap;
  * A simple {@link Fragment} subclass.
  */
 public class PublicOpenSpaceAddEditFragment extends Fragment
-        implements OnMapReadyCallback, OnMarkerClickListener, /*OnMapClickListener,*/ OnMapLongClickListener {
+        implements OnMapReadyCallback, OnMarkerClickListener, OnMapClickListener, OnMapLongClickListener {
 
     private PublicOpenSpace publicOpenSpace;
     private Project project;
 
     View fragmentLayout;
+    TextView posName;
 
     MapView mapView;
     GoogleMap googleMap;
@@ -87,6 +90,15 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         // inflate layout
         fragmentLayout = inflater.inflate(R.layout.fragment_public_open_space_add_edit, container, false);
 
+        // get fields
+        posName = ((TextView) fragmentLayout.findViewById(R.id.addEditItemName));
+        posName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                UIUtils.hideKeyboard(getContext(), view);
+            }
+        });
+
         // Bundle cannot be null as Project ***MUST*** be set
         Bundle bundle = this.getArguments();
         try{
@@ -95,7 +107,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             getActivity().setTitle(R.string.title_public_open_space_edit);
 
             // fill fields
-            ((TextView) fragmentLayout.findViewById(R.id.addEditItemName)).setText(publicOpenSpace.getName());
+            posName.setText(publicOpenSpace.getName());
             ((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
             Toast.makeText(getContext(), "Loading...", Toast.LENGTH_LONG).show();
 
@@ -114,7 +126,6 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         // get references to components
         saveButton = (Button) fragmentLayout.findViewById(R.id.addEditSaveButton);
         posType = (ImageButton) fragmentLayout.findViewById(R.id.addEditItemType);
-        posType.setBackground(null);
 
         // fill tabs
         fillTabTitles((TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost));
@@ -144,6 +155,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         posType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UIUtils.hideKeyboard(getContext(), view);
+
                 posTypeDialog.show();
             }
         });
@@ -473,6 +486,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         googleMap.getUiSettings().setMyLocationButtonEnabled(true);
         googleMap.getUiSettings().setMapToolbarEnabled(false);
 
+        googleMap.setOnMapClickListener(this);
         googleMap.setOnMapLongClickListener(this);
         googleMap.setOnMarkerClickListener(this);
         if (ActivityCompat.checkSelfPermission(this.getActivity(),
@@ -492,13 +506,15 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
     /**
      * Add point to list of coordinates of map polygon
      */
-//    @Override
-//    public void onMapClick(LatLng latLng) {
-//        //
-//    }
+    @Override
+    public void onMapClick(LatLng latLng) {
+        UIUtils.hideKeyboard(getContext(), mapView);
+    }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        UIUtils.hideKeyboard(getContext(), mapView);
+
         markerPointClick = marker.getPosition();
         markerDialog.show();
 
@@ -507,6 +523,8 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
     @Override
     public void onMapLongClick(LatLng latLng) {
+        UIUtils.hideKeyboard(getContext(), mapView);
+
         arrayPoints.add(latLng);
 
         drawPolygon();
