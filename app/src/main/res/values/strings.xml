@@ -67,7 +67,7 @@
     <string name="fragment_export_data_csv">CSV data file &amp; codebook</string>
     <string name="fragment_export_data_csv_msg">Creating CSV file...</string>
     <string name="fragment_export_data_kmz">KMZ polygons file</string>
-    <string name="fragment_export_data_sql">SQL database dump file</string>
+    <string name="fragment_export_data_sql">POST backup file</string>
     <string name="fragment_export_data_button">Export Data</string>
 
     // fragment_public_open_space_add_edit

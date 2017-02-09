@@ -72,7 +72,9 @@ public class AboutFragment extends Fragment {
         builder.setPositiveButton(R.string.fragment_settings_default_dialog_positive, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Data.populateDatabase(getActivity(), getResources());
+                Data.clearDatabase(getActivity());
+                Data.populateDatabaseFromXML(getActivity(), getResources());
+                Data.populateDatabaseFromSQL(getActivity());
             }
         });
         builder.setNegativeButton(R.string.fragment_settings_default_dialog_negative, new DialogInterface.OnClickListener() {

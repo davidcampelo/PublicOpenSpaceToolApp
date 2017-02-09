@@ -129,8 +129,8 @@ public abstract class DAO {
         return sqLiteDatabase.delete(tableName, whereClauses, null);
     }
 
-    protected int count(String tableName) {
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT COUNT(*) FROM "+ tableName, null);
+    protected int count() {
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT COUNT(*) FROM "+ getTableName(), null);
         cursor.moveToFirst();
         int count= cursor.getInt(0);
         cursor.close();

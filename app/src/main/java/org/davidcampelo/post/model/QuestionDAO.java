@@ -145,8 +145,8 @@ public class QuestionDAO extends DAO {
 
 
     public boolean isPopulated() {
-        Log.e(this.getClass().getName(), "count() == "+ count(TABLE_NAME));
-        return ( count(TABLE_NAME) >= Constants.NUMBER_OF_QUESTIONS );
+        Log.e(this.getClass().getName(), "count() == "+ count());
+        return ( count() >= Constants.NUMBER_OF_QUESTIONS );
     }
 
     private Question cursorToObject(Cursor cursor) {

@@ -82,7 +82,7 @@ public class SplashActivity extends AppCompatActivity {
             // XXX hacking to HINT
             // dropping table
             Data.clearDatabase(this);
-            Data.resetDatabase(this, this.getResources());
+            Data.populateDatabaseFromXML(this, this.getResources());
 
         }
 

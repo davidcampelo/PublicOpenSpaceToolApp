@@ -102,7 +102,7 @@ public class SettingsFragment extends Fragment {
 
     private void resetDatabase() {
         Data.clearDatabase(getActivity());
-        Data.resetDatabase(getActivity(), getResources());
+        Data.populateDatabaseFromXML(getActivity(), getResources());
     }
 
 }

@@ -175,8 +175,8 @@ public class OptionDAO extends DAO {
 
 
     public boolean isPopulated() {
-        Log.e(this.getClass().getName(), "count() == "+ count(TABLE_NAME));
-        return ( count(TABLE_NAME) >= Constants.NUMBER_OF_OPTIONS );
+//        Log.e(this.getClass().getName(), "count() == "+ count());
+        return ( count() >= Constants.NUMBER_OF_OPTIONS );
     }
     private Option cursorToObject(Cursor cursor) {
         return new Option(

@@ -10,6 +10,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import org.davidcampelo.post.R;
 import org.davidcampelo.post.model.AnswersDAO;
+import org.davidcampelo.post.model.GenericDAO;
 import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.OptionDAO;
 import org.davidcampelo.post.model.Project;
@@ -21,8 +22,11 @@ import org.davidcampelo.post.model.QuestionDAO;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -37,9 +41,16 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
+ * Class for handling data importation
+ *
  * Created by davidcampelo on 8/16/16.
  */
 public class Data {
+
+
+    private static final String SQL_FILENAME = "POST_DataExport_2017fev01.sql";
+    private static final String XML_FILENAME = "POST_DataExport-1363984559.xml";
+
     static class XMLDOMParser {
         //Returns the entire XML document
         public Document getDocument(InputStream inputStream) {
@@ -91,13 +102,42 @@ public class Data {
         }
     }
 
-    // XML node names
-    public static void populateDatabase(Context context, Resources resources) {
+    public static void populateDatabaseFromSQL(Context context) {
+        BufferedReader br = null;
+        GenericDAO genericDAO = null;
+        String sCurrentLine;
+
+        try {
+
+            br = new BufferedReader(new InputStreamReader(context.getAssets().open(SQL_FILENAME)));
+
+            genericDAO = new GenericDAO(context);
+            genericDAO.open();
+            while ((sCurrentLine = br.readLine()) != null && sCurrentLine.length() > 0) {
+                Log.e("[DATA]", "==> "+ sCurrentLine);
+                genericDAO.exec(sCurrentLine);
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (br != null)
+                    br.close();
+                genericDAO.close();
+            }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+    public static void populateDatabaseFromXML(Context context) {
         XMLDOMParser parser = new XMLDOMParser();
         AssetManager manager = context.getAssets();
         InputStream stream;
         try {
-            stream = manager.open("POST_DataExport-1363984559.xml");
+            stream = manager.open(XML_FILENAME);
             Document doc = parser.getDocument(stream);
 
             // Get elements by name employee
@@ -156,15 +196,16 @@ public class Data {
         }
 
     }
-    public static void resetDatabase(Context context, Resources resources) {
-        Log.e("DATA", ">>>>>>>>>>>>>>>>>>>>>>>>>> Resetting Database... ");
+
+    public static void populateDatabaseFromXML(Context context, Resources resources) {
+        Log.e("DATA", ">>>>>>>>>>>>>>>>>>>>>>>>>> Resetting  Database... ");
         Question question = null;
         QuestionDAO questionDAO = new QuestionDAO(context);
         questionDAO.open();
         Option option = null;
         OptionDAO optionDAO = new OptionDAO(context);
         optionDAO.open();
-        XmlResourceParser xpp = resources.getXml(R.xml.questions_with_alias_and_hint_v2);
+        XmlResourceParser xpp = resources.getXml(R.xml.questions_with_alias_and_hint_v3);
 
         // check state
         int eventType = -1;
