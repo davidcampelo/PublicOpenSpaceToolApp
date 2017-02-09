@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class HelpFragment extends Fragment {
@@ -25,20 +26,12 @@ public class HelpFragment extends Fragment {
         // Inflate the layout for this fragment
         final View fragmentLayout = inflater.inflate(R.layout.fragment_help, container, false);
         seeManualsButton = (Button) fragmentLayout.findViewById(R.id.fragmentHelpSeeManualsButton);
-//        seeManualsButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Bundle args = new Bundle();
-//                Fragment fragment = new ManualsFragment();
-//                fragment.setArguments(args);
-//
-//                getFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.mainContainer, fragment)
-//                        .addToBackStack("")
-//                        .commit();
-//            }
-//        });
+        seeManualsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Not available right now, sorry...", Toast.LENGTH_LONG).show();
+            }
+        });
 
         return fragmentLayout;
     }
