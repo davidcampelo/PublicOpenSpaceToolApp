@@ -260,7 +260,7 @@
     </question>
     
         <!-- QUESTION 34 -->
-    <question alias="34.caf�" number="34" hint="Tick one only. Check to see if there is a permanent structure (building) within the POS that sells food. Do not include kiosks or caf�s on the streets around the POS. Do not include vans or mobile food outlets. Do not include kiosks associated with local clubrooms that are only open for local weekend sporting matches." type="SINGLE_CHOICE" title="Is there a kiosk/cafe' present? (tick one only)">
+    <question alias="34.café" number="34" hint="Tick one only. Check to see if there is a permanent structure (building) within the POS that sells food. Do not include kiosks or cafés on the streets around the POS. Do not include vans or mobile food outlets. Do not include kiosks associated with local clubrooms that are only open for local weekend sporting matches." type="SINGLE_CHOICE" title="Is there a kiosk/café present? (tick one only)">
             <option alias="34.7DAYS" value="1" title="7 days per week"></option>
             <option alias="34.weedays" value="2" title="Weekdays only"></option>
             <option alias="34.weekends" value="3" title="Weekends only"></option>
@@ -320,7 +320,7 @@
     </question>
     
         <!-- QUESTION 44 -->
-    <question alias="44.light_local" number="44" hint="Around courts, buidlings and equipment if lighting is located next to these features. Along paths if lighting is placed in a row along paths through or around the perimeter of the POS. Perimeter all sides if lighting is located along all sides of the POS. Perimeter some sides when lighting is placed in a row along at least one side, but not all sides of the POS. Random throughout POS when the placement of lighting in the POS appears without any apparent pattern, or with a pattern but spread throughout the POS." type="MULTIPLE_CHOICE" title="Where is the lighting located? (tick all relevant)">
+    <question alias="44.light_local" number="44" hint="Around courts, buildings and equipment if lighting is located next to these features. Along paths if lighting is placed in a row along paths through or around the perimeter of the POS. Perimeter all sides if lighting is located along all sides of the POS. Perimeter some sides when lighting is placed in a row along at least one side, but not all sides of the POS. Random throughout POS when the placement of lighting in the POS appears without any apparent pattern, or with a pattern but spread throughout the POS." type="MULTIPLE_CHOICE" title="Where is the lighting located? (tick all relevant)">
             <option alias="44.l_around" value="1" title="Around courts, buildings, and equipment"></option>
             <option alias="44.l_along" value="1" title="Along paths"></option>
             <option alias="44.l_perimall" value="1" title="Perimeter all sides"></option>
@@ -329,7 +329,7 @@
     </question>
         
         <!-- QUESTION 45 -->
-    <question alias="45.visroads" number="45" hint="Stand in the centre of the POS and survey the roads that border the POS. Clearly visible means that there are no trees, buildings, parked cars, or buildings between the POS and the road." type="SINGLE_CHOICE" title="From the centre of the POS, how  visible are surrounding roads? (tick one)">
+    <question alias="45.visroads" number="45" hint="Stand in the centre of the POS and survey the roads that border the POS. Clearly visible means that there are no trees, buildings, parked cars, or buildings between the POS and the road." type="SINGLE_CHOICE" title="From the centre of the POS, how visible are surrounding roads? (tick one)">
             <option alias="45.r_clearly" value="1" title="Road/s clearly visible from the centre of the POS"></option>
             <option alias="45.r_partly" value="2" title="Road/s partly visible from the centre of the POS"></option>
             <option alias="45.r_cannot" value="3" title="Road/s cannot be seen from the centre of the POS"></option>

@@ -29,14 +29,14 @@
                 android:textAppearance="?android:textAppearanceSmall"
                 android:text="@string/fragment_help_text" />
 
-            <Button
-                android:id="@+id/fragmentHelpSeeManualsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/fragmentHelpText"
-                android:text="@string/fragment_help_see_full_manuals"
-                android:textAllCaps="false"
-                android:layout_centerHorizontal="true" />
+            <!--<Button-->
+                <!--android:id="@+id/fragmentHelpSeeManualsButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/fragmentHelpText"-->
+                <!--android:text="@string/fragment_help_see_full_manuals"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:layout_centerHorizontal="true" />-->
 
         </RelativeLayout>
     </ScrollView>

@@ -25,13 +25,13 @@ public class HelpFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View fragmentLayout = inflater.inflate(R.layout.fragment_help, container, false);
-        seeManualsButton = (Button) fragmentLayout.findViewById(R.id.fragmentHelpSeeManualsButton);
-        seeManualsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(), "Not available right now, sorry...", Toast.LENGTH_LONG).show();
-            }
-        });
+//        seeManualsButton = (Button) fragmentLayout.findViewById(R.id.fragmentHelpSeeManualsButton);
+//        seeManualsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getContext(), "Not available right now, sorry...", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
         return fragmentLayout;
     }

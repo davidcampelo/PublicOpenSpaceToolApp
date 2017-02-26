@@ -40,12 +40,14 @@
     <string name="marker_click_dialog_negative">No</string>
 
     // fragment_project_list_menu
+    <string name="fragment_project_list_add">Start new project</string>
     <string name="fragment_project_list_menu_view">View Public Open Spaces</string>
     <string name="fragment_project_list_menu_add_public_open_space">Add new Public Open Space</string>
     <string name="fragment_project_list_menu_edit">Edit project</string>
     <string name="fragment_project_list_menu_delete">Delete project</string>
 
-    // fragment_public_open_space_list_menu
+    // fragment_public_open_space_list
+    <string name="fragment_public_open_space_list_add">Add new POS</string>
     <string name="fragment_public_open_space_list_menu_edit">Edit Public Open Space</string>
     <string name="fragment_public_open_space_list_menu_delete">Delete Public Open Space</string>
 
@@ -95,7 +97,7 @@
     // fragment_project_add_edit
     <string name="fragment_project_add_edit_name">Type the project name</string>
     <string name="fragment_project_add_edit_description">Type the project description</string>
-    <string name="fragment_project_add_edit_maptext">Set the geographic extent</string>
+    <string name="fragment_project_add_edit_maptext">Draw the POS</string>
     <string name="fragment_project_add_edit_save">Save and continue</string>
     <string name="fragment_project_add_edit_instructions_status">fragment_project_add_edit_instructions_status</string>
     <string name="fragment_project_add_edit_instructions_checkbox">Do not show this dialog again</string>
@@ -110,7 +112,7 @@
     // fragment_about
     <string name="fragment_about_text">The POST (Quality of Public Open Space Tool) is a well-established and validated tool designed for auditing public open spaces such as parks and other greenspaces, with particular emphasis on the physical attributes that may either encourage or discourage their use for physical activity. The POST relies on direct observation and it is composed of 49 items covering four key domains: activities, environmental quality, comfort, and safety.
         \n\n
-        This App was developed by Instituto de Saúde Publica da Universidade do Porto (ISPUP) and by the Centre for the Built Environment and Health of the University of Western Australia based on the original paper version of POST.
+        This App was developed by Instituto de Saúde Pública da Universidade do Porto (ISPUP) and by the Centre for the Built Environment and Health of the University of Western Australia based on the original paper version of POST.
         \n\n
         Besides the user-friendly interface, this electronic version now includes other functionalities, namely storing data, mapping features, and exporting the database with the audit results.
     </string>
@@ -133,7 +135,6 @@
         Then, add the POS (Public Open Space) that you are going to audit and answer to the items found in the menu tabs "Location", “General”, "Activities", "Environmental Quality", "Amenities" and “Safety”.
         \n\n
         Your project can be saved at any time. After saving it, the database with the audit results can be exported to your e-mail account in .csv and .kmz format.</string>
-
 
 
 </resources>
