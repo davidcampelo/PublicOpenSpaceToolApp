@@ -93,11 +93,11 @@ public abstract class QuestionView extends RelativeLayout {
     }
 
     /**
-     * When a {@QuestionCheckBox} this notification is thrown to the QuestionView in order
+     * {@QuestionCheckBox} send this notification to its parent QuestionView in order
      * to handle single and multiple option answers
      *
-     * NOTE: By default, if an option is checked, all the other should be unchecked
-     * @param checked
+     * NOTE: By default, for {@SingleQuestionView} if an option is checked, all the other should be unchecked
+     *       Otherwise, for {@MultipleQuestionView} if an option is checked, nothing must be done
      */
     public void notifyChecked(QuestionCheckBox checked){
         for (int i = container.getChildCount(); --i >= 0; ) {

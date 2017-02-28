@@ -36,21 +36,24 @@ public class VariableSingleQuestionView extends QuestionView {
         container = getContainer();
         questionCounter = 0;
         addMoreAndRemove();
+        // by default show one set of answers
+        createAndAddQuestionSet();
     }
 
+    /**
+     * Append to the main container Add/Remove buttons
+     */
     private void addMoreAndRemove() {
         final Context context = getContext();
 
         removeButton = new Button(context);
-        removeButton.setCompoundDrawablesRelativeWithIntrinsicBounds    (getResources().getDrawable(android.R.drawable.ic_delete), null, null, null);
+        removeButton.setCompoundDrawablesRelativeWithIntrinsicBounds(getResources().getDrawable(android.R.drawable.ic_delete), null, null, null);
         removeButton.setText("Remove area");
         removeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 // always remove the area with the highest number (the latest)
-                container.removeView(container.getChildAt(container.getChildCount()-3));
-                questionCounter--;
-                removeButton.setVisibility(questionCounter > 0? View.VISIBLE : View.INVISIBLE);
+                removeLastQuestionsSet();
             }
         });
         container.addView(removeButton);
@@ -63,13 +66,27 @@ public class VariableSingleQuestionView extends QuestionView {
         addButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                addArea();
+                createAndAddQuestionSet();
             }
         });
         container.addView(addButton);
     }
 
-    private LinearLayout addArea() {
+    /**
+     * Remove last added area
+     */
+    private void removeLastQuestionsSet() {
+        // getChildCount()-3 is used by default as at least 2 other View are already added to the
+        // main container: Add/Remove buttons
+        container.removeView(container.getChildAt(container.getChildCount()-3));
+        questionCounter--;
+        removeButton.setVisibility(questionCounter > 0? View.VISIBLE : View.INVISIBLE);
+    }
+
+    /**
+     * Create and Add a new set of answers
+     */
+    private LinearLayout createAndAddQuestionSet() {
         final Context context = getContext();
         final Question question = getQuestion();
         questionCounter++;
@@ -90,7 +107,8 @@ public class VariableSingleQuestionView extends QuestionView {
         // always add new area before the remove button
         container.addView(layout, container.getChildCount()-2);
 
-        removeButton.setVisibility(questionCounter > 0? View.VISIBLE : View.INVISIBLE);
+        // At least one Question set must be shown
+        removeButton.setVisibility(questionCounter > 1? View.VISIBLE : View.INVISIBLE);
 
         return layout;
     }
@@ -130,6 +148,10 @@ public class VariableSingleQuestionView extends QuestionView {
     public void setAnswers(String answers){
         if (answers == null || answers.length() == 0)
             return;
+        // Clean up the previously added "default" Area
+        // This area was added by the constructor
+        removeLastQuestionsSet();
+
         // get count of questions
         int index = answers.indexOf(Constants.DEFAULT_SEPARATOR);
         int areaCount = Integer.valueOf( answers.substring(0, index) );
@@ -139,7 +161,7 @@ public class VariableSingleQuestionView extends QuestionView {
         while ( tokenizer.hasMoreElements() && areaCount-- > 0  ) {
             String selectedValue = (String)tokenizer.nextElement();
 
-            LinearLayout layout = addArea();
+            LinearLayout layout = createAndAddQuestionSet();
             for (int i = layout.getChildCount(); --i >= 0 && layout.getChildAt(i) instanceof QuestionCheckBox; ) {
                 QuestionCheckBox checkBox = (QuestionCheckBox) layout.getChildAt(i);
                 if (checkBox.getOption().getValue().equals(selectedValue) ) {
