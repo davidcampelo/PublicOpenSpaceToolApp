@@ -133,7 +133,11 @@ public class PublicOpenSpaceDAO extends DAO {
         return list;
     }
     public boolean delete(PublicOpenSpace publicOpenSpace){
-        return (delete(TABLE_NAME, COLUMN_ID +"="+ publicOpenSpace.id) > 0);
+        OptionDAO optionDAO = new OptionDAO(getContext());
+        if (optionDAO.removeAllAddedByUser(publicOpenSpace))
+            return (delete(TABLE_NAME, COLUMN_ID +"="+ publicOpenSpace.id) > 0);
+        else
+            return false;
     }
 
     public static PublicOpenSpace staticGet(Context ctx, long id) {

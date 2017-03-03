@@ -126,6 +126,8 @@ public abstract class DAO {
     }
 
     protected long delete(String tableName, String whereClauses) {
+//        Log.e(this.getClass().getName(), ">>>>>>> DELETE FROM " + tableName +
+//                " WHERE " + whereClauses);
         return sqLiteDatabase.delete(tableName, whereClauses, null);
     }
 
@@ -150,5 +152,4 @@ public abstract class DAO {
     protected SQLiteDatabase getSqLiteDatabase() {
         return sqLiteDatabase;
     }
-
 }

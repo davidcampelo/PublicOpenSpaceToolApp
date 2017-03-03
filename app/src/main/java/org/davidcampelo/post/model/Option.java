@@ -50,9 +50,17 @@ public class Option {
     }
 
     /**
-     * Return if it's an "OTHER option" (an Option created by the user)
+     * Return if it's an "OTHER option" (an Option which enabled users to create new custom Options)
      */
     public boolean isOtherOption() {
         return (alias.indexOf(Constants.MULTIPLE_QUESTION_OTHER_START_STRING) > 0);
+    }
+
+
+    /**
+     * Return if it's an "OTHER option" (an Option which indicates the user may create custom Options)
+     */
+    public boolean wasAddedByUser() {
+        return alias.equals(Constants.OPTION_ALIAS_ADDED_BY_USER);
     }
 }

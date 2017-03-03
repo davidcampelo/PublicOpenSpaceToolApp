@@ -68,15 +68,30 @@ public class Question {
     }
 
     /**
-     * Remove an "other option" (a user new option) based on its title
-     *
-     * @param otherOptionTitle
+     * Remove an "other option" (a user new option)
      */
-    public void removeOtherOptionByText(String otherOptionTitle) {
+    public void removeCustomAddedOption(Option option) {
+        synchronized (options) {
+            options.remove(option);
+        }
+    }
+
+    /**
+     * Add an "other option" (a user new option)
+     */
+    public void addCustomAddedOption(Option option) {
+        synchronized (options){
+            options.add(option);
+        }
+    }
+
+    /**
+     * Remove all "other option" (user new options)
+     */
+    public void removeAllCustomAddedByUser() {
         ArrayList<Option> toRemove = new ArrayList<Option>();
         for (Option option : options) {
-            // option.id == 0 is that it's a New Other Option
-            if (option.id == 0 && option.title.indexOf(otherOptionTitle) >= 0)
+            if (option.wasAddedByUser())
                 toRemove.add(option);
         }
         synchronized (options){
@@ -86,9 +101,14 @@ public class Question {
         }
     }
 
-    public void addOption(Option option) {
-        synchronized (options){
-            options.add(option);
+    public boolean hasCustomAddedOptions() {
+        for (Option option : options) {
+            if (option.wasAddedByUser())
+                return true;
         }
+        return false;
     }
+
+
+
 }

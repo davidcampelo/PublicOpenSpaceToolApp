@@ -45,13 +45,15 @@ public class StringUtils {
      */
     public static String toStringWithNoEndingCommas(StringBuilder stringBuilder) {
         String str = stringBuilder.toString();
-        if (str.length() > 0 && str.endsWith(",")){
+        if (str.length() > 0) {
+            str = str.trim();
+        }
+        if ( str.endsWith(",") ){
             str = str.substring(0, str.length()-1);
         }
 
         return str;
     }
-
 
     public static String toString(String[] array) {
         StringBuilder b = new StringBuilder();
@@ -61,7 +63,7 @@ public class StringUtils {
                 b.append(", ");
         }
 
-        return b.toString();
+        return toStringWithNoEndingCommas(b);
     }
 
     public static String toString2(Set<String> strings) {
@@ -69,7 +71,7 @@ public class StringUtils {
         for (String str : strings){
             b.append(str + ", ");
         }
-        return b.toString();
+        return toStringWithNoEndingCommas(b);
     }
 
     public static String toString(Set<Map.Entry<String, Object>> entries) {
@@ -79,7 +81,7 @@ public class StringUtils {
             Map.Entry<String, Object> entry = i.next();
             b.append(entry.getValue()+ ", ");
         }
-        return b.toString();
+        return toStringWithNoEndingCommas(b);
     }
 
 

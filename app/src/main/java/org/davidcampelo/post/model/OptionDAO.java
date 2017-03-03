@@ -101,9 +101,9 @@ public class OptionDAO extends DAO {
     /**
      * Retrieves all Option objects based on Question and PublicOpenSpace objects
      * @param question
-     * @param publicOpenSpace if PublicOpenSpace.id == 0 then we should retrieve all the "default"
-     *                        options, otherwise we will retrieve "default" options + the user
-     *                        previously inserted ones
+     * @param publicOpenSpace if PublicOpenSpace.id == 0 then we should retrieve the "default"
+     *                        options only, otherwise we will retrieve "default" options + custom
+     *                        user Options previously inserted
      * @return
      */
     public ArrayList<Option> getAll(Question question, PublicOpenSpace publicOpenSpace) {
@@ -114,7 +114,7 @@ public class OptionDAO extends DAO {
                 "ORDER BY "+ COLUMN_ID +" ASC");
 
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            list.add(cursorToObject(cursor));
+            list.add(cursorToObject(cursor, question, publicOpenSpace));
         }
 
         cursor.close();
@@ -135,7 +135,7 @@ public class OptionDAO extends DAO {
                 "ORDER BY "+ COLUMN_ID +" ASC");
 
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-            Option option = cursorToObject(cursor);
+            Option option = cursorToObject(cursor, question, null);
             option.question = question;
             list.add(option);
         }
@@ -174,18 +174,45 @@ public class OptionDAO extends DAO {
     }
 
 
+    /**
+     * Remove all custom added Option (using the "Other" option) related to a POS
+     *
+     * This method is called when a POS is being deleted (avoid leaks)
+     */
+    public boolean removeAllAddedByUser(PublicOpenSpace publicOpenSpace){
+        return (delete(TABLE_NAME, COLUMN_POS_ID +"="+ publicOpenSpace.id) > 0);
+    }
+
+    /**
+     * Remove all custom added Option (using the "Other" option).
+     *
+     * This method is called when a POS is being saved as all custom Options are being re-stored.
+     */
+    public boolean removeAllCustomAddedOptions(Question question, PublicOpenSpace publicOpenSpace){
+        return (delete(TABLE_NAME, COLUMN_QST_NUMBER +"='"+ question.getNumber() +"' AND "+
+                                   COLUMN_POS_ID +"="+ publicOpenSpace.id) > 0);
+    }
+
+    /**
+     * If default Options are already stored in the DB
+     */
     public boolean isPopulated() {
-//        Log.e(this.getClass().getName(), "count() == "+ count());
         return ( count() >= Constants.NUMBER_OF_OPTIONS );
     }
     private Option cursorToObject(Cursor cursor) {
+        return cursorToObject(cursor, null, null);
+    }
+
+    private Option cursorToObject(Cursor cursor, Question question, PublicOpenSpace publicOpenSpace) {
         return new Option(
                 cursor.getLong(0),      // id
                 cursor.getString(1),    // alias
                 cursor.getString(2),    // value
                 cursor.getString(3),    // title
-                null,                   // Question
-                null                    // PublicOpenSpace
+                question,               // Question
+                publicOpenSpace         // PublicOpenSpace
         );
     }
+
+
 }

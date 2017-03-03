@@ -149,6 +149,8 @@ public class CSVUtils {
                                 stringBuilderAnswers.append("\"");
                                 for (Long optionId : selectedIds) {
                                     // insert OTHER option into the StringBuffer
+                                    if (optionId == 0)
+                                        continue;
                                     Option otherOption = optionDAO.get(optionId);
                                     stringBuilderAnswers.append(otherOption.getTitle() + Constants.DEFAULT_SEPARATOR);
                                 }
