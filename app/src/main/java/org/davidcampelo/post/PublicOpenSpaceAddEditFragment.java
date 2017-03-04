@@ -19,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
+import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -131,7 +132,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
         tabHost = (TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost);
         // fill tabs
-        fillTabTitles(tabHost);
+        setupTabs(tabHost);
 
         questionNumberToViewMap = new HashMap<>();
         loadQuestionsAndOptions();
@@ -284,10 +285,11 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         posTypeDialog = builder.create();
     }
 
-    private void fillTabTitles(TabHost host) {
+    private void setupTabs(TabHost host) {
         host.setup();
         TabHost.TabSpec spec;
 
+        // Set up titles
         int[] tabContents = new int[]{R.id.addEditItemTab0, R.id.addEditItemTab1, R.id.addEditItemTab2, R.id.addEditItemTab3, R.id.addEditItemTab4, R.id.addEditItemTab5};
 
         for (int i = -1; ++i < Constants.TAB_TITLES.length; ) {
@@ -297,6 +299,19 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             spec.setIndicator(Constants.TAB_TITLES[i]);
             host.addTab(spec);
             ((TextView) host.getTabWidget().getChildAt(i).findViewById(android.R.id.title)).setAllCaps(false);
+        }
+
+        // Apply the right style
+        TabWidget widget = host.getTabWidget();
+        for(int i = 0; i < widget.getChildCount(); i++) {
+            View v = widget.getChildAt(i);
+
+            // Look for the title view to ensure this is an indicator and not a divider.
+            TextView tv = (TextView)v.findViewById(android.R.id.title);
+            if(tv == null) {
+                continue;
+            }
+            v.setBackgroundResource(R.drawable.tab_indicator_ab_green);
         }
     }
 
