@@ -66,7 +66,7 @@ public class AboutFragment extends Fragment {
 
 
     private void buildDefaultDataDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.StackedAlertDialogStyle);
         builder.setTitle(R.string.fragment_settings_default_dialog_title);
         builder.setMessage(R.string.fragment_settings_default_dialog_question);
         builder.setPositiveButton(R.string.fragment_settings_default_dialog_positive, new DialogInterface.OnClickListener() {
