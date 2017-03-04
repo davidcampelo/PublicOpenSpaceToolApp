@@ -255,7 +255,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
     private void buildTypeDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        //builder.setTitle("Please choose P.O.S. type");
+        builder.setTitle(R.string.fragment_public_open_space_add_edit_type_dialog_title);
         builder.setSingleChoiceItems(getResources().getStringArray(R.array.public_open_space_types), 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int item) {

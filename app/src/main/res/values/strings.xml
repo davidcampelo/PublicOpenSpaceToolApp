@@ -74,6 +74,8 @@
 
     // fragment_public_open_space_add_edit
     <string name="fragment_public_open_space_add_edit_instructions_status">fragment_public_open_space_add_edit_instructions_status</string>
+    <string name="fragment_public_open_space_add_edit_type_dialog_title">Please choose POS type</string>
+    <string name="fragment_public_open_space_add_edit_add_dialog_title">Add new POS</string>
     <string name="fragment_public_open_space_add_edit_add_dialog_text">Would you like to add a new POS to your project now?</string>
     <string name="fragment_public_open_space_add_edit_add_dialog_positive">Yes, I want to add a new POS right now.</string>
     <string name="fragment_public_open_space_add_edit_add_dialog_negative">No, I have finished or I will add a new POS at another time</string>
