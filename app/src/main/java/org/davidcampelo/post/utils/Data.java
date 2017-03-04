@@ -48,7 +48,7 @@ import org.xml.sax.SAXException;
 public class Data {
 
 
-    private static final String SQL_FILENAME = "POST_DataExport_2017fev01.sql";
+    private static final String SQL_FILENAME = "POST_DataExport_2017mar04.sql";
     private static final String XML_FILENAME = "POST_DataExport-1363984559.xml";
 
     static class XMLDOMParser {
@@ -114,7 +114,7 @@ public class Data {
             genericDAO = new GenericDAO(context);
             genericDAO.open();
             while ((sCurrentLine = br.readLine()) != null && sCurrentLine.length() > 0) {
-                Log.e("[DATA]", "==> "+ sCurrentLine);
+                //Log.e("[DATA]", "==> "+ sCurrentLine);
                 genericDAO.exec(sCurrentLine);
             }
         }
