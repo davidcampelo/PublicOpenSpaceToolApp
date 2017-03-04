@@ -104,4 +104,14 @@
         <item name="dropDownListViewStyle">@style/DropDownListView.Green</item>
     </style>
 
+    <style name="StackedAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="buttonBarButtonStyle">@style/StackedButtonBarButtonStyle</item>
+    </style>
+
+    <style name="StackedButtonBarButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:layout_gravity">right</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>

@@ -66,7 +66,7 @@ public class SettingsFragment extends Fragment {
     }
 
     private void buildResetDataDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.StackedAlertDialogStyle);
         builder.setTitle(R.string.fragment_settings_reset_dialog_title);
         builder.setMessage(R.string.fragment_settings_reset_dialog_question);
         builder.setPositiveButton(R.string.fragment_settings_reset_dialog_positive, new DialogInterface.OnClickListener() {
