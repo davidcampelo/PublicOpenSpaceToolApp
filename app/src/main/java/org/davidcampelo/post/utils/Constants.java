@@ -23,6 +23,8 @@ public class Constants {
             "Amenities",
             "Safety"
     };
+    // At least 70% questions must be answered
+    public static final double MINIMUM_QUESTIONS_TO_BE_ANSWERED = 0.7f;
     // Date format used to show date in the app
     public static SimpleDateFormat APPLICATION_DATE_FORMAT = new SimpleDateFormat("dd/MMM/yyyy");
 

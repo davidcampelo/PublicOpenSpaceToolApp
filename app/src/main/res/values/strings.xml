@@ -74,6 +74,9 @@
 
     // fragment_public_open_space_add_edit
     <string name="fragment_public_open_space_add_edit_instructions_status">fragment_public_open_space_add_edit_instructions_status</string>
+    <string name="fragment_public_open_space_add_edit_add_dialog_text">Would you like to add a new POS to your project now?</string>
+    <string name="fragment_public_open_space_add_edit_add_dialog_positive">Yes, I want to add a new POS right now.</string>
+    <string name="fragment_public_open_space_add_edit_add_dialog_negative">No, I have finished or I will add a new POS at another time</string>
     <string name="fragment_public_open_space_add_edit_instructions_checkbox">Do not show this dialog again</string>
     <string name="fragment_public_open_space_add_edit_instructions_button">OK</string>
     <string name="fragment_public_open_space_add_edit_instructions_text">Add a name to the POS and draw a polygon representing the POS limits. Press and hold to draw the points that delimit the POS.

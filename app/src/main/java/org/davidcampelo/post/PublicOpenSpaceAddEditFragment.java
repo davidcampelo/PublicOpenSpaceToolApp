@@ -66,12 +66,14 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
     View fragmentLayout;
     TextView posName;
+    TabHost tabHost;
 
     MapView mapView;
     GoogleMap googleMap;
     private ArrayList<LatLng> arrayPoints;
     LatLng markerPointClick;
     private AlertDialog markerDialog;
+
 
 
     private Button saveButton;
@@ -127,8 +129,9 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         saveButton = (Button) fragmentLayout.findViewById(R.id.addEditSaveButton);
         posType = (ImageButton) fragmentLayout.findViewById(R.id.addEditItemType);
 
+        tabHost = (TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost);
         // fill tabs
-        fillTabTitles((TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost));
+        fillTabTitles(tabHost);
 
         questionNumberToViewMap = new HashMap<>();
         loadQuestionsAndOptions();
@@ -146,6 +149,11 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
             public void onClick(View view) {
                 try {
                     saveObject();
+
+                    if (tabHost.getCurrentTab() == tabHost.getTabWidget().getTabCount() - 1 &&
+                            percentageOfQuestionsAnswered() > Constants.MINIMUM_QUESTIONS_TO_BE_ANSWERED) {
+                        showAddNewPOSDialog();
+                    }
                 } catch (AnswerMissingException e) {
                     Toast.makeText(PublicOpenSpaceAddEditFragment.this.getActivity(), "Warning: Answers for Question "+ e.getQuestion().getNumber() +" are missing, please review!", Toast.LENGTH_SHORT).show();
                 }
@@ -164,6 +172,54 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         buildTypeDialog();
 
         return fragmentLayout;
+    }
+
+    private void showAddNewPOSDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.StackedAlertDialogStyle);
+        builder.setTitle(R.string.fragment_public_open_space_add_edit_add_dialog_text);
+        builder.setPositiveButton(R.string.fragment_public_open_space_add_edit_add_dialog_positive, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Bundle args = new Bundle();
+                args.putParcelable(Constants.PROJECT_EXTRA, publicOpenSpace.getProject());
+                Fragment fragment = new PublicOpenSpaceAddEditFragment();
+                fragment.setArguments(args);
+
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, fragment)
+                        .addToBackStack("")
+                        .commit();
+            }
+        });
+        builder.setNegativeButton(R.string.fragment_public_open_space_add_edit_add_dialog_negative, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // do nothing
+            }
+        });
+
+        AlertDialog addNewDialogObject = builder.create();
+        addNewDialogObject.show();
+    }
+
+    private double percentageOfQuestionsAnswered() {
+        HashMap<Question, String> questionToAnswersMap = new HashMap<Question, String>();
+
+        int totalQuestions = questionNumberToViewMap.keySet().size();
+        int totalValidAnswers = 0;
+        for (String questionNumber : questionNumberToViewMap.keySet()) {
+            QuestionView questionView = questionNumberToViewMap.get(questionNumber);
+            String answer = null;
+            try {
+                answer = questionView.getAnswers();
+            }
+            catch (AnswerMissingException e) {}
+            if (answer != null && answer.length() > 0){
+                totalValidAnswers++;
+            }
+        }
+        return (double)totalValidAnswers/(double)totalQuestions;
     }
 
 
@@ -403,7 +459,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
     ///////////////////////////     MAP METHODS   ////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void buildMarkerDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.StackedAlertDialogStyle);
             builder.setMessage(R.string.marker_click_dialog_question);
         builder.setPositiveButton(R.string.marker_click_dialog_positive, new DialogInterface.OnClickListener() {
             @Override
