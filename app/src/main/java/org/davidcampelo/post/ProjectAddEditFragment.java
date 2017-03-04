@@ -196,7 +196,7 @@ public class ProjectAddEditFragment extends Fragment
     ///////////////////////////     MAP METHODS   ////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void buildMarkerDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.StackedAlertDialogStyle);
             builder.setMessage(R.string.marker_click_dialog_question);
         builder.setPositiveButton(R.string.marker_click_dialog_positive, new DialogInterface.OnClickListener() {
             @Override
