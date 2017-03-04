@@ -17,8 +17,8 @@ android {
         applicationId "org.davidcampelo.post"
         minSdkVersion 17
         targetSdkVersion 24
-        versionCode 11
-        versionName "0.11"
+        versionCode 12
+        versionName "0.12"
         signingConfig signingConfigs.release
     }
     buildTypes {
