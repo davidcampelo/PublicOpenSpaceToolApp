@@ -22,6 +22,9 @@ import java.util.StringTokenizer;
  */
 public class VariableSingleQuestionView extends QuestionView {
     LinearLayout container;
+    /**
+     * Internal counter Question set being shown
+     */
     int questionCounter;
 
     Button addButton, removeButton;
@@ -80,7 +83,7 @@ public class VariableSingleQuestionView extends QuestionView {
         // main container: Add/Remove buttons
         container.removeView(container.getChildAt(container.getChildCount()-3));
         questionCounter--;
-        removeButton.setVisibility(questionCounter > 0? View.VISIBLE : View.INVISIBLE);
+        removeButton.setVisibility(questionCounter > 1? View.VISIBLE : View.INVISIBLE);
     }
 
     /**
@@ -135,7 +138,10 @@ public class VariableSingleQuestionView extends QuestionView {
             }
         }
 
-        if (answersCount < questionCounter) {
+        // Forces to have answers for all areas being shown
+        // But accepts if one area is being shown with no answers
+        if (answersCount < questionCounter &&
+                !(answersCount == 0 && questionCounter == 1)) {
             throw new AnswerMissingException(getQuestion());
         }
         return answers.toString();
