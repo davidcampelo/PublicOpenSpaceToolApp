@@ -19,7 +19,7 @@ public class StringUtils {
 
     public static void writeToFile(FileWriter out, String string) throws IOException {
         out.write(string + "\n");
-        Log.e("[EXPORT]", string);
+        // Log.e("[EXPORT]", string);
     }
 
     /**
