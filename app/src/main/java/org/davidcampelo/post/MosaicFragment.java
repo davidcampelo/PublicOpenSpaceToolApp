@@ -5,17 +5,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 
 public class MosaicFragment extends Fragment {
 
-    ImageButton imageButtonNewProject,
-                imageButtonOpenProject,
-                imageButtonExportData,
-                imageButtonSettings,
-                imageButtonAbout,
-                imageButtonHelp;
+    Button  buttonNewProject,
+            buttonOpenProject,
+            buttonExportData,
+            buttonSettings,
+            buttonAbout,
+            buttonHelp;
 
     public MosaicFragment() {
         //
@@ -29,14 +29,14 @@ public class MosaicFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View fragmentLayout = inflater.inflate(R.layout.fragment_mosaic, container, false);
-        imageButtonNewProject = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonNewProject);
-        imageButtonOpenProject = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonOpenProject);
-        imageButtonSettings = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonSettings);
-        imageButtonExportData = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonExportData);
-        imageButtonAbout = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonAbout);
-        imageButtonHelp = (ImageButton) fragmentLayout.findViewById(R.id.imageButtonHelp);
+        buttonNewProject = (Button) fragmentLayout.findViewById(R.id.buttonNewProject);
+        buttonOpenProject = (Button) fragmentLayout.findViewById(R.id.buttonOpenProject);
+        buttonSettings = (Button) fragmentLayout.findViewById(R.id.buttonSettings);
+        buttonExportData = (Button) fragmentLayout.findViewById(R.id.buttonExportData);
+        buttonAbout = (Button) fragmentLayout.findViewById(R.id.buttonAbout);
+        buttonHelp = (Button) fragmentLayout.findViewById(R.id.buttonHelp);
 
-        imageButtonNewProject.setOnClickListener(new View.OnClickListener() {
+        buttonNewProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager()
@@ -47,7 +47,7 @@ public class MosaicFragment extends Fragment {
             }
         });
 
-        imageButtonOpenProject.setOnClickListener(new View.OnClickListener() {
+        buttonOpenProject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager()
@@ -58,7 +58,7 @@ public class MosaicFragment extends Fragment {
             }
         });
 
-            imageButtonExportData.setOnClickListener(new View.OnClickListener() {
+            buttonExportData.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                 getFragmentManager()
@@ -69,7 +69,7 @@ public class MosaicFragment extends Fragment {
             }
         });
 
-        imageButtonAbout.setOnClickListener(new View.OnClickListener() {
+        buttonAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager()
@@ -80,7 +80,7 @@ public class MosaicFragment extends Fragment {
             }
         });
 
-        imageButtonSettings.setOnClickListener(new View.OnClickListener() {
+        buttonSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager()
@@ -90,7 +90,7 @@ public class MosaicFragment extends Fragment {
                         .commit();
             }
         });
-        imageButtonHelp.setOnClickListener(new View.OnClickListener() {
+        buttonHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager()

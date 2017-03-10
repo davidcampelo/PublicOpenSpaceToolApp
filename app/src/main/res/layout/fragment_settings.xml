@@ -16,13 +16,6 @@
         android:id="@+id/settingsResetDataButton"
         android:text="@string/fragment_settings_reset_data"
         android:textAllCaps="false"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/settingsDefaultPortoDataButton"
-        android:text="@string/fragment_settings_default_data"
-        android:visibility="invisible"
-        android:textAllCaps="false"/>
+z
 
 </LinearLayout>
