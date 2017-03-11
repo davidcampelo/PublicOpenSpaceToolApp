@@ -6,7 +6,6 @@
     <dimen name="lists_vertical_padding">2dp</dimen>
     <dimen name="question_hint_padding">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="text_margin">2dp</dimen>
 
     <dimen name="navdrawer_width">260dp</dimen>
 

@@ -38,7 +38,6 @@ public class Constants {
     public static final String POLYGON_COORDINATES_SEPARATOR = ",";
     public static final String POLYGON_POINTS_SEPARATOR = " ";
     public static final ArrayList<LatLng> PORTUGAL_BOUNDING_POINTS;
-    public static final int LIST_ROW_COLOR = Color.argb(150, 240,240,240);
     // The "other option" (an Option created by the user) item must always have this substring (e.g. 8.other_act)
     public static final String MULTIPLE_QUESTION_OTHER_START_STRING = ".other";
     // Custom Option objects added by user (using the "other" option) will have the same alias

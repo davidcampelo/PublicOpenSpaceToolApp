@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -149,55 +150,5 @@ public class PublicOpenSpaceListFragment extends ListFragment {
                 .replace(R.id.mainContainer, fragment)
                 .addToBackStack("")
                 .commit();
-    }
-
-    // Date format to show date on list
-    // Utility class to keep list row values
-    public static class ViewHolder{
-        TextView name;
-        TextView date;
-        ImageView image;
-    }
-    /**
-     * Inner class for handling list adapter rows
-     */
-    class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
-
-        public PublicOpenSpaceListAdapter(Context context, ArrayList<PublicOpenSpace> list) {
-            super(context, 0, list);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            PublicOpenSpace object = getItem(position);
-
-            ViewHolder viewHolder;
-
-            if (convertView == null){
-
-                viewHolder = new ViewHolder();
-
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_public_open_space_list_row, parent, false);
-                if (position % 2 == 0) {
-                    convertView.setBackgroundColor(Constants.LIST_ROW_COLOR);
-                }
-
-                viewHolder.name = (TextView) convertView.findViewById(R.id.listItemName);
-                viewHolder.date = (TextView) convertView.findViewById(R.id.listItemDate);
-                viewHolder.image = (ImageView) convertView.findViewById(R.id.listItemType);
-
-                convertView.setTag(viewHolder);
-            }
-            else{
-                viewHolder = (ViewHolder) convertView.getTag();
-            }
-
-            viewHolder.name.setText(object.getName());
-            viewHolder.date.setText("Added on "+ Constants.APPLICATION_DATE_FORMAT.format(new Date(object.getDateCreation())));
-            viewHolder.image.setImageResource(object.getTypeResource());
-
-
-            return convertView;
-        }
     }
 }

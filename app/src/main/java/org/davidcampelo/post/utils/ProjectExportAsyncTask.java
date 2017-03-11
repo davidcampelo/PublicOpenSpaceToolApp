@@ -119,7 +119,7 @@ public class ProjectExportAsyncTask extends AsyncTask<String, String, String> {
                 listFilesToExport.add(Uri.fromFile(new File(context.getExternalCacheDir() + "/POST_codebook.pdf")));
             }
              if (sql) {
-                publishProgress("Creating SQL file...");
+                publishProgress("Creating Backup file...");
                 File sqlFile = SQLUtils.export( context, project);
                 listFilesToExport.add(Uri.fromFile(sqlFile));
             }
