@@ -129,7 +129,7 @@
     <question alias="18a.paths" number="18a" hint="Paths are cleared tracks with hard surfaces that can be used for walking or cycling. The surface of a path may vary to include stone, concrete, dirt or gravel. Only tick 'designated dual-use path/s' if signage or markings on the path indicate that cycling is permitted." type="MULTIPLE_CHOICE" title="Are the walking paths or cycleways within or around the POS? (tick all relevant)">
             <option alias="18a.walkpaths" value="1" title="Walking path/s"></option>
             <option alias="18a.dualpaths" value="1" title="Designated dual use path/s"></option>
-            <option alias="18a.none_paths" value="1" title="None"></option>
+            <option alias="18a.none_paths" value="1" title="None (Go to Q20"></option>
     </question>
     
         <!-- QUESTION 18b -->
@@ -316,7 +316,7 @@
         <!-- QUESTION 43 -->
     <question alias="43.lighting" number="43" hint="This question relates to lighting specific to the POS. It does not include normal street lighting." type="SINGLE_CHOICE" title="Is there lighting within the POS? (i.e., not just street lighting)">
             <option alias="43.yes" value="1" title="Yes"></option>
-            <option alias="43.no" value="" title="No (go to Q45)"></option>
+            <option alias="43.no" value="0" title="No (go to Q45)"></option>
     </question>
     
         <!-- QUESTION 44 -->
