@@ -65,6 +65,9 @@
     <Button
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:background="@drawable/rounded_button_border"
+    android:textColor="@android:color/white"
     android:id="@+id/exportDataButton"
     android:text="@string/fragment_export_data_button"
     android:textAllCaps="false"/>

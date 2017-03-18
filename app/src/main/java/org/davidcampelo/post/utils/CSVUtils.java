@@ -133,39 +133,49 @@ public class CSVUtils {
                     if (questionAnswers == null) {
                         questionAnswers = "";
                     }
-                    ArrayList<Long> selectedIds = StringUtils.splitIntoOptionIds(questionAnswers);
-                    for (Option option : question.getAllOptions()) {
-                        // if it's an "OTHER option" (an Option created by the user), we must put
-                        // them all together in the same column
-                        if (option.isOtherOption()) {
-                            if (selectedIds.size() == 0) {
-                                stringBuilderAnswers.append("\"0\""+ Constants.CSV_SEPARATOR);
-                                stringBuilderAnswers.append("\"\""+ Constants.CSV_SEPARATOR);
-                            }
-                            else {
-                                stringBuilderAnswers.append("\"1\""+ Constants.CSV_SEPARATOR);
-                                OptionDAO optionDAO = new OptionDAO(context);
-                                optionDAO.open();
-                                stringBuilderAnswers.append("\"");
-                                for (Long optionId : selectedIds) {
-                                    // insert OTHER option into the StringBuffer
-                                    if (optionId == 0)
-                                        continue;
-                                    Option otherOption = optionDAO.get(optionId);
-                                    stringBuilderAnswers.append(otherOption.getTitle() + Constants.DEFAULT_SEPARATOR);
+                    // If this Question was disabled by another Option previously checked
+                    // we must put an empty value in every column
+                    if (questionAnswers.equals(Constants.DEFAULT_NOT_ENABLED_QUESTION)) {
+                        for (Option option : question.getAllOptions()) {
+                            stringBuilderAnswers.append("\"\"" + Constants.CSV_SEPARATOR);
+                            // The other option has one value more :)
+                            if (option.isOtherOption())
+                                stringBuilderAnswers.append("\"\"" + Constants.CSV_SEPARATOR);
+                        }
+                    }
+                    else {
+                        ArrayList<Long> selectedIds = StringUtils.splitIntoOptionIds(questionAnswers);
+                        for (Option option : question.getAllOptions()) {
+
+                            // if it's an "OTHER option" (an Option created by the user), we must put
+                            // them all together in the same column
+                            if (option.isOtherOption()) {
+                                if (selectedIds.size() == 0) {
+                                    stringBuilderAnswers.append("\"0\"" + Constants.CSV_SEPARATOR);
+                                    stringBuilderAnswers.append("\"\"" + Constants.CSV_SEPARATOR);
+                                } else {
+                                    stringBuilderAnswers.append("\"1\"" + Constants.CSV_SEPARATOR);
+                                    OptionDAO optionDAO = new OptionDAO(context);
+                                    optionDAO.open();
+                                    stringBuilderAnswers.append("\"");
+                                    for (Long optionId : selectedIds) {
+                                        // insert OTHER option into the StringBuffer
+                                        if (optionId == 0)
+                                            continue;
+                                        Option otherOption = optionDAO.get(optionId);
+                                        stringBuilderAnswers.append(otherOption.getTitle() + Constants.DEFAULT_SEPARATOR);
+                                    }
+                                    // XXX Remove last separator :D
+                                    stringBuilderAnswers.deleteCharAt(stringBuilderAnswers.length() - 1);
+                                    stringBuilderAnswers.append("\"" + Constants.CSV_SEPARATOR);
+                                    optionDAO.close();
                                 }
-                                // XXX Remove last comma :D
-                                stringBuilderAnswers.deleteCharAt(stringBuilderAnswers.length() - 1);
-                                stringBuilderAnswers.append("\""+ Constants.CSV_SEPARATOR);
-                                optionDAO.close();
+                            } else if (selectedIds.contains(option.getId())) {
+                                stringBuilderAnswers.append("\"1\"" + Constants.CSV_SEPARATOR);
+                                selectedIds.remove(option.getId());
+                            } else {
+                                stringBuilderAnswers.append("\"0\"" + Constants.CSV_SEPARATOR);
                             }
-                        }
-                        else if ( selectedIds.contains(option.getId()) ) {
-                            stringBuilderAnswers.append("\"1\""+ Constants.CSV_SEPARATOR);
-                            selectedIds.remove(option.getId());
-                        }
-                        else{
-                            stringBuilderAnswers.append("\"0\""+ Constants.CSV_SEPARATOR);
                         }
                     }
                 }
@@ -178,7 +188,7 @@ public class CSVUtils {
                     stringBuilderAnswers.append("\"" +questionAnswers.substring(pos+1) + "\""+ Constants.CSV_SEPARATOR);
                 }
                 else if (questionType == Question.QuestionType.VARIABLE_SINGLE_CHOICE){   // Question 29
-                    if (questionAnswers == null || questionAnswers.length() == 0) {
+                    if (questionAnswers == null || questionAnswers.length() == 0 ) {
                         questionAnswers = "0" + Constants.DEFAULT_SEPARATOR;
                     }
 
@@ -194,7 +204,7 @@ public class CSVUtils {
                     }
                     // fill up the end with zero
                     for (int i = answersCount + 1; i <= MAX_NUMBER_OF_VARIABLE_SINGLE_CHOICE_QUESTION; i++){
-                        stringBuilderAnswers.append("\"0\""+ Constants.CSV_SEPARATOR);
+                        stringBuilderAnswers.append("\"\""+ Constants.CSV_SEPARATOR);
                     }
                 }
                 else {

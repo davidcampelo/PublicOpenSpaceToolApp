@@ -27,6 +27,7 @@ public class VariableSingleQuestionView extends QuestionView {
      */
     int questionCounter;
 
+    private final int DEFAULT_MINUMUM_NUMBER_OF_QUESTION_SET = 1;
     Button addButton, removeButton;
 
     public VariableSingleQuestionView(Context context, Question question) {
@@ -79,11 +80,13 @@ public class VariableSingleQuestionView extends QuestionView {
      * Remove last added area
      */
     private void removeLastQuestionsSet() {
+        if (questionCounter == 0)
+            return;
         // getChildCount()-3 is used by default as at least 2 other View are already added to the
         // main container: Add/Remove buttons
         container.removeView(container.getChildAt(container.getChildCount()-3));
         questionCounter--;
-        removeButton.setVisibility(questionCounter > 1? View.VISIBLE : View.INVISIBLE);
+        removeButton.setVisibility(questionCounter > DEFAULT_MINUMUM_NUMBER_OF_QUESTION_SET ? View.VISIBLE : View.INVISIBLE);
     }
 
     /**
@@ -111,7 +114,7 @@ public class VariableSingleQuestionView extends QuestionView {
         container.addView(layout, container.getChildCount()-2);
 
         // At least one Question set must be shown
-        removeButton.setVisibility(questionCounter > 1? View.VISIBLE : View.INVISIBLE);
+        removeButton.setVisibility(questionCounter > DEFAULT_MINUMUM_NUMBER_OF_QUESTION_SET ? View.VISIBLE : View.INVISIBLE);
 
         return layout;
     }
@@ -122,6 +125,7 @@ public class VariableSingleQuestionView extends QuestionView {
      * NUMBER_OF_AREAS | ANSWER_1 | ANSWER_2  | .. | ANSWER_N
      */
     public String getAnswers() throws AnswerMissingException {
+
         StringBuilder answers = new StringBuilder();
         int answersCount = 0;
         answers.append(questionCounter + Constants.DEFAULT_SEPARATOR);
@@ -190,5 +194,16 @@ public class VariableSingleQuestionView extends QuestionView {
                     checkbox.setCheckedNoNotify(false);
             }
         }
+    }
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+
+        if (!enabled) {
+            while (questionCounter > 0)
+                removeLastQuestionsSet();
+        }
+        if (enabled && questionCounter == 0)
+            createAndAddQuestionSet();
     }
 }

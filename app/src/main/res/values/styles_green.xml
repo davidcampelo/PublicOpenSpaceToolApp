@@ -31,6 +31,7 @@
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_green</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Green</item>
         <item name="android:textViewStyle">@style/MyTextViewStyle</item>
+        <item name="android:tabWidgetStyle">@style/TabWidget.Green</item>
     </style>
     <style name="MyFloatingActionButton" parent="Theme.Green">
         <item name="colorAccent">@color/colorPrimaryDark</item></style>
@@ -67,7 +68,7 @@
         <item name="android:tabStripLeft">@null</item>
         <item name="android:tabStripRight">@null</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
-        <item name="android:divider">@android:color/black</item>
+        <item name="android:divider">@android:color/transparent</item>
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabSelectedTextColor">@color/colorPrimaryLight</item>
     </style>

@@ -2,6 +2,7 @@ package org.davidcampelo.post.view;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Canvas;
 import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.PublicOpenSpace;
 import org.davidcampelo.post.model.Question;
 
+import java.util.ArrayList;
+
 /**
  * Created by davidcampelo on 8/1/16.
  */
@@ -32,7 +35,7 @@ public abstract class QuestionView extends RelativeLayout {
     private TextView title;
     private ImageView hintButton;
     private LinearLayout container;
-
+    private DisableQuestionNumbersListener disableQuestionNumbersListener;
 
     public QuestionView(Context context, Question question){
         super(context);
@@ -152,4 +155,22 @@ public abstract class QuestionView extends RelativeLayout {
      * - INPUT_TEXT/NUMBER/DECIMAL: Text typed by the user
      */
     public abstract void setAnswers(String answers);
+
+    /** The methods notifyEnable/notifyDisabled are called by the {@QuestionCheckBox}
+     *  if an Option with disable_question_numbers is checked or unchecked. If this
+     *  Option is checked, disableQuestions() must be called, otherwise enableQuestions()
+     *  is called.
+     */
+    public void  notifyEnableQuestionNumbers(ArrayList<String> disabledQuestionNumbers) {
+        disableQuestionNumbersListener.enableQuestions(disabledQuestionNumbers);
+    }
+
+    public void notifyDisableQuestionNumbers(ArrayList<String> disabledQuestionNumbers) {
+        disableQuestionNumbersListener.disableQuestions(disabledQuestionNumbers);
+    }
+
+    public void setDisableQuestionNumbersListener(DisableQuestionNumbersListener listener) {
+        this.disableQuestionNumbersListener = listener;
+    }
+
 }

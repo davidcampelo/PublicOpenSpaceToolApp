@@ -111,9 +111,9 @@ public abstract class DAO {
     }
 
     protected long insert(String tableName, ContentValues values) {
-//        Log.e(this.getClass().getName(), ">>>>>>> INSERT INTO " + tableName +
-//                "(" + StringUtils.toString2(values.keySet()) +
-//                ") VALUES(" + StringUtils.toString(values.valueSet()) + ")");
+        Log.e(this.getClass().getName(), ">>>>>>> INSERT INTO " + tableName +
+                "(" + StringUtils.toString2(values.keySet()) +
+                ") VALUES(" + StringUtils.toString(values.valueSet()) + ")");
 
         return sqLiteDatabase.insert(tableName, null, values);
     }

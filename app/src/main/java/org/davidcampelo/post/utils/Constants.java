@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Constants {
 
     public static final String DATABASE_NAME = "post.db";
-    public static final int    DATABASE_VERSION = 50;
+    public static final int    DATABASE_VERSION = 51;
 
     public static final String[] TAB_TITLES = new String[]{
             "Location",
@@ -25,6 +25,8 @@ public class Constants {
     };
     // At least 70% questions must be answered
     public static final double MINIMUM_QUESTIONS_TO_BE_ANSWERED = 0.5f;
+    // If a given Question is not enabled (as a previous Option was marked)
+    public static final String DEFAULT_NOT_ENABLED_QUESTION = "-1";
     // Date format used to show date in the app
     public static SimpleDateFormat APPLICATION_DATE_FORMAT = new SimpleDateFormat("dd/MMM/yyyy");
 
@@ -38,7 +40,6 @@ public class Constants {
     public static final String POLYGON_COORDINATES_SEPARATOR = ",";
     public static final String POLYGON_POINTS_SEPARATOR = " ";
     public static final ArrayList<LatLng> PORTUGAL_BOUNDING_POINTS;
-    public static final int LIST_ROW_COLOR = Color.argb(150, 240,240,240);
     // The "other option" (an Option created by the user) item must always have this substring (e.g. 8.other_act)
     public static final String MULTIPLE_QUESTION_OTHER_START_STRING = ".other";
     // Custom Option objects added by user (using the "other" option) will have the same alias

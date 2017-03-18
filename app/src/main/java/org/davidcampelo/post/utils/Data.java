@@ -48,7 +48,7 @@ import org.xml.sax.SAXException;
 public class Data {
 
 
-    private static final String SQL_FILENAME = "POST_DataExport_2017mar04.sql";
+    private static final String SQL_FILENAME = "POST_DataExport_2017mar16.sql";
     private static final String XML_FILENAME = "POST_DataExport-1363984559.xml";
 
     static class XMLDOMParser {
@@ -205,7 +205,7 @@ public class Data {
         Option option = null;
         OptionDAO optionDAO = new OptionDAO(context);
         optionDAO.open();
-        XmlResourceParser xpp = resources.getXml(R.xml.questions_with_alias_and_hint_v3);
+        XmlResourceParser xpp = resources.getXml(R.xml.questions_with_alias_and_hint_and_disabled_v4);
 
         // check state
         int eventType = -1;
@@ -236,8 +236,17 @@ public class Data {
                         String value = xpp.getAttributeValue(null, "value");
                         String alias = xpp.getAttributeValue(null, "alias");
                         String title = xpp.getAttributeValue(null, "title");
+                        String disable_question_numbers = xpp.getAttributeValue(null, "disable_question_numbers");
 
-                        option = optionDAO.insert(new Option(alias, value, title, question));
+                        option = optionDAO.insert(
+                                new Option(
+                                        alias,
+                                        value,
+                                        title,
+                                        question,
+                                        StringUtils.toArrayList(disable_question_numbers, Constants.DEFAULT_SEPARATOR)
+                                )
+                        );
 
 //                        Log.e("[DATA]", "====> "+
 //                                option.getAlias()+" - "+

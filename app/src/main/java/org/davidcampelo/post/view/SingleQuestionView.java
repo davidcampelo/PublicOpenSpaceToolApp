@@ -53,5 +53,4 @@ public class SingleQuestionView extends QuestionView {
             }
         }
     }
-
 }

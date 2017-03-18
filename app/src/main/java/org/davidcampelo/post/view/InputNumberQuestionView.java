@@ -42,4 +42,11 @@ public class InputNumberQuestionView extends QuestionView {
         containerText.setText(text);
     }
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+
+        if (!enabled)
+            containerText.setText("");
+    }
 }

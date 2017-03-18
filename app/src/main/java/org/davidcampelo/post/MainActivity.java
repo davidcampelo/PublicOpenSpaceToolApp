@@ -55,8 +55,12 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
+        String[] menuList = getResources().getStringArray(R.array.menu_titles);
+        for (int i = menuList.length; --i>=0;) {
+            menuList[i] = menuList[i].toUpperCase();
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, getResources().getStringArray(R.array.menu_titles));
+                R.layout.drawer_layout_simple_list, android.R.id.text1, menuList);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
