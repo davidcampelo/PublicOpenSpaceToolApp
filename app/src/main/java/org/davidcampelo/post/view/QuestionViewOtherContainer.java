@@ -17,6 +17,8 @@ import org.davidcampelo.post.model.Option;
 import org.davidcampelo.post.model.Question;
 import org.davidcampelo.post.utils.Constants;
 
+import java.util.ArrayList;
+
 /** Special type of {@QuestioCheckBox} used by the {@MultipleQuestionView}
  *  when the user can add new {@Option} to a {@Question}
  *
@@ -70,7 +72,8 @@ public class QuestionViewOtherContainer extends LinearLayout implements OnChecke
                             Constants.OPTION_ALIAS_ADDED_BY_USER,
                             "1",
                             ((EditText) findViewById(R.id.otherInputText)).getText() + "",
-                            question
+                            question,
+                            new ArrayList<String>()
                     );
                     question.addCustomAddedOption(newOption);
 
@@ -177,5 +180,25 @@ public class QuestionViewOtherContainer extends LinearLayout implements OnChecke
             }
         }
         return answers.toString();
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+
+        for (int i = getChildCount() - 1; i >= 0; i--) {
+            getChildAt(i).setEnabled(enabled);
+        }
+
+        if (!enabled) {
+            checkbox.setChecked(false);
+
+            // Remove all Other options from interface
+            while (getChildCount() > 1) {
+                removeView(getChildAt(getChildCount() - 1));
+            }
+            // Remove all Other options from the Model (Question object)
+            question.removeAllCustomAddedByUser();
+        }
     }
 }

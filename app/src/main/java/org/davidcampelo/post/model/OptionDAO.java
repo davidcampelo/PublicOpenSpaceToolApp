@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import org.davidcampelo.post.utils.Constants;
+import org.davidcampelo.post.utils.StringUtils;
 
 import java.util.ArrayList;
 
@@ -23,8 +24,12 @@ public class OptionDAO extends DAO {
     static final String COLUMN_ALIAS = "opt_alias";
     static final String COLUMN_VALUE = "opt_value";
     static final String COLUMN_TITLE = "opt_title";
-    static final String COLUMN_QST_NUMBER = "qst_number"; // Question this option belongs to
-    static final String COLUMN_POS_ID = "pos_id"; // if this Option concerns to one and only
+    // Question this option belongs to
+    static final String COLUMN_QST_NUMBER = "qst_number";
+    // List of Question numbers which should be disabled in the UI if this Option is checked
+    static final String DISABLED_QST_NUMBERS = "opt_disable_question_numbers";
+    // Filled if this Option concerns to one and only POS
+    static final String COLUMN_POS_ID = "pos_id";
     // PublicOpenSpace (happens for "Other" options)
 
     static String[] TABLE_COLUMNS = {
@@ -33,6 +38,7 @@ public class OptionDAO extends DAO {
             COLUMN_VALUE,
             COLUMN_TITLE,
             COLUMN_QST_NUMBER,
+            DISABLED_QST_NUMBERS,
             COLUMN_POS_ID
     };
 
@@ -42,6 +48,7 @@ public class OptionDAO extends DAO {
             + COLUMN_VALUE +" TEXT, "
             + COLUMN_TITLE +" TEXT not null, "
             + COLUMN_QST_NUMBER +" TEXT, "
+            + DISABLED_QST_NUMBERS +" TEXT, "
             + COLUMN_POS_ID +" INTEGER);";
 
     public OptionDAO(Context context) {
@@ -75,6 +82,8 @@ public class OptionDAO extends DAO {
         values.put(COLUMN_VALUE, object.value);
         values.put(COLUMN_TITLE, object.title);
         values.put(COLUMN_QST_NUMBER, object.question.number);
+        values.put(DISABLED_QST_NUMBERS,
+                StringUtils.toString(object.disabledQuestionNumbers, Constants.DEFAULT_SEPARATOR));
 
         if (object.publicOpenSpace != null) {
             values.put(COLUMN_POS_ID, object.publicOpenSpace.id);
@@ -93,6 +102,8 @@ public class OptionDAO extends DAO {
         values.put(COLUMN_VALUE, object.value);
         values.put(COLUMN_TITLE, object.title);
         values.put(COLUMN_QST_NUMBER, object.question.number);
+        values.put(DISABLED_QST_NUMBERS,
+                StringUtils.toString(object.disabledQuestionNumbers, Constants.DEFAULT_SEPARATOR));
 
 
         return (update(TABLE_NAME, values, COLUMN_ID +"="+ object.id) > 0);
@@ -210,6 +221,7 @@ public class OptionDAO extends DAO {
                 cursor.getString(2),    // value
                 cursor.getString(3),    // title
                 question,               // Question
+                StringUtils.toArrayList(cursor.getString(5), Constants.DEFAULT_SEPARATOR),    // disable_question_numbers
                 publicOpenSpace         // PublicOpenSpace
         );
     }

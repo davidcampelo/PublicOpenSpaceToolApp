@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Constants {
 
     public static final String DATABASE_NAME = "post.db";
-    public static final int    DATABASE_VERSION = 50;
+    public static final int    DATABASE_VERSION = 51;
 
     public static final String[] TAB_TITLES = new String[]{
             "Location",
@@ -25,6 +25,8 @@ public class Constants {
     };
     // At least 70% questions must be answered
     public static final double MINIMUM_QUESTIONS_TO_BE_ANSWERED = 0.5f;
+    // If a given Question is not enabled (as a previous Option was marked)
+    public static final String DEFAULT_NOT_ENABLED_QUESTION = "-1";
     // Date format used to show date in the app
     public static SimpleDateFormat APPLICATION_DATE_FORMAT = new SimpleDateFormat("dd/MMM/yyyy");
 

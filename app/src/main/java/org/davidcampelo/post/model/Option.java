@@ -2,6 +2,8 @@ package org.davidcampelo.post.model;
 
 import org.davidcampelo.post.utils.Constants;
 
+import java.util.ArrayList;
+
 /**
  * Created by davidcampelo on 8/1/16.
  */
@@ -12,25 +14,34 @@ public class Option {
     String title;
     Question question;
     PublicOpenSpace publicOpenSpace;
+    /**
+     * List of Questions numbers should be disabled in the UI if this Option is checked
+     */
+    ArrayList<String> disabledQuestionNumbers;
 
     public Option() {
     }
 
-    public Option(long id, String alias, String value, String title, Question question, PublicOpenSpace publicOpenSpace) {
+    public Option(long id, String alias, String value, String title, Question question, ArrayList<String> disabledQuestionNumbers, PublicOpenSpace publicOpenSpace) {
         this.id = id;
         this.alias = alias;
         this.value = value;
         this.title = title;
         this.question = question;
+        this.disabledQuestionNumbers = disabledQuestionNumbers;
         this.publicOpenSpace = publicOpenSpace;
     }
 
-    public Option(String alias, String value, String title, Question question) {
-        this(0, alias, value, title, question, null);
+    public Option(String alias, String value, String title, Question question, ArrayList<String> disabledQuestionNumbers) {
+        this(0, alias, value, title, question, disabledQuestionNumbers, null);
     }
 
     public String getAlias() {
         return alias;
+    }
+
+    public ArrayList<String> getDisabledQuestionNumbers() {
+        return disabledQuestionNumbers;
     }
 
     public String getValue() {

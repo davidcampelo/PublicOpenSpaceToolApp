@@ -29,11 +29,7 @@
     <question alias="7.usage" number="07" hint="Consider the type of activities that the POS was designed for. Active-Formal if the POS has facilities used for organized, formal sports (e.g. goal posts, soccer net, cricket pitch, scoreboards). Active Informal if the POS has facilities designed for unstructured, informal physical activity (e.g. walking paths, children's playground, or basketball hoops). Passive if the POS has no facilities designed for physical activity (e.g.the POS has seating only provided)." type="MULTIPLE_CHOICE" title="Type of usage (tick all relevant)">
             <option alias="7.act_formal" value="1" title="Active-formal"></option>
             <option alias="7.act_inf" value="1" title="Active-informal"></option>
-            <option alias="7.passive" value="1" title="Passive only (go to Q9)">
-                <disable>
-                    <question number="08"></question>
-                </disable>
-            </option>
+            <option alias="7.passive" value="1" title="Passive only (go to Q9)" disable_question_numbers="08"></option>
     </question>
     
         <!-- QUESTION 8 -->
@@ -64,12 +60,7 @@
         <!-- QUESTION 10 -->
     <question alias="10.water" number="10" hint="Water features are things such as lakes, ponds, fountains, and streams. Tick YES if any or all of these features are present. Also tick YES if the structure of a water feature is there, but is presently without water." type="SINGLE_CHOICE" title="Are there water features in the POS?">
             <option alias="10.yes" value="1" title="Yes"></option>
-            <option alias="10.no" value="0" title="No (Go to Q13)">
-                <disable>
-                    <question number="11"></question>
-                    <question number="12"></question>
-                </disable>
-            </option>
+            <option alias="10.no" value="0" title="No (Go to Q13)" disable_question_numbers="11|12"></option>
     </question>
     
         <!-- QUESTION 11 -->
@@ -92,11 +83,7 @@
         <!-- QUESTION 13a -->
     <question alias="13a.aesthetic" number="13a" hint="" type="SINGLE_CHOICE" title="Are there other aesthetic features in the POS?">
             <option alias="13a.yes" value="1" title="Yes"></option>
-            <option alias="13a.no" value="0" title="No (Go to Q14)">
-                <disable>
-                    <question number="13b"></question>
-                </disable>
-            </option>
+            <option alias="13a.no" value="0" title="No (Go to Q14)" disable_question_numbers="13b"></option>
     </question>                                
     
         <!-- QUESTION 13b -->
@@ -113,12 +100,7 @@
         <!-- QUESTION 14 -->
     <question alias="14.trees" number="14" hint="" type="SINGLE_CHOICE" title="Are there trees in the POS?">
             <option alias="14.yes" value="1" title="Yes"></option>
-            <option alias="14.no" value="2" title="No (Go to Q17)">
-                <disable>
-                    <question number="15"></question>
-                    <question number="16"></question>
-                </disable>
-            </option>
+            <option alias="14.no" value="0" title="No (Go to Q17)" disable_question_numbers="15|16"></option>
     </question>                                
     
         <!-- QUESTION 15 -->
@@ -147,12 +129,7 @@
     <question alias="18a.paths" number="18a" hint="Paths are cleared tracks with hard surfaces that can be used for walking or cycling. The surface of a path may vary to include stone, concrete, dirt or gravel. Only tick 'designated dual-use path/s' if signage or markings on the path indicate that cycling is permitted." type="MULTIPLE_CHOICE" title="Are the walking paths or cycleways within or around the POS? (tick all relevant)">
             <option alias="18a.walkpaths" value="1" title="Walking path/s"></option>
             <option alias="18a.dualpaths" value="1" title="Designated dual use path/s"></option>
-            <option alias="18a.none_paths" value="1" title="None (Go to Q20">
-                <disable>
-                    <question number="18b"></question>
-                    <question number="19"></question>
-                </disable>q
-            </option>
+            <option alias="18a.none_paths" value="1" title="None (Go to Q20)" disable_question_numbers="18b|19"></option>
     </question>
     
         <!-- QUESTION 18b -->
@@ -185,16 +162,8 @@
             <option alias="21.d_leashall" value="1" title="Yes, on leash at all times"></option>
             <option alias="21.d_leascert" value="1" title="Yes, on leash at certain times"></option>
             <option alias="21.d_noleash" value="1" title="Yes, no leash specified"></option>
-            <option alias="21.d_notallow" value="1" title="Not allowed (go to Q23)">
-                <disable>
-                    <question number="22"></question>
-                </disable>
-            </option>
-            <option alias="21.d_notspecif" value="1" title="Not specified (go to Q23)">
-                <disable>
-                    <question number="22"></question>
-                </disable>
-            </option>
+            <option alias="21.d_notallow" value="1" title="Not allowed (go to Q23)" disable_question_numbers="22"></option>
+            <option alias="21.d_notspecif" value="1" title="Not specified (go to Q23)" disable_question_numbers="22"></option>
     </question>
     
         <!-- QUESTION 22 -->
@@ -225,13 +194,7 @@
         <!-- QUESTION 26 -->
     <question alias="26.childplay" number="26" hint="Tick YES if equipment is located within the POS. Tick YES if play equipment is located on school grounds adjacent to the POS, provided that the grounds are clearly accessible to the public, and able to be reached without crossing a road or other barrier." type="SINGLE_CHOICE" title="Is children's play equipment present?">
             <option alias="26.yes" value="1" title="Yes"></option>
-            <option alias="26.no" value="0" title="No (go to Q30)">
-                <disable>
-                    <question number="27"></question>
-                    <question number="28"></question>
-                    <question number="29"></question>
-                </disable>
-            </option>
+            <option alias="26.no" value="0" title="No (go to Q30)" disable_question_numbers="27|28|29"></option>
     </question>
     
         <!-- QUESTION 27 -->
@@ -280,11 +243,7 @@
         <!-- QUESTION 32a -->
     <question alias="32a.parking" number="32a" hint="Take care to check all sides of the POS. Tick YES (and count) if there are marked parking bays adjacent to/alongside park (or clearly identified as serving the POS). Do not include POS verges as parking facilities, unless signs or markings indicate the space is to be used for POS parking." type="SINGLE_CHOICE" title="Are the parking facilities serving the POS?">
             <option alias="32a.yes" value="1" title="Yes"></option>
-            <option alias="32a.no" value="0" title="No (Go to Q33)">
-                <disable>
-                    <question number="32b"></question>
-                </disable>
-            </option>
+            <option alias="32a.no" value="0" title="No (Go to Q33)" disable_question_numbers="32b"></option>
     </question>
     
         <!-- QUESTION 32b -->
@@ -335,11 +294,7 @@
         <!-- QUESTION 39 -->
     <question alias="39.dogbags" number="39" hint="Tally up the number of litter bag locations you see as you walk around the POS" type="SINGLE_CHOICE" title="Are dog litter bags provided?">
             <option alias="39.yes" value="1" title="Yes"></option>
-            <option alias="39.no" value="0" title="No (Go to Q41)">
-                <disable>
-                    <question number="40"></question>
-                </disable>
-            </option>
+            <option alias="39.no" value="0" title="No (Go to Q41)" disable_question_numbers="40"></option>
     </question>
     
         <!-- QUESTION 40 -->
@@ -361,11 +316,7 @@
         <!-- QUESTION 43 -->
     <question alias="43.lighting" number="43" hint="This question relates to lighting specific to the POS. It does not include normal street lighting." type="SINGLE_CHOICE" title="Is there lighting within the POS? (i.e., not just street lighting)">
             <option alias="43.yes" value="1" title="Yes"></option>
-            <option alias="43.no" value="0  " title="No (go to Q45)">
-                <disable>
-                    <question number="44"></question>
-                </disable>
-            </option>
+            <option alias="43.no" value="0  " title="No (go to Q45)" disable_question_numbers="44"></option>
     </question>
     
         <!-- QUESTION 44 -->
@@ -388,12 +339,7 @@
     <question alias="46a.vishouse" number="46a" hint="" type="SINGLE_CHOICE" title="From the centre of the POS, how visible are the surrounding houses? Clear visibility means you can clearly see windows, back, yards, or front yards of houses overlooking the park. (tick one)">
             <option alias="46a.h_clearly" value="1" title="House/s clearly visible from the centre of the POS"></option>
             <option alias="46a.h_partly" value="2" title="House/s partly visible from the centre of the POS"></option>
-            <option alias="46a.h_cannot" value="3" title="House/s cannot be seen from the centre of the POS (go to Q47)">
-                <disable>
-                    <question number="46b"></question>
-                    <question number="46c"></question>
-                </disable>
-            </option>
+            <option alias="46a.h_cannot" value="3" title="House/s cannot be seen from the centre of the POS (go to Q47)" disable_question_numbers="46b|46c"></option>
     </question>
     
         <!-- QUESTION 46b -->
@@ -411,12 +357,7 @@
     
         <!-- QUESTION 47 -->
     <question alias="47.minorroads" number="47" hint="Cul-de-sacs include 'no through roads' or terminating roads. Minor local roads allow only 1 lane of traffic in each direction. Major local roads allow 2 lanes of traffic in each direction." type="SINGLE_CHOICE" title="Are all roads surrounding the POS minor roads or cul-de-sacs?">
-            <option alias="47.yes" value="1" title="Yes (Go to Q49)">
-                <disable>
-                    <question number="48a"></question>
-                    <question number="48b"></question>
-                </disable>
-            </option>
+            <option alias="47.yes" value="1" title="Yes (Go to Q49)" disable_question_numbers="48a|48b"></option>
             <option alias="47.no" value="0" title="No"></option>
     </question>
     

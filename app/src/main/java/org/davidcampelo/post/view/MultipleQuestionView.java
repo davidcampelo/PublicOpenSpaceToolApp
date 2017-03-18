@@ -58,6 +58,8 @@ public class MultipleQuestionView extends QuestionView{
 
     @Override
     public String getAnswers() {
+        if (!isEnabled())
+                return Constants.DEFAULT_NOT_ENABLED_QUESTION;
         StringBuilder answers = new StringBuilder();
         for (int i = container.getChildCount(); --i >= 0;) {
             View child = container.getChildAt(i);

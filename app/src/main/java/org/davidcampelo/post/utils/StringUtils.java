@@ -3,6 +3,7 @@ package org.davidcampelo.post.utils;
 import android.util.Log;
 
 import org.davidcampelo.post.model.PublicOpenSpace;
+import org.davidcampelo.post.model.Question;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -85,4 +86,25 @@ public class StringUtils {
     }
 
 
+    public static String toString(ArrayList<String> list, String separator) {
+        StringBuilder b = new StringBuilder();
+        for (String str : list){
+            b.append(str + separator);
+        }
+        return b.toString();
+    }
+
+    public static ArrayList<String> toArrayList(String string, String separator) {
+        ArrayList<String> result = new ArrayList<String>();
+        if (string == null || string.length() == 0)
+            return result;
+        StringTokenizer tokenizer = new StringTokenizer(string, separator);
+        while ( tokenizer.hasMoreElements() ) {
+            String str =  (String) tokenizer.nextElement();
+            if (str.length() > 0) {
+                result.add(str);
+            }
+        }
+        return result;
+    }
 }

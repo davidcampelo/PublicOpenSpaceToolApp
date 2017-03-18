@@ -44,6 +44,7 @@ import org.davidcampelo.post.utils.MapUtility;
 import org.davidcampelo.post.utils.PublicOpenSpaceAsyncTask;
 import org.davidcampelo.post.utils.UIUtils;
 import org.davidcampelo.post.view.AnswerMissingException;
+import org.davidcampelo.post.view.DisableQuestionNumbersListener;
 import org.davidcampelo.post.view.InputDecimalQuestionView;
 import org.davidcampelo.post.view.InputNumberQuestionView;
 import org.davidcampelo.post.view.InputTextQuestionView;
@@ -60,7 +61,8 @@ import java.util.HashMap;
  * A simple {@link Fragment} subclass.
  */
 public class PublicOpenSpaceAddEditFragment extends Fragment
-        implements OnMapReadyCallback, OnMarkerClickListener, OnMapClickListener, OnMapLongClickListener {
+        implements OnMapReadyCallback, OnMarkerClickListener, OnMapClickListener, OnMapLongClickListener,
+        DisableQuestionNumbersListener{
 
     private PublicOpenSpace publicOpenSpace;
     private Project project;
@@ -435,6 +437,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         else  if (type == Question.QuestionType.INPUT_COORDINATES)
             view = new InputTextQuestionView(context, question);
 
+        view.setDisableQuestionNumbersListener(this);
         this.questionNumberToViewMap.put(questionNumber, view);
 
         return view;
@@ -464,6 +467,28 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
                 publicOpenSpace,
                 questionToAnswersMap);
         runner.execute();
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////   DISABLEQUESTIONNUMBERSLISTENER   ///////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Override
+    public void disableQuestions(ArrayList<String> disableQuestionNumbers) {
+        for (String questionNumber : disableQuestionNumbers) {
+            QuestionView view = this.questionNumberToViewMap.get(questionNumber);
+            view.setEnabled(false);
+        }
+    }
+
+    @Override
+    public void enableQuestions(ArrayList<String> disableQuestionNumbers) {
+        for (String questionNumber : disableQuestionNumbers) {
+            QuestionView view = this.questionNumberToViewMap.get(questionNumber);
+            view.setEnabled(true);
+        }
     }
 
 
