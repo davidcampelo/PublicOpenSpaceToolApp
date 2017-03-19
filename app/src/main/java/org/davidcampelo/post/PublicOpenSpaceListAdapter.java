@@ -23,7 +23,7 @@ import java.util.Date;
 /**
  * Inner class for handling list adapter rows
  */
-class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
+class   PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
 
     int bgColorOn;
     int bgColorOff;
@@ -77,7 +77,7 @@ class PublicOpenSpaceListAdapter extends ArrayAdapter<PublicOpenSpace> {
 
         viewHolder.name.setText(object.getName());
         viewHolder.date.setText("Added on "+ Constants.APPLICATION_DATE_FORMAT.format(new Date(object.getDateCreation())));
-        viewHolder.image.setImageResource(object.getTypeResource());
+        //viewHolder.image.setImageResource(object.getTypeResource());
 
 
         return convertView;

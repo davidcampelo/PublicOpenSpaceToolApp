@@ -80,13 +80,13 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
 
     private Button saveButton;
-    private ImageButton posType;
+//    private ImageButton posType;
 
 
     HashMap<String, QuestionView> questionNumberToViewMap;
     QuestionDAO questionDAO;
 
-    private AlertDialog posTypeDialog;
+//    private AlertDialog posTypeDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,7 +113,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
             // fill fields
             posName.setText(publicOpenSpace.getName());
-            ((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
+            //((ImageButton) fragmentLayout.findViewById(R.id.addEditItemType)).setImageResource(publicOpenSpace.getTypeResource());
             Toast.makeText(getContext(), "Loading...", Toast.LENGTH_LONG).show();
 
         }
@@ -130,7 +130,7 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
         // get references to components
         saveButton = (Button) fragmentLayout.findViewById(R.id.addEditSaveButton);
-        posType = (ImageButton) fragmentLayout.findViewById(R.id.addEditItemType);
+//        posType = (ImageButton) fragmentLayout.findViewById(R.id.addEditItemType);
 
         tabHost = (TabHost) fragmentLayout.findViewById(R.id.addEditItemTabHost);
         // fill tabs
@@ -163,16 +163,16 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
 
             }
         });
-        posType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UIUtils.hideKeyboard(getContext(), view);
-
-                posTypeDialog.show();
-            }
-        });
-
-        buildTypeDialog();
+//        posType.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                UIUtils.hideKeyboard(getContext(), view);
+//
+//                posTypeDialog.show();
+//            }
+//        });
+//
+//        buildTypeDialog();
 
         return fragmentLayout;
     }
@@ -256,36 +256,36 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         }
     }
 
-    private void buildTypeDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.fragment_public_open_space_add_edit_type_dialog_title);
-        builder.setSingleChoiceItems(getResources().getStringArray(R.array.public_open_space_types), 0, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int item) {
-                posTypeDialog.cancel();
-                switch (item) {
-                    case 0:
-                        publicOpenSpace.setType(PublicOpenSpace.Type.PARK);
-                        posType.setImageResource(R.drawable.icon_park);
-                        break;
-                    case 1:
-                        publicOpenSpace.setType(PublicOpenSpace.Type.SQUARE);
-                        posType.setImageResource(R.drawable.icon_square);
-                        break;
-                    case 2:
-                        publicOpenSpace.setType(PublicOpenSpace.Type.GARDEN);
-                        posType.setImageResource(R.drawable.icon_garden);
-                        break;
-                    default:
-                        publicOpenSpace.setType(PublicOpenSpace.Type.OTHER);
-                        posType.setImageResource(R.drawable.icon_other);
-                        break;
-                }
-            }
-        });
-
-        posTypeDialog = builder.create();
-    }
+//    private void buildTypeDialog() {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//        builder.setTitle(R.string.fragment_public_open_space_add_edit_type_dialog_title);
+//        builder.setSingleChoiceItems(getResources().getStringArray(R.array.public_open_space_types), 0, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int item) {
+//                posTypeDialog.cancel();
+//                switch (item) {
+//                    case 0:
+//                        publicOpenSpace.setType(PublicOpenSpace.Type.PARK);
+//                        posType.setImageResource(R.drawable.icon_park);
+//                        break;
+//                    case 1:
+//                        publicOpenSpace.setType(PublicOpenSpace.Type.SQUARE);
+//                        posType.setImageResource(R.drawable.icon_square);
+//                        break;
+//                    case 2:
+//                        publicOpenSpace.setType(PublicOpenSpace.Type.GARDEN);
+//                        posType.setImageResource(R.drawable.icon_garden);
+//                        break;
+//                    default:
+//                        publicOpenSpace.setType(PublicOpenSpace.Type.OTHER);
+//                        posType.setImageResource(R.drawable.icon_other);
+//                        break;
+//                }
+//            }
+//        });
+//
+//        posTypeDialog = builder.create();
+//    }
 
     private void setupTabs(TabHost host) {
         host.setup();
