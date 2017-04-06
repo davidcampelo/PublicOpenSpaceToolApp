@@ -11,12 +11,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
@@ -203,7 +203,20 @@ public class PublicOpenSpaceAddEditFragment extends Fragment
         });
 
         AlertDialog addNewDialogObject = builder.create();
+
         addNewDialogObject.show();
+
+        // Align options to the left (show() must be called before)
+        Button dialogButton1 = addNewDialogObject.getButton(AlertDialog.BUTTON_POSITIVE);
+        dialogButton1.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+        LinearLayout.LayoutParams dialogButton1LL = (LinearLayout.LayoutParams) dialogButton1.getLayoutParams();
+        dialogButton1LL.gravity = Gravity.LEFT;
+        dialogButton1.setLayoutParams(dialogButton1LL);
+        Button dialogButton2 = addNewDialogObject.getButton(AlertDialog.BUTTON_NEGATIVE);
+        dialogButton2.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+        LinearLayout.LayoutParams dialogButton2LL = (LinearLayout.LayoutParams) dialogButton2.getLayoutParams();
+        dialogButton2LL.gravity = Gravity.LEFT;
+        dialogButton2.setLayoutParams(dialogButton2LL);
     }
 
     private double percentageOfQuestionsAnswered() {

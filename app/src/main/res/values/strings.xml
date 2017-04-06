@@ -9,7 +9,7 @@
     <string name="title_settings">Settings</string>
     <string name="title_POST_manual">POST Manual</string>
     <string name="title_project_list">Project List</string>
-    <string name="title_project_add">Start New project</string>
+    <string name="title_project_add">New project</string>
     <string name="title_project_edit">Edit project</string>
     <string name="title_public_open_space_list">Public Open Space List</string>
     <string name="title_public_open_space_add">Add Public Open Space</string>
@@ -39,7 +39,7 @@
     <string name="marker_click_dialog_negative">No</string>
 
     // fragment_project_list_menu
-    <string name="fragment_project_list_add">Start new project</string>
+    <string name="fragment_project_list_add">New project</string>
     <string name="fragment_project_list_menu_view">View Public Open Spaces</string>
     <string name="fragment_project_list_menu_add_public_open_space">Add new Public Open Space</string>
     <string name="fragment_project_list_menu_edit">Edit project</string>
@@ -74,7 +74,7 @@
     <string name="fragment_public_open_space_add_edit_type_dialog_title">Please choose POS type</string>
     <string name="fragment_public_open_space_add_edit_add_dialog_text">Would you like to add a new POS to your project now?</string>
     <string name="fragment_public_open_space_add_edit_add_dialog_positive">Yes, I want to add a new POS right now.</string>
-    <string name="fragment_public_open_space_add_edit_add_dialog_negative">No, I have finished or I will add a new POS at another time</string>
+    <string name="fragment_public_open_space_add_edit_add_dialog_negative">No, I have finished or I will add a new POS at another time </string>
     <string name="fragment_public_open_space_add_edit_instructions_checkbox">Do not show this dialog again</string>
     <string name="fragment_public_open_space_add_edit_instructions_text">Add a name to the POS and draw a polygon representing the POS limits. Press and hold to draw the points that delimit the POS.
         \n\n
@@ -82,21 +82,21 @@
 
     <string name="fragment_public_open_space_add_edit_name">Type the POS name</string>
     <string name="fragment_public_open_space_add_edit_save">Save</string>
-    <string name="public_open_space_type_park">Park</string>
-    <string name="public_open_space_type_square">Square</string>
-    <string name="public_open_space_type_garden">Garden</string>
-    <string name="public_open_space_type_other">Other</string>
-    <string-array name="public_open_space_types">
-        <item>@string/public_open_space_type_park</item>
-        <item>@string/public_open_space_type_square</item>
-        <item>@string/public_open_space_type_garden</item>
-        <item>@string/public_open_space_type_other</item>
-    </string-array>
+    <!--<string name="public_open_space_type_park">Park</string>-->
+    <!--<string name="public_open_space_type_square">Square</string>-->
+    <!--<string name="public_open_space_type_garden">Garden</string>-->
+    <!--<string name="public_open_space_type_other">Other</string>-->
+    <!--<string-array name="public_open_space_types">-->
+        <!--<item>@string/public_open_space_type_park</item>-->
+        <!--<item>@string/public_open_space_type_square</item>-->
+        <!--<item>@string/public_open_space_type_garden</item>-->
+        <!--<item>@string/public_open_space_type_other</item>-->
+    <!--</string-array>-->
 
     // fragment_project_add_edit
     <string name="fragment_project_add_edit_name">Type the project name</string>
     <string name="fragment_project_add_edit_description">Type the project description</string>
-    <string name="fragment_project_add_edit_maptext">Draw the POS</string>
+    <string name="fragment_project_add_edit_maptext">Set geographic extent</string>
     <string name="fragment_project_add_edit_save">Save and continue</string>
     <string name="fragment_project_add_edit_instructions_status">fragment_project_add_edit_instructions_status</string>
     <string name="fragment_project_add_edit_instructions_checkbox">Do not show this dialog again</string>
@@ -116,18 +116,18 @@
     </string>
 
     // fragment_help
-    <string name="fragment_help_text">Before beginning the audit, read the Quality of Public Open Space Tool (POST)  manual, it is available below. When you open the App you can choose between "Start New Project" (to create a new project), "List Projects" (to re-visit previous projects), "Export Data" (to export your results and maps) or "Settings" (to configure some application attributes).
+    <string name="fragment_help_text">When you open the app you can choose between New Project (to create a new project), Project List (to revisit previous projects), Export Data (to export the data table and maps), Settings (to reset), About (to learn more about the POST and its authors) and Help (to read the instructions).
         \n\n
-        When using this application for the first time, select "Start New Project". Add a name and description to the project and draw on the map a polygon corresponding to the geographic extend of the project. Then, simply add the Public Open Space that will be audited in your project, and fill up the answers to the items found in the menu tabs "Location", "General", "Activities", "Environmental Quality", "Amenities" and “Safety”. Your project can be saved at any time. After saving it, the database with the audit results can be exported to your e-mail account in .csv and .kmz format.
+        When using this app for the first time, select New Project. Add a name and description to the project and draw on the map a polygon delimitating the geographic extent of the project. Then, simply add the Public Open Space that will be audited in your project, and answer to the items found in the menu tabs Location, General, Activities, Environmental Quality, Amenities and Safety. Your project can be saved at any time. After saving it, the dataset with the audit results can be exported to your email account in .csv and .kmz format.
     </string>
 
     // activity_splash
     <string name="activity_splash_dialog_app_instructions_status">activity_splash_dialog_app_instructions_status</string>
     <string name="activity_splash_dialog_app_instructions_checkbox">Do not show this dialog again</string>
     <string name="activity_splash_dialog_app_instructions_button">OK</string>
-    <string name="activity_splash_dialog_app_instructions_text">When you open the App you can choose between "Start New Project" (to start a new project), "List Projects" (to re-visit and edit previous projects), "Export Data" (to export your results and maps) or "Settings" (to reset).
+    <string name="activity_splash_dialog_app_instructions_text">When you open the App you can choose between "New Project" (to start a new project), "List Projects" (to re-visit and edit previous projects), "Export Data" (to export your results and maps) or "Settings" (to reset).
         \n\n
-        When you use POST for the first time or every time you want to start a new project, select "Start New Project".
+        When you use POST for the first time or every time you want to start a new project, select "New Project".
         \n\n
         Then, add the POS (Public Open Space) that you are going to audit and answer to the items found in the menu tabs "Location", “General”, "Activities", "Environmental Quality", "Amenities" and “Safety”.
         \n\n
