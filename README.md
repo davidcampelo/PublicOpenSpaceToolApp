@@ -8,7 +8,8 @@ Besides the user-friendly interface, this electronic version now includes other 
 
 ### How it works
 The app stays true to the original POST paper instrument but adds several functionalities to facilitate the POS audits and the subsequent data analysis. Figure 1 shows the home screen (1) and the main functionalities of the app (2 to 6).
-[App screens and functionalities: (1) Home Screen; (2) New Project - entering the name, description and defining the project geographic extent; (3) Edit Public Open Space – mapping the POS; (4) Edit Public Open Space – answering to the POST items; (5) Hints containing relevant information and definitions; (6) Export data](app/docs/Fig1.jpg)
+![](app/docs/Fig1.jpg)
+*Figure 1. App screens and functionalities: (1) Home Screen; (2) New Project - entering the name, description and defining the project geographic extent; (3) Edit Public Open Space – mapping the POS; (4) Edit Public Open Space – answering to the POST items; (5) Hints containing relevant information and definitions; (6) Export data *
 
 Briefly, to perform the audit, one should use the following instructions:
 * 1.	Create a new project: on the ‘Home Screen’ click on ‘New Project’ and ‘Type the project name’, ‘Type the project description’, ‘Set the geographic extent of the project’ and ‘Save and continue’. The geographic extent can be defined by drawing a polygon delimitating the area that will be audited, such as a city. Mark the vertices of the polygon by pressing the screen for a few seconds, vertex by vertex, until you close the polygon that delimits the area.
